@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Los Angeles Angels Logo History</title>
+    <link rel="stylesheet" href="../../style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header class="sticky-header">
+    <a href="../../mlb.html" class="back-btn">← Back to MLB</a>
+    <h1 class="text-angels"> Los Angeles Angels</h1>
+</header>
+
+    <div class="category-header">Primary Logos</div>
+    <div id="primary-logos" class="grid"></div>
+
+    <div class="category-header">Alternate Logos</div>
+    <div id="alternate-logos" class="grid"></div>
+
+    <div class="category-header">Hat Logos</div>
+    <div id="hat-logos" class="grid"></div>
+
+    <div class="category-header">Jersey Logos</div>
+    <div id="jersey-logos" class="grid"></div>
+
+    <div class="category-header">Patches</div>
+    <div id="patches" class="grid"></div>
+
+    <div class="category-header">Holiday</div>
+    <div id="holiday" class="grid"></div>
+
+    <div class="category-header">Spring Training</div>
+    <div id="spring-training" class="grid"></div>
+
+    <div class="category-header">Batting Practice</div>
+    <div id="batting-practice" class="grid"></div>
+
+    <div class="category-header">Other</div>
+    <div id="other-logos" class="grid"></div>
+    
+    <script>
+        const path = "../../images/mlb-teams/los-angeles-angels/";
+        const allFiles = [
+"Red jersey logo 2007-present.png",
+"50th season hat logo 2011.png",
+"50th season logo 2011.png",
+"50th season red jersey logo 2011.png",
+"Alternate logo 1970-1985.png",
+"Alternate logo 2011.png",
+"Alternate logo 2012-present.png",
+"Alternate logo 2022-present.png",
+"Armed Forces hat logo 2025.png",
+"Armed Forces Weekend hat logo 2021.png",
+"Batting practice hat logo 2025.png",
+"City Connect hat logo 2002-present.png",
+"City Connect jersey logo 2022-present.png",
+"Don Baylor 25 memorial patch 2017.png",
+"Dr. Lewis Yocum memorial patch 2013.png",
+"Father's Day hat logo 2021.png",
+"Fourth of July hat logo 2017.png",
+"Fourth of July hat logo 2018.png",
+"Fourth of July hat logo 2021.png",
+"Fourth of July hat logo 2025.png",
+"Fourth of July jersey logo 2018.png",
+"Fourth of July sleeve patch 2017.png",
+"Garret Anderson GA memorial patch 2026.png",
+"Hat logo 2002-2010, 2012-present.png",
+"Home white Fourth of July jersey logo 2017.png",
+"Home white jersey logo 2002-present.png",
+"Jackie Robinson Day patch 2021.png",
+"Jim Fregosi 11 memorial patch 2014.png",
+"Johnny Pesky 6 memorial patch 2012.png",
+"Little League Classic jersey logo 2021.png",
+"Memorial Day alt sleeve patch 2017.png",
+"Mother's Day hat logo 2021.png",
+"Player's Weekend hat logo 2017.png",
+"Player's Weekend jersey logo 2017.png",
+"Primary logo 2005-present.png",
+"Road gray jersey logo 2004-2010, 2012-2023.png",
+"Road gray jersey logo 2024-present.png",
+"Road gray Memorial Day jersey logo 2017.png",
+"Spring Training hat logo 2021.png",
+"Spring Training hat logo 2022.png",
+"Spring Training hat logo 2025.png",
+"Spring Training hat logo 2026.png",
+"St. Patrick's Day hat logo 2025.png",
+"St. Patrick's Day hat logo 2026.png",
+"St. Patrick's Day jersey logo 2014.png",
+"St. Patrick's Day sleeve patch 2014.png",
+"Throwback hat logo 2024-present.png",
+"Throwback jersey logo 2024-present.png",
+"Throwback weekend hat logo 2025.png",
+"Tyler Skaggs 45 memorial patch 2019.png",
+"Tyler Skaggs SKAGGS 45 memorial patch 2019.png",];
+
+allFiles.sort((a, b) => {
+    const getLastYear = (fileName) => {
+        const lower = fileName.toLowerCase();
+        
+        if (lower.includes("present")) return 9999;
+
+        const years = fileName.match(/\d{4}/g);
+        if (years && years.length > 0) {
+            return parseInt(years[years.length - 1]);
+        }
+        
+        return 0;
+    };
+
+    return getLastYear(a) - getLastYear(b);
+});     
+
+allFiles.forEach(fileName => {
+           let fullName = fileName.replace('logo ', '').replace('.png', '');
+           const datePattern = /\d{4}(?:-\d{4}|-present)?/g; 
+    const matches = fullName.match(datePattern);
+    const yearText = matches ? matches.join(', ') : "";
+    let nameWithoutYear = fullName;
+    if (matches) {
+        matches.forEach(m => {
+            nameWithoutYear = nameWithoutYear .replace(m, '')
+            .replace(/alternate/gi, '')
+                                     .replace(/logo\d*/gi, '')
+                                     .replace(/,/g, '')
+                                     .trim();
+        });
+    }
+    nameWithoutYear = nameWithoutYear.replace(/^-+|-+$/g, '').trim();
+    const cardHtml = `
+        <div class="logo-card">
+            <div class="logo-image-wrapper">
+                <img src="${path}${fileName}" alt="${fullName}" loading="lazy">
+            </div>
+            <div class="logo-caption">
+                ${nameWithoutYear ? `<div class="logo-name">${nameWithoutYear}</div>` : ''}
+                <div class="logo-year">${yearText}</div>
+            </div>
+        </div>`;
+    const lowerName = fileName.toLowerCase();
+
+    if (lowerName.includes("mother") || 
+        lowerName.includes("father") || 
+        lowerName.includes("july") || 
+        lowerName.includes("memorial day") ||
+        lowerName.includes("armed forces") || 
+        lowerName.includes("st. patrick")) {
+        document.getElementById('holiday').innerHTML += cardHtml;
+    }
+    else if (lowerName.includes("spring training")) {
+        document.getElementById('spring-training').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("primary logo")) {
+        document.getElementById('primary-logos').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("alternate")) {
+        document.getElementById('alternate-logos').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("batting practice")) {
+        document.getElementById('batting-practice').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("jersey")) {
+        document.getElementById('jersey-logos').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("hat")) {
+        document.getElementById('hat-logos').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("patch")) {
+        document.getElementById('patches').innerHTML += cardHtml;
+    } 
+    else {
+        document.getElementById('other-logos').innerHTML += cardHtml;
+    }
+});
+    </script>
+</body>
+</html>
