@@ -1,0 +1,352 @@
+h1 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2.2rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.text-diamondbacks {
+    color: #A6192E !important;
+}
+.text-athletics {
+    color: #024638 !important;
+}
+.text-braves {
+    color: #BA0C2F !important;
+}
+.text-orioles {
+    color: #FC4C02 !important;
+}
+.text-red-sox {
+    color: #C8102E !important;
+}
+.text-cubs {
+    color: #002F6C !important;
+}
+.text-white-sox {
+    color: #8D9093 !important;
+}
+.text-reds {
+    color: #BA0C2F !important;
+}
+.text-guardians {
+    color: #D50032 !important;
+}
+.text-rockies {
+    color: #330072 !important;
+}
+.text-tigers {
+    color: #FA4616 !important;
+}
+.text-astros {
+    color: #CF4520 !important;
+}
+.text-royals {
+    color: #0032A0 !important;
+}
+.text-angels {
+    color: #862633 !important;
+}
+.text-dodgers {
+    color: #002F6C !important;
+}
+.text-marlins {
+    color: #00A3E0 !important;
+}
+.text-brewers {
+    color: #13294B !important;
+}
+.text-twins {
+    color: #BA0C2F !important;
+}
+.text-mets {
+    color: #002D72 !important;
+}
+.text-yankees {
+    color: #0C2340 !important;
+}
+.text-phillies {
+    color: #6F263D !important;
+}
+.text-pirates {
+    color: #FFC72C !important;
+}
+.text-padres {
+    color: #3E342F !important;
+}
+.text-giants {
+    color: #FA4616 !important;
+}
+.text-mariners {
+    color: #00685E !important;
+}
+.text-cardinals {
+    color: #BA0C2F !important;
+}
+.text-rays {
+    color: #69B3E7 !important;
+}
+.text-rangers {
+    color: #002D72 !important;
+}
+.text-blue-jays {
+    color: #003DA5 !important;
+}
+.text-nationals {
+    color: #BA0C2F !important;
+}
+.text-cleveland-indians {
+    color: #D50032 !important;
+}
+.text-florida-marlins {
+    color: #009CA6 !important;
+}
+.text-oakland-athletics {
+    color: #024638 !important;
+}
+
+h2 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+    font-size: 1.5rem;
+    color: #1b1b1b;
+    border-bottom: 2px solid #1b1b1b;
+    padding-bottom: 5px;
+    margin-top: 30px;
+    margin-left: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.logo-image-wrapper img {
+    max-width: 90%;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.home-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.league-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+.league-card {
+    background-color: #ffffff;
+    border: 1px solid #e1e1e1;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    border-radius: 12px;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.league-card:hover {
+    background-color: #eee; 
+    transform: scale(1.02);
+    border-color: #333;
+    cursor: pointer;
+}
+
+.league-icon {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+}
+
+.league-name {
+    font-family: 'Gill Sans', sans-serif;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #333;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.back-btn {
+    display: inline-block;
+    text-decoration: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #555;
+    background-color: #f4f4f4;
+    padding: 8px 16px;
+    margin: 15px 0 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+}
+
+.back-btn:hover {
+    background-color: #333;
+    color: #fff;
+    border-color: #333;
+    transform: translateY(-1px);
+}
+
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #A71930;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.sticky-header h1 {
+    margin: 5px 0;
+}
+
+.league-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.league-box {
+    padding: 40px;
+    border: 2px solid #000000;
+    text-decoration: none;
+    font-weight: bold;
+    color: #000000;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
+    gap: 10px;
+    padding: 20px;
+}
+
+.team-card {
+    background-color: #f7f7f7;
+    border: 1px solid #e1e1e1;
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+}
+
+.team-card:hover {
+background-color: #eee;
+}
+
+.logo-box{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.team-card img {
+    max-width: 70px;
+    max-height: 70px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.team-name {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.category-header {
+    background-color: #eeeeee;
+    color: #333;
+    margin-top: 15px;
+    margin-bottom: 2px;
+    padding: 8px 15px;
+    font-weight: bold;
+    border-bottom: 3px solid #dcdcdc;
+    margin: 10px 0 5px 0;
+    text-transform: uppercase;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.logo-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.logo-card {
+    background-color: #e1e1e1;
+    border: 1px solid #e1e1e1;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    min-height: 150px;
+    height: auto;
+}
+
+.logo-name {
+    font-family: 'Gill Sans', sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 0.85rem;
+    color: #333;
+    line-height: 1.2;
+}
+
+.logo-image-wrapper {
+    flex-grow: 1; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.logo-card img {
+    max-width: 120px;
+    max-height: 100px;
+    object-fit: contain;
+    margin-bottom: 0s;
+}
+
+.logo-caption {
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 0.75rem;
+    color: #666;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(2, 1 fr);
+    }
+}
