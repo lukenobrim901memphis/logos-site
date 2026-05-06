@@ -9,106 +9,6 @@ h1 {
     letter-spacing: 1px;
 }
 
-.text-diamondbacks {
-    color: #A6192E !important;
-}
-.text-athletics {
-    color: #024638 !important;
-}
-.text-braves {
-    color: #BA0C2F !important;
-}
-.text-orioles {
-    color: #FC4C02 !important;
-}
-.text-red-sox {
-    color: #C8102E !important;
-}
-.text-cubs {
-    color: #002F6C !important;
-}
-.text-white-sox {
-    color: #8D9093 !important;
-}
-.text-reds {
-    color: #BA0C2F !important;
-}
-.text-guardians {
-    color: #D50032 !important;
-}
-.text-rockies {
-    color: #330072 !important;
-}
-.text-tigers {
-    color: #FA4616 !important;
-}
-.text-astros {
-    color: #CF4520 !important;
-}
-.text-royals {
-    color: #0032A0 !important;
-}
-.text-angels {
-    color: #862633 !important;
-}
-.text-dodgers {
-    color: #002F6C !important;
-}
-.text-marlins {
-    color: #00A3E0 !important;
-}
-.text-brewers {
-    color: #13294B !important;
-}
-.text-twins {
-    color: #BA0C2F !important;
-}
-.text-mets {
-    color: #002D72 !important;
-}
-.text-yankees {
-    color: #0C2340 !important;
-}
-.text-phillies {
-    color: #6F263D !important;
-}
-.text-pirates {
-    color: #FFC72C !important;
-}
-.text-padres {
-    color: #3E342F !important;
-}
-.text-giants {
-    color: #FA4616 !important;
-}
-.text-mariners {
-    color: #00685E !important;
-}
-.text-cardinals {
-    color: #BA0C2F !important;
-}
-.text-rays {
-    color: #69B3E7 !important;
-}
-.text-rangers {
-    color: #002D72 !important;
-}
-.text-blue-jays {
-    color: #003DA5 !important;
-}
-.text-nationals {
-    color: #BA0C2F !important;
-}
-.text-cleveland-indians {
-    color: #D50032 !important;
-}
-.text-florida-marlins {
-    color: #009CA6 !important;
-}
-.text-oakland-athletics {
-    color: #024638 !important;
-}
-
 h2 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
     font-size: 1.5rem;
@@ -348,5 +248,56 @@ background-color: #eee;
 @media (max-width: 600px) {
     .grid {
         grid-template-columns: repeat(2, 1 fr);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #ffffff;
+    }
+
+    h1 {
+        color: #ffffff;
+    }
+    
+    h2 {
+        color: #e1e1e1;
+        border-bottom-color: #e1e1e1;
+    }
+
+    .sticky-header {
+        background-color: #1a1a1a;
+    }
+
+    .category-header {
+        background-color: #2c2c2c;
+        color: #ffffff;
+        border-bottom-color: #444444;
+    }
+
+    .logo-card, .league-card, .team-card {
+        background-color: #1e1e1e;
+        border-color: #333333;
+    }
+
+    .logo-card:hover, .league-card:hover, .team-card:hover {
+        background-color: #2a2a2a;
+        border-color: #666666;
+    }
+
+    .logo-name, .league-name, .team-name {
+        color: #ffffff;
+    }
+
+    .logo-caption {
+        color: #bbbbbb;
+    }
+
+    /* 7. Back Button */
+    .back-btn {
+        background-color: #2c2c2c;
+        color: #ffffff;
+        border-color: #444444;
     }
 }
