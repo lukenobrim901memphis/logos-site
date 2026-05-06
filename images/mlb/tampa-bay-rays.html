@@ -111,6 +111,10 @@ allFiles.sort((a, b) => {
 
     return getLastYear(a) - getLastYear(b);
 });     
+function openLightbox(imgSrc) {
+    document.getElementById('lightbox-img').src = imgSrc;
+    document.getElementById('lightbox').style.display = 'flex';
+}
 
 allFiles.forEach(fileName => {
            let fullName = fileName.replace('logo ', '').replace('.png', '');
@@ -129,21 +133,21 @@ allFiles.forEach(fileName => {
     }
     nameWithoutYear = nameWithoutYear.replace(/^-+|-+$/g, '').trim();
     const cardHtml = `
-        <div class="logo-card">
-            <div class="logo-image-wrapper">
-                <img src="${path}${fileName}" alt="${fullName}" loading="lazy">
-            </div>
-            <div class="logo-caption">
-                ${nameWithoutYear ? `<div class="logo-name">${nameWithoutYear}</div>` : ''}
-                <div class="logo-year">${yearText}</div>
-            </div>
-        </div>`;
+    <div class="logo-card" onclick="openLightbox('${path}${fileName}')">
+        <div class="logo-image-wrapper">
+            <img src="${path}${fileName}" alt="${fullName}" loading="lazy">
+        </div>
+        <div class="logo-caption">
+            ${nameWithoutYear ? `<div class="logo-name">${nameWithoutYear}</div>` : ''}
+            <div class="logo-year">${yearText}</div>
+        </div>
+    </div>`;
     const lowerName = fileName.toLowerCase();
 
     if (lowerName.includes("mother") || 
         lowerName.includes("father") || 
-        lowerName.includes("july") ||
-        lowerName.includes("memorial day") || 
+        lowerName.includes("july") || 
+        lowerName.includes("memorial day") ||
         lowerName.includes("armed forces") || 
         lowerName.includes("st. patrick")) {
         document.getElementById('holiday').innerHTML += cardHtml;
@@ -174,5 +178,12 @@ allFiles.forEach(fileName => {
     }
 });
     </script>
+  
+  <div id="lightbox" class="lightbox" onclick="this.style.display='none'">
+    <span class="close-btn">&times;</span>
+    <img id="lightbox-img" src="" alt="Enlarged Logo">
+    <div id="lightbox-caption"></div>
+</div>
+
 </body>
 </html>
