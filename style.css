@@ -172,7 +172,7 @@ background-color: #eee;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
     font-size: 0.9rem;
-    text-transform: uppercase;
+    text-transform: none;
     text-align: center;
 }
 
@@ -213,9 +213,9 @@ background-color: #eee;
 
 .logo-name {
     font-family: 'Gill Sans', sans-serif;
-    font-weight: bold;
+    font-weight: none;
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: #333;
     line-height: 1.2;
 }
@@ -321,14 +321,6 @@ background-color: #eee;
     max-height: 80%;
     border: 2px solid white;
     object-fit: contain;
-}
-
-/* Caption text at the bottom */
-#lightbox-caption {
-    color: white;
-    margin-top: 15px;
-    font-family: 'Gill Sans', sans-serif;
-    font-size: 1.2rem;
 }
 
 /* The "X" button */
