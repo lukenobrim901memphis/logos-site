@@ -60,7 +60,7 @@ function openLightbox(imgSrc) {
 }
 
 allFiles.forEach(fileName => {
-           let fullName = fileName.replace('logo ', '').replace('.png', '');
+           let fullName = fileName.replace(/\.png/gi, '').replace(/logo/gi, '').trim();
            const datePattern = /\d{4}(?:-\d{4}|-present)?/g; 
     const matches = fullName.match(datePattern);
     const yearText = matches ? matches.join(', ') : "";

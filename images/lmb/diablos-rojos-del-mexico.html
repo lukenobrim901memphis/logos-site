@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Diablos Rojos del México Logo History</title>
+    <title>Diablos Rojos del Mexico Logo History</title>
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="../../lmb-style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
 <body>
     <header class="sticky-header">
     <a href="../../lmb.html" class="back-btn">← Back to LMB</a>
-    <h1 class="text-diablos-rojos"> Diablos Rojos del México</h1>
+    <h1 class="text-diablos-rojos"> Diablos Rojos del Mexico</h1>
 </header>
 
     <div class="category-header">Primary Logos</div>
@@ -59,7 +59,7 @@ function openLightbox(imgSrc) {
 }
 
 allFiles.forEach(fileName => {
-           let fullName = fileName.replace('logo ', '').replace('.png', '');
+           let fullName = fileName.replace(/\.png/gi, '').replace(/logo/gi, '').trim();
            const datePattern = /\d{4}(?:-\d{4}|-present)?/g; 
     const matches = fullName.match(datePattern);
     const yearText = matches ? matches.join(', ') : "";

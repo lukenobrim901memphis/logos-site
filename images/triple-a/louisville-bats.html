@@ -56,8 +56,8 @@
 "Louisville Mashers theme night hat logo 2018-present.png",
 "Louisville Mashers theme night jersey logo 2018-present.png",
 "Louisville Redbirds theme night jersey logo 2023-present.png",
-"Murciélagos de Louisville copa hat logo 2019-present.png",
-"Murciélagos de Louisville copa jersey logo 2019-present.png",
+"Murcielagos de Louisville copa hat logo 2019-present.png",
+"Murcielagos de Louisville copa jersey logo 2019-present.png",
 "Negro League Louisville Black Caps theme night hat logo 2023-present.png",
 "Negro League Louisville Black Caps theme night jersey logo 2023-present.png",
 "Powder jersey logo 2024-present.png",
@@ -124,6 +124,7 @@ allFiles.forEach(fileName => {
         .replace('.png', '')
         .replace(yearText, '')
         .replace(/theme night|copa/gi, '')
+        .replace(/logo/gi, '')
         .replace(/\s+/g, ' ')
         .trim();
 
