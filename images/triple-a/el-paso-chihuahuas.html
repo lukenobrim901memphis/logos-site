@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>El Paso Chihuahuas Logo History</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../triple-a-style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header class="sticky-header">
+    <a href="../../triple-a.html" class="back-btn">← Back to Triple-A</a>
+    <h1 class="text-chihuahuas">El Paso Chihuahuas</h1>
+</header>
+
+    <div class="category-header">Primary Logos</div>
+    <div id="primary-logos" class="grid"></div>
+
+    <div class="category-header">Alternate Logos</div>
+    <div id="alternate-logos" class="grid"></div>
+
+    <div class="category-header">Hat Logos</div>
+    <div id="hat-logos" class="grid"></div>
+
+    <div class="category-header">Jersey Logos</div>
+    <div id="jersey-logos" class="grid"></div>
+
+    <div class="category-header">Patches</div>
+    <div id="patches" class="grid"></div>
+
+    <div class="category-header">Theme Night Logos</div>
+    <div id="theme-night"></div>
+    
+    <div class="category-header">Copa de la Diversión Logos</div>
+    <div id="copa"></div>
+
+    <div class="category-header">Batting Practice</div>
+    <div id="batting-practice" class="grid"></div>
+
+    <div class="category-header">Other</div>
+    <div id="other-logos" class="grid"></div>
+    
+    <script>
+        const path = "../../images/triple-a-teams/el-paso-chihuahuas/";
+        const allFiles = [
+"Affiliate brown hat logo 2023-present.png",
+"Affiliate brown jersey logo 2023-present.png",
+"Affiliate brown sleeve patch 2023-present.png",
+"Alternate logo 2014-present.png",
+"American flag 2022-present.png",
+"Batting helmet logo 2017-present.png",
+"Batting Practice hat logo 2017-present.png",
+"Black hat logo 2014-present.png",
+"Black hat red brim logo 2014-present.png",
+"Black hat red panel hat logo 2022-present.png",
+"El Paso Bootmakers theme night hat logo 2025-present.png",
+"El Paso Bootmakers theme night jersey logo 2025-present.png",
+"El Paso Bootmakers theme night sleeve patch 2025-present.png",
+"El Paso Matachines copa hat logo 2026-present.png",
+"El Paso Matachines copa jersey logo 2026-present.png",
+"El Paso Matachines copa sleeve patch 2026-present.png",
+"Home black jersey logo 2022-present.png",
+"Home white jersey logo 2014-present.png",
+"Margaritas de El Paso copa hat logo 2023-2025.png",
+"Margaritas de El Paso copa jersey logo 2023-2025.png",
+"Primary logo 2014-present.png",
+"Red jersey logo 2014-present.png",
+"Road black hat 2017-present.png",
+"Road black jersey logo 2022-present.png",
+"Road gray jersey logo 2022-present.png",
+"Sand jersey logo 2022-present.png",
+];
+
+allFiles.sort((a, b) => {
+    const getSortData = (file) => {
+        const lower = file.toLowerCase();
+        
+        // Identity Extraction (for grouping Dukes together, Isotopes together, etc.)
+        let identity = "";
+        if (lower.includes("theme night")) identity = lower.split("theme night")[0].trim();
+        else if (lower.includes("copa")) identity = lower.split("copa")[0].trim();
+
+        // Year Extraction (Start Year)
+        const yearMatch = file.match(/\d{4}/);
+        const startYear = yearMatch ? parseInt(yearMatch[0]) : 0;
+        
+        // Active/Present Priority (Forces 'present' to the bottom of the group)
+        const activePriority = lower.includes("present") ? 1 : 0;
+        
+        // Type Order (Hat -> Jersey -> Patch)
+        let typePriority = 99; 
+        if (lower.includes("hat")) typePriority = 1;
+        else if (lower.includes("jersey")) typePriority = 2;
+        else if (lower.includes("patch") || lower.includes("sleeve")) typePriority = 3;
+
+        return { identity, activePriority, startYear, typePriority };
+    };
+
+    const A = getSortData(a);
+    const B = getSortData(b);
+
+    // SORTING HIERARCHY:
+    // 1. Group by Identity Name (Alphabetical: Dukes, then Green Chile...)
+    // 2. Group by Active status (0 for past years, 1 for 'present')
+    // 3. Group by Start Year (2017 before 2018)
+    // 4. Group by Type (Hat, Jersey, Patch)
+    return A.identity.localeCompare(B.identity) || // 1. Group by Identity Name (Keeps Dukes together)
+       A.activePriority - B.activePriority ||  // 2. Put past years (0) before present (1)
+       A.startYear - B.startYear ||            // 3. Chronological start year
+       A.typePriority - B.typePriority;         // 4. Hat -> Jersey -> Patch
+});
+
+const printedIdentities = new Set();
+
+allFiles.forEach(fileName => {
+    const lowerName = fileName.toLowerCase();
+    const datePattern = /\d{4}(?:-\d{4}|-present)?/g;
+    const yearMatch = fileName.match(datePattern);
+    const yearText = yearMatch ? yearMatch[0] : "";
+
+    let identity = "";
+    if (lowerName.includes("theme night")) identity = fileName.split(/theme night/i)[0].trim();
+    else if (lowerName.includes("copa")) identity = fileName.split(/copa/i)[0].trim();
+
+    // Clean caption for the card
+    let cardCaption = fileName
+        .replace('.png', '')
+        .replace(yearText, '')
+        .replace(/theme night|copa/gi, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+    // --- VERSION A: Clean card for Theme/Copa (No year inside) ---
+    const cleanCardHtml = `
+        <div class="logo-card" onclick="openLightbox('${path}${fileName}')">
+            <div class="logo-image-wrapper">
+                <img src="${path}${fileName}" loading="lazy">
+            </div>
+            <div class="logo-caption">
+                <div class="logo-name">${cardCaption}</div>
+            </div>
+        </div>`;
+
+    // --- VERSION B: Standard card for Primary/Alternate/Other (Includes year) ---
+    const standardCardHtml = `
+        <div class="logo-card" onclick="openLightbox('${path}${fileName}')">
+            <div class="logo-image-wrapper">
+                <img src="${path}${fileName}" loading="lazy">
+            </div>
+            <div class="logo-caption">
+                <div class="logo-name">${cardCaption}</div>
+                <div class="logo-year">${yearText}</div>
+            </div>
+        </div>`;
+
+    // 3. SORTING MACHINE
+    if (lowerName.includes("theme night") || lowerName.includes("copa")) {
+        const targetId = lowerName.includes("theme night") ? 'theme-night' : 'copa';
+        const container = document.getElementById(targetId);
+        const groupKey = `${identity}-${yearText}`.replace(/\s+/g, '-');
+
+        if (!printedIdentities.has(identity)) {
+            printedIdentities.add(identity);
+            container.innerHTML += `
+    <h3 class="identity-header">${identity}</h3>`;
+        }
+
+        if (!document.getElementById(`grid-${groupKey}`)) {
+            container.innerHTML += `
+                <div class="year-row-label">${yearText}</div>
+                <div id="grid-${groupKey}" class="grid"></div>`;
+        }
+        // Use the CLEAN card here because the year is already in the row label
+        document.getElementById(`grid-${groupKey}`).innerHTML += cleanCardHtml;
+    } else {
+        // Use the STANDARD card here so the years appear underneath the name
+        let targetGrid;
+        if (lowerName.includes("primary logo")) targetGrid = 'primary-logos';
+        else if (lowerName.includes("alternate")) targetGrid = 'alternate-logos';
+        else if (lowerName.includes("batting practice")) targetGrid = 'batting-practice';
+        else if (lowerName.includes("hat")) targetGrid = 'hat-logos';
+        else if (lowerName.includes("jersey")) targetGrid = 'jersey-logos';
+        else if (lowerName.includes("patch")) targetGrid = 'patches';
+        else targetGrid = 'other-logos';
+        
+        document.getElementById(targetGrid).innerHTML += standardCardHtml;
+    }
+});
+
+function openLightbox(imgSrc) {
+    document.getElementById('lightbox-img').src = imgSrc;
+    document.getElementById('lightbox').style.display = 'flex';
+}
+</script>
+  
+  <div id="lightbox" class="lightbox" onclick="this.style.display='none'">
+    <span class="close-btn">&times;</span>
+    <img id="lightbox-img" src="" alt="Enlarged Logo">
+    <div id="lightbox-caption"></div>
+</div>
+
+</body>
+</html>

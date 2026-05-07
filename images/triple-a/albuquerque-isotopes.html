@@ -105,10 +105,10 @@ allFiles.sort((a, b) => {
     // 2. Group by Active status (0 for past years, 1 for 'present')
     // 3. Group by Start Year (2017 before 2018)
     // 4. Group by Type (Hat, Jersey, Patch)
-    return A.identity.localeCompare(B.identity) || 
-           A.activePriority - B.activePriority || 
-           A.startYear - B.startYear || 
-           A.typePriority - B.typePriority;
+    return A.identity.localeCompare(B.identity) || // 1. Group by Identity Name (Keeps Dukes together)
+       A.activePriority - B.activePriority ||  // 2. Put past years (0) before present (1)
+       A.startYear - B.startYear ||            // 3. Chronological start year
+       A.typePriority - B.typePriority;         // 4. Hat -> Jersey -> Patch
 });
 
 const printedIdentities = new Set();
@@ -119,60 +119,72 @@ allFiles.forEach(fileName => {
     const yearMatch = fileName.match(datePattern);
     const yearText = yearMatch ? yearMatch[0] : "";
 
-    // 1. Identification
     let identity = "";
     if (lowerName.includes("theme night")) identity = fileName.split(/theme night/i)[0].trim();
     else if (lowerName.includes("copa")) identity = fileName.split(/copa/i)[0].trim();
 
-    // 2. Card Caption Cleaning
-    // Removes the year and the category keyword, but keeps the identity name
+    // Clean caption for the card
     let cardCaption = fileName
         .replace('.png', '')
         .replace(yearText, '')
         .replace(/theme night|copa/gi, '')
-        .replace(/\s+/g, ' ') // Fix extra spaces
+        .replace(/\s+/g, ' ')
         .trim();
 
-    const cardHtml = `
+    // --- VERSION A: Clean card for Theme/Copa (No year inside) ---
+    const cleanCardHtml = `
         <div class="logo-card" onclick="openLightbox('${path}${fileName}')">
-        <div class="logo-image-wrapper">
-            <img src="${path}${fileName}" alt="${fileName}" loading="lazy">
-        </div>
-        <div class="logo-caption">
-            <div class="logo-name">${cardCaption}</div>
-        </div>
-    </div>`;
+            <div class="logo-image-wrapper">
+                <img src="${path}${fileName}" loading="lazy">
+            </div>
+            <div class="logo-caption">
+                <div class="logo-name">${cardCaption}</div>
+            </div>
+        </div>`;
 
-    // 3. Sorting & Row Generation
+    // --- VERSION B: Standard card for Primary/Alternate/Other (Includes year) ---
+    const standardCardHtml = `
+        <div class="logo-card" onclick="openLightbox('${path}${fileName}')">
+            <div class="logo-image-wrapper">
+                <img src="${path}${fileName}" loading="lazy">
+            </div>
+            <div class="logo-caption">
+                <div class="logo-name">${cardCaption}</div>
+                <div class="logo-year">${yearText}</div>
+            </div>
+        </div>`;
+
+    // 3. SORTING MACHINE
     if (lowerName.includes("theme night") || lowerName.includes("copa")) {
         const targetId = lowerName.includes("theme night") ? 'theme-night' : 'copa';
         const container = document.getElementById(targetId);
         const groupKey = `${identity}-${yearText}`.replace(/\s+/g, '-');
 
-        // Identity Header
-       if (!printedIdentities.has(identity)) {
-    printedIdentities.add(identity);
-    // MUST match the class in your CSS file
-    
-    container.innerHTML += `
+        if (!printedIdentities.has(identity)) {
+            printedIdentities.add(identity);
+            container.innerHTML += `
     <h3 class="identity-header">${identity}</h3>`;
-}
+        }
 
-        // Year Row Grid
         if (!document.getElementById(`grid-${groupKey}`)) {
             container.innerHTML += `
                 <div class="year-row-label">${yearText}</div>
                 <div id="grid-${groupKey}" class="grid"></div>`;
         }
-        document.getElementById(`grid-${groupKey}`).innerHTML += cardHtml;
+        // Use the CLEAN card here because the year is already in the row label
+        document.getElementById(`grid-${groupKey}`).innerHTML += cleanCardHtml;
     } else {
-        // Your existing standard sorting for Primary, Alternate, etc.
-        if (lowerName.includes("primary logo")) document.getElementById('primary-logos').innerHTML += cardHtml;
-        else if (lowerName.includes("alternate")) document.getElementById('alternate-logos').innerHTML += cardHtml;
-        else if (lowerName.includes("hat")) document.getElementById('hat-logos').innerHTML += cardHtml;
-        else if (lowerName.includes("jersey")) document.getElementById('jersey-logos').innerHTML += cardHtml;
-        else if (lowerName.includes("patch")) document.getElementById('patches').innerHTML += cardHtml;
-        else document.getElementById('other-logos').innerHTML += cardHtml;
+        // Use the STANDARD card here so the years appear underneath the name
+        let targetGrid;
+        if (lowerName.includes("primary logo")) targetGrid = 'primary-logos';
+        else if (lowerName.includes("alternate")) targetGrid = 'alternate-logos';
+        else if (lowerName.includes("batting practice")) targetGrid = 'batting-practice';
+        else if (lowerName.includes("hat")) targetGrid = 'hat-logos';
+        else if (lowerName.includes("jersey")) targetGrid = 'jersey-logos';
+        else if (lowerName.includes("patch")) targetGrid = 'patches';
+        else targetGrid = 'other-logos';
+        
+        document.getElementById(targetGrid).innerHTML += standardCardHtml;
     }
 });
 
