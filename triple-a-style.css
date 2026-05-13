@@ -1,5 +1,5 @@
 .text-isotopes {
-    color: #BA0C2F !important
+    color: #24125F !important
 }
 .text-bisons {
     color: #001489 !important
@@ -104,34 +104,38 @@
     clear: both;
 }
 
-.identity-header {
-    display: block !important;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
-    font-size: 1.25rem !important;
-    font-weight: 700 !important;
-    color: #000000 !important;
-    text-transform: none !important;
-    margin: 0px 0px 0px 20px !important;
-    padding-bottom: 0px !important;
-    line-height: 1.1 !important;
-}
-
-/* Forces the font on the year labels */
-.year-row-label {
-    display: block !important;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
-    font-size: 0.75rem !important;
-    font-weight: normal !important;
-    color: #555 !important;
-    margin: 0px 0px 0px 20px !important;
-}
-
-/* Dark Mode adjustment for Identity Headers */
 @media (prefers-color-scheme: dark) {
-    .identity-header {
-        color: #ffffff !important;
-    }
-    .year-row-label {
-        color: #bbbbbb !important;
-    }
+    .text-isotopes{color: #BA0C2F !important;}
+    .text-bisons{color: #BA0C2F !important; }
+    .text-bulls{color: #A1561C !important;}
+    .text-indians{color: #C8102E !important; }
+    .text-cubs{color: #C8102E !important; }
+    .text-sounds{color: #C8102E !important; }
+    .text-storm-chasers{color: #89734C !important;}
+    .text-railriders{color: #862633 !important; }
+    .text-saints{color: #6CACE4 !important;}
+    .text-rainiers{color: #00685E !important;}
+    .text-red-sox{color: #C8102E !important;}
+    .text-knights{color: #00A9CE !important}
+    .text-clippers{color: #9BCBEB !important}
+    .text-chihuahuas{color: #E1B87F !important}
+    .text-stripers{color: #74AA50 !important}
+    .text-jumbo-shrimp{color: #E4002B !important}
+    .text-aviators{color: #FC4C02 !important}
+    .text-ironpigs{color: #A6192E !important}
+    .text-bats{color: #E4002B !important}
+    .text-redbirds{color: #BA0C2F !important}
+    .text-tides{color: #009A44 !important}
+    .text-comets{color: #8DC8E8 !important}
+    .text-aces{color: #BA0C2F !important}
+    .text-red-wings{color: #DA291C !important}
+    .text-express{color: #9D2235 !important}
+    .text-river-cats{color: #862633 !important}
+    .text-bees{color: #FFB81C !important}
+    .text-space-cowboys{color: #05C3DD !important}
+    .text-mets{color: #FC4C02 !important}
+    .text-mud-hens{color: #D50032 !important}
+    .text-baby-cakes{color: #008578 !important}
+    .text-dodgers{color: #002F6C !important}
+    .text-padres{color: #041E42 !important}
 }

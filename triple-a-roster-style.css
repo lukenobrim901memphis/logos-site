@@ -1,0 +1,161 @@
+.text-isotopes{ color: #24125F !important; }
+.text-bisons{ color: #001489 !important; }
+.text-knights{ color: #00A9CE !important; }
+.text-clippers{ color: #0C2340 !important; }
+.text-bulls{ color: #001489 !important; }
+.text-chihuahuas{ color: #BA0C2F !important; }
+.text-stripers{ color: #74AA50 !important; }
+.text-indians{ color: #00263A !important; }
+.text-cubs{ color: #002F6C !important; }
+.text-jumbo-shrimp{ color: #E4002B !important; }
+.text-aviators{ color: #FC4C02 !important; }
+.text-ironpigs{ color: #A6192E !important; }
+.text-bats{ color: #E4002B !important; }
+.text-redbirds{ color: #BA0C2F !important; }
+.text-sounds{ color: #071D49 !important; }
+.text-tides{ color: #FA4616 !important; }
+.text-comets{ color: #0032A0 !important; }
+.text-storm-chasers{ color: #002D72 !important; }
+.text-aces{ color: #BA0C2F !important; }
+.text-red-wings{ color: #DA291C !important; }
+.text-express{ color: #9D2235 !important; }
+.text-river-cats{ color: #862633 !important; }
+.text-bees{ color: #FFB81C !important; }
+.text-railriders{ color: #0C2340 !important; }
+.text-saints{ color: #001489 !important; }
+.text-space-cowboys{ color: #05C3DD !important; }
+.text-mets{ color: #FC4C02 !important; }
+.text-rainiers{ color: #0C2340 !important; }
+.text-mud-hens{ color: #D50032 !important; }
+.text-red-sox{ color: #0C2340 !important; }
+.text-baby-cakes{ color: #008578 !important; }
+.text-dodgers{ color: #002F6C !important; }
+.text-padres{ color: #041E42 !important; }
+
+.roster-table {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.2px;
+    padding: 2px 8px !important;
+    line-height: 1.1;
+    vertical-align: left;
+    text-shadow: none !important;
+    -webkit-font-smoothing: antialiased;
+    border-collapse: collapse;
+}
+
+.inactive {
+    color: currentColor !important; 
+    opacity: 0.5 !important; /* Adjust this (0.1 to 1.0) to your liking */
+    font-style: italic;
+    text-shadow: none !important;
+}
+
+.filter-btn {
+    /* Force Calibri and its fallbacks */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+    
+    /* Consistency tweaks */
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    /* Ensure colors look right */
+    background: transparent;
+    padding: 10px 18px;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filter-btn:hover {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+    border-color: currentColor;
+}
+
+.forty-man-bold {
+    font-weight: bold;
+    font-stretch: condensed; 
+}
+
+#table-header-row{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 0.7rem;
+    padding: 8px !important;
+    background-color: #333 !important; /* Dark background for the header */
+    color: #ffffff !important;
+    font-weight: bold;
+    text-align: left;
+    text-transform: none;         /* Headers usually look good in caps */
+    letter-spacing: 1px;
+    text-shadow: none !important;      /* No fuzziness */
+    border-bottom: 2px solid #555;
+}
+
+/* Dark Mode adjustment for Identity Headers */
+@media (prefers-color-scheme: dark) {
+    .text-isotopes, .text-isotopes td { color: #BA0C2F !important; }
+    .text-bisons, .text-bisons td { color: #BA0C2F !important; }
+    .text-bulls, .text-bulls td { color: #A1561C !important; }
+    .text-indians, .text-indians td { color: #C8102E !important; }
+    .text-cubs, .text-cubs td { color: #C8102E !important; }
+    .text-sounds, .text-sounds td { color: #C8102E !important; }
+    .text-storm-chasers, .text-storm-chasers td { color: #89734C !important; }
+    .text-railriders, .text-railriders td { color: #ffffff !important; }
+    .text-saints, .text-saints td { color: #6CACE4 !important; }
+    .text-rainiers, .text-rainiers td { color: #00685E !important; }
+    .text-red-sox, .text-red-sox td { color: #C8102E !important; }
+    .text-knights, .text-knights td { color: #00A9CE !important; }
+    .text-clippers, .text-clippers td { color: #9BCBEB !important; }
+    .text-chihuahuas, .text-chihuahuas td { color: #E1B87F !important; }
+    .text-stripers, .text-stripers td { color: #74AA50 !important; }
+    .text-jumbo-shrimp, .text-jumbo-shrimp td { color: #E4002B !important; }
+    .text-aviators, .text-aviators td { color: #FC4C02 !important; }
+    .text-ironpigs, .text-ironpigs td { color: #A6192E !important; }
+    .text-bats, .text-bats td { color: #E4002B !important; }
+    .text-redbirds, .text-redbirds td { color: #BA0C2F !important; }
+    .text-tides, .text-tides td { color: #009A44 !important; }
+    .text-comets, .text-comets td { color: #8DC8E8 !important; }
+    .text-aces, .text-aces td { color: #BA0C2F !important; }
+    .text-red-wings, .text-red-wings td { color: #DA291C !important; }
+    .text-express, .text-express td { color: #9D2235 !important; }
+    .text-river-cats, .text-river-cats td { color: #862633 !important; }
+    .text-bees, .text-bees td { color: #FFB81C !important; }
+    .text-space-cowboys, .text-space-cowboys td { color: #05C3DD !important; }
+    .text-mets, .text-mets td { color: #FC4C02 !important; }
+    .text-mud-hens, .text-mud-hens td { color: #D50032 !important; }
+    .text-baby-cakes, .text-baby-cakes td { color: #008578 !important; }
+    .text-dodgers, .text-dodgers td { color: #002F6C !important; }
+    .text-padres, .text-padres td { color: #041E42 !important; }
+}
+
+@media (prefers-color-scheme: dark) {
+    #table-header-row{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 0.7rem;
+    padding: 8px !important;
+    background-color: #333 !important; /* Dark background for the header */
+    color: #ffffff !important;
+    font-weight: bold;
+    text-align: left;
+    text-transform: none;         /* Headers usually look good in caps */
+    letter-spacing: 1px;
+    text-shadow: none !important;      /* No fuzziness */
+    border-bottom: 2px solid #555;
+}
+.inactive {
+    color: currentColor !important; 
+    opacity: 0.5 !important; /* Adjust this (0.1 to 1.0) to your liking */
+    font-style: italic;
+    text-shadow: none !important;
+}
+    .filter-btn {
+        border-color: #444;
+    }
+    .filter-btn:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+     .forty-man-bold {
+        text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.2);
+    }}
