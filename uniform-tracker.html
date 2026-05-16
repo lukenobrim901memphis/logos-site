@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLB Uniform Tracker</title>
+    <link rel="stylesheet" href="uniform-tracker-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+</head>
+<body>
+
+    <div class="nav-header">
+        <button class="back-btn" onclick="location.href='trackers.html'">← Back to Trackers</button>
+        <h1>MLB Uniform Tracker</h1>
+    </div>
+
+    <div class="controls-container">
+        <div class="control-group">
+            <label for="year-select">Year:</label>
+            <select id="year-select" onchange="loadFullYearCalendar()">
+                <option value="2026" selected>2026</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+                <option value="2015">2015</option>
+                <option value="2014">2014</option>
+                <option value="2013">2013</option>
+                <option value="2012">2012</option>
+                <option value="2011">2011</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <label for="uni-team-select">Team:</label>
+            <select id="uni-team-select" onchange="loadFullYearCalendar()">
+                <option value="ARI" selected>Arizona Diamondbacks</option>
+                <option value="ATL">Atlanta Braves</option>
+                <option value="ATH">Athletics</option>
+                <option value="BAL">Baltimore Orioles</option>
+                <option value="BOS">Boston Red Sox</option>
+                <option value="CHC">Chicago Cubs</option>
+                <option value="CWS">Chicago White Sox</option>
+                <option value="CIN">Cincinnati Reds</option>
+                <option value="CLE">Cleveland Guardians</option>
+                <option value="COL">Colorado Rockies</option>
+                <option value="DET">Detroit Tigers</option>
+                <option value="HOU">Houston Astros</option>
+                <option value="KC">Kansas City Royals</option>
+                <option value="LAA">Los Angeles Angels</option>
+                <option value="LAD">Los Angeles Dodgers</option>
+                <option value="MIA">Miami Marlins</option>
+                <option value="MIL">Milwaukee Brewers</option>
+                <option value="MIN">Minnesota Twins</option>
+                <option value="NYM">New York Mets</option>
+                <option value="NYY">New York Yankees</option>
+                <option value="PHI">Philadelphia Phillies</option>
+                <option value="PIT">Pittsburgh Pirates</option>
+                <option value="SDP">San Diego Padres</option>
+                <option value="SFG">San Francisco Giants</option>
+                <option value="SEA">Seattle Mariners</option>
+                <option value="STL">St. Louis Cardinals</option>
+                <option value="TBR">Tampa Bay Rays</option>
+                <option value="TEX">Texas Rangers</option>
+                <option value="TOR">Toronto Blue Jays</option>
+                <option value="WSN">Washington Nationals</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="full-year-container" class="year-view"></div>
+
+    <script src="uniform-logic.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triple-A Roster Trackers</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="triple-a-roster-style.css">
+</head>
+<body>
+  <a href="trackers.html" class="back-btn">← Back to Trackers</a>
+    <nav>
+        <h1>Triple-A Roster Trackers</h1>
+    </nav>
+
+    <div class="filter-buttons">
+        <button class="filter-btn text-isotopes" onclick="loadRoster('isotopes')">Albuquerque Isotopes</button>
+        <button class="filter-btn text-bisons" onclick="loadRoster('bisons')">Buffalo Bisons</button>
+        <button class="filter-btn text-knights" onclick="loadRoster('knights')">Charlotte Knights</button>
+        <button class="filter-btn text-clippers" onclick="loadRoster('clippers')">Columbus Clippers</button>
+        <button class="filter-btn text-bulls" onclick="loadRoster('bulls')">Durham Bulls</button>
+        <button class="filter-btn text-chihuahuas" onclick="loadRoster('chihuahuas')">El Paso Chihuahuas</button>
+        <button class="filter-btn text-stripers" onclick="loadRoster('stripers')">Gwinnett Stripers</button>
+        <button class="filter-btn text-indians" onclick="loadRoster('indians')">Indianapolis Indians</button>
+        <button class="filter-btn text-cubs" onclick="loadRoster('cubs')">Iowa Cubs</button>
+        <button class="filter-btn text-jumbo-shrimp" onclick="loadRoster('jumbo-shrimp')">Jacksonville Jumbo Shrimp</button>
+        <button class="filter-btn text-aviators" onclick="loadRoster('aviators')">Las Vegas Aviators</button>
+        <button class="filter-btn text-ironpigs" onclick="loadRoster('ironpigs')">Lehigh Valley IronPigs</button>
+        <button class="filter-btn text-bats" onclick="loadRoster('bats')">Louisville Bats</button>
+        <button class="filter-btn text-redbirds" onclick="loadRoster('redbirds')">Memphis Redbirds</button>
+        <button class="filter-btn text-sounds" onclick="loadRoster('sounds')">Nashville Sounds</button>
+        <button class="filter-btn text-tides" onclick="loadRoster('tides')">Norfolk Tides</button>
+        <button class="filter-btn text-comets" onclick="loadRoster('comets')">Oklahoma City Comets</button>
+        <button class="filter-btn text-storm-chasers" onclick="loadRoster('storm-chasers')">Omaha Storm Chasers</button>
+        <button class="filter-btn text-aces" onclick="loadRoster('aces')">Reno Aces</button>
+        <button class="filter-btn text-red-wings" onclick="loadRoster('red-wings')">Rochester Red Wings</button>
+        <button class="filter-btn text-express" onclick="loadRoster('express')">Round Rock Express</button>
+        <button class="filter-btn text-river-cats" onclick="loadRoster('river-cats')">Sacramento River Cats</button>
+        <button class="filter-btn text-bees" onclick="loadRoster('bees')">Salt Lake Bees</button>
+        <button class="filter-btn text-railriders" onclick="loadRoster('railriders')">Scranton/Wilkes-Barre RailRiders</button>
+        <button class="filter-btn text-saints" onclick="loadRoster('saints')">St. Paul Saints</button>
+        <button class="filter-btn text-space-cowboys" onclick="loadRoster('space-cowboys')">Sugar Land Space Cowboys</button>
+        <button class="filter-btn text-mets" onclick="loadRoster('mets')">Syracuse Mets</button>
+        <button class="filter-btn text-rainiers" onclick="loadRoster('rainiers')">Tacoma Rainiers</button>
+        <button class="filter-btn text-mud-hens" onclick="loadRoster('mud-hens')">Toledo Mud Hens</button>
+        <button class="filter-btn text-red-sox" onclick="loadRoster('red-sox')">Worcester Red Sox</button>
+    </div>
+
+    <div class="roster-container">
+    <h2 id="team-title">Roster</h2>
+    <div class="active-count-pill">
+        Active: <span id="active-count">0</span>
+    </div>
+</div>
+
+        <table class="roster-table" id="main-roster-table">
+            <thead>
+                <tr id="table-header-row">
+                    <th>No.</th>
+                    <th>Pos.</th>
+                    <th>Name</th>
+                    <th>B/T</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="roster-body"></tbody>
+        </table>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+</body>
+<script src="tracker-logic.js"></script>
+</html>

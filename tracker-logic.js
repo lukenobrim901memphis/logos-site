@@ -53,25 +53,30 @@ function loadRoster(selectedTeamID) {
 // 3. HANDLES THE CSV LOADING
 async function fetchAndParseCSV(selectedTeamID) {
     const csvPath = 'triple-a-rosters.csv';
+    
+    // 1. Get the exact name from your map (e.g., "Sacramento")
+    const targetTeamName = teamNameMap[selectedTeamID];
 
     Papa.parse(csvPath, {
         download: true,
         header: false,
         skipEmptyLines: true,
         complete: function(results) {
-            const csvTeamName = teamNameMap[selectedTeamID];
-            
-            // Filter the CSV rows for the selected team
+            const tbody = document.getElementById("roster-body");
+            if (tbody) tbody.innerHTML = "";
             const teamData = results.data.filter(row => {
-                return row[4] && row[4].trim() === csvTeamName;
+                if (!row[4]) return false;
+                
+                const rowTeam = row[4].trim();
+                return rowTeam === targetTeamName;
             });
-            
+
+            console.log(`Filtering for: ${targetTeamName}. Found ${teamData.length} players.`);
+
             if (teamData.length > 0) {
-                // Hand off the array to the renderer
                 renderRoster(teamData, selectedTeamID);
             } else {
-                document.getElementById("roster-body").innerHTML = 
-                    `<tr><td colspan="5" style="color:white; text-align:center;">No data found for ${csvTeamName}</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding: 20px;">No active roster data found for ${targetTeamName}</td></tr>`;
             }
         }
     });
@@ -80,8 +85,16 @@ async function fetchAndParseCSV(selectedTeamID) {
 // 4. BUILDS THE TABLE
 function renderRoster(rosterData, teamId) {
     const tbody = document.getElementById("roster-body");
+    const countDisplay = document.getElementById("active-count");
+    const titleDisplay = document.getElementById("team-title");
+    
     if (!tbody) return;
+    
     tbody.innerHTML = ""; 
+    let activeCounter = 0;
+if (titleDisplay) {
+        titleDisplay.innerText = teamNameMap[teamId] + " Roster";
+    }
 
     const statusOrder = {
         "Active": 1, 
@@ -123,6 +136,13 @@ function renderRoster(rosterData, teamId) {
         if (statusOrder[player[5]] > 1 || !statusOrder[player[5]]) {
             row.classList.add("inactive");
         }
+        const status = player[5] ? player[5].trim() : "";
+        if (status === "Active") {
+            activeCounter++;
+        }
+        if (status !== "Active" && status !== "Rehab Assignment") {
+            row.classList.add("inactive");
+        }
 
         const isFortyMan = player[6] && player[6].trim().toLowerCase() === 'yes';
         const nameClass = isFortyMan ? "forty-man-bold" : "";
@@ -136,6 +156,10 @@ function renderRoster(rosterData, teamId) {
             <td>${player[5] || '—'}</td>
         `;
         tbody.appendChild(row);
+
+        if (countDisplay) {
+        countDisplay.innerText = activeCounter;
+    }
     });
 }
 

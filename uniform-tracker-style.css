@@ -1,0 +1,105 @@
+.nav-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: #000;
+    color: #fff;
+}
+
+.back-btn {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+.year-view {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Exactly 3 columns */
+    gap: 20px;
+    padding: 20px;
+    background-color: #f0e6d2; /* Match the parchment background in your image */
+}
+
+.month-section {
+    background: white;
+    border: 3px solid #000;
+    display: flex;
+    flex-direction: column;
+}
+
+.month-title {
+    order: 2; /* Moves title to the bottom like the "APRIL" example */
+    background-color: #555;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2rem;
+    text-align: right;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+/* Calendar Grid */
+.calendar-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-bottom: 2px solid #000;
+}
+
+.calendar-cell {
+    aspect-ratio: 1 / 1.2;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    position: relative;
+    background-color: #fff;
+}
+
+/* Match the dark gray for empty days or off-days */
+.calendar-cell.empty, 
+.calendar-cell.off-day {
+    background-color: #ffffff !important;
+}
+
+.day-number {
+    position: absolute;
+    top: 2px;
+    right: 3px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #000;
+}
+
+/* Ensure the jersey fills the space but stays centered */
+.jersey-icon {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    margin: 5% auto;
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .year-view { grid-template-columns: 1fr; }
+}
+
+.dh-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.dh-game {
+    flex: 1; /* Each game takes exactly half the height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dh-divider {
+    height: 1px;
+    background-color: #000;
+    width: 100%;
+}
