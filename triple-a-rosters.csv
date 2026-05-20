@@ -38,7 +38,7 @@
 37,P,Carson Skipper,L,Albuquerque,Injured List,No
 39,INF,Chad Stevens,R,Albuquerque,Active,No
 57,P,Sean Sullivan,L,Albuquerque,Active,No
-35,P,Keegan Thompson,R,Albuquerque,Active,No
+35,P,Keegan Thompson,R,Albuquerque,Promoted,Yes
 63,P,Bryson Van Sickle,L,Albuquerque,Demoted,No
 13,OF,Zac Veen,L,Albuquerque,Active,Yes
 38,P,Patrick Weigel,R,Albuquerque,Active,No
@@ -130,7 +130,7 @@
 11,INF,Rikku Nishida,L,Charlotte,Active,No
 31,P,Ben Peoples,R,Charlotte,Active,No
 14,OF,Everson Pereira,R,Charlotte,Promoted,Yes
-49,P,Chase Plymell,R,Charlotte,Active,No
+49,P,Chase Plymell,R,Charlotte,Development List,No
 13,C,Drew Romo,S,Charlotte,Promoted,Yes
 37,P,David Sandlin,R,Charlotte,Active,Yes
 28,P,Garrett Schoenle,L,Charlotte,Active,No
@@ -225,7 +225,7 @@
 45,OF,Justyn-Henry Malloy,R,Durham,Active,No
 54,P,Trevor Martin,R,Durham,Promoted,Yes
 4,OF,Jacob Melton,L,Durham,Active,Yes
-23,OF,Victor Mesa Jr.,L,Durham,Injured List,Yes
+23,OF,Victor Mesa Jr.,L,Durham,Active,Yes
 22,INF,Tre' Morgan,L,Durham,Injured List,No
 44,OF,Edward Olivares,R,Durham,Free Agent,No
 19,P,Evan Reifert,R,Durham,Active,No
@@ -233,7 +233,7 @@
 37,P,John Rooney,L,Durham,Active,No
 24,C,Blake Sabol,L,Durham,Active,No
 36,P,Jesse Scholtens,R,Durham,Promoted,Yes
-12,P,Chase Solesky,R,Durham,Demoted,Yes
+12,P,Chase Solesky,R,Durham,Active,Yes
 9,P,Santiago Suarez,R,Durham,Demoted,No
 65,P,Edwin Uceta,R,Durham,Promoted,Yes
 ,P,Brian Van Belle,R,Durham,Full-Season IL,No
@@ -265,7 +265,7 @@
 29,P,Yuki Matsui,L,El Paso,Promoted,Yes
 7,INF,Mason McCoy,R,El Paso,Active,Yes
 52,P,Triston McKenzie,R,El Paso,Development List,No
-11,INF,Jose Miranda,R,El Paso,Active,No
+11,INF,Jose Miranda,R,El Paso,Free Agent,No
 10,INF,Nate Mondou,L,El Paso,Development List,No
 29,P,David Morgan,R,El Paso,Active,Yes
 20,OF,Pablo Reyes,R,El Paso,Active,No
@@ -293,7 +293,7 @@
 59,P,Carlos Carrasco,R,Gwinnett,Active,No
 64,INF,Cal Conley,S,Gwinnett,Demoted,No
 46,P,Dylan Dodd,L,Gwinnett,Promoted,Yes
-11,OF,Tristin English,R,Gwinnett,Active,No
+11,OF,Tristin English,R,Gwinnett,Injured List,No
 48,P,Blayne Enlow,R,Gwinnett,Demoted,No
 36,P,Didier Fuentes,R,Gwinnett,Promoted,Yes
 8,OF,Ben Gamel,L,Gwinnett,Active,No
@@ -344,7 +344,7 @@
 54,P,Noah Davis,R,Indianapolis,Active,No
 49,P,Chris Devenski,R,Indianapolis,Promoted,Yes
 37,P,Nick Dombkowski,L,Indianapolis,Active,No
-33,P,Wilber Dotel,R,Indianapolis,Active,Yes
+33,P,Wilber Dotel,R,Indianapolis,Promoted,Yes
 44,C,Samuel Escudero,R,Indianapolis,Demoted,No
 8,OF,Dominic Fletcher,L,Indianapolis,Active,No
 43,C,Rafael Flores Jr.,R,Indianapolis,Active,Yes
@@ -380,7 +380,7 @@
 48,P,Charlie Barnes (LAD),L,Iowa,Claimed,No
 51,OF,Brett Bateman,L,Iowa,Active,No
 34,P,Jace Beck,R,Iowa,Demoted,No
-39,P,Tyler Beede,R,Iowa,Development List,Yes
+39,P,Tyler Beede,R,Iowa,Active,No
 1,INF,Christian Bethancourt,R,Iowa,Active,No
 ,P,Brandon Birdsell,R,Iowa,60-day IL,No
 16,P,Ty Blach,L,Iowa,Promoted,Yes
@@ -409,7 +409,7 @@
 9,INF,BJ Murray,S,Iowa,Active,No
 32,P,Jack Neely,R,Iowa,Full-Season IL,No
 40,P,Doug Nikhazy,L,Iowa,Active,Yes
-38,P,Connor Noland,R,Iowa,Active,No
+38,P,Connor Noland,R,Iowa,Injured List,No
 5,C,Casey Opitz,S,Iowa,Development List,No
 37,P,Daniel Palencia,R,Iowa,Promoted,Yes
 49,P,Luis Peralta,L,Iowa,Active,Yes
@@ -439,8 +439,7 @@
 37,P,Josh Ekness,R,Jacksonville,Active,Yes
 3,OF,Matthew Etzel,L,Jacksonville,Active,No
 32,P,Dax Fulton,L,Jacksonville,Active,Yes
-20,P,Braxton Garrett,L,Jacksonville,Promoted,Yes
-26,P,Cade Gibson,L,Jacksonville,Active,Yes
+26,P,Cade Gibson,L,Jacksonville,Promoted,Yes
 36,P,Ryan Gusto,R,Jacksonville,Active,Yes
 10,OF,Heriberto Hernández,R,Jacksonville,Promoted,Yes
 9,C,Bennett Hostetler,R,Jacksonville,Active,No
@@ -504,12 +503,12 @@
 59,C,CJ Rodriguez,R,Las Vegas,Development List,No
 ,P,Gustavo Rodriguez,R,Las Vegas,60-day IL,No
 5,C,Brian Serven,R,Las Vegas,Active,No
-17,INF,Michael Stefanic,R,Las Vegas,Free Agent,No
+17,INF,Michael Stefanic,R,Las Vegas,Active,No
 51,P,Wander Suero,R,Las Vegas,Active,No
 6,INF,Drew Swift,R,Las Vegas,Active,No
 8,OF,Colby Thomas,R,Las Vegas,Promoted,Yes
 99,P,Yunior Tur,R,Las Vegas,Active,No
-4,C,Chad Wallach,R,Las Vegas,Active,No
+4,C,Chad Wallach,R,Las Vegas,Development List,No
 47,INF,Tommy White,R,Las Vegas,Active,No
 84,P,Chen Zhong-Ao Zhuang,R,Las Vegas,Active,No
 6,INF,Sergio Alcántara,S,Lehigh Valley,Active,No
@@ -667,7 +666,7 @@
 29,P,Robert Gasser,L,Nashville,Promoted,Yes
 34,P,Logan Henderson,R,Nashville,Promoted,Yes
 44,P,Blake Holub,R,Nashville,Active,No
-3,OF,Jacob Hurtubise,L,Nashville,Active,No
+3,OF,Jacob Hurtubise,L,Nashville,Development List,No
 2,OF,Greg Jones,S,Nashville,Active,No
 11,P,Reiss Knehr,R,Nashville,Active,No
 13,P,Tate Kuehner,L,Nashville,Active,No
@@ -690,7 +689,7 @@
 38,P,Peter Strzelecki,R,Nashville,Promoted,Yes
 6,INF,Jheremy Vargas,R,Nashville,Demoted,No
 57,INF,Andrew Vaughn,R,Nashville,Promoted,Yes
-35,P,Jacob Waguespack,R,Nashville,Free Agent,No
+35,P,Jacob Waguespack,R,Nashville,Active,No
 25,INF,Brock Wilken,R,Nashville,Active,No
 7,INF,Jett Williams,R,Nashville,Active,No
 21,P,Craig Yoho,R,Nashville,Active,Yes
@@ -740,7 +739,7 @@
 18,OF,Reed Trimble,S,Norfolk,Injured List,Yes
 13,INF,Willy Vasquez,R,Norfolk,Active,No
 ,INF,Luis Vázquez,R,Norfolk,Injured List,No
-34,P,Levi Wells,R,Norfolk,Active,No
+34,P,Levi Wells,R,Norfolk,Injured List,No
 50,P,Tyler Wells,R,Norfolk,Promoted,Yes
 28,P,Cameron Weston,R,Norfolk,Active,No
 12,C,Creed Willems,L,Norfolk,Active,No
@@ -933,9 +932,9 @@
 10,P,Erik Tolman,L,Rochester,Active,No
 32,P,Eddy Yean,R,Rochester,Active,No
 9,P,Luke Young,R,Rochester,Active,No
-19,P,Dane Acker,R,Round Rock,Active,No
+19,P,Dane Acker,R,Round Rock,Injured List,No
 28,P,Robby Ahlstrom,L,Round Rock,Active,No
-24,P,Aidan Anderson,R,Round Rock,Injured List,No
+24,P,Aidan Anderson,R,Round Rock,Active,No
 39,P,Ben Anderson,R,Round Rock,Active,No
 43,P,Carter Baumler,R,Round Rock,Rehab Assignment,Yes
 45,P,Austin Bergner,R,Round Rock,Active,No
@@ -950,7 +949,7 @@
 59,P,Jose Corniell,R,Round Rock,Active,Yes
 ,P,Nabil Crismatt,R,Round Rock,Full-Season IL,No
 ,P,Declan Cronin,R,Round Rock,60-day IL,No
-56,P,Luis Curvelo,R,Round Rock,Rehab Assignment,Yes
+56,P,Luis Curvelo,R,Round Rock,Active,Yes
 54,P,Alexis Díaz,R,Round Rock,Active,No
 7,INF,Justin Foscue,R,Round Rock,Promoted,Yes
 16,P,Kyle Funkhouser,R,Round Rock,Injured List,No
@@ -970,7 +969,7 @@
 48,P,Michel Otañez,R,Round Rock,Active,Yes
 14,INF,Nick Pratto,L,Round Rock,Active,No
 44,P,Cal Quantrill,R,Round Rock,Promoted,Yes
-66,P,Josh Sborz,R,Round Rock,Development List,No
+66,P,Josh Sborz,R,Round Rock,Demoted,No
 51,P,Cole Stasio,R,Round Rock,Demoted,No
 29,P,Josh Stephan,R,Round Rock,Active,No
 31,P,Trey Supak,R,Round Rock,Active,No
@@ -1002,7 +1001,7 @@
 29,P,Marques Johnson,R,Sacramento,Active,No
 34,INF,Buddy Kennedy,R,Sacramento,Active,No
 35,P,Seth Lonsway,L,Sacramento,Injured List,No
-,P,Nick Margevicius,L,Sacramento,Injured List,No
+,P,Nick Margevicius,L,Sacramento,Free Agent,No
 75,OF,Grant McCray,L,Sacramento,Active,Yes
 19,P,Trevor McDonald,R,Sacramento,Promoted,Yes
 59,P,Erik Miller,L,Sacramento,Promoted,Yes
@@ -1059,7 +1058,7 @@
 20,C,Sebastián Rivero,R,Salt Lake,Promoted,Yes
 5,INF,Yolmer Sánchez,S,Salt Lake,Active,No
 4,P,Nick Sandlin,R,Salt Lake,Promoted,Yes
-34,P,Tayler Saucedo,L,Salt Lake,Active,Yes
+34,P,Tayler Saucedo,L,Salt Lake,Promoted,Yes
 ,P,Hayden Seig,R,Salt Lake,60-day IL,No
 22,OF,Jose Siri,R,Salt Lake,Promoted,Yes
 33,P,Jared Southard,R,Salt Lake,Active,No
@@ -1120,8 +1119,8 @@
 47,P,Trent Baker,R,St. Paul,Active,No
 53,C,David Bañuelos,R,St. Paul,Active,No
 39,P,Andrew Bash,R,St. Paul,Active,No
-25,P,Matt Bowman,R,St. Paul,Active,No
-57,P,John Brebbia,R,St. Paul,Active,No
+25,P,Matt Bowman,R,St. Paul,Free Agent,No
+57,P,John Brebbia,R,St. Paul,Free Agent,No
 40,P,Raul Brito,R,St. Paul,Active,No
 ,P,Matt Canterino,R,St. Paul,60-day IL,No
 16,C,Noah Cardenas,R,St. Paul,Active,No
@@ -1141,7 +1140,7 @@
 67,P,Zak Kent (WSN),R,St. Paul,Claimed,No
 60,P,John Klein,R,St. Paul,Active,Yes
 9,INF,Ryan Kreidler,R,St. Paul,Promoted,Yes
-,P,Cory Lewis,R,St. Paul,Injured List,No
+,P,Cory Lewis,R,St. Paul,Demoted,No
 46,P,Christian MacLeod,L,St. Paul,Free Agent,No
 52,P,Zebby Matthews,R,St. Paul,Promoted,Yes
 44,OF,Hendry Mendez,L,St. Paul,Active,No
@@ -1172,11 +1171,11 @@
 38,P,Sam Carlson,R,Sugar Land,Active,No
 3,OF,Parker Chavers,L,Sugar Land,Free Agent,No
 16,OF,Zach Cole,L,Sugar Land,Promoted,Yes
-59,P,Tom Cosgrove,L,Sugar Land,Active,No
+59,P,Tom Cosgrove,L,Sugar Land,Injured List,No
 65,P,Enyel De Los Santos,R,Sugar Land,Promoted,Yes
 9,OF,Zach Dezenzo,R,Sugar Land,Promoted,Yes
 ,INF,Edwin Díaz,R,Sugar Land,60-day IL,No
-55,P,Jose Fleury,R,Sugar Land,Development List,No
+55,P,Jose Fleury,R,Sugar Land,Active,No
 68,P,J.P. France,R,Sugar Land,Active,No
 61,P,Colton Gordon,L,Sugar Land,Active,Yes
 71,P,Josh Hader,L,Sugar Land,Promoted,Yes
@@ -1224,7 +1223,6 @@
 4,INF,Jackson Cluff,L,Syracuse,Active,No
 48,P,Bryce Conley,R,Syracuse,Demoted,No
 55,P,Xzavion Curry,R,Syracuse,Active,No
-54,P,Daniel Duarte,R,Syracuse,Promoted,Yes
 10,INF,A.J. Ewing,L,Syracuse,Promoted,Yes
 62,P,Jordan Geber,R,Syracuse,Demoted,No
 64,P,Ofreidy Gómez,R,Syracuse,Active,No
@@ -1259,7 +1257,7 @@
 ,P,Robert Stock,R,Syracuse,60-day IL,No
 59,P,Joander Suarez,R,Syracuse,Demoted,No
 ,OF,Mike Tauchman,L,Syracuse,Injured List,No
-26,P,Zach Thornton,L,Syracuse,Active,No
+26,P,Zach Thornton,L,Syracuse,Promoted,Yes
 21,P,Jonah Tong,R,Syracuse,Active,Yes
 9,C,Onix Vega,R,Syracuse,Demoted,No
 2,INF,Kevin Villavicencio,R,Syracuse,Demoted,No
@@ -1294,7 +1292,6 @@
 21,P,Gabe Mosser,R,Tacoma,Active,No
 ,C,Jacob Nottingham,R,Tacoma,Development List,No
 44,C,Brian O'Keefe,R,Tacoma,Active,No
-13,P,Robinson Ortiz,L,Tacoma,Promoted,Yes
 9,OF,Spencer Packard,L,Tacoma,Injured List,No
 15,C,Jhonny Pereda,R,Tacoma,Promoted,Yes
 27,C,Jakson Reetz,R,Tacoma,Active,No
@@ -1472,7 +1469,7 @@
 22,P,Cole Henry,R,Rochester,Rehab Assignment,Yes
 34,P,Tyson Hardin,R,Nashville,Active,No
 47,P,Luis Mey,R,Louisville,Active,Yes
-38,P,Alek Manoah,R,Salt Lake,Active,Yes
+38,P,Alek Manoah,R,Salt Lake,Active,No
 22,P,Dominic Niman,L,Durham,Demoted,No
 28,P,Javier Assad,R,Iowa,Active,Yes
 43,P,Charlie Barnes,L,Oklahoma City,Active,Yes
@@ -1493,8 +1490,8 @@
 ,INF,Brady House,R,Rochester,Not Yet Reported,Yes
 ,OF,Joey Wiemer,R,Rochester,Not Yet Reported,Yes
 64,P,Danny Coulombe,L,Worcester,Rehab Assignment,Yes
-56,P,JR Ritchie,R,Gwinnett,Not Yet Reported,Yes
-,INF,Royce Lewis,R,St. Paul,Not Yet Reported,Yes
+56,P,JR Ritchie,R,Gwinnett,Active,Yes
+24,INF,Royce Lewis,R,St. Paul,Active,Yes
 33,P,Cameron Foster,R,Norfolk,Active,Yes
 20,OF,Austin Hays,R,Charlotte,Rehab Assignment,Yes
 31,P,Blake Adams,R,Albuquerque,Active,No
@@ -1506,15 +1503,30 @@
 7,OF,Austin Hendrick,L,Louisville,Active,No
 28,P,Eric Reyzelman,R,Scranton/Wilkes-Barre,Active,No
 46,P,Ben Simon,R,Syracuse,Active,No
-25,P,Gavin Collyer,R,Round Rock,Not Yet Reported,Yes
+25,P,Gavin Collyer,R,Round Rock,Active,Yes
 49,P,Domingo Gonzalez,R,Tacoma,Active,Yes
 29,INF,Jared Young,L,Syracuse,Rehab Assignment,Yes
-,P,Joe Rock,L,Charlotte,Not Yet Reported,Yes
-,INF,Oliver Dunn,L,Durham,Not Yet Reported,No
+38,P,Joe Rock,L,Charlotte,Active,Yes
+,INF,Oliver Dunn,L,Durham,Promoted,Yes
 23,OF,Denzel Clarke,R,Las Vegas,Rehab Assignment,Yes
 8,OF,Lars Nootbaar,L,Memphis,Rehab Assignment,Yes
 21,P,Reiver Sanmartin,L,Sacramento,Rehab Assignment,Yes
 34,P,Brandon White,R,Jacksonville,Active,No
-8,OF,Sterlin Thompson,L,Albuquerque,Not Yet Reported,Yes
-23,P,Wyatt Mills,R,Oklahoma City,Not Yet Reported,Yes
-10,INF,Shay Whitcomb,R,Sugar Land,Not Yet Reported,Yes
+8,OF,Sterlin Thompson,L,Albuquerque,Active,Yes
+23,P,Wyatt Mills,R,Oklahoma City,Active,Yes
+10,INF,Shay Whitcomb,R,Sugar Land,Active,Yes
+11,C,Ricardo Olivar,R,St. Paul,Active,No
+26,P,Ty Langenberg,R,St. Paul,Active,No
+58,P,Alejandro Hidalgo,R,St. Paul,Active,No
+17,INF,Eugenio Suárez,R,Louisville,Rehab Assignment,Yes
+63,P,Danis Correa,R,Syracuse,Active,No
+27,INF,Nick Goodwin,R,Buffalo,Active,No
+,INF,Tevin Tucker,R,Active,No
+2,INF,Andy Weber,L,Active,No
+,P,Isaac Mattson,R,Indianapolis,Not Yet Reported,Yes
+62,P,Parker Carlson,R,Syracuse,Active,No
+,OF,Scott Bandura,L,Sacramento,Active,No
+40,P,Conor Larkin,R,Buffalo,Active,No
+13,P,Robinson Ortiz,L,Tacoma,Active,Yes
+20,P,Braxton Garrett,L,Jacksonville,Active,Yes
+54,P,Daniel Duarte,R,Syracuse,Not Yet Reported,Yes
