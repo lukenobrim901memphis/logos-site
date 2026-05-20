@@ -1,18 +1,95 @@
 .nav-header {
     display: flex;
     align-items: center;
-    gap: 20px;
-    padding: 20px;
-    background: #000;
-    color: #fff;
+    justify-content: space-between; /* Spreads back-btn, title, and form boxes evenly */
+    padding: 15px 30px;
+    background: #111111; /* Solid matte black background setup */
+    border-bottom: 3px solid #000000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.nav-header h1 {
+    color: #ffffff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
 }
 
 .back-btn {
-    background: transparent;
-    color: white;
-    border: 1px solid white;
-    padding: 5px 15px;
+    display: inline-block;
+    text-decoration: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #ffffff;
+    background-color: #2c2c2c;
+    padding: 8px 16px;
+    margin: 15px 0 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+}
+
+.controls-container {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.custom-select-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-select-wrapper select {
+    appearance: none; /* Disables standard browser native down arrows */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    
+    background-color: #222222;
+    color: #ffffff;
+    border: 2px solid #444444;
+    border-radius: 6px;
+    padding: 10px 36px 10px 16px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
     cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#year-select { min-width: 95px; }
+#uni-team-select { min-width: 230px; }
+
+.custom-select-wrapper select:focus {
+    border-color: #ffffff;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Custom CSS arrow element layer */
+.custom-select-wrapper::after {
+    content: '▼';
+    font-size: 0.6rem;
+    color: #aaaaaa;
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.custom-select-wrapper:hover::after {
+    color: #ffffff;
+}
+
+.custom-select-wrapper select option {
+    background-color: #222222;
+    color: #ffffff;
+    font-family: sans-serif;
 }
 
 .year-view {
@@ -20,7 +97,7 @@
     grid-template-columns: repeat(3, 1fr); /* Exactly 3 columns */
     gap: 20px;
     padding: 20px;
-    background-color: #f0e6d2; /* Match the parchment background in your image */
+    background-color: #f0e6d2; /* Match the parchment background */
 }
 
 .month-section {
@@ -31,7 +108,7 @@
 }
 
 .month-title {
-    order: 2; /* Moves title to the bottom like the "APRIL" example */
+    order: 2; /* Moves title to the bottom like the baseball schedule aesthetic */
     background-color: #555;
     color: white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -48,27 +125,44 @@
     border-bottom: 2px solid #000;
 }
 
+/* Base Calendar Cell */
 .calendar-cell {
     aspect-ratio: 1 / 1.2;
     border-right: 1px solid #000;
     border-bottom: 1px solid #000;
-    position: relative;
+    position: relative; /* Anchor for absolutely positioned day numbers */
     background-color: #fff;
+    box-sizing: border-box;
 }
 
-/* Match the dark gray for empty days or off-days */
-.calendar-cell.empty, 
+/* --- FIXED BACKGROUND COLOR MATCHES --- */
+.calendar-cell.is-home {
+    background-color: #ffffff !important; /* Crisp white for home games */
+}
+
+.calendar-cell.is-away {
+    background-color: #d0d0d0 !important; /* Light gray for road games */
+}
+
 .calendar-cell.off-day {
-    background-color: #ffffff !important;
+    background-color: #595959 !important; /* Dark gray for non-game days */
 }
 
 .day-number {
     position: absolute;
-    top: 2px;
-    right: 3px;
-    font-size: 0.8rem;
-    font-weight: bold;
+    bottom: 4px; /* Distance from bottom */
+    left: 3px;   /* Distance from left */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 0.55rem;
+    font-weight: none;
     color: #000;
+    z-index: 5;  /* Ensures it floats above the background */
+    pointer-events: none;
+}
+
+/* Adjust font color dynamically on off-days for readability */
+.calendar-cell.off-day .day-number {
+    color: #aaaaaa;
 }
 
 /* Ensure the jersey fills the space but stays centered */
@@ -80,26 +174,93 @@
     display: block;
 }
 
-@media (max-width: 900px) {
-    .year-view { grid-template-columns: 1fr; }
-}
-
+/* --- DOUBLEHEADER SIDE-BY-SIDE SCALING LAYOUT --- */
 .dh-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Arranges jerseys side-by-side */
     height: 100%;
     width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 4px;
+    box-sizing: border-box;
 }
 
 .dh-game {
-    flex: 1; /* Each game takes exactly half the height */
+    flex: 1; 
+    width: 100%;
+    max-height: 46%;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+
+/* Override standard jersey size inside a doubleheader container */
+.dh-game .jersey-icon {
+    max-width: 90%; 
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto;
 }
 
 .dh-divider {
-    height: 1px;
-    background-color: #000;
-    width: 100%;
+   height: 1px;            /* 1px thickness */
+    width: 100%;             /* Doesn't touch the very edges of the square cell walls */
+    background-color: #000000; /* Crisp black line matching your grid borders */
+    margin: 2px 0;
+}
+
+.postponed-overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    pointer-events: none;
+    z-index: 6;
+}
+
+.postponed-overlay-text .postponed-title {
+    color: #ffffff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+    font-size: 0.5rem;               /* Slightly bigger and prominent */
+    font-weight: bold;
+    text-transform: none;
+    line-height: 1;
+    text-shadow: 1px 1px 3px rgba(1, 1, 1, 1), -1px -1px 3px rgba(1, 1, 1, 1);
+    margin-bottom: 3px;               /* Pushes the second line down slightly */
+}
+
+.postponed-overlay-text .resched-date {
+    color: #ffffff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+    font-size: 0.5rem;               /* Scaled down to fit the date phrase comfortably */
+    font-weight: bold;
+    text-transform: none;
+    line-height: 1.1;
+    display: block;
+    text-shadow: 1px 1px 3px rgba(1, 1, 1, 1), -1px -1px 3px rgba(1, 1, 1, 1);
+}
+
+.day-label {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 1px 0;
+    background-color: #ffffff;
+    color: #111111;
+    border-bottom: 2px solid #000000;
+}
+
+@media (max-width: 900px) {
+    .year-view { grid-template-columns: 1fr; }
 }

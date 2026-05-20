@@ -3,32 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trackers</title>
+    <title>Luke's Trackers</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="hub-wrapper">
-        <header class="hub-header">
-            <h1>Trackers</h1>
-        </header>
+    <a href="index.html" class="back-btn">← Back to Home</a>
+    
+    <header class="sticky-header">
+        <h1>Luke's Trackers</h1>
+    </header>
 
-        <div class="hub-container">
-            <div class="hub-card" id="card-roster" onclick="location.href='rosters.html'">
-                <div class="card-overlay">
-                    <h2>Triple-A Rosters</h2>
-                </div>
-            </div>
+    <main class="home-container">
+        <div class="logo-grid">
 
-            <div class="hub-card" id="card-uniform" onclick="location.href='uniform-tracker.html'">
-                <div class="card-overlay">
-                    <h2>MLB Jersey Schedule</h2>
+            <a href="rosters.html" class="logo-card">
+                <div class="logo-image-wrapper">
+                    <img src="images/navigation/triple-a-bg.png" alt="Triple-A Rosters Logo">
                 </div>
-            </div>
+                <div class="logo-caption">
+                    <div class="logo-name">Triple-A Rosters</div>
+                </div>
+            </a>
+
+            <a href="uniform-tracker.html" class="logo-card">
+                <div class="logo-image-wrapper">
+                    <img src="images/navigation/uniform-schedule-bg.png" alt="MLB Uniform Schedule Logo">
+                </div>
+                <div class="logo-caption">
+                    <div class="logo-name">MLB Uniform Schedule</div>
+                </div>
+            </a>
+
         </div>
-        
-        <div class="hub-footer">
-            <button class="back-home-btn" onclick="location.href='index.html'">Main Menu</button>
-        </div>
-    </div>
+    </main>
 </body>
 </html>

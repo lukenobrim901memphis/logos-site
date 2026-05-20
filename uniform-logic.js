@@ -53,7 +53,7 @@ const mlbData = {
         colors: [{ stop: 2025, color: "#002D72" }, { stop: 2026, color: "#0032A0" }]
     },
     "LAA": {
-        names: [{ stop: 2015, name: "L.A. Angels of Anaheim" }, { stop: 2026, name: "Los Angeles Angels" }],
+        names: [{ stop: 2026, name: "Los Angeles Angels" }],
         colors: [{ stop: 2011, color: "#89764B" }, { stop: 2026, color: "#BA0C2F" }]
     },
     "LAD": {
@@ -126,28 +126,52 @@ const mlbData = {
     }
 };
 
-/** UI CONTROLLERS **/
+/** HISTORICAL ERA CONVERSION UTILITY **/
+function getTargetCodeForYear(baseCode, year) {
+    const intYear = parseInt(year);
+    // Athletics Shift Rules
+    if (baseCode === "OAK" || baseCode === "ATH") {
+        return intYear <= 2024 ? "OAK" : "ATH";
+    }
+    // Marlins Shift Rules
+    if (baseCode === "MIA" || baseCode === "FLA") {
+        return intYear === 2011 ? "FLA" : "MIA";
+    }
+    return baseCode;
+}
 
+/** UI CONTROLLERS **/
 function updateTeamDropdown() {
     const year = parseInt(document.getElementById('year-select').value);
     const teamSelect = document.getElementById('uni-team-select');
-    const currentVal = teamSelect.value || "ARI";
+    let currentVal = teamSelect.value || "ARI";
+    
+    // Normalize code choices during cross-era transitions
+    currentVal = getTargetCodeForYear(currentVal, year);
     
     teamSelect.innerHTML = "";
     Object.keys(mlbData).forEach(code => {
         const data = mlbData[code];
         const nameEntry = data.names.find(n => year <= n.stop) || data.names[data.names.length - 1];
         
+        // Dynamic Option Value matches the targeted historical directory code
+        const displayCode = getTargetCodeForYear(code, year);
+        
         const opt = document.createElement('option');
-        opt.value = code;
+        opt.value = displayCode;
         opt.textContent = nameEntry.name;
-        if (code === currentVal) opt.selected = true;
+        if (displayCode === currentVal) opt.selected = true;
         teamSelect.appendChild(opt);
     });
 }
 
 function getTeamColor(teamCode, year) {
-    const data = mlbData[teamCode];
+    // Map cross-era options securely back to master dictionary references
+    let lookupCode = teamCode;
+    if (teamCode === "ATH") lookupCode = "OAK";
+    if (teamCode === "FLA") lookupCode = "MIA";
+
+    const data = mlbData[lookupCode];
     if (!data) return "#000000";
     const colorEntry = data.colors.find(c => parseInt(year) <= c.stop);
     return colorEntry ? colorEntry.color : data.colors[data.colors.length - 1].color;
@@ -168,15 +192,25 @@ async function loadFullYearCalendar() {
 
         container.innerHTML = "";
         const accentColor = getTeamColor(team, year);
+        const headerElement = document.querySelector('.nav-header');
+        if (headerElement) {
+            headerElement.style.borderBottomColor = accentColor;
+        }
+        
+        const backBtn = document.querySelector('.back-btn');
+        if (backBtn) {
+            backBtn.style.borderColor = accentColor;
+            backBtn.onmouseenter = () => { backBtn.style.backgroundColor = accentColor; backBtn.style.color = "#000"; };
+            backBtn.onmouseleave = () => { backBtn.style.backgroundColor = "transparent"; backBtn.style.color = "#fff"; };
+        }
 
-        // Defined Season Blocks
         const season = [
-            { index: 2, name: "March / April" },
-            { index: 4, name: "May" },
-            { index: 5, name: "June" },
-            { index: 6, name: "July" },
-            { index: 7, name: "August" },
-            { index: 8, name: "September / October" }
+            { isMarchApril: true, index: 2, name: "March / April" },
+            { isMarchApril: false, index: 4, name: "May" },
+            { isMarchApril: false, index: 5, name: "June" },
+            { isMarchApril: false, index: 6, name: "July" },
+            { isMarchApril: false, index: 7, name: "August" },
+            { isMarchApril: false, index: 8, name: "September" }
         ];
 
         season.forEach(monthObj => {
@@ -195,61 +229,141 @@ function renderMonth(monthObj, team, year, rows, container, accent) {
     const grid = document.createElement('div');
     grid.className = 'calendar-container';
 
-    // Labels
     ['S','M','T','W','T','F','S'].forEach(day => {
         grid.innerHTML += `<div class="day-label">${day}</div>`;
     });
 
-    const firstDay = new Date(year, monthObj.index, 1).getDay();
-    const daysInMonth = new Date(year, monthObj.index + 1, 0).getDate();
+    let datesToRender = [];
+    if (monthObj.isMarchApril) {
+        const startDayOfWeek = new Date(year, 2, 25).getDay();
+        for (let i = 0; i < startDayOfWeek; i++) {
+            grid.innerHTML += `<div class="calendar-cell empty"></div>`;
+        }
+        for (let d = 25; d <= 31; d++) {
+            datesToRender.push({ displayNum: d, dateStr: `3/${d}/${year.toString().slice(-2)}` });
+        }
+        for (let d = 1; d <= 30; d++) {
+            datesToRender.push({ displayNum: d, dateStr: `4/${d}/${year.toString().slice(-2)}` });
+        }
+    } else {
+        const firstDay = new Date(year, monthObj.index, 1).getDay();
+        const daysInMonth = new Date(year, monthObj.index + 1, 0).getDate();
 
-    for (let i = 0; i < firstDay; i++) grid.innerHTML += `<div class="calendar-cell empty"></div>`;
+        for (let i = 0; i < firstDay; i++) {
+            grid.innerHTML += `<div class="calendar-cell empty"></div>`;
+        }
+        for (let d = 1; d <= daysInMonth; d++) {
+            datesToRender.push({ displayNum: d, dateStr: `${monthObj.index + 1}/${d}/${year.toString().slice(-2)}` });
+        }
+    }
 
-    for (let d = 1; d <= daysInMonth; d++) {
-        const dateStr = `${monthObj.index + 1}/${d}/${year.toString().slice(-2)}`;
-        
-        // Logic for OAK/ATH Transition
-        const dailyGames = rows.filter(r => {
-            const isDate = r[0] === dateStr;
-            const isTeam = (r[1] === team || r[3] === team) || 
-                           (team === "OAK" && (r[1] === "ATH" || r[3] === "ATH"));
-            return isDate && isTeam;
-        });
-
+    datesToRender.forEach(dateInfo => {
         const cell = document.createElement('div');
         cell.className = 'calendar-cell';
-        if (dailyGames.length === 0) {
-        cell.classList.add('off-day')}
-        
-        cell.innerHTML = `<span class="day-number">${d}</span>`;
+        cell.innerHTML = `<span class="day-number">${dateInfo.displayNum}</span>`;
 
-        if (dailyGames.length > 0) {
+        // Filter games supporting dual-historical naming constraints
+        const dailyGames = rows.filter(r => {
+            const isDate = r[0] === dateInfo.dateStr;
+            
+            // Check for direct match or cross-era code matches
+            const homeMatch = r[3] === team || 
+                              (team === "ATH" && r[3] === "OAK") || 
+                              (team === "OAK" && r[3] === "ATH") ||
+                              (team === "MIA" && r[3] === "FLA") || 
+                              (team === "FLA" && r[3] === "MIA");
+                              
+            const awayMatch = r[1] === team || 
+                              (team === "ATH" && r[1] === "OAK") || 
+                              (team === "OAK" && r[1] === "ATH") ||
+                              (team === "MIA" && r[1] === "FLA") || 
+                              (team === "FLA" && r[1] === "MIA");
+
+            return isDate && (homeMatch || awayMatch);
+        });
+
+        if (dailyGames.length === 0) {
+            cell.classList.add('off-day');
+        } else {
+            const firstGame = dailyGames[0];
+            
+            // Re-verify context home team identity matching rules safely
+            const isHome = firstGame[3] === team || 
+                           (team === "ATH" && firstGame[3] === "OAK") ||
+                           (team === "OAK" && firstGame[3] === "ATH") ||
+                           (team === "MIA" && firstGame[3] === "FLA") ||
+                           (team === "FLA" && firstGame[3] === "MIA");
+                           
+            cell.classList.add(isHome ? 'is-home' : 'is-away');
+
             if (dailyGames.length === 1) {
                 renderJersey(cell, dailyGames[0], team);
             } else {
                 const dh = document.createElement('div');
                 dh.className = 'dh-container';
+                
                 const g1 = document.createElement('div'); g1.className = 'dh-game';
                 const g2 = document.createElement('div'); g2.className = 'dh-game';
+                
                 renderJersey(g1, dailyGames[0], team);
                 renderJersey(g2, dailyGames[1], team);
+                
                 dh.append(g1, Object.assign(document.createElement('div'), {className:'dh-divider'}), g2);
                 cell.appendChild(dh);
             }
         }
         grid.appendChild(cell);
-    }
+    });
+
     section.appendChild(grid);
     container.appendChild(section);
 }
 
 function renderJersey(el, row, selectedTeam) {
     const year = document.getElementById('year-select').value;
-    const isHome = row[1] === selectedTeam || (selectedTeam === "OAK" && row[1] === "ATH");
-    const jersey = isHome ? row[2] : row[4];
-    el.classList.add(isHome ? 'is-home' : 'is-away');
+    
+    const isHome = row[3] === selectedTeam || 
+                   (selectedTeam === "ATH" && row[3] === "OAK") ||
+                   (selectedTeam === "OAK" && row[3] === "ATH") ||
+                   (selectedTeam === "MIA" && row[3] === "FLA") ||
+                   (selectedTeam === "FLA" && row[3] === "MIA");
+                   
+    const jersey = isHome ? row[4] : row[2];
 
-    const cleanName = jersey.toLowerCase().trim().replace(/\s+/g, '-');
+    if (jersey.toLowerCase().startsWith('postponed')) {
+        if (el.classList.contains('calendar-cell')) {
+            el.classList.add('is-postponed-day');
+        } else {
+            el.closest('.calendar-cell')?.classList.add('is-postponed-day');
+        }
+
+        const img = document.createElement('img');
+        img.src = `images/jerseys/${year}/${selectedTeam}/postponed.png`;
+        img.className = 'jersey-icon postponed-blur';
+        img.onerror = () => img.style.display = 'none';
+
+        const textOverlay = document.createElement('div');
+        textOverlay.className = 'postponed-overlay-text';
+        
+        const parts = jersey.split('-');
+        if (parts.length > 1) {
+            textOverlay.innerHTML = `
+                <span class="postponed-title">Postponed</span>
+                <span class="resched-date">Rescheduled for ${parts[1].trim()}</span>
+            `;
+        } else {
+            textOverlay.innerHTML = `<span class="postponed-title">Postponed</span>`;
+        }
+
+        el.appendChild(img);
+        el.appendChild(textOverlay);
+        return; 
+    }
+
+    let cleanName = jersey.toLowerCase();
+    cleanName = cleanName.replace(/['’]/g, '-').replace(/\./g, '');
+    cleanName = cleanName.trim().replace(/\s+/g, '-');
+    
     const img = document.createElement('img');
     img.src = `images/jerseys/${year}/${selectedTeam}/${cleanName}.png`;
     img.className = 'jersey-icon';
