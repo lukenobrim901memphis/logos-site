@@ -1,8 +1,34 @@
+/* ==========================================================================
+   1. CORE VALUES & GLOBAL STYLES
+   ========================================================================== */
+:root {
+    /* Main Palettes */
+    --bg-cream: #FDFBF7;
+    --bg-cream-dark: #F4EFE6;
+    --bg-forest: #1C2D24;
+    --bg-forest-light: #2D5A27;
+    --accent-sage: #8EB897;
+    
+    /* Global Typography Base */
+    --font-primary: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+    background-color: var(--bg-cream);
+    color: var(--bg-forest);
+    font-family: var(--font-primary);
+    margin: 0;
+    padding: 0;
+}
+
+/* ==========================================================================
+   2. TYPOGRAPHY & HEADER ELEMENT INTERFACES
+   ========================================================================== */
 h1 {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: #000000;
+    font-family: var(--font-primary);
+    color: var(--bg-forest);
     text-align: center;
-    text-transform: uppercase;
+    text-transform: none;
     font-size: 2.2rem;
     margin-top: 20px;
     margin-bottom: 10px;
@@ -10,52 +36,78 @@ h1 {
 }
 
 h2 {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+    font-family: var(--font-primary);
     font-size: 1.5rem;
-    color: #1b1b1b;
-    border-bottom: 2px solid #1b1b1b;
+    color: var(--bg-forest);
+    border-bottom: 2px solid var(--bg-forest);
     padding-bottom: 5px;
     margin-top: 30px;
     margin-left: 20px;
-    text-transform: uppercase;
+    text-transform: none;
     letter-spacing: 1px;
 }
 
 h2.team-title {
-    /* 1. Typography */
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif !important;
-    font-size: 2.2rem; /* Larger than a standard h2 for the team name */
+    font-family: var(--font-primary) !important;
+    font-size: 2.2rem;
     font-weight: bold;
-    text-transform: uppercase;
+    text-transform: none;
     letter-spacing: 2px;
-    
-    /* 2. Spacing & Alignment */
-    margin: 40px 0 10px 20px; /* Top, Right, Bottom, Left */
+    margin: 40px 0 10px 20px;
     padding-bottom: 10px;
-    display: inline-block; /* Border only stays under the text */
-    
-    /* 3. The Dynamic Border */
-    /* currentColor is key—it grabs the team color from your .text-team classes */
+    display: inline-block;
     border-bottom: 4px solid currentColor !important;
-    
-    /* 4. Default color before a team is selected */
-    color: #1b1b1b; 
+    color: var(--bg-forest); 
 }
 
-/* Adjustments for Dark Mode */
-@media (prefers-color-scheme: dark) {
-    h2.team-title {
-        /* If no team is selected, show off-white; otherwise team color takes over */
-        color: #eeeeee; 
-    }
+.category-header {
+    background-color: var(--bg-cream-dark);
+    color: var(--bg-forest);
+    padding: 8px 15px;
+    font-weight: bold;
+    border-bottom: 3px solid var(--accent-sage);
+    margin: 10px 0 5px 0;
+    text-transform: none;
+    font-family: var(--font-primary);
 }
 
-.logo-image-wrapper img {
-    max-width: 90%;
-    max-height: 80px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
+/* ==========================================================================
+   3. NAVIGATION & LAYOUT STRUCTURES
+   ========================================================================== */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--bg-cream);
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--bg-forest-light);
+    box-shadow: 0 2px 5px rgba(28, 45, 36, 0.1);
+}
+
+.sticky-header h1 {
+    margin: 5px 0;
+}
+
+.back-btn {
+    display: inline-block;
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: var(--bg-cream);
+    background-color: var(--bg-forest);
+    padding: 8px 16px;
+    margin: 15px 0 10px 20px;
+    border: 1px solid var(--bg-forest-light);
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+}
+
+.back-btn:hover {
+    background-color: var(--bg-forest-light);
+    color: var(--bg-cream);
+    border-color: var(--bg-forest-light);
+    transform: translateY(-1px);
 }
 
 .home-container {
@@ -64,6 +116,9 @@ h2.team-title {
     padding: 0 20px;
 }
 
+/* ==========================================================================
+   4. LEAGUE & TEAM CARDS (THE MAIN GRID)
+   ========================================================================== */
 .league-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -72,8 +127,8 @@ h2.team-title {
 }
 
 .league-card {
-    background-color: #ffffff;
-    border: 1px solid #e1e1e1;
+    background-color: var(--bg-cream-dark);
+    border: 1px solid var(--accent-sage);
     text-decoration: none;
     display: flex;
     flex-direction: column;
@@ -84,9 +139,9 @@ h2.team-title {
 }
 
 .league-card:hover {
-    background-color: #eee; 
+    background-color: #e8e0d2; 
     transform: scale(1.02);
-    border-color: #333;
+    border-color: var(--bg-forest);
     cursor: pointer;
 }
 
@@ -96,65 +151,14 @@ h2.team-title {
 }
 
 .league-name {
-    font-family: 'Gill Sans', sans-serif;
+    font-family: var(--font-primary);
     text-decoration: none;
     display: block;
     font-weight: bold;
     font-size: 1.3rem;
-    color: #333;
+    color: var(--bg-forest);
     letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.back-btn {
-    display: inline-block;
-    text-decoration: none;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
-    font-weight: bold;
-    font-size: 0.9rem;
-    color: #555;
-    background-color: #f4f4f4;
-    padding: 8px 16px;
-    margin: 15px 0 10px 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: all 0.2s ease-in-out;
-}
-
-.back-btn:hover {
-    background-color: #333;
-    color: #fff;
-    border-color: #333;
-    transform: translateY(-1px);
-}
-
-.sticky-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: white;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #A71930;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.sticky-header h1 {
-    margin: 5px 0;
-}
-
-.league-container {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 50px;
-}
-
-.league-box {
-    padding: 40px;
-    border: 2px solid #000000;
-    text-decoration: none;
-    font-weight: bold;
-    color: #000000;
+    text-transform: none;
 }
 
 .grid {
@@ -166,21 +170,22 @@ h2.team-title {
 }
 
 .team-card {
-    background-color: #f7f7f7;
-    border: 1px solid #e1e1e1;
+    background-color: var(--bg-cream-dark);
+    border: 1px solid var(--accent-sage);
     text-decoration: none;
-    color: #333;
+    color: var(--bg-forest);
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 5px;
+    border-radius: 6px;
 }
 
 .team-card:hover {
-background-color: #eee;
+    background-color: #e8e0d2;
 }
 
-.logo-box{
+.logo-box {
     width: 100%;
     height: 80px;
     display: flex;
@@ -198,26 +203,16 @@ background-color: #eee;
 }
 
 .team-name {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: var(--font-primary);
     font-weight: bold;
     font-size: 0.9rem;
     text-transform: none;
     text-align: center;
 }
 
-.category-header {
-    background-color: #eeeeee;
-    color: #333;
-    margin-top: 15px;
-    margin-bottom: 2px;
-    padding: 8px 15px;
-    font-weight: bold;
-    border-bottom: 3px solid #dcdcdc;
-    margin: 10px 0 5px 0;
-    text-transform: uppercase;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
+/* ==========================================================================
+   5. LOGO DISPLAY SYSTEM & LIGHTBOXES
+   ========================================================================== */
 .logo-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -227,8 +222,8 @@ background-color: #eee;
 }
 
 .logo-card {
-    background-color: #e1e1e1;
-    border: 1px solid #e1e1e1;
+    background-color: var(--bg-cream-dark);
+    border: 1px solid var(--accent-sage);
     text-decoration: none;
     display: flex;
     flex-direction: column;
@@ -237,15 +232,16 @@ background-color: #eee;
     padding: 15px;
     min-height: 150px;
     height: auto;
-    cursor: pointer; 
+    cursor: pointer;
+    border-radius: 6px;
 }
 
 .logo-name {
-    font-family: 'Gill Sans', sans-serif;
+    font-family: var(--font-primary);
     font-weight: bold;
     text-decoration: none;
     font-size: 0.9rem;
-    color: #333;
+    color: var(--bg-forest);
     line-height: 1.2;
 }
 
@@ -257,11 +253,18 @@ background-color: #eee;
     width: 100%;
 }
 
+.logo-image-wrapper img {
+    max-width: 90%;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
 .logo-card img {
     max-width: 120px;
     max-height: 100px;
     object-fit: contain;
-    margin-bottom: 0s;
 }
 
 .logo-caption {
@@ -270,11 +273,46 @@ background-color: #eee;
     text-align: center;
     padding-top: 10px;
     font-size: 0.75rem;
-    color: #666;
-    text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: var(--bg-forest);
+    opacity: 0.8;
+    font-family: var(--font-primary);
 }
 
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(28, 45, 36, 0.95); /* Tinted Deep Forest Alpha Overlay */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: zoom-out;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+    border: 2px solid var(--accent-sage);
+    object-fit: contain;
+    background-color: var(--bg-cream);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px; right: 35px;
+    color: var(--bg-cream);
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   6. PORTFOLIO & HUB ARCHITECTURES
+   ========================================================================== */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -283,235 +321,349 @@ background-color: #eee;
 }
 
 .portfolio-item {
-    height: 400px;
-    background-color: #333;
+    height: 380px;
+    background-color: var(--bg-cream-dark); /* Contrast cream box fill */
+    border: 2px solid var(--bg-forest-light);  /* Thin sage/green frame */
     border-radius: 20px;
-    display: flex;
-    align-items: flex-end;
-    text-decoration: none;
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.portfolio-item:hover { transform: scale(1.03); }
-
-.item-info {
-    background: linear-gradient(transparent, rgba(0,0,0,0.8));
-    width: 100%;
-    padding: 30px;
-    color: white;
-}
-
-.hub-wrapper {
-    min-height: 100vh;
+    
+    /* Change to a column flexbox to stack image on top of text */
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center; 
+    padding: 30px;
+    box-sizing: border-box;
+    
+    /* Strips default link styles */
+    text-decoration: none !important; 
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover effects */
+.portfolio-item:hover { 
+    transform: scale(1.03); 
+    border-color: var(--bg-cream);
+    background-color: #e8e0d2; /* Slightly deeper cream hover tone */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Perfect centering box for your icons */
+.portfolio-item .logo-image-wrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    background-color: #121212;
-    color: white;
-    font-family: 'Gill Sans', sans-serif;
-    padding: 40px;
+    width: 100%;
+    margin-bottom: 20px; /* Space between centered image and text below */
+}
+
+/* Make your navigation icons significantly larger */
+.portfolio-item .logo-image-wrapper img {
+    max-width: 85%;
+    max-height: 180px; /* Increased from 80px to make them prominent */
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover .logo-image-wrapper img {
+    transform: scale(1.05); /* Subtle pop on hover */
+}
+
+/* Completely centered text block container */
+.item-info {
+    width: 100%;
+    background: none; /* Strips old dark linear gradient strip */
+    padding: 0;
     text-align: center;
 }
 
-.hub-header h1 {
-    font-size: 3rem;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-
-.hub-container {
-    display: flex;
-    gap: 40px;
-    margin-top: 30px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.hub-card {
-    width: 400px;
-    height: 280px;
-    border-radius: 15px;
-    position: relative;
-    cursor: pointer;
-    overflow: hidden;
-    background-color: #1e1e1e;
-    border: 1px solid rgba(255,255,255,0.1);
-    transition: all 0.4s ease;
-    background-size: cover;
-    background-position: center;
-}
-
-/* Specific Card Backgrounds */
-#card-roster { background-image: url('images/roster-preview.jpg'); }
-#card-uniform { background-image: url('images/uniform-preview.jpg'); }
-
-.card-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,0.9));
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 30px;
-    text-align: left;
-    transition: background 0.3s;
-}
-
-.hub-card:hover {
-    transform: translateY(-10px);
-    border-color: #ffffff;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-}
-
-.hub-card h2 {
+/* The label strings */
+.item-info h2 {
+    font-family: var(--font-primary);
+    color: var(--bg-forest);
     font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: none;
+    letter-spacing: 1.5px;
     margin: 0;
-    text-transform: uppercase;
+    padding-bottom: 0;
+    display: block;
+    
+    /* Removes the green underline completely */
+    border-bottom: none !important; 
 }
 
-.hub-card span {
-    font-size: 1rem;
-    opacity: 0.8;
+@media (prefers-color-scheme: dark) {
+    .portfolio-item {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-color: var(--bg-forest-light);
+    }
+    
+    .portfolio-item:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-color: var(--accent-sage);
+    }
+
+    .item-info h2 {
+        color: var(--bg-cream) !important;
+    }
 }
 
-.back-home-btn {
-    margin-top: 60px;
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.5);
-    color: white;
-    padding: 12px 30px;
+/* ==========================================================================
+   7. CALENDAR COMPONENT INTERFACES
+   ========================================================================== */
+.calendar-cell.empty, .calendar-cell.off-day {
+    background-color: var(--bg-cream-dark);
+}
+
+/* ==========================================================================
+   8. PHOTO CAROUSEL COMPONENT ENGINE
+   ========================================================================== */
+.carousel-section {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.section-heading {
+    font-family: var(--font-primary);
+    color: var(--bg-forest);
+    text-transform: none;
+    border-bottom: 2px solid var(--bg-forest-light);
+    padding-bottom: 8px;
+    margin-left: 0;
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 800px;
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(28,45,36,0.15);
+    background-color: var(--bg-cream-dark);
+    border: 1px solid var(--accent-sage);
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+    width: 100%;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.carousel-slide img {
+    max-width: 100%;
+    max-height: 450px;
+    object-fit: contain;
+    display: block;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(28, 45, 36, 0.8);
+    color: var(--bg-cream);
+    border: none;
+    font-size: 24px;
+    padding: 12px 16px;
     cursor: pointer;
-    font-family: inherit;
-    text-transform: uppercase;
-    transition: 0.3s;
+    z-index: 10;
+    border-radius: 4px;
+    transition: background-color 0.2s;
 }
 
-.back-home-btn:hover {
-    background: white;
-    color: black;
+.carousel-btn:hover {
+    background-color: var(--bg-forest-light);
 }
 
+.prev-btn { left: 15px; }
+.next-btn { right: 15px; }
+
+/* ==========================================================================
+   9. INLINE GRAPHICS & ARTICLE MEDIA
+   ========================================================================== */
+.mini-inline {
+    max-width: 320px;
+}
+
+.mini-inline img {
+    max-height: 140px;
+}
+
+.inline-image-grid {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.inline-image-grid img {
+    width: calc(50% - 6px);
+    max-height: 160px;
+    object-fit: contain;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--bg-forest-light);
+    border-radius: 4px;
+}
+
+/* ==========================================================================
+   10. SITE FOOTER SYSTEM (LUKE'S PORTFOLIO NARRATIVE)
+   ========================================================================== */
+.site-story-footer {
+    background-color: var(--bg-forest); 
+    color: var(--bg-cream);            
+    padding: 60px 20px;
+    margin-top: 60px;
+    font-family: var(--font-primary);
+    border-top: 4px solid var(--bg-forest-light);
+}
+
+.footer-content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-column {
+    flex: 1 1 450px; 
+}
+
+.footer-column h3 {
+    font-family: var(--font-primary);
+    color: var(--accent-sage); 
+    font-size: 1.6rem;
+    text-transform: none;
+    margin-top: 0;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.footer-column p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    opacity: 0.95;
+}
+.story-block {
+    margin-bottom: 35px;
+}
+
+/* ==========================================================================
+   11. MEDIA RESPONSIVENESS MATRIX
+   ========================================================================== */
 @media (max-width: 1024px) {
     .grid, .logo-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 logos across */
+        grid-template-columns: repeat(3, 1fr);
         gap: 15px;
         padding: 15px;
     }
 
     .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 projects across */
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .identity-header {
-        font-size: 2.2rem !important; /* Scale down team names */
+    h2.team-title {
+        font-size: 2.2rem !important;
         margin-left: 15px !important;
     }
 }
+
 @media (max-width: 600px) {
     .grid, .logo-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 logos across */
+        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
         padding: 10px;
     }
 
     .portfolio-grid {
-        grid-template-columns: 1fr; /* Stacks portfolio cards */
+        grid-template-columns: 1fr;
     }
 
-    .identity-header {
+    h2.team-title {
         font-size: 1.8rem !important;
         margin: 40px 0 5px 10px !important;
         width: calc(100% - 20px);
     }
 
-    .year-row-label {
-        font-size: 1rem !important;
-        margin-left: 15px !important;
-    }
-
-    h1 { font-size: 1.8rem; } /* Prevents title wrapping issues */
+    h1 { font-size: 1.8rem; } 
 
     .logo-card {
         min-height: 120px;
         padding: 10px;
     }
-}
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #121212; /* Pro dark gray background */
-        color: #ffffff;
-    }
 
-    h1 { color: #ffffff; }
+    .inline-image-grid {
+        flex-direction: column;
+    }
     
-    h2, .identity-header { 
-        color: #ffffff !important; 
-        border-bottom-color: #444 !important; 
+    .inline-image-grid img {
+        width: 100%;
+        max-height: 200px;
+    }
+}
+
+/* ==========================================================================
+   12. HISTORICAL/DARK EMULATOR OVERRIDES
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+    /* Direct inverted environment mapping swaps base rules out perfectly */
+    body {
+        background-color: var(--bg-forest);
+        color: var(--bg-cream);
     }
 
-    .year-row-label { color: #aaaaaa !important; }
+    h1, h2 { color: var(--bg-cream) !important; }
+    h2 { border-bottom-color: var(--bg-forest-light) !important; }
+    
+    h2.team-title {
+        color: var(--bg-cream); 
+    }
 
-    .sticky-header { background-color: #1a1a1a; }
+    .sticky-header { 
+        background-color: var(--bg-forest); 
+        border-bottom-color: var(--accent-sage);
+    }
 
     .category-header {
-        background-color: #2c2c2c;
-        color: #ffffff;
-        border-bottom-color: #444444;
+        background-color: var(--bg-forest-light);
+        color: var(--bg-cream);
+        border-bottom-color: var(--accent-sage);
     }
 
-    /* Card adjustments */
     .logo-card, .league-card, .team-card {
-        background-color: #1e1e1e;
-        border-color: #333333;
+        background-color: rgba(255, 255, 255, 0.05);
+        border-color: var(--bg-forest-light);
     }
 
     .logo-card:hover, .league-card:hover, .team-card:hover {
-        background-color: #2a2a2a;
-        border-color: #666666;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-color: var(--accent-sage);
     }
 
-    .logo-name, .league-name, .team-name { color: #ffffff; }
-    .logo-caption { color: #bbbbbb; }
-
-    .lightbox {
-    display: none; /* Hidden by default */
-    position: fixed;
-    z-index: 2000; /* Must be higher than your sticky-header (1000) */
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* Dark semi-transparent background */
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    cursor: zoom-out;
-}
-
-/* The actual enlarged image */
-.lightbox img {
-    max-width: 90%;
-    max-height: 80%;
-    border: 2px solid white;
-    object-fit: contain;
-}
-
-/* The "X" button */
-.close-btn {
-    position: absolute;
-    top: 20px; right: 35px;
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-}
-}
+    .logo-name, .league-name, .team-name { color: var(--bg-cream); }
+    .logo-caption { color: var(--accent-sage); }
 
     .back-btn {
-        background-color: #2c2c2c;
-        color: #ffffff;
-        border-color: #444444;
+        background-color: var(--bg-cream);
+        color: var(--bg-forest);
+        border-color: var(--bg-cream-dark);
     }
+    
+    .back-btn:hover {
+        background-color: var(--bg-cream-dark);
+        color: var(--bg-forest);
+    }
+}
