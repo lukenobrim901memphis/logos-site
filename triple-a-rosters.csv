@@ -149,7 +149,7 @@
 22,P,Will Dion,L,Columbus,Promoted,Yes
 37,P,Jay Driver,R,Columbus,Demoted,No
 45,P,Magnus Ellerts,R,Columbus,Demoted,No
-27,P,Daniel Espino,R,Columbus,Active,Yes
+27,P,Daniel Espino,R,Columbus,Promoted,Yes
 7,OF,Stuart Fairchild,R,Columbus,Promoted,Yes
 15,INF,Dayan Frias,S,Columbus,Active,No
 48,P,Hunter Gaddis,R,Columbus,Promoted,Yes
@@ -161,7 +161,7 @@
 2,C,Cooper Ingle,L,Columbus,Active,No
 31,P,Matt Jachec,R,Columbus,Demoted,No
 47,P,Jack Jasiak,R,Columbus,Demoted,No
-34,OF,Nolan Jones,L,Columbus,Active,No
+34,OF,Nolan Jones (CHW),L,Columbus,Traded,No
 1,OF,CJ Kayfus,L,Columbus,Active,Yes
 37,P,Jack Leftwich,R,Columbus,Active,No
 ,P,Ben Lively,R,Columbus,60-day IL,No
@@ -319,7 +319,6 @@
 15,INF,Brett Wisely,L,Gwinnett,Active,No
 12,P,Hunter Barco,L,Indianapolis,Active,Yes
 29,P,Jarod Bayless,R,Indianapolis,Demoted,No
-26,P,Brandan Bidois,R,Indianapolis,Promoted,Yes
 25,P,Beau Burrows,R,Indianapolis,Active,No
 7,OF,Tyler Callihan,L,Indianapolis,Promoted,Yes
 20,C,Nick Cimillo,R,Indianapolis,Active,No
@@ -342,7 +341,7 @@
 11,INF,Mitch Jebb,L,Indianapolis,60-day IL,No
 2,INF,Termarr Johnson,L,Indianapolis,Active,No
 36,P,Jared Jones,R,Indianapolis,Promoted,Yes
-57,P,Antwone Kelly,R,Indianapolis,Active,Yes
+57,P,Antwone Kelly,R,Indianapolis,Promoted,Yes
 50,P,Joe La Sorsa (BOS),L,Indianapolis,Traded,No
 53,P,Justin Meis,R,Indianapolis,Active,No
 ,P,Oddanier Mosqueda,L,Indianapolis,60-day IL,No
@@ -651,7 +650,7 @@
 38,P,Peter Strzelecki,R,Nashville,Free Agent,No
 6,INF,Jheremy Vargas,R,Nashville,Demoted,No
 57,INF,Andrew Vaughn,R,Nashville,Promoted,Yes
-35,P,Jacob Waguespack,R,Nashville,Active,No
+35,P,Jacob Waguespack (DET),R,Nashville,Traded,No
 25,INF,Brock Wilken,R,Nashville,Active,No
 7,INF,Jett Williams,R,Nashville,Active,No
 21,P,Craig Yoho,R,Nashville,Active,Yes
@@ -704,7 +703,7 @@
 32,OF,Weston Wilson,R,Norfolk,Promoted,Yes
 60,P,Brandon Young,R,Norfolk,Promoted,Yes
 6,C,Eliezer Alfonzo,S,Oklahoma City,Active,No
-22,P,Logan Allen,L,Oklahoma City,Development List,No
+22,P,Logan Allen,L,Oklahoma City,Free Agent,No
 ,P,Yency Almonte,R,Oklahoma City,Full-Season IL,No
 50,INF,Mookie Betts,R,Oklahoma City,Promoted,Yes
 ,INF,David Bote,R,Oklahoma City,Restricted List,No
@@ -734,7 +733,7 @@
 7,INF,Noah Miller,S,Oklahoma City,Active,No
 25,C,Chuckie Robinson,R,Oklahoma City,Promoted,Yes
 ,P,José Rodríguez,R,Oklahoma City,60-day IL,No
-45,P,Christian Romero,R,Oklahoma City,Development List,No
+45,P,Christian Romero,R,Oklahoma City,Active,No
 54,P,Jerming Rosario,R,Oklahoma City,Active,No
 35,P,River Ryan,R,Oklahoma City,Active,Yes
 11,P,Ryder Ryan,R,Oklahoma City,Active,No
@@ -770,7 +769,7 @@
 22,P,Ben Kudrna,R,Omaha,60-Day IL,No
 12,INF,Nick Loftin,R,Omaha,Promoted,Yes
 60,C,Luke Maile,R,Omaha,Active,No
-17,C,Elih Marrero,S,Omaha,Injured List,No
+17,C,Elih Marrero,S,Omaha,Active,No
 40,P,Chazz Martinez,L,Omaha,Full-Season IL,No
 18,INF,Michael Massey,L,Omaha,Promoted,Yes
 ,P,John Means,L,Omaha,60-day IL,No
@@ -797,9 +796,7 @@
 ,P,Kyle Amendt,R,Reno,Full-Season IL,No
 54,P,Roman Angelo,R,Reno,Demoted,No
 57,INF,Luken Baker,R,Reno,Active,No
-50,INF,Luken Baker,R,Reno,Free Agent,No
-50,INF,Luken Baker,R,Reno,Promoted,Yes
-58,C,Jeremiah Boyd,R,Reno,Demoted,No
+58,C,Jeremiah Boyd,R,Reno,Active,No
 38,P,Mitch Bratt,L,Reno,Injured List,Yes
 23,P,Juan Burgos,R,Reno,Active,Yes
 49,P,Isaiah Campbell,R,Reno,Active,No
@@ -825,7 +822,7 @@
 ,P,Derek Law,R,Reno,Injured List,No
 18,P,Yu-Min Lin,L,Reno,Active,No
 31,INF,Tyler Locklear,R,Reno,Active,Yes
-52,C,Gavin Logan,L,Reno,Active,No
+52,C,Gavin Logan,L,Reno,Demoted,No
 62,INF,Ivan Melendez,R,Reno,Free Agent,No
 32,C,Matt O'Neill,R,Reno,Active,No
 54,P,Taylor Rashi (MIN),R,Reno,Traded,No
@@ -885,7 +882,7 @@
 9,P,Luke Young,R,Rochester,Active,No
 19,P,Dane Acker,R,Round Rock,Injured List,No
 28,P,Robby Ahlstrom,L,Round Rock,Promoted,Yes
-24,P,Aidan Anderson,R,Round Rock,Development List,No
+24,P,Aidan Anderson,R,Round Rock,Active,No
 39,P,Ben Anderson,R,Round Rock,Development List,No
 43,P,Carter Baumler,R,Round Rock,Promoted,Yes
 45,P,Austin Bergner,R,Round Rock,Free Agent,No
@@ -959,7 +956,6 @@
 32,P,Braxton Roxby,R,Sacramento,Active,No
 26,P,Juan Sanchez,L,Sacramento,Active,No
 15,P,Gregory Santos,R,Sacramento,Injured List,Yes
-55,P,Carson Seymour,R,Sacramento,Promoted,Yes
 57,P,Dylan Smith,R,Sacramento,Promoted,Yes
 21,C,Daniel Susac,R,Sacramento,Promoted,Yes
 46,P,Blade Tidwell,R,Sacramento,Active,Yes
@@ -1342,7 +1338,7 @@
 8,C,Kyle Teel,L,Charlotte,Promoted,Yes
 14,C,Logan O'Hoppe,R,Salt Lake,Promoted,Yes
 55,P,Chris Martin,R,Round Rock,Promoted,Yes
-8,C,Lou Albrecht,R,Lehigh Valley,Development List,No
+8,C,Lou Albrecht,R,Lehigh Valley,Active,No
 39,P,Levi Stoudt,R,Lehigh Valley,Active,No
 7,INF,Colby Halter,L,Las Vegas,Active,No
 41,P,Fernando Sanchez,L,El Paso,Injured List,No
@@ -1351,7 +1347,7 @@
 44,INF,Joshua Kuroda-Grauer,R,Las Vegas,Active,No
 50,P,Troy Melton,R,Toledo,Promoted,Yes
 9,INF,Tony Santa Maria,R,Durham,Demoted,No
-19,INF,Shawn Ross,R,Indianapolis,Active,No
+19,INF,Shawn Ross,R,Indianapolis,Promoted,Yes
 10,INF,Aeverson Arteaga,R,Sacramento,Active,No
 23,P,Jeff Criswell,R,Albuquerque,Promoted,Yes
 13,OF,Matt Wallner,L,St. Paul,Active,Yes
@@ -1588,7 +1584,7 @@
 28,P,Brandt Thompson,R,Memphis,Active,No
 48,OF,Matt Shaw,R,Iowa,Promoted,Yes
 36,P,Germán Márquez,R,El Paso,Rehab Assignment,Yes
-53,P,Taijuan Walker,R,Salt Lake,Free Agent,No
+53,P,Taijuan Walker,R,Salt Lake,Active,No
 59,P,Matt Wilkinson,L,Sacramento,Active,No
 3,INF,Pascanel Ferreras,R,Sugar Land,Active,No
 ,P,Connor Brogdon,R,Columbus,Demoted,No
@@ -1703,7 +1699,7 @@
 12,P,Carson Fulmer,R,Tacoma,Active,No
 56,P,Tristan Beck,R,Sacramento,Not Yet Reported,Yes
 20,P,Mick Abel,R,St. Paul,Rehab Assignment,Yes
-,INF,Raynel Delgado,L,Sugar Land,Not Yet Reported,No
+,INF,Raynel Delgado,L,Sugar Land,Promoted,Yes
 7,OF,Connor Hujsak,R,Durham,Active,No
 29,P,Yunior Marte,R,Indianapolis,Active,No
 56,P,Zach McCambley,R,Louisville,Not Yet Reported,Yes
@@ -1721,6 +1717,16 @@
 32,INF,Ryan Nicholson,L,Salt Lake,Active,No
 36,P,Ryan Helsley,R,Norfolk,Rehab Assignment,Yes
 23,P,Will Brian,L,Scranton/Wilkes-Barre,Active,No
-10,INF,Shay Whitcomb,R,Sugar Land,Not Yet Reported,Yes
+10,INF,Shay Whitcomb,R,Sugar Land,Active,Yes
 60,P,Jonathan Pintaro,R,Syracuse,Not Yet Reported,Yes
 27,INF,Davis Wendzel,R,Indianapolis,Not Yet Reported,Yes
+,P,Jacob Waguespack,R,Toledo,Not Yet Reported,No
+,OF,Nolan Jones,L,Charlotte,Not Yet Reported,No
+12,P,Lyon Richardson,R,Nashville,Active,No
+54,P,Aaron Civale,R,Las Vegas,Rehab Assignment,Yes
+19,P,Mason Adams,R,Charlotte,Active,No
+55,P,Carson Seymour,R,Sacramento,Not Yet Reported,Yes
+0,P,Bryce Hubbart,L,Louisville,Active,No
+38,P,Frankeli Arias,L,Charlotte,Active,No
+59,C,Camden Janik,R,Indianapolis,Active,No
+26,P,Brandan Bidois,R,Indianapolis,Not Yet Reported,Yes

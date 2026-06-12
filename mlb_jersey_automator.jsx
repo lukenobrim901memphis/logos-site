@@ -7,7 +7,7 @@ var exportFolder = new Folder(icloudRoot + "/MLB Jersey Numbers/MLB Jersey numbe
 
 // PASTE DATA HERE: Wrap each copied spreadsheet line in single quotes, ending with a comma.
 var lines = [
-"6/10	Rowdy Tellez	ATL	11	Road navy Quikrete ad patch	braves11 Rowdy Tellez"
+"6/11	Michael Rucker	SEA	38	Road teal 50th season patch Nintendo ad patch	mariners38 Michael Rucker"
 ];
 
 if (!exportFolder.exists) {

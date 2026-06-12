@@ -7,7 +7,15 @@ var exportFolder = new Folder(icloudRoot + "/MiLB Jersey numbers 2026");
 
 // Paste your raw data between the multi-line quotes below
 var lines = [
-"6/10	Jake Woodford	NVL	40	Home powder affiliate	sounds40 Jake Woodford"
+"6/11	Mason Adams	CHR	19	Home white	knights19 Mason Adams",
+"6/11	Frankeli Arias	CHR	38	Home white	knights38 Frankeli Arias",
+"6/11	Camden Janik	INA	59	Home white	indians59 Camden Janik",
+"6/11	Bryce Hubbart	LOU	0	Home red	bats0 Bryce Hubbart",
+"6/11	Aaron Civale	LVG	54	Road blue home hat	aviators54 Aaron Civale",
+"6/11	Chadwick Tromp	NFK	14	Home green	tides14 Chadwick Tromp",
+"6/11	Ryan Helsley	NFK	36	Home green	tides36 Ryan Helsley",
+"6/11	Lyon Richardson	NVL	12	Home blue throwback	sounds12 Lyon Richardson",
+"6/11	Will Brian	SWB	23	Home white	railriders23 Will Brian",
 ];
 
 if (!exportFolder.exists) {
