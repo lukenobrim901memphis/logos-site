@@ -7,15 +7,24 @@ var exportFolder = new Folder(icloudRoot + "/MiLB Jersey numbers 2026");
 
 // Paste your raw data between the multi-line quotes below
 var lines = [
-"6/11	Mason Adams	CHR	19	Home white	knights19 Mason Adams",
-"6/11	Frankeli Arias	CHR	38	Home white	knights38 Frankeli Arias",
-"6/11	Camden Janik	INA	59	Home white	indians59 Camden Janik",
-"6/11	Bryce Hubbart	LOU	0	Home red	bats0 Bryce Hubbart",
-"6/11	Aaron Civale	LVG	54	Road blue home hat	aviators54 Aaron Civale",
-"6/11	Chadwick Tromp	NFK	14	Home green	tides14 Chadwick Tromp",
-"6/11	Ryan Helsley	NFK	36	Home green	tides36 Ryan Helsley",
-"6/11	Lyon Richardson	NVL	12	Home blue throwback	sounds12 Lyon Richardson",
-"6/11	Will Brian	SWB	23	Home white	railriders23 Will Brian",
+"6/25	Brendon Little	BFL	54	Road gray red hat	bisons54 Brendon Little",
+"6/25	Jacob Melton	DHB	7	Road gray	bulls7 Jacob Melton",
+"6/25	Jake Cave	DHB	16	Road gray	bulls16 Jake Cave",
+"6/25	Chris Roycroft	DHB	41	Road gray	bulls41 Chris Roycroft",
+"6/25	Jake Cronenworth	ELP	2	Road red	chihuahuas2 Jake Cronenworth",
+"6/25	Connor Wietgrefe	INA	33	Home Circle City	indians33 Connor Wietgrefe",
+"6/25	Michael Walsh	INA	41	Home Circle City	indians41 Michael Walsh",
+"6/25	Grant Kipp	IWA	29	Home Iowa Oaks	cubs29 Grant Kipp",
+"6/25	Peter Strzelecki	NVL	35	Home blue throwback	sounds35 Peter Strzelecki",
+"6/25	River Ryan	OKC	77	Road blue alt hat	comets77 River Ryan",
+"6/25	Reiver Sanmartin	SAC	13	Home Dorados	rivercats13 Reiver Sanmartin",
+"6/25	Trey McLoughlin	SKT	31	Home white	spacecowboys31 Trey McLoughlin",
+"6/25	Owen Cobb	SWB	10	Road navy	railriders10 Owen Cobb",
+"6/25	Jared Oliva	SYR	32	Road gray	mets32 Jared Oliva",
+"6/25	Jefry Yan	SYR	70	Road gray	mets70 Jefry Yan",
+"6/25	Nathan Hickey	WOR	11	Home red red hat	redsox11 Nathan Hickey",
+"6/25	Andrew Knizner	WOR	36	Home red red hat	redsox36 Andrew Knizner",
+"6/25	Jovani Morán	WOR	52	Home red red hat	redsox52 Jovani Morán",
 ];
 
 if (!exportFolder.exists) {
