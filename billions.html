@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Billions</title>
+<!-- Your site stylesheet. Change the path if it lives somewhere else. -->
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Billions page extras, built on the variables in style.css */
+  .billions-wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px 40px; }
+  .billions-intro { text-align: center; margin: 0 20px 12px; opacity: 0.85; font-size: 1.05rem; }
+  .rule { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 0 20px 6px; padding: 0; list-style: none; }
+  .rule li {
+    font-family: var(--font-primary); font-weight: bold; font-size: 0.8rem; letter-spacing: 0.5px;
+    padding: 3px 10px; border-radius: 4px;
+    background-color: var(--bg-cream-dark); color: var(--bg-forest); border: 1px solid var(--accent-sage);
+  }
+  .sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 30px 0 12px; }
+  .sec-head h2 { margin: 0; padding-bottom: 2px; }
+  .sub { font-size: 0.95rem; opacity: 0.8; }
+  .day-nav { display: flex; gap: 8px; }
+  .day-btn {
+    font-family: var(--font-primary); font-weight: bold; font-size: 0.9rem;
+    color: var(--bg-cream); background-color: var(--bg-forest);
+    border: 1px solid var(--bg-forest-light); border-radius: 4px; padding: 6px 14px; cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  .day-btn:hover:not(:disabled) { background-color: var(--bg-forest-light); transform: translateY(-1px); }
+  .day-btn:disabled { opacity: 0.35; cursor: default; }
+    .day-nav { position: relative; }
+
+  /* Calendar date picker */
+  .cal {
+    position: absolute; right: 0; top: calc(100% + 8px); z-index: 500;
+    width: 330px; max-width: calc(100vw - 40px); padding: 14px;
+    background-color: var(--bg-cream); color: var(--bg-forest);
+    border: 2px solid var(--accent-sage); border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(28, 45, 36, 0.2); font-family: var(--font-primary);
+  }
+  .cal[hidden] { display: none; }
+  .cal-head { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+  .cal-head select {
+    flex: 1; font-family: var(--font-primary); font-size: 0.95rem; font-weight: bold; padding: 5px 6px;
+    border-radius: 4px; border: 1px solid var(--accent-sage); background-color: var(--bg-cream-dark); color: var(--bg-forest);
+  }
+  .cal-arrow {
+    font-family: var(--font-primary); font-weight: bold; font-size: 1.1rem; line-height: 1;
+    width: 34px; height: 32px; border-radius: 4px; cursor: pointer;
+    color: var(--bg-cream); background-color: var(--bg-forest); border: 1px solid var(--bg-forest-light);
+  }
+  .cal-arrow:hover:not(:disabled) { background-color: var(--bg-forest-light); }
+  .cal-arrow:disabled { opacity: 0.3; cursor: default; }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+  .cal-dow { text-align: center; font-size: 0.75rem; font-weight: bold; letter-spacing: 0.5px; opacity: 0.7; padding-bottom: 2px; }
+  .cal-day {
+    aspect-ratio: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: var(--font-primary); font-size: 0.9rem; border-radius: 4px; padding: 0;
+    border: 1px solid transparent; background: none; color: inherit;
+  }
+  .cal-day.no-games { opacity: 0.28; cursor: default; }
+  .cal-day.games { background-color: var(--bg-cream-dark); border-color: var(--accent-sage); cursor: pointer; }
+  .cal-day.billions { background-color: var(--bg-forest-light); border-color: var(--bg-forest-light); color: var(--bg-cream); font-weight: bold; cursor: pointer; }
+  .cal-day.games:hover, .cal-day.billions:hover { transform: scale(1.06); border-color: var(--bg-forest); }
+  .cal-day.selected { outline: 2px solid var(--bg-forest); outline-offset: 1px; }
+  .cal-day .n { font-size: 0.65rem; line-height: 1; margin-top: 2px; opacity: 0.9; }
+  .cal-legend { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 12px; font-size: 0.78rem; opacity: 0.85; }
+  .cal-legend span { display: inline-flex; align-items: center; gap: 5px; }
+  .cal-legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; border: 1px solid var(--accent-sage); }
+  .cal-legend i.b { background-color: var(--bg-forest-light); border-color: var(--bg-forest-light); }
+  .cal-legend i.g { background-color: var(--bg-cream-dark); }
+  .cal-legend i.x { opacity: 0.35; }
+  .season-pick { font-family: var(--font-primary); font-size: 0.95rem; }
+  .season-pick select {
+    font-family: var(--font-primary); font-size: 0.95rem; padding: 5px 8px; margin-left: 4px;
+    border-radius: 4px; border: 1px solid var(--accent-sage);
+    background-color: var(--bg-cream-dark); color: var(--bg-forest);
+  }
+  .table-card {
+    background-color: var(--bg-cream-dark); border: 1px solid var(--accent-sage);
+    border-radius: 12px; overflow-x: auto;
+  }
+  .table-card table { width: 100%; border-collapse: collapse; font-family: var(--font-primary); font-variant-numeric: tabular-nums; }
+  .table-card th, .table-card td { padding: 10px 14px; text-align: left; white-space: nowrap; }
+  .table-card th {
+    background-color: var(--bg-forest); color: var(--bg-cream);
+    font-size: 0.85rem; font-weight: bold; letter-spacing: 1px;
+  }
+  .table-card td { border-bottom: 1px solid rgba(142, 184, 151, 0.45); }
+  .table-card tr:last-child td { border-bottom: 0; }
+  .table-card tbody tr:hover { background-color: #e8e0d2; }
+  .table-card th.n, .table-card td.n { text-align: right; }
+  td.z { opacity: 0.45; }
+  .player-link {
+    background: none; border: 0; padding: 0; cursor: pointer;
+    font-family: var(--font-primary); font-size: 1rem; font-weight: bold; color: var(--bg-forest);
+    text-decoration: underline; text-decoration-color: var(--accent-sage); text-underline-offset: 3px; text-decoration-thickness: 2px;
+  }
+  .player-link:hover, .player-link:focus-visible { color: var(--bg-forest-light); }
+  .team { opacity: 0.8; }
+  .count { color: var(--bg-forest-light); font-weight: bold; }
+  .big { font-size: 1.3rem; font-weight: bold; color: var(--bg-forest-light); }
+  .rank { opacity: 0.7; width: 1%; }
+  .empty { padding: 30px 16px; text-align: center; font-family: var(--font-primary); opacity: 0.8; }
+  .updated-line { text-align: center; font-size: 0.85rem; opacity: 0.7; margin-top: 30px; }
+
+  /* Player popup, styled like the site lightbox */
+  dialog#player-dlg {
+    padding: 0; width: min(860px, calc(100vw - 32px));
+    background-color: var(--bg-cream); color: var(--bg-forest);
+    border: 2px solid var(--accent-sage); border-radius: 8px;
+    font-family: var(--font-primary);
+  }
+  dialog#player-dlg::backdrop { background-color: rgba(28, 45, 36, 0.85); }
+  .dlg-head { display: flex; gap: 14px; align-items: center; padding: 16px 20px; border-bottom: 2px solid var(--bg-forest-light); }
+  .dlg-head img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; background-color: var(--bg-cream-dark); border: 1px solid var(--accent-sage); }
+  .dlg-head h3 { margin: 0; font-size: 1.6rem; letter-spacing: 1px; color: var(--bg-forest); }
+  .dlg-head .close { margin-left: auto; font-family: var(--font-primary); font-size: 32px; font-weight: bold; line-height: 1; background: none; border: 0; color: var(--bg-forest); cursor: pointer; padding: 0 6px; }
+  .dlg-body { padding: 16px 20px 20px; }
+  .dlg-body .table-card { border-radius: 6px; }
+
+  @media (max-width: 600px) {
+    .sec-head { margin-top: 24px; }
+      .cal { left: 0; right: auto; }
+    .table-card th, .table-card td { padding: 8px 10px; }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .rule li { background-color: var(--bg-forest-light); color: var(--bg-cream); border-color: var(--accent-sage); }
+    .day-btn { background-color: var(--bg-cream); color: var(--bg-forest); border-color: var(--bg-cream-dark); }
+    .day-btn:hover:not(:disabled) { background-color: var(--bg-cream-dark); }
+    .cal { background-color: var(--bg-forest); color: var(--bg-cream); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5); }
+    .cal-head select { background-color: var(--bg-forest-light); color: var(--bg-cream); }
+    .cal-arrow { background-color: var(--bg-cream); color: var(--bg-forest); border-color: var(--bg-cream-dark); }
+    .cal-arrow:hover:not(:disabled) { background-color: var(--bg-cream-dark); }
+    .cal-day.games { background-color: rgba(255, 255, 255, 0.07); border-color: var(--bg-forest-light); }
+    .cal-day.billions { background-color: var(--accent-sage); border-color: var(--accent-sage); color: var(--bg-forest); }
+    .cal-day.games:hover, .cal-day.billions:hover { border-color: var(--bg-cream); }
+    .cal-day.selected { outline-color: var(--bg-cream); }
+    .cal-legend i.g { background-color: rgba(255, 255, 255, 0.07); border-color: var(--bg-forest-light); }
+    .cal-legend i.b { background-color: var(--accent-sage); border-color: var(--accent-sage); }
+    .season-pick select { background-color: var(--bg-forest-light); color: var(--bg-cream); }
+    .table-card { background-color: rgba(255, 255, 255, 0.05); border-color: var(--bg-forest-light); }
+    .table-card th { background-color: var(--bg-forest-light); }
+    .table-card td { border-bottom-color: rgba(142, 184, 151, 0.2); }
+    .table-card tbody tr:hover { background-color: rgba(255, 255, 255, 0.1); }
+    .player-link { color: var(--bg-cream); }
+    .player-link:hover, .player-link:focus-visible { color: var(--accent-sage); }
+    .count, .big { color: var(--accent-sage); }
+    dialog#player-dlg { background-color: var(--bg-forest); color: var(--bg-cream); }
+    .dlg-head { border-bottom-color: var(--accent-sage); }
+    .dlg-head h3, .dlg-head .close { color: var(--bg-cream); }
+  }
+</style>
+</head>
+<body>
+<header class="sticky-header">
+  <a class="back-btn" href="index.html">← Back</a>
+  <h1>Billions</h1>
+</header>
+
+<ul class="rule" id="rule"></ul>
+
+<main class="billions-wrap">
+  <section>
+    <div class="sec-head">
+      <div>
+        <h2 class="section-heading" id="day-title">Yesterday's billions</h2>
+        <div class="sub" id="day-sub"></div>
+      </div>
+      <div class="day-nav">
+        <button class="day-btn" id="prev-day" aria-label="Previous game day">‹ Prev</button>
+              <button class="day-btn" id="cal-btn" aria-haspopup="dialog" aria-expanded="false">Pick a date</button>
+        <button class="day-btn" id="next-day" aria-label="Next game day">Next ›</button>
+                <div class="cal" id="cal" role="dialog" aria-label="Pick a date" hidden>
+          <div class="cal-head">
+            <button class="cal-arrow" id="cal-prev" aria-label="Previous month">‹</button>
+            <select id="cal-month" aria-label="Month"></select>
+            <select id="cal-year" aria-label="Year"></select>
+            <button class="cal-arrow" id="cal-next" aria-label="Next month">›</button>
+          </div>
+          <div class="cal-grid" id="cal-grid"></div>
+          <div class="cal-legend">
+            <span><i class="b"></i>Billions</span>
+            <span><i class="g"></i>Games, no billions</span>
+            <span><i class="x"></i>No games</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="table-card" id="day-table"></div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div>
+        <h2 class="section-heading">Billion leaders</h2>
+        <div class="sub">Click a player to see every billion they've recorded.</div>
+      </div>
+      <label class="season-pick">Season <select id="season"></select></label>
+    </div>
+    <div class="table-card" id="leaders"></div>
+  </section>
+
+  <p class="updated-line" id="updated"></p>
+</main>
+
+<dialog id="player-dlg" aria-labelledby="dlg-name">
+  <div class="dlg-head">
+    <img id="dlg-img" alt="" onerror="this.hidden=true">
+    <div>
+      <h3 id="dlg-name"></h3>
+      <div class="sub" id="dlg-sub"></div>
+    </div>
+    <button class="close" id="dlg-close" aria-label="Close">×</button>
+  </div>
+  <div class="dlg-body"><div class="table-card" id="dlg-table"></div></div>
+</dialog>
+
+<script src="data/billions.js"></script>
+<script>
+(() => {
+  // Path to the JSON file the nightly script writes. Change if you host it elsewhere.
+  const DATA_URL = 'data/billions.json';
+
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const fmtDate = (iso, opts = { month: 'short', day: 'numeric', year: 'numeric' }) =>
+    new Date(iso + 'T12:00:00').toLocaleDateString('en-US', opts);
+  const seasonLabel = y => `${y - 1}-${String(y).slice(2)}`;
+
+  const STAT_COLS = [
+    ['MIN', s => s.min, 'min'], ['PTS', s => s.pts, 'pts'], ['FG', s => `${s.fgm}-${s.fga}`, 'fga'],
+    ['3PT', s => `${s.tpm}-${s.tpa}`, 'tpa'], ['FT', s => `${s.ftm}-${s.fta}`, 'fta'],
+    ['REB', s => s.reb, 'reb'], ['AST', s => s.ast, 'ast'], ['STL', s => s.stl, 'stl'], ['BLK', s => s.blk, 'blk'],
+  ];
+  const HIT = new Set();
+  const ZERO = new Set(['pts', 'fga', 'tpa', 'fta']);
+  const statHeads = () => STAT_COLS.map(([h]) => `<th class="n">${h}</th>`).join('');
+  const statCells = s => STAT_COLS.map(([, f, k]) =>
+    `<td class="n${HIT.has(k) ? ' hit' : ''}${ZERO.has(k) ? ' z' : ''}">${esc(f(s))}</td>`).join('');
+
+  let all = [], days = [], dayIdx = 0;
+    let gameDays = new Set(), billionsByDay = new Map();
+  const CAL_START = { y: 2016, m: 9 };   // October 2016 (months are 0-based)
+  let calView = { y: 2016, m: 9 };
+
+  function render(data) {
+    // Season count for each billion: how many that player had in that season, through that game.
+    all = [...data.billions].sort((a, b) => a.date.localeCompare(b.date) || String(a.eventId).localeCompare(String(b.eventId)));
+    const running = {};
+    for (const b of all) {
+      const k = `${b.season}:${b.athleteId}`;
+      b.seasonCount = running[k] = (running[k] || 0) + 1;
+    }
+
+    // Rule chips
+    const r = data.rule?.under ? data.rule : { under: { min: 10, reb: 2, ast: 2, stl: 2, blk: 2 }, zero: ['pts', 'fgm', 'fga', 'ftm', 'fta'] };
+    const L = { min: 'MIN', reb: 'REB', ast: 'AST', stl: 'STL', blk: 'BLK', pts: 'PTS', fgm: 'FG', fga: 'FGA', ftm: 'FT', fta: 'FTA' };
+    $('rule').innerHTML = [
+      ...Object.entries(r.under).map(([k, n]) => `<li>&lt;${n} ${L[k] || k}</li>`),
+      ...r.zero.map(k => `<li>0 ${L[k] || k}</li>`),
+    ].join('');
+
+    // Day view: defaults to the latest game day the script processed.
+        // Every day that had games, and how many billions each day had.
+    gameDays = new Set([...Object.values(data.processedEvents || {}), ...all.map(b => b.date), data.lastGameDate].filter(Boolean));
+    billionsByDay = new Map();
+    for (const b of all) billionsByDay.set(b.date, (billionsByDay.get(b.date) || 0) + 1);
+
+    // Day view: defaults to the latest game day. Prev/Next step through game days.
+    days = [...gameDays].sort();
+    dayIdx = days.length - 1;
+    renderDay();
+
+    // Seasons
+    const seasons = [...new Set(all.map(b => b.season))].sort((a, b) => b - a);
+    if (!seasons.length && data.lastGameDate) seasons.push(+data.lastGameDate.slice(0, 4) + (+data.lastGameDate.slice(5, 7) >= 9 ? 1 : 0));
+    $('season').innerHTML = seasons.map(y => `<option value="${y}">${seasonLabel(y)}</option>`).join('') + (seasons.length > 1 ? '<option value="all">All seasons</option>' : '');
+    $('season').onchange = renderLeaders;
+    renderLeaders();
+
+    $('updated').textContent = data.updated
+      ? `Updated ${new Date(data.updated).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })} · ${Object.keys(data.processedEvents || {}).length} games checked · Data: ESPN`
+      : '';
+
+    openFromHash();
+  }
+
+  // Season types from ESPN: 3 = playoffs, 5 = play-in
+  const game = b => esc(b.matchup) + (b.seasonType === 3 ? ' <span class="team">(Playoffs)</span>' : b.seasonType === 5 ? ' <span class="team">(Play-In)</span>' : '');
+
+  function playerCell(b) {
+    return `<button class="player-link" data-id="${esc(b.athleteId)}">${esc(b.name)}</button><span class="team">, ${esc(b.team)}</span> <span class="count">(${b.seasonCount})</span>`;
+  }
+
+  function renderDay() {
+    const day = days[dayIdx];
+    $('prev-day').disabled = dayIdx <= 0;
+    $('next-day').disabled = dayIdx >= days.length - 1;
+    if (!day) {
+      $('day-title').textContent = "Yesterday's billions";
+      $('day-sub').textContent = '';
+      $('day-table').innerHTML = '<div class="empty">No games have been checked yet.</div>';
+      return;
+    }
+    const y = new Date(); y.setDate(y.getDate() - 1);
+    const yIso = `${y.getFullYear()}-${String(y.getMonth() + 1).padStart(2, '0')}-${String(y.getDate()).padStart(2, '0')}`;
+    $('day-title').textContent = day === yIso ? "Yesterday's billions" : dayIdx === days.length - 1 ? 'Latest billions' : 'Billions';
+    $('day-sub').textContent = fmtDate(day, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    const rows = all.filter(b => b.date === day);
+    $('day-table').innerHTML = rows.length
+      ? `<table><thead><tr><th>Date</th><th>Player</th><th>Game</th>${statHeads()}</tr></thead><tbody>${
+          rows.map(b => `<tr><td>${fmtDate(b.date)}</td><td>${playerCell(b)}</td><td>${game(b)}</td>${statCells(b.stats)}</tr>`).join('')
+        }</tbody></table>`
+      : `<div class="empty">No billions on ${fmtDate(day, { month: 'long', day: 'numeric' })}</div>`;
+  }
+
+    // ---------- Calendar ----------
+  const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const iso = (y, m, d) => `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+  const monthNum = v => v.y * 12 + v.m;
+  function calEnd() {
+    const last = days[days.length - 1];
+    const now = new Date();
+    const a = { y: now.getFullYear(), m: now.getMonth() };
+    if (!last) return a;
+    const b = { y: +last.slice(0, 4), m: +last.slice(5, 7) - 1 };
+    return monthNum(b) > monthNum(a) ? b : a;
+  }
+
+  function renderCal() {
+    const end = calEnd();
+    if (monthNum(calView) < monthNum(CAL_START)) calView = { ...CAL_START };
+    if (monthNum(calView) > monthNum(end)) calView = { ...end };
+    const { y, m } = calView;
+
+    $('cal-year').innerHTML = Array.from({ length: end.y - CAL_START.y + 1 }, (_, i) => end.y - i)
+      .map(yr => `<option value="${yr}"${yr === y ? ' selected' : ''}>${yr}</option>`).join('');
+    $('cal-month').innerHTML = MONTHS.map((name, i) => {
+      const off = monthNum({ y, m: i }) < monthNum(CAL_START) || monthNum({ y, m: i }) > monthNum(end);
+      return `<option value="${i}"${i === m ? ' selected' : ''}${off ? ' disabled' : ''}>${name}</option>`;
+    }).join('');
+    $('cal-prev').disabled = monthNum(calView) <= monthNum(CAL_START);
+    $('cal-next').disabled = monthNum(calView) >= monthNum(end);
+
+    const selected = days[dayIdx];
+    const firstDow = new Date(y, m, 1).getDay();
+    const daysInMonth = new Date(y, m + 1, 0).getDate();
+    let html = ['S', 'M', 'T', 'W', 'T', 'F', 'S'].map(d => `<div class="cal-dow">${d}</div>`).join('');
+    html += '<div></div>'.repeat(firstDow);
+    for (let d = 1; d <= daysInMonth; d++) {
+      const date = iso(y, m, d);
+      const n = billionsByDay.get(date) || 0;
+      const label = fmtDate(date, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+      if (!gameDays.has(date)) {
+        html += `<button class="cal-day no-games" disabled aria-label="${label}, no games">${d}</button>`;
+      } else {
+        html += `<button class="cal-day ${n ? 'billions' : 'games'}${date === selected ? ' selected' : ''}" data-date="${date}"
+          aria-label="${label}, ${n ? n + ' billion' + (n === 1 ? '' : 's') : 'no billions'}">${d}${n ? `<span class="n">${n}</span>` : ''}</button>`;
+      }
+    }
+    $('cal-grid').innerHTML = html;
+  }
+
+  function openCal() {
+    const sel = days[dayIdx];
+    if (sel) calView = { y: +sel.slice(0, 4), m: +sel.slice(5, 7) - 1 };
+    renderCal();
+    $('cal').hidden = false;
+    $('cal-btn').setAttribute('aria-expanded', 'true');
+  }
+  function closeCal() {
+    $('cal').hidden = true;
+    $('cal-btn').setAttribute('aria-expanded', 'false');
+  }
+  function showDate(date) {
+    const i = days.indexOf(date);
+    if (i < 0) return;
+    dayIdx = i;
+    renderDay();
+    history.replaceState(null, '', `#date=${date}`);
+  }
+
+  $('cal-btn').onclick = e => { e.stopPropagation(); $('cal').hidden ? openCal() : closeCal(); };
+  $('cal-prev').onclick = () => { calView = calView.m === 0 ? { y: calView.y - 1, m: 11 } : { y: calView.y, m: calView.m - 1 }; renderCal(); };
+  $('cal-next').onclick = () => { calView = calView.m === 11 ? { y: calView.y + 1, m: 0 } : { y: calView.y, m: calView.m + 1 }; renderCal(); };
+  $('cal-month').onchange = e => { calView.m = +e.target.value; renderCal(); };
+  $('cal-year').onchange = e => { calView.y = +e.target.value; renderCal(); };
+  $('cal-grid').onclick = e => {
+    const btn = e.target.closest('.cal-day[data-date]');
+    if (btn) { showDate(btn.dataset.date); closeCal(); }
+  };
+  document.addEventListener('click', e => { if (!$('cal').hidden && !e.target.closest('#cal, #cal-btn')) closeCal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('cal').hidden) { closeCal(); $('cal-btn').focus(); } });
+  
+  function renderLeaders() {
+    const sel = $('season').value;
+    const pool = sel === 'all' || !sel ? all : all.filter(b => String(b.season) === sel);
+    const by = new Map();
+    for (const b of pool) {
+      const p = by.get(b.athleteId) || { id: b.athleteId, name: b.name, n: 0, last: b };
+      p.n++; p.last = b; p.name = b.name;
+      by.set(b.athleteId, p);
+    }
+    const list = [...by.values()].sort((a, b) => b.n - a.n || b.last.date.localeCompare(a.last.date) || a.name.localeCompare(b.name));
+    let rank = 0, prev = null;
+    $('leaders').innerHTML = list.length
+      ? `<table><thead><tr><th class="n">#</th><th>Player</th><th>Team</th><th class="n">Billions</th><th>Most recent</th></tr></thead><tbody>${
+          list.map((p, i) => {
+            if (p.n !== prev) { rank = i + 1; prev = p.n; }
+            return `<tr><td class="n rank">${rank}</td><td><button class="player-link" data-id="${esc(p.id)}">${esc(p.name)}</button></td>
+              <td class="team">${esc(p.last.team)}</td><td class="n big">${p.n}</td>
+              <td class="team">${fmtDate(p.last.date)} · ${game(p.last)}</td></tr>`;
+          }).join('')
+        }</tbody></table>`
+      : '<div class="empty">No billions yet this season.</div>';
+  }
+
+  function openPlayer(id) {
+    const games = all.filter(b => b.athleteId === id);
+    if (!games.length) return;
+    const latest = games[games.length - 1];
+    $('dlg-name').textContent = latest.name;
+    const seasons = [...new Set(games.map(g => g.season))];
+    $('dlg-sub').textContent = `${latest.team} · ${games.length} billion${games.length === 1 ? '' : 's'}` +
+      (seasons.length > 1 ? ` across ${seasons.length} seasons` : '');
+    const img = $('dlg-img');
+    img.hidden = false;
+    img.src = latest.headshot || `https://a.espncdn.com/i/headshots/nba/players/full/${encodeURIComponent(id)}.png`;
+    $('dlg-table').innerHTML = `<table><thead><tr><th>Date</th><th>Team</th><th>Game</th>${statHeads()}</tr></thead><tbody>${
+      [...games].reverse().map(b => `<tr><td>${fmtDate(b.date)}</td><td class="team">${esc(b.team)}</td><td>${game(b)}</td>
+        ${statCells(b.stats)}</tr>`).join('')
+    }</tbody></table>`;
+    const dlg = $('player-dlg');
+    if (!dlg.open) dlg.showModal();
+    if (location.hash !== `#player=${id}`) history.replaceState(null, '', `#player=${id}`);
+  }
+
+  function openFromHash() {
+    const m = location.hash.match(/^#player=(.+)$/);
+    if (m) openPlayer(decodeURIComponent(m[1]));
+        const d = location.hash.match(/^#date=(\d{4}-\d{2}-\d{2})$/);
+    if (d && days.includes(d[1])) { dayIdx = days.indexOf(d[1]); renderDay(); }
+  }
+
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('.player-link');
+    if (btn) openPlayer(btn.dataset.id);
+  });
+  $('dlg-close').onclick = () => $('player-dlg').close();
+  $('player-dlg').addEventListener('click', e => { if (e.target === e.currentTarget) e.currentTarget.close(); });
+    $('player-dlg').addEventListener('close', () => {
+    if (location.hash.startsWith('#player=')) history.replaceState(null, '', location.pathname + location.search);
+  });
+  $('prev-day').onclick = () => { if (dayIdx > 0) showDate(days[dayIdx - 1]); };
+  $('next-day').onclick = () => { if (dayIdx < days.length - 1) showDate(days[dayIdx + 1]); };
+  window.addEventListener('hashchange', openFromHash);
+
+  // data/billions.js (loaded above) works even when the page is opened as a file;
+  // fall back to the .json file when the page is served by a web server.
+  (window.BILLIONS_DATA
+    ? Promise.resolve(window.BILLIONS_DATA)
+    : fetch(DATA_URL, { cache: 'no-store' }).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }))
+    .then(render)
+    .catch(() => {
+      $('day-table').innerHTML = '<div class="empty">Couldn\'t load billions data yet. Run the updater script once to create it.</div>';
+      $('leaders').innerHTML = '';
+    });
+})();
+</script>
+</body>
+</html>

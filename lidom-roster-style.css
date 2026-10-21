@@ -1,0 +1,140 @@
+.text-aguilas { color: #fbc71d !important; }
+.text-estrellas { color: #016438 !important; }
+.text-gigantes { color: #8e1c3f !important; }
+.text-leones { color: #d82a34 !important; }
+.text-tigres { color: #062f87 !important; }
+.text-toros { color: #fd4000 !important;}
+
+.roster-table {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.2px;
+    padding: 2px 8px !important;
+    line-height: 1.1;
+    vertical-align: left;
+    text-shadow: none !important;
+    -webkit-font-smoothing: antialiased;
+    border-collapse: collapse;
+}
+
+.inactive {
+    color: currentColor !important; 
+    opacity: 0.5 !important; /* Adjust this (0.1 to 1.0) to your liking */
+    font-style: italic;
+    text-shadow: none !important;
+}
+
+.filter-btn {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+    
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    background: transparent;
+    padding: 10px 18px;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filter-btn:hover {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+    border-color: currentColor;
+}
+
+.forty-man-bold {
+    font-weight: bold;
+    font-stretch: condensed; 
+}
+
+#table-header-row{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 0.7rem;
+    padding: 8px !important;
+    background-color: #333 !important;
+    color: #ffffff !important;
+    font-weight: bold;
+    text-align: left;
+    text-transform: none;
+    letter-spacing: 1px;
+    text-shadow: none !important;
+    border-bottom: 2px solid #555;
+}
+
+.roster-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #ffffff
+}
+
+#team-title {
+    margin: 0;
+    font-size: 1.5rem;
+    text-transform: none;
+}
+
+.active-count-pill {
+    background-color: #333;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: none;
+}
+
+#active-count {
+    font-size: 1rem;
+    margin-left: 4px;
+    color: #00d4ff;
+}
+
+@media (prefers-color-scheme: dark) {
+    .text-aguilas, .text-aguilas td { color: #fbc71d !important; }
+    .text-estrellas, .text-estrellas td { color: #016438 !important; }
+    .text-gigantes, .text-gigantes td { color: #8e1c3f !important; }
+    .text-leones, .text-leones td { color: #d82a34 !important; }
+    .text-tigres, .text-tigres td { color: #062f87 !important; }
+    .text-toros, .text-toros td { color: #fd4000 !important;}
+}
+
+@media (prefers-color-scheme: dark) {
+    #table-header-row{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 0.7rem;
+    padding: 8px !important;
+    background-color: #333 !important; /* Dark background for the header */
+    color: #ffffff !important;
+    font-weight: bold;
+    text-align: left;
+    text-transform: none;         /* Headers usually look good in caps */
+    letter-spacing: 1px;
+    text-shadow: none !important;      /* No fuzziness */
+    border-bottom: 2px solid #555;
+}
+.inactive {
+    color: currentColor !important; 
+    opacity: 0.5 !important; /* Adjust this (0.1 to 1.0) to your liking */
+    font-style: italic;
+    text-shadow: none !important;
+}
+    .filter-btn {
+        border-color: #444;
+    }
+    .filter-btn:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    }
+
+    .active-count-pill {
+        background-color: #444;
+    }
+    #active-count {
+        color: #05C3DD;
+    }
