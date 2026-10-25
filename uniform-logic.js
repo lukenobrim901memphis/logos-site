@@ -361,7 +361,7 @@ function renderJersey(el, row, selectedTeam) {
     }
 
     let cleanName = jersey.toLowerCase();
-    cleanName = cleanName.replace(/['’]/g, '-').replace(/\./g, '');
+    cleanName = cleanName.replace(/[\u0027\u2019\u2018\u201B\u02BC\u02B9\u2032\u0060\u00B4\uFF07]/g, '-').replace(/\./g, '');
     cleanName = cleanName.trim().replace(/\s+/g, '-');
     
     const img = document.createElement('img');

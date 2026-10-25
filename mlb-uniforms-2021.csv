@@ -90,8 +90,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 4/7/21,SFG,Road gray,SDP,Home white
 4/7/21,CHW,Road gray,SEA,Home white
 4/7/21,TOR,Road powder,TEX,Home white red hat
-4/7/21,ATL,Road navy 150th season patch,WSN,Home white white panel hat
 4/7/21,ATL,Road gray 150th season patch,WSN,Home red
+4/7/21,ATL,Road navy 150th season patch,WSN,Home white white panel hat
 4/8/21,BOS,Road navy,BAL,Home white
 4/8/21,KCR,Road gray,CHW,Home white
 4/8/21,ARI,Road gray,COL,Home white
@@ -177,8 +177,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 4/14/21,LAA,Road gray,KCR,Home powder
 4/14/21,COL,Road gray,LAD,Home white Tommy Lasorda TOMMY 2 memorial patch Don Sutton SUTTON 20 memorial patch
 4/14/21,CHC,Road royal,MIL,Home cream Hank Aaron 44 memorial patch
-4/14/21,BOS,Road gray,MIN,Home white Mike Bell MB memorial patch
 4/14/21,BOS,Road navy,MIN,Home powder Mike Bell MB memorial patch
+4/14/21,BOS,Road gray,MIN,Home white Mike Bell MB memorial patch
 4/14/21,PHI,Road gray Dick Allen 15 memorial patch,NYM,Home white Tom Seaver 41 memorial patch
 4/14/21,SDP,Road brown,PIT,Home white Military Appreciation
 4/14/21,CIN,Road red Joe Morgan 8 memorial patch,SFG,Home cream
@@ -186,8 +186,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 4/14/21,TEX,Road gray,TBR,Home navy
 4/14/21,NYY,Road gray Whitey Ford 16 memorial patch,TOR,Home powder
 4/15/21,MIA,Road black Jackie Robinson Day,ATL,Home red Jackie Robinson Day
-4/15/21,SEA,Road teal Jackie Robinson Day,BAL,Home white Jackie Robinson Day
 4/15/21,SEA,Road navy teal brim hat,BAL,Home white
+4/15/21,SEA,Road teal Jackie Robinson Day,BAL,Home white Jackie Robinson Day
 4/15/21,CLE,Road gray Jackie Robinson Day,CHW,Home white Jackie Robinson Day
 4/15/21,TOR,Road royal Jackie Robinson Day,KCR,Home white Jackie Robinson Day
 4/15/21,COL,Road purple Jackie Robinson Day,LAD,Home white Jackie Robinson Day
@@ -215,8 +215,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 4/17/21,CHW,Road gray,BOS,City Connect
 4/17/21,ATL,Road navy 150th season patch,CHC,Home white
 4/17/21,CLE,Road gray,CIN,Home white Joe Morgan 8 memorial patch
-4/17/21,NYM,Road gray Tom Seaver 41 memorial patch,COL,Home white
 4/17/21,NYM,Road gray Tom Seaver 41 memorial patch,COL,Home purple
+4/17/21,NYM,Road gray Tom Seaver 41 memorial patch,COL,Home white
 4/17/21,TOR,Road royal,KCR,Home powder
 4/17/21,TOR,Road royal,KCR,Home white
 4/17/21,MIN,Postponed - 5/20/21,LAA,Postponed - 5/20/21
@@ -263,8 +263,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 4/20/21,TEX,Road royal,LAA,Home red
 4/20/21,BAL,Road gray,MIA,Home white
 4/20/21,ATL,Road gray 150th season patch,NYY,Home white Whitey Ford 16 memorial patch
-4/20/21,MIN,Road navy Mike Bell MB memorial patch,OAK,Home white
 4/20/21,MIN,Road gray Mike Bell MB memorial patch,OAK,Home kelly green
+4/20/21,MIN,Road navy Mike Bell MB memorial patch,OAK,Home white
 4/20/21,SFG,Road gray,PHI,Home white Dick Allen 15 memorial patch
 4/20/21,MIL,Road navy Hank Aaron 44 memorial patch,SDP,Home white
 4/20/21,LAD,Road gray Los Angeles Tommy Lasorda TOMMY 2 memorial patch Don Sutton SUTTON 20 memorial patch,SEA,Home white
@@ -274,8 +274,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 4/21/21,ARI,Road gray,CIN,Home red Joe Morgan 8 memorial patch
 4/21/21,CHW,Postponed - 5/31/21,CLE,Postponed - 5/31/21
 4/21/21,HOU,Road orange,COL,Home purple
-4/21/21,PIT,Road gray,DET,Home white
 4/21/21,PIT,Road black,DET,Home white
+4/21/21,PIT,Road gray,DET,Home white
 4/21/21,TBR,Road navy,KCR,Home white
 4/21/21,TEX,Road gray,LAA,Home white
 4/21/21,BAL,Road gray,MIA,Home white
@@ -448,8 +448,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 5/4/21,LAD,Road gray Dodgers Tommy Lasorda TOMMY 2 memorial patch Don Sutton SUTTON 20 memorial patch,CHC,Home white
 5/4/21,LAD,Road gray Dodgers Tommy Lasorda TOMMY 2 memorial patch Don Sutton SUTTON 20 memorial patch,CHC,Home white
 5/4/21,CHW,Road gray,CIN,Home white Joe Morgan 8 memorial patch
-5/4/21,SFG,Road gray,COL,Home white 2021 All Star Game patch
 5/4/21,SFG,Road gray,COL,Home black 2021 All Star Game patch
+5/4/21,SFG,Road gray,COL,Home white 2021 All Star Game patch
 5/4/21,CLE,Road gray,KCR,Home white
 5/4/21,TBR,Road navy,LAA,Home white
 5/4/21,ARI,Road gray,MIA,Home white
@@ -669,8 +669,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 5/20/21,TBR,Road navy,BAL,Home white
 5/20/21,WSN,Road gray,CHC,Home white
 5/20/21,SFG,Road gray,CIN,Home red Joe Morgan 8 memorial patch
-5/20/21,MIN,Road navy Mike Bell MB memorial patch,LAA,Home white
 5/20/21,MIN,Road gray Mike Bell MB memorial patch,LAA,Home red
+5/20/21,MIN,Road navy Mike Bell MB memorial patch,LAA,Home white
 5/20/21,ARI,Road gray,LAD,Home white Tommy Lasorda TOMMY 2 memorial patch Don Sutton SUTTON 20 memorial patch
 5/20/21,HOU,Road orange,OAK,Home white
 5/20/21,MIA,Road gray,PHI,Home throwback Dick Allen 15 memorial patch
@@ -765,8 +765,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 5/27/21,SFG,Road gray,LAD,Home white Tommy Lasorda TOMMY 2 memorial patch Don Sutton SUTTON 20 memorial patch
 5/27/21,PHI,Road gray Dick Allen 15 memorial patch,MIA,Home white
 5/27/21,SDP,Road brown,MIL,Home cream Hank Aaron 44 memorial patch
-5/27/21,COL,Road purple 2021 All Star Game patch,NYM,Home white Tom Seaver 41 memorial patch
 5/27/21,COL,Road black 2021 All Star Game patch,NYM,Home white Tom Seaver 41 memorial patch
+5/27/21,COL,Road purple 2021 All Star Game patch,NYM,Home white Tom Seaver 41 memorial patch
 5/27/21,TOR,Road powder,NYY,Home white Whitey Ford 16 memorial patch
 5/27/21,TOR,Road royal,NYY,Home white Whitey Ford 16 memorial patch
 5/27/21,LAA,Road gray,OAK,Home kelly green
@@ -804,14 +804,14 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 5/29/21,COL,Road purple 2021 All Star Game patch,PIT,Home white
 5/29/21,TEX,Road royal,SEA,Home white
 5/29/21,PHI,Road gray Dick Allen 15 memorial patch,TBR,Home throwback
-5/29/21,MIL,Road gray Hank Aaron 44 memorial patch,WSN,Home white Curly W
 5/29/21,MIL,Road gray Hank Aaron 44 memorial patch,WSN,Home navy
+5/29/21,MIL,Road gray Hank Aaron 44 memorial patch,WSN,Home white Curly W
 5/30/21,STL,Road gray Bob Gibson 45 memorial patch,ARI,Home red snake hat
 5/30/21,MIA,Postponed - 6/7/21,BOS,Postponed - 6/7/21
 5/30/21,CIN,Road red Joe Morgan 8 memorial patch,CHC,Home white
 5/30/21,BAL,Road black,CHW,Home throwback
-5/30/21,TOR,Road royal,CLE,Home white
 5/30/21,TOR,Road powder,CLE,Home red
+5/30/21,TOR,Road royal,CLE,Home white
 5/30/21,NYY,Road gray Whitey Ford 16 memorial patch,DET,Home white
 5/30/21,SDP,Road sand,HOU,Home navy
 5/30/21,SFG,Road gray,LAD,Home white Tommy Lasorda TOMMY 2 memorial patch Don Sutton SUTTON 20 memorial patch
@@ -829,7 +829,7 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 5/31/21,PHI,Road gray Memorial Day patch Dick Allen 15 memorial patch,CIN,Home white Joe Morgan 8 memorial patch Memorial Day patch
 5/31/21,CHW,Road gray Memorial Day patch,CLE,Home red Memorial Day patch
 5/31/21,CHW,Road black Memorial Day patch,CLE,Home white Memorial Day patch
-5/31/21,BOS,Road navy Memorial Day patch,HOU,Home white Hispanic Heritage
+5/31/21,BOS,Road navy Memorial Day patch,HOU,Home white Memorial Day patch
 5/31/21,PIT,Road gray Memorial Day patch,KCR,Home white Memorial Day patch
 5/31/21,STL,Road gray Memorial Day patch Bob Gibson 45 memorial patch,LAD,Home white Memorial Day patch Tommy Lasorda TOMMY 2 memorial patch Don Sutton SUTTON 20 memorial patch
 5/31/21,DET,Road gray Memorial Day patch,MIL,Home cream Memorial Day patch Hank Aaron 44 memorial patch
@@ -991,8 +991,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 6/12/21,KCR,Road royal,OAK,Home white
 6/12/21,NYY,Road gray Whitey Ford 16 memorial patch,PHI,Home cream Dick Allen 15 memorial patch
 6/12/21,BAL,Road orange,TBR,Home powder
-6/12/21,SFG,Road gray,WSN,Home white red hat
 6/12/21,SFG,Road gray,WSN,Home navy
+6/12/21,SFG,Road gray,WSN,Home white red hat
 6/13/21,LAA,Road gray,ARI,Home red snake hat
 6/13/21,TOR,Road royal,BOS,Home red
 6/13/21,STL,Road gray Bob Gibson 45 memorial patch,CHC,Home white
@@ -1090,12 +1090,12 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 6/19/21,TBR,Road navy,SEA,Home Negro League
 6/19/21,PHI,Road gray Dick Allen 15 memorial patch,SFG,Home Negro League
 6/19/21,MIN,Road navy Mike Bell MB memorial patch,TEX,Home white blue hat
-6/19/21,NYM,Road gray Tom Seaver 41 memorial patch,WSN,Home white Curly W
 6/19/21,NYM,Road royal Tom Seaver 41 memorial patch,WSN,Home red
-6/20/21,LAD,Road gray Dodgers Father’s Day hat and patch Tommy Lasorda TOMMY 2 memorial patch Don Sutton SUTTON 20 memorial patch,ARI,Home white teal accents
+6/19/21,NYM,Road gray Tom Seaver 41 memorial patch,WSN,Home white Curly W
+6/20/21,LAD,Road gray Dodgers Father’s Day hat and patch Tommy Lasorda TOMMY 2 memorial patch Don Sutton SUTTON 20 memorial patch,ARI,Home white teal accents Father's Day hat and patch
 6/20/21,STL,Road powder Bob Gibson 45 memorial patch,ATL,Home cream
 6/20/21,STL,Road gray Father’s Day hat and patch Bob Gibson 45 memorial patch,ATL,Home white 150th season patch Father’s Day hat and patch
-6/20/21,TOR,Road royal,BAL,Home white Father’s Day hat and patch
+6/20/21,TOR,Road royal Father's Day hat and patch,BAL,Home white Father’s Day hat and patch
 6/20/21,MIA,Road gray Father’s Day hat and patch,CHC,Home white Father’s Day hat and patch
 6/20/21,MIL,Road gray Father’s Day hat and patch Hank Aaron 44 memorial patch,COL,Home white 2021 All Star Game patch Father’s Day hat and patch
 6/20/21,CHW,Road black Father’s Day hat and patch,HOU,Home white Father’s Day hat and patch
@@ -1106,14 +1106,14 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 6/20/21,CIN,Road red Joe Morgan 8 memorial patch Father’s Day hat and patch,SDP,Home camo green Father’s Day hat and patch
 6/20/21,TBR,Road gray Father’s Day hat and patch,SEA,Home white Father’s Day hat and patch
 6/20/21,PHI,Road red Father’s Day hat and patch Dick Allen 15 memorial patch,SFG,Home cream Father’s Day hat and patch
-6/20/21,MIN,Road navy Father’s Day hat and patch Mike Bell MB memorial patch,TEX,Home powder
+6/20/21,MIN,Road navy Father’s Day hat and patch Mike Bell MB memorial patch,TEX,Home powder Father's Day hat and patch
 6/20/21,NYM,Road royal Father’s Day hat and patch Tom Seaver 41 memorial patch,WSN,Home white Curly W Father’s Day hat and patch
 6/21/21,MIL,Road gray Hank Aaron 44 memorial patch,ARI,Home white sand accents
 6/21/21,HOU,Road gray,BAL,Home white
 6/21/21,CLE,Road gray,CHC,Home white
 6/21/21,CIN,Road red Joe Morgan 8 memorial patch,MIN,Home white Mike Bell MB memorial patch
-6/21/21,ATL,Road navy 150th season patch,NYM,Home white Tom Seaver 41 memorial patch
 6/21/21,ATL,Road gray 150th season patch,NYM,Home white Tom Seaver 41 memorial patch
+6/21/21,ATL,Road navy 150th season patch,NYM,Home white Tom Seaver 41 memorial patch
 6/21/21,LAD,Road gray Dodgers Tommy Lasorda TOMMY 2 memorial patch Don Sutton SUTTON 20 memorial patch,SDP,Home white
 6/21/21,OAK,Road kelly green,TEX,Home white red hat
 6/22/21,MIL,Road navy Hank Aaron 44 memorial patch,ARI,Home white teal accents
@@ -1341,8 +1341,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 7/7/21,WSN,Road navy,SDP,Home white
 7/7/21,NYY,Road gray Whitey Ford 16 memorial patch,SEA,Home white
 7/7/21,STL,Road gray Bob Gibson 45 memorial patch,SFG,Home cream
-7/7/21,CLE,Road gray,TBR,Home powder
 7/7/21,CLE,Road navy,TBR,Home navy
+7/7/21,CLE,Road gray,TBR,Home powder
 7/7/21,DET,Road gray,TEX,Home white red hat
 7/8/21,COL,Road purple 2021 All Star Game patch,ARI,Home white sand accents
 7/8/21,TOR,Postponed - 9/11/21,BAL,Postponed - 9/11/21
@@ -1379,8 +1379,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 7/10/21,ATL,Road gray 150th season patch,MIA,City Connect
 7/10/21,CIN,Road red Joe Morgan 8 memorial patch,MIL,Home white Hank Aaron 44 memorial patch
 7/10/21,DET,Road gray,MIN,Home powder Mike Bell MB memorial patch
-7/10/21,PIT,Road gray,NYM,Home white Tom Seaver 41 memorial patch
 7/10/21,PIT,Road black,NYM,Home white Tom Seaver 41 memorial patch
+7/10/21,PIT,Road gray,NYM,Home white Tom Seaver 41 memorial patch
 7/10/21,COL,Road purple 2021 All Star Game patch,SDP,Home white
 7/10/21,LAA,Road red,SEA,Home white
 7/10/21,WSN,Road navy,SFG,City Connect
@@ -1413,8 +1413,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 7/16/21,SEA,Road gray,LAA,Home white
 7/16/21,BOS,Road navy,NYY,Home white Whitey Ford 16 memorial patch
 7/16/21,CLE,Road gray,OAK,Home white
-7/16/21,MIA,Road gray,PHI,Home cream Dick Allen 15 memorial patch
 7/16/21,MIA,Road black,PHI,Home cream Dick Allen 15 memorial patch
+7/16/21,MIA,Road gray,PHI,Home cream Dick Allen 15 memorial patch
 7/16/21,NYM,Road gray Tom Seaver 41 memorial patch,PIT,Home white
 7/16/21,SFG,Road gray,STL,Home white Bob Gibson 45 memorial patch
 7/16/21,TEX,Road gray,TOR,Home royal
@@ -1424,8 +1424,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 7/17/21,HOU,Road gray,CHW,Home black Martyl Reinsdorf MR memorial patch
 7/17/21,MIL,Road navy Hank Aaron 44 memorial patch,CIN,Home white Joe Morgan 8 memorial patch
 7/17/21,LAD,Road gray Dodgers Tommy Lasorda TOMMY 2 memorial patch Don Sutton SUTTON 20 memorial patch,COL,Home purple 2021 All Star Game patch
-7/17/21,MIN,Road navy Mike Bell MB memorial patch,DET,Home white
 7/17/21,MIN,Road gray Mike Bell MB memorial patch,DET,Home white
+7/17/21,MIN,Road navy Mike Bell MB memorial patch,DET,Home white
 7/17/21,BAL,Road orange,KCR,Home white
 7/17/21,SEA,Road navy,LAA,Home white
 7/17/21,BOS,Road navy,NYY,Home white Whitey Ford 16 memorial patch
@@ -1448,8 +1448,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 7/18/21,MIA,Road gray,PHI,Home cream Dick Allen 15 memorial patch
 7/18/21,NYM,Road royal Tom Seaver 41 memorial patch,PIT,Home white
 7/18/21,SFG,Road gray,STL,Home white Sunday hat Bob Gibson 45 memorial patch
-7/18/21,TEX,Road royal,TOR,Home white
 7/18/21,TEX,Road gray,TOR,Home powder
+7/18/21,TEX,Road royal,TOR,Home white
 7/18/21,SDP,Road brown,WSN,Home white red hat
 7/19/21,PIT,Road gray,ARI,Home white sand accents
 7/19/21,SDP,Postponed - 7/21/21,ATL,Postponed - 7/21/21
@@ -1618,7 +1618,7 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 7/31/21,LAD,Road gray Dodgers Tommy Lasorda TOMMY 2 memorial patch Don Sutton SUTTON 20 memorial patch,ARI,Home black
 7/31/21,MIL,Road gray Hank Aaron 44 memorial patch,ATL,Home throwback
 7/31/21,CLE,Road gray,CHW,Home black Martyl Reinsdorf MR memorial patch
-7/31/21,BAL,Road orange,DET,Home white
+7/31/21,BAL,Road orange,DET,Home white Negro Leagues 100th anniversary patch
 7/31/21,OAK,Road gray,LAA,Home throwback
 7/31/21,NYY,Road gray Whitey Ford 16 memorial patch,MIA,City Connect
 7/31/21,CIN,Road gray Joe Morgan 8 memorial patch,NYM,Home white Tom Seaver 41 memorial patch
@@ -1724,8 +1724,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 8/7/21,NYM,Road royal Tom Seaver 41 memorial patch,PHI,Home cream Dick Allen 15 memorial patch
 8/7/21,ARI,Road gray,SDP,Home white
 8/7/21,KCR,Road gray,STL,Home cream Bob Gibson 45 memorial patch
-8/7/21,BOS,Road navy,TOR,Home white
 8/7/21,BOS,Road gray,TOR,Home royal
+8/7/21,BOS,Road navy,TOR,Home white
 8/8/21,WSN,Road gray,ATL,Home cream
 8/8/21,TBR,Road navy,BAL,Home white
 8/8/21,CHW,Road gray Martyl Reinsdorf MR memorial patch,CHC,Home white
@@ -1816,8 +1816,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 8/14/21,TBR,Road navy,MIN,Home powder Mike Bell MB memorial patch
 8/14/21,LAD,Road gray Dodgers Tommy Lasorda TOMMY 2 memorial patch Don Sutton SUTTON 20 memorial patch,NYM,Home white Tom Seaver 41 memorial patch
 8/14/21,CIN,Road red Joe Morgan 8 memorial patch,PHI,Home cream Dick Allen 15 memorial patch
-8/14/21,MIL,Road gray Hank Aaron 44 memorial patch,PIT,Home white
 8/14/21,MIL,Road gray Hank Aaron 44 memorial patch,PIT,Home black
+8/14/21,MIL,Road gray Hank Aaron 44 memorial patch,PIT,Home white
 8/14/21,TOR,Road gray,SEA,Home white
 8/14/21,COL,Road gray 2021 All Star Game patch,SFG,Home black
 8/14/21,OAK,Road gray,TEX,Home white blue hat
@@ -2053,8 +2053,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 8/31/21,PHI,Road gray Dick Allen 15 memorial patch,WSN,Home white red hat
 9/1/21,SDP,Road brown Childhood Cancer Awareness patch,ARI,Home red snake hat Childhood Cancer Awareness patch
 9/1/21,PIT,Road gray Childhood Cancer Awareness patch,CHW,Home black Martyl Reinsdorf MR memorial patch Childhood Cancer Awareness patch
-9/1/21,STL,Road gray blue hat Bob Gibson 45 memorial patch,CIN,Home white Joe Morgan 8 memorial patch
 9/1/21,STL,Road gray blue hat Childhood Cancer Awareness patch Bob Gibson 45 memorial patch,CIN,Home red Joe Morgan 8 memorial patch Childhood Cancer Awareness patch
+9/1/21,STL,Road gray blue hat Bob Gibson 45 memorial patch,CIN,Home white Joe Morgan 8 memorial patch
 9/1/21,OAK,Road kelly green Childhood Cancer Awareness patch,DET,Home white Childhood Cancer Awareness patch
 9/1/21,CLE,Road navy Childhood Cancer Awareness patch,KCR,Home white Childhood Cancer Awareness patch
 9/1/21,NYY,Road gray Childhood Cancer Awareness patch Whitey Ford 16 memorial patch,LAA,Home white Childhood Cancer Awareness patch
@@ -2104,8 +2104,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 9/4/21,LAD,Road gray Dodgers Tommy Lasorda TOMMY 2 memorial patch Don Sutton SUTTON 20 memorial patch,SFG,Home black
 9/4/21,MIN,Road gray Mike Bell MB memorial patch,TBR,Home white
 9/4/21,OAK,Road kelly green,TOR,Home white
-9/4/21,NYM,Road gray Tom Seaver 41 memorial patch,WSN,Home white Curly W
 9/4/21,NYM,Road royal Tom Seaver 41 memorial patch,WSN,Home navy
+9/4/21,NYM,Road gray Tom Seaver 41 memorial patch,WSN,Home white Curly W
 9/5/21,SEA,Road navy,ARI,Home throwback
 9/5/21,CLE,Road navy,BOS,Home white
 9/5/21,PIT,Road black,CHC,Home white
@@ -2187,8 +2187,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 9/10/21,ARI,Road gray,SEA,Home teal
 9/10/21,CIN,Road gray Joe Morgan 8 memorial patch,STL,Home white Bob Gibson 45 memorial patch
 9/11/21,MIA,Road black,ATL,Home white 150th season patch
-9/11/21,TOR,Road royal,BAL,Home orange
 9/11/21,TOR,Road gray,BAL,Home orange
+9/11/21,TOR,Road royal,BAL,Home orange
 9/11/21,SFG,Road gray,CHC,Home white
 9/11/21,BOS,Road gray,CHW,Home black Martyl Reinsdorf MR memorial patch
 9/11/21,MIL,Road navy Hank Aaron 44 memorial patch,CLE,Home white
@@ -2231,8 +2231,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 9/14/21,MIL,Road navy Hank Aaron 44 memorial patch,DET,Home white
 9/14/21,OAK,Road kelly green,KCR,Home white
 9/14/21,ARI,Road gray,LAD,Home white Tommy Lasorda TOMMY 2 memorial patch Don Sutton SUTTON 20 memorial patch
-9/14/21,CLE,Road navy,MIN,Home white Mike Bell MB memorial patch
 9/14/21,CLE,Road gray,MIN,Home red Mike Bell MB memorial patch
+9/14/21,CLE,Road navy,MIN,Home white Mike Bell MB memorial patch
 9/14/21,STL,Road gray Bob Gibson 45 memorial patch,NYM,Home white Tom Seaver 41 memorial patch
 9/14/21,CHC,Road gray,PHI,Home white Dick Allen 15 memorial patch
 9/14/21,CIN,Road gray Joe Morgan 8 memorial patch,PIT,Home black
@@ -2242,12 +2242,12 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 9/14/21,TBR,Road navy,TOR,Home royal
 9/14/21,MIA,Road gray,WSN,Home white red hat
 9/15/21,COL,Road purple 2021 All Star Game patch Roberto Clemente Day patch,ATL,Home white 150th season patch Roberto Clemente Day patch
-9/15/21,NYY,Road gray Roberto Clemente Day patch Whitey Ford 16 memorial patch,BAL,Home white
+9/15/21,NYY,Road gray Roberto Clemente Day patch Whitey Ford 16 memorial patch,BAL,Home white Roberto Clemente Day patch
 9/15/21,LAA,Road gray Roberto Clemente Day patch,CHW,Home black Martyl Reinsdorf MR memorial patch Roberto Clemente Day patch
-9/15/21,MIL,Road gray Hank Aaron 44 memorial patch,DET,Home white Roberto Clemente Day patch
+9/15/21,MIL,Road gray Roberto Clemente Day patch Hank Aaron 44 memorial patch,DET,Home white Roberto Clemente Day patch
 9/15/21,OAK,Road gray Roberto Clemente Day patch,KCR,Home white Roberto Clemente Day patch
 9/15/21,ARI,Road red snake hat Roberto Clemente Day patch,LAD,Home white Roberto Clemente Day patch Tommy Lasorda TOMMY 2 memorial patch Don Sutton SUTTON 20 memorial patch
-9/15/21,CLE,Road gray Roberto Clemente Day patch,MIN,Home powder Mike Bell MB memorial patch
+9/15/21,CLE,Road gray Roberto Clemente Day patch,MIN,Home navy Roberto Clemente Day patch Mike Bell MB memorial patch
 9/15/21,STL,Road gray Roberto Clemente Day patch Bob Gibson 45 memorial patch,NYM,Home white Roberto Clemente Day patch Tom Seaver 41 memorial patch
 9/15/21,CHC,Road gray Roberto Clemente Day patch,PHI,Home white Roberto Clemente Day patch Dick Allen 15 memorial patch
 9/15/21,CIN,Road gray Joe Morgan 8 memorial patch Roberto Clemente Day patch,PIT,Home white Roberto Clemente Day
@@ -2312,8 +2312,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 9/19/21,COL,Road gray 2021 All Star Game patch,WSN,Home white Curly W
 9/20/21,ATL,Road gray 150th season patch,ARI,Home white sand accents
 9/20/21,PIT,Road black,CIN,Home white Joe Morgan 8 memorial patch
-9/20/21,KCR,Road royal,CLE,Home white
 9/20/21,KCR,Road gray,CLE,Home red
+9/20/21,KCR,Road royal,CLE,Home white
 9/20/21,CHW,Road gray Martyl Reinsdorf MR memorial patch,DET,Home white
 9/20/21,HOU,Road gray,LAA,Home red
 9/20/21,WSN,Road navy,MIA,Home white
@@ -2423,8 +2423,8 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 9/28/21,CLE,Road navy,KCR,Home white
 9/28/21,SDP,Road brown,LAD,Home city connect Tommy Lasorda TOMMY 2 memorial patch Don Sutton SUTTON 20 memorial patch
 9/28/21,DET,Road gray,MIN,Home navy Mike Bell MB memorial patch
-9/28/21,MIA,Road black,NYM,Home white Tom Seaver 41 memorial patch
 9/28/21,MIA,Road gray,NYM,Home royal Tom Seaver 41 memorial patch
+9/28/21,MIA,Road black,NYM,Home white Tom Seaver 41 memorial patch
 9/28/21,CHC,Road royal,PIT,Home black
 9/28/21,OAK,Road gray,SEA,Home white
 9/28/21,ARI,Road gray,SFG,City Connect

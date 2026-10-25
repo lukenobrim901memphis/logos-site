@@ -7,19 +7,7 @@ var exportFolder = new Folder(icloudRoot + "/LIDOM Jersey Numbers/LIDOM Jersey n
 
 // PASTE DATA HERE: Wrap each copied spreadsheet line in single quotes, ending with a comma.
 var lines = [
-"10/19	Luis González	AGU	54	Road yellow	águilas54 Luis González",
-"10/19	Kevin Valdez	AGU	85	Road yellow	águilas85 Kevin Valdez",
-"10/19	Julio E. Rodriguez	AZU	19	Home white	toros19 Julio E. Rodriguez",
-"10/19	Joe Record	AZU	30	Home white	toros30 Joe Record",
-"10/19	Noah Skirrow	AZU	63	Home white	toros63 Noah Skirrow",
-"10/19	Angel Sánchez	ESC	40	Home white	leones40 Angel Sánchez",
-"10/19	Brian McKenna	ESC	62	Home white	leones62 Brian McKenna",
-"10/19	Spencer Bivens	ESS	42	Road black	estrellas42 Spencer Bivens",
-"10/19	Carlos Peguero	GIG	24	Home white	gigantes24 Carlos Peguero",
-"10/19	Alex Young	GIG	54	Home white	gigantes54 Alex Young",
-"10/19	Jackson Goddard	GIG	68	Home white	gigantes68 Jackson Goddard",
-"10/19	Wandisson Charles	GIG	73	Home white	gigantes73 Wandisson Charles",
-"10/19	Daniel Martinez	LCY	91	Road blue alt	tigres91 Daniel Martinez",
+"10/23	Kenny Hernandez	ESC	46	Home white	leones46 Kenny Hernandez"
 ];
 
 if (!exportFolder.exists) {

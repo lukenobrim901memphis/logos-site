@@ -220,6 +220,7 @@ async function processDay(ymd, data) {
     const season = ev.season?.year ?? board.leagues?.[0]?.season?.year;
     if (season < FIRST_SEASON) { skipped++; continue; }
     if ((!COUNT_PRESEASON && seasonType === 1) || EXHIBITION.test(`${ev.name} | ${ev.shortName}`)) { skipped++; continue; }
+    if (/POSTPONED|CANCELED|CANCELLED/.test(ev.status?.type?.name ?? '')) { skipped++; continue; }
     if (!ev.status?.type?.completed) { pending++; continue; }
     todo.push({ ev, seasonType });
   }
@@ -265,12 +266,8 @@ async function main() {
   if (arg('--date')) days = [arg('--date')];
   else if (arg('--from')) days = rangeYmd(arg('--from'), arg('--to') || yesterday);
   else {
-    // Normal nightly run: check yesterday, plus every day since the last run
-    // (so nights when the computer was off or asleep get filled in automatically).
-    const lastRun = data.lastCheckedDay?.replace(/-/g, '');
-    let start = shiftYmd(yesterday, -(LOOKBACK_DAYS - 1));
-    if (lastRun && lastRun < start) start = shiftYmd(lastRun, -1);
-    days = rangeYmd(start, yesterday);
+    // Normal nightly run: only the last LOOKBACK_DAYS days (yesterday and the day before).
+    days = rangeYmd(shiftYmd(yesterday, -(LOOKBACK_DAYS - 1)), yesterday);
   }
   if (days.length > 30) console.log(`Checking ${days.length} days — this can take a while. Progress is saved as it goes; if it stops, run the same command again to pick up where it left off.`);
 
