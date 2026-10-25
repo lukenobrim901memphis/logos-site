@@ -2,8 +2,8 @@
 var userHome = Folder.myDocuments.parent.fsName; 
 var icloudRoot = userHome + "/Library/Mobile Documents/com~apple~CloudDocs/Sports/Jerseys/MLB";
 
-var sourceFolder = new Folder(icloudRoot + "/MLB Templates/2019 MLB Full jerseys");
-var exportFolder = new Folder(icloudRoot + "/MLB Jersey Numbers/MLB Jersey numbers 2019");
+var sourceFolder = new Folder(icloudRoot + "/MLB Templates/2020 MLB Full jerseys");
+var exportFolder = new Folder(icloudRoot + "/MLB Jersey Numbers/MLB Jersey numbers 2020");
 
 // --- TIMING SETTINGS (raise these if you still get errors) ---
 // All times are in milliseconds: 1000 = 1 second.
