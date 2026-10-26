@@ -17,8 +17,19 @@ var PURGE_EVERY             = 10;     // clear Photoshop's memory caches every N
 
 // PASTE DATA HERE: Wrap each copied spreadsheet line in single quotes, ending with a comma.
 var lines = [
-"2023/04/14	Tyler Wade	OAK	8	Home white Sal Brando Sal memorial patch Vida Blue Vida memorial patch	2023/04/14 athletics8 Tyler Wade",
-"2023/04/14	Hogan Harris	OAK	63	Home white Sal Brando Sal memorial patch Vida Blue Vida memorial patch	2023/04/14 athletics63 Hogan Harris",
+"2023/03/30	Andrew Vasquez	PHI	37	Road gray	2023/03/30 phillies37 Andrew Vasquez",
+"2023/03/31	Cristian Pache	PHI	19	Road gray	2023/03/31 phillies19 Cristian Pache",
+"2023/04/04	McKinley Moore	PHI	79	Road gray	2023/04/04 phillies79 McKinley Moore",
+"2023/04/16	Luis Ortiz	PHI	56	Road gray	2023/04/16 phillies56 Luis Ortiz",
+"2023/05/04	Jeff Hoffman	PHI	68	Home white	2023/05/04 phillies68 Jeff Hoffman",
+"2023/05/16	Erich Uelmen	PHI	47	Road gray	2023/05/16 phillies47 Erich Uelmen",
+"2023/05/23	Dylan Covey	PHI	54	Home white	2023/05/23 phillies54 Dylan Covey",
+"2023/06/01	Drew Ellis	PHI	35	Road red	2023/06/01 phillies35 Drew Ellis",
+"2023/07/14	Johan Rojas	PHI	18	Home white	2023/07/14 phillies18 Johan Rojas",
+"2023/08/02	Michael Lorenzen	PHI	22	Road gray	2023/08/02 phillies22 Michael Lorenzen",
+"2023/08/02	Rodolfo Castro	PHI	29	Road gray	2023/08/02 phillies29 Rodolfo Castro",
+"2023/08/06	Weston Wilson	PHI	37	Home cream	2023/08/06 phillies37 Weston Wilson",
+"2023/09/22	Orion Kerkering	PHI	50	Home white	2023/09/22 phillies50 Orion Kerkering",
 ];
 
 // BACK-OF-JERSEY NAME OVERRIDES

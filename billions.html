@@ -9,7 +9,10 @@
 <style>
   /* Billions page extras, built on the variables in style.css */
   .billions-wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px 40px; }
-  .billions-intro { text-align: center; margin: 0 20px 12px; opacity: 0.85; font-size: 1.05rem; }
+  .billions-intro { max-width: 720px; margin: 20px auto 12px; padding: 0 20px; text-align: center; font-size: 1.05rem; line-height: 1.6; }
+  .billions-intro p { margin: 0 0 10px; }
+  .pager { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 14px; font-family: var(--font-primary); font-size: 0.95rem; }
+  .pager[hidden] { display: none; }
   .rule { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 0 20px 6px; padding: 0; list-style: none; }
   .rule li {
     font-family: var(--font-primary); font-weight: bold; font-size: 0.8rem; letter-spacing: 0.5px;
@@ -158,8 +161,9 @@
   <a class="back-btn" href="index.html">← Back</a>
   <h1>Billions</h1>
 </header>
-
-<ul class="rule" id="rule"></ul>
+<div class="billions-intro">
+  <p>Billions are when a player plays less than 10 minutes, records less than 2 rebounds or assists and scores no points while taking no shots</p>
+</div>
 
 <main class="billions-wrap">
   <section>
@@ -200,6 +204,11 @@
       <label class="season-pick">Season <select id="season"></select></label>
     </div>
     <div class="table-card" id="leaders"></div>
+      <div class="pager" id="leaders-pager" hidden>
+      <button class="day-btn" id="leaders-prev">‹ Prev</button>
+      <span id="leaders-page"></span>
+      <button class="day-btn" id="leaders-next">Next ›</button>
+    </div>
   </section>
 
   <p class="updated-line" id="updated"></p>
@@ -254,14 +263,6 @@
       b.seasonCount = running[k] = (running[k] || 0) + 1;
     }
 
-    // Rule chips
-    const r = data.rule?.under ? data.rule : { under: { min: 10, reb: 2, ast: 2, stl: 2, blk: 2 }, zero: ['pts', 'fgm', 'fga', 'ftm', 'fta'] };
-    const L = { min: 'MIN', reb: 'REB', ast: 'AST', stl: 'STL', blk: 'BLK', pts: 'PTS', fgm: 'FG', fga: 'FGA', ftm: 'FT', fta: 'FTA' };
-    $('rule').innerHTML = [
-      ...Object.entries(r.under).map(([k, n]) => `<li>&lt;${n} ${L[k] || k}</li>`),
-      ...r.zero.map(k => `<li>0 ${L[k] || k}</li>`),
-    ].join('');
-
     // Day view: defaults to the latest game day the script processed.
         // Every day that had games, and how many billions each day had.
     gameDays = new Set([...Object.values(data.processedEvents || {}), ...all.map(b => b.date), data.lastGameDate].filter(Boolean));
@@ -277,7 +278,7 @@
     const seasons = [...new Set(all.map(b => b.season))].sort((a, b) => b - a);
     if (!seasons.length && data.lastGameDate) seasons.push(+data.lastGameDate.slice(0, 4) + (+data.lastGameDate.slice(5, 7) >= 9 ? 1 : 0));
     $('season').innerHTML = seasons.map(y => `<option value="${y}">${seasonLabel(y)}</option>`).join('') + (seasons.length > 1 ? '<option value="all">All seasons</option>' : '');
-    $('season').onchange = renderLeaders;
+    $('season').onchange = () => { leadersPage = 1; renderLeaders(); };
     renderLeaders();
 
     $('updated').textContent = data.updated
@@ -394,6 +395,11 @@
   document.addEventListener('click', e => { if (!$('cal').hidden && !e.target.closest('#cal, #cal-btn')) closeCal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('cal').hidden) { closeCal(); $('cal-btn').focus(); } });
   
+    const PAGE_SIZE = 25;   // players per page in the leaders table
+  let leadersPage = 1;
+  $('leaders-prev').onclick = () => { leadersPage--; renderLeaders(); $('leaders').scrollIntoView({ block: 'nearest' }); };
+  $('leaders-next').onclick = () => { leadersPage++; renderLeaders(); $('leaders').scrollIntoView({ block: 'nearest' }); };
+
   function renderLeaders() {
     const sel = $('season').value;
     const pool = sel === 'all' || !sel ? all : all.filter(b => String(b.season) === sel);
@@ -404,15 +410,22 @@
       by.set(b.athleteId, p);
     }
     const list = [...by.values()].sort((a, b) => b.n - a.n || b.last.date.localeCompare(a.last.date) || a.name.localeCompare(b.name));
+    // Ranks are worked out over the whole list (ties share a rank), then split into pages.
     let rank = 0, prev = null;
+    list.forEach((p, i) => { if (p.n !== prev) { rank = i + 1; prev = p.n; } p.rank = rank; });
+    const pages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
+    leadersPage = Math.min(Math.max(1, leadersPage), pages);
+    const shown = list.slice((leadersPage - 1) * PAGE_SIZE, leadersPage * PAGE_SIZE);
+    $('leaders-pager').hidden = pages <= 1;
+    $('leaders-page').textContent = `Page ${leadersPage} of ${pages} · ${list.length} players`;
+    $('leaders-prev').disabled = leadersPage <= 1;
+    $('leaders-next').disabled = leadersPage >= pages;
+
     $('leaders').innerHTML = list.length
       ? `<table><thead><tr><th class="n">#</th><th>Player</th><th>Team</th><th class="n">Billions</th><th>Most recent</th></tr></thead><tbody>${
-          list.map((p, i) => {
-            if (p.n !== prev) { rank = i + 1; prev = p.n; }
-            return `<tr><td class="n rank">${rank}</td><td><button class="player-link" data-id="${esc(p.id)}">${esc(p.name)}</button></td>
+          shown.map(p => `<tr><td class="n rank">${p.rank}</td><td><button class="player-link" data-id="${esc(p.id)}">${esc(p.name)}</button></td>
               <td class="team">${esc(p.last.team)}</td><td class="n big">${p.n}</td>
-              <td class="team">${fmtDate(p.last.date)} · ${game(p.last)}</td></tr>`;
-          }).join('')
+              <td class="team">${fmtDate(p.last.date)} · ${game(p.last)}</td></tr>`).join('')
         }</tbody></table>`
       : '<div class="empty">No billions yet this season.</div>';
   }
