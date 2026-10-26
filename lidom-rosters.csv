@@ -10,7 +10,7 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 73,P,Junior Fernández,R,Aguilas Cibaenas,Active
 83,P,Alfred Morillo,R,Aguilas Cibaenas,Active
 87,P,Nathanael Heredia,L,Aguilas Cibaenas,Active
-,P,Ryan Hendrix,R,Aguilas Cibaenas,Active
+89,P,Ryan Hendrix,R,Aguilas Cibaenas,Active
 8,C,Webster Rivas,R,Aguilas Cibaenas,Active
 56,C,Chris Suero,R,Aguilas Cibaenas,Active
 59,C,J.C. Escarra,L,Aguilas Cibaenas,Active
@@ -29,6 +29,7 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 76,OF,Alberto Rodriguez,L,Aguilas Cibaenas,Active
 41,P,Raul Brito,R,Aguilas Cibaenas,Inactive
 43,P,Jeurys Familia,R,Aguilas Cibaenas,Inactive
+53,P,Yoelvin Silven,R,Aguilas Cibaenas,Inactive
 57,P,Jhordany Mezquita,L,Aguilas Cibaenas,Inactive
 60,P,Joan Adon,R,Aguilas Cibaenas,Inactive
 61,P,Carlos Peña,L,Aguilas Cibaenas,Inactive
@@ -37,7 +38,6 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 77,P,Jorge Alcala,R,Aguilas Cibaenas,Inactive
 78,P,Carl Edwards Jr.,R,Aguilas Cibaenas,Inactive
 79,P,Leandro Lopez,R,Aguilas Cibaenas,Inactive
-89,P,Yoelvin Silven,R,Aguilas Cibaenas,Inactive
 90,P,Luis Reyes,R,Aguilas Cibaenas,Inactive
 92,P,Génesis Cabrera,L,Aguilas Cibaenas,Inactive
 ,P,Dylan File,R,Aguilas Cibaenas,Inactive
@@ -50,8 +50,8 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 90,INF,Frederick Bencosme,L,Aguilas Cibaenas,Inactive
 ,INF,Daniel Vazquez,R,Aguilas Cibaenas,Inactive
 0,OF,Junior Franco,L,Aguilas Cibaenas,Inactive
+51,OF,Luis Liberato,L,Aguilas Cibaenas,Inactive
 86,OF,Albert Fabian,L,Aguilas Cibaenas,Inactive
-,OF,Luis Liberato,L,Aguilas Cibaenas,Inactive
 0,P,Jhan Mariñez,R,Estrellas Orientales,Active
 25,P,Luis García,R,Estrellas Orientales,Active
 30,P,Hancel Rincon,R,Estrellas Orientales,Active
@@ -61,6 +61,7 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 63,P,Oddy Nunez,L,Estrellas Orientales,Active
 64,P,Oscar De La Cruz,R,Estrellas Orientales,Active
 83,P,Domingo Robles,L,Estrellas Orientales,Active
+86,P,Darlin Saladin,R,Estrellas Orientales,Active
 89,P,Sammy Peralta,L,Estrellas Orientales,Active
 94,P,Eddy Yean,R,Estrellas Orientales,Active
 95,P,Junior Santos,R,Estrellas Orientales,Active
@@ -99,8 +100,8 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 ,P,Junior William,R,Estrellas Orientales,Inactive
 ,P,Listher Sosa,R,Estrellas Orientales,Inactive
 ,C,Deivy Grullón,R,Estrellas Orientales,Inactive
+33,INF,Juan Santana,R,Estrellas Orientales,Inactive
 47,INF,Anyelo Encarnación,R,Estrellas Orientales,Inactive
-,INF,Juan Santana,R,Estrellas Orientales,Inactive
 5,OF,Alex Ramírez,R,Estrellas Orientales,Inactive
 ,OF,Junior Perez,R,Estrellas Orientales,Inactive
 29,P,José Lopez,L,Gigantes del Cibao,Active
@@ -110,6 +111,7 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 49,P,Enoli Paredes,R,Gigantes del Cibao,Active
 57,P,Hansel Robles,R,Gigantes del Cibao,Active
 63,P,Yunior Tur,R,Gigantes del Cibao,Active
+64,P,Gregori Louis,L,Gigantes del Cibao,Active
 72,P,Anderson Pilar,R,Gigantes del Cibao,Active
 77,P,Emiliano Teodo,R,Gigantes del Cibao,Active
 79,P,Richard Rodríguez,R,Gigantes del Cibao,Active
@@ -143,8 +145,8 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 73,P,Wandisson Charles,R,Gigantes del Cibao,Inactive
 82,P,Frank Garces,L,Gigantes del Cibao,Inactive
 90,P,Jared Wetherbee,L,Gigantes del Cibao,Inactive
+95,P,Kelvin Cáceres,R,Gigantes del Cibao,Inactive
 ,P,Jake Eder,L,Gigantes del Cibao,Inactive
-,P,Kelvin Cáceres,R,Gigantes del Cibao,Inactive
 6,C,Geraldi Diaz,L,Gigantes del Cibao,Inactive
 ,C,Engelth Urena,R,Gigantes del Cibao,Inactive
 17,INF,Emil Morales,R,Gigantes del Cibao,Inactive
@@ -185,6 +187,7 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 42,P,Derek West,R,Leones del Escogido,Inactive
 43,P,Eduardo Rivera,R,Leones del Escogido,Inactive
 46,P,Jose Espada,R,Leones del Escogido,Inactive
+48,P,Mauricio Estrella,R,Leones del Escogido,Inactive
 53,P,Leonardo Taveras,R,Leones del Escogido,Inactive
 56,P,Jarlín García,L,Leones del Escogido,Inactive
 58,P,Radhames Liz,R,Leones del Escogido,Inactive
@@ -197,7 +200,6 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 ,P,Dinelson Lamet,R,Leones del Escogido,Inactive
 ,P,Domingo Acevedo,R,Leones del Escogido,Inactive
 ,P,Emmanuel Reyes,R,Leones del Escogido,Inactive
-,P,Mauricio Estrella,R,Leones del Escogido,Inactive
 ,P,Sauryn Lao,R,Leones del Escogido,Inactive
 103,C,Guillermo Rosario,R,Leones del Escogido,Inactive
 15,INF,Ivan Castillo,S,Leones del Escogido,Inactive
@@ -211,6 +213,7 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 63,P,Wander Suero,R,Tigres del Licey,Active
 65,P,Luis Frías,R,Tigres del Licey,Active
 73,P,Randel Clemente,R,Tigres del Licey,Active
+78,P,Misael Tamarez,R,Tigres del Licey,Active
 83,P,Oliver Ortega,R,Tigres del Licey,Active
 86,P,Jose E. Hernandez,L,Tigres del Licey,Active
 89,P,Andrew Pérez,L,Tigres del Licey,Active
