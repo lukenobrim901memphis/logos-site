@@ -38,10 +38,10 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 77,P,Jorge Alcala,R,Aguilas Cibaenas,Inactive
 78,P,Carl Edwards Jr.,R,Aguilas Cibaenas,Inactive
 79,P,Leandro Lopez,R,Aguilas Cibaenas,Inactive
+85,P,Kevin Valdez,R,Aguilas Cibaenas,Inactive
 90,P,Luis Reyes,R,Aguilas Cibaenas,Inactive
 92,P,Génesis Cabrera,L,Aguilas Cibaenas,Inactive
 ,P,Dylan File,R,Aguilas Cibaenas,Inactive
-,P,Kevin Valdez,R,Aguilas Cibaenas,Inactive
 ,P,Oscar Rayo,L,Aguilas Cibaenas,Inactive
 69,C,John Garcia,R,Aguilas Cibaenas,Inactive
 20,INF,Adalberto Mondesi,S,Aguilas Cibaenas,Inactive
@@ -72,9 +72,9 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 2,INF,Aaron Schunk,R,Estrellas Orientales,Active
 6,INF,César Prieto,L,Estrellas Orientales,Active
 7,INF,Euribiel Angeles,R,Estrellas Orientales,Active
+28,INF,Josh Lester,L,Estrellas Orientales,Active
 39,INF,Marco Luciano,R,Estrellas Orientales,Active
 53,INF,Sandber Pimentel,L,Estrellas Orientales,Active
-58,INF,Josh Lester,L,Estrellas Orientales,Active
 10,OF,Ismael Munguia,L,Estrellas Orientales,Active
 15,OF,Raimel Tapia,L,Estrellas Orientales,Active
 27,OF,Oscar Gonzalez,R,Estrellas Orientales,Active
@@ -212,8 +212,8 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 58,P,Michael Arias,R,Tigres del Licey,Active
 63,P,Wander Suero,R,Tigres del Licey,Active
 65,P,Luis Frías,R,Tigres del Licey,Active
+67,P,Misael Tamarez,R,Tigres del Licey,Active
 73,P,Randel Clemente,R,Tigres del Licey,Active
-78,P,Misael Tamarez,R,Tigres del Licey,Active
 83,P,Oliver Ortega,R,Tigres del Licey,Active
 86,P,Jose E. Hernandez,L,Tigres del Licey,Active
 89,P,Andrew Pérez,L,Tigres del Licey,Active
