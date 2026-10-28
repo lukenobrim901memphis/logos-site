@@ -1595,7 +1595,7 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 7/26/25,MIA,Road black HoF weekend hat ADT ad patch,MIL,Home pinstripes HoF weekend hat Bob Uecker memorial patch Northwestern Mutual ad patch
 7/26/25,WSN,Road gray HoF weekend hat AARP ad patch,MIN,Home white HoF weekend hat Securian Financial ad patch
 7/26/25,PHI,Road gray HoF weekend hat IBX ad patch,NYY,Home white HoF weekend hat Starr ad patch
-7/26/25,ARI,Road gray HoF weekend hat Avnet ad patch,PIT,Home black Pittsburgh black pants HoF weekend hat Dave Parker COBRA memorial patch Sheetz ad patch
+7/26/25,ARI,Road gray HoF weekend hat Avnet ad patch,PIT,Home black Pittsburgh black pants HoF weekend hat Dave Parker COBRA memorial chest patch Sheetz ad patch
 7/26/25,NYM,Road gray HoF weekend hat Ed Kranepool 7 memorial patch New York-Presbyterian ad patch,SFG,Home black HoF weekend hat Chevrolet ad patch
 7/26/25,SDP,Road sand HoF weekend hat Motorola ad patch,STL,Home cream HoF weekend hat Stifel ad patch
 7/26/25,ATL,Road gray HoF weekend hat Quikrete ad patch,TEX,Home white HoF weekend hat Energy Transfer ad patch
@@ -2386,7 +2386,7 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 9/23/25,MIL,Road gray Bob Uecker memorial patch Northwestern Mutual ad patch,SDP,Home white Motorola ad patch
 9/23/25,COL,Road gray York Space Systems ad patch,SEA,Home white Nintendo ad patch
 9/23/25,STL,Road gray Stifel ad patch,SFG,City connect Chevrolet ad patch
-9/23/25,MIN,Road navy Securian Financial ad patch,TEX,Home white blue hat Scott Littlefied SL memorial patch Energy Transfer ad patch
+9/23/25,MIN,Road navy Securian Financial ad patch,TEX,Home white blue hat Scott Littlefield SL memorial patch Energy Transfer ad patch
 9/23/25,BOS,Road gray MassMutual ad patch,TOR,Home white TD patch
 9/24/25,LAD,Road gray Dodgers Fernando Valenzuela 34 memorial patch Guggenheim ad patch,ARI,Home cream Avnet ad patch
 9/24/25,HOU,Road gray Oxy ad patch,ATH,Home white Rickey Henderson 24 memorial patch Sacramento patch Las Vegas ad patch
@@ -2401,7 +2401,7 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 9/24/25,MIL,Road navy Bob Uecker memorial patch Northwestern Mutual ad patch,SDP,Home white Motorola ad patch
 9/24/25,COL,Road purple York Space Systems ad patch,SEA,Home white Nintendo ad patch
 9/24/25,STL,Road gray Stifel ad patch,SFG,Home cream Chevrolet ad patch
-9/24/25,MIN,Road navy Securian Financial ad patch,TEX,Home white blue hat Scott Littlefied SL memorial patch Energy Transfer ad patch
+9/24/25,MIN,Road navy Securian Financial ad patch,TEX,Home white blue hat Scott Littlefield SL memorial patch Energy Transfer ad patch
 9/24/25,BOS,Road gray MassMutual ad patch,TOR,Home powder TD patch
 9/25/25,LAD,Road gray Dodgers Fernando Valenzuela 34 memorial patch Guggenheim ad patch,ARI,City connect Avnet ad patch
 9/25/25,HOU,Road orange Oxy ad patch,ATH,Home yellow Rickey Henderson 24 memorial patch Sacramento patch Las Vegas ad patch
@@ -2413,13 +2413,13 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 9/25/25,CHW,Road black Bobby Jenks 45 memorial patch,NYY,Home white Starr ad patch
 9/25/25,MIA,Road gray ADT ad patch,PHI,Home powder IBX ad patch
 9/25/25,COL,Road gray York Space Systems ad patch,SEA,City connect Nintendo ad patch
-9/25/25,MIN,Road navy Securian Financial ad patch,TEX,Home white blue hat Scott Littlefied SL memorial patch Energy Transfer ad patch
+9/25/25,MIN,Road navy Securian Financial ad patch,TEX,Home white blue hat Scott Littlefield SL memorial patch Energy Transfer ad patch
 9/25/25,BOS,Road gray MassMutual ad patch,TOR,Home royal white panel hat TD patch
 9/26/25,KCR,Road gray QuikTrip ad patch,ATH,Home white Rickey Henderson 24 memorial patch Sacramento patch Las Vegas ad patch
 9/26/25,PIT,Road black Dave Parker COBRA memorial sleeve patch Sheetz ad patch,ATL,Home red Quikrete ad patch
 9/26/25,DET,Road gray Meijer ad patch,BOS,City connect MassMutual ad patch
 9/26/25,STL,Road gray Stifel ad patch,CHC,Home powder Ryne Sandberg 23 memorial patch Motorola ad patch
-9/26/25,TEX,Road gray Scott Littlefied SL memorial patch Energy Transfer ad patch,CLE,City connect Marathon ad patch
+9/26/25,TEX,Road gray Scott Littlefield SL memorial patch Energy Transfer ad patch,CLE,City connect Marathon ad patch
 9/26/25,HOU,Road gray orange brim hat Oxy ad patch,LAA,Home white FBM ad patch
 9/26/25,NYM,Road gray Ed Kranepool 7 memorial patch New York-Presbyterian ad patch,MIA,Home black ADT ad patch
 9/26/25,CIN,Road red Pete Rose 14 memorial patch Kroger ad patch,MIL,City connect Bob Uecker memorial patch Northwestern Mutual ad patch
@@ -2434,7 +2434,7 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 9/27/25,PIT,Road gray Dave Parker COBRA memorial sleeve patch Sheetz ad patch,ATL,City connect Quikrete ad patch
 9/27/25,DET,Road gray Meijer ad patch,BOS,Home yellow MassMutual ad patch
 9/27/25,STL,Road powder Stifel ad patch,CHC,Home white Ryne Sandberg 23 memorial patch Motorola ad patch
-9/27/25,TEX,Road gray Scott Littlefied SL memorial patch Energy Transfer ad patch,CLE,Home white Marathon ad patch
+9/27/25,TEX,Road gray Scott Littlefield SL memorial patch Energy Transfer ad patch,CLE,Home white Marathon ad patch
 9/27/25,HOU,Road gray Oxy ad patch,LAA,Home white FBM ad patch
 9/27/25,NYM,Road gray Ed Kranepool 7 memorial patch New York-Presbyterian ad patch,MIA,City connect ADT ad patch
 9/27/25,CIN,Road red Pete Rose 14 memorial patch Kroger ad patch,MIL,Home pinstripes Bob Uecker memorial patch Northwestern Mutual ad patch
@@ -2449,7 +2449,7 @@ Date,AwayTeam,AwayJersey,HomeTeam,HomeJersey
 9/28/25,PIT,Road black Dave Parker COBRA memorial sleeve patch Sheetz ad patch,ATL,Home white Quikrete ad patch
 9/28/25,DET,Road gray Meijer ad patch,BOS,Home white MassMutual ad patch
 9/28/25,STL,Road gray Stifel ad patch,CHC,Home white Ryne Sandberg 23 memorial patch Motorola ad patch
-9/28/25,TEX,Road gray Scott Littlefied SL memorial patch Energy Transfer ad patch,CLE,Home red Marathon ad patch
+9/28/25,TEX,Road gray Scott Littlefield SL memorial patch Energy Transfer ad patch,CLE,Home red Marathon ad patch
 9/28/25,HOU,Road orange Oxy ad patch,LAA,Home white FBM ad patch
 9/28/25,NYM,Road gray Ed Kranepool 7 memorial patch New York-Presbyterian ad patch,MIA,Home blue ADT ad patch
 9/28/25,CIN,Road red Pete Rose 14 memorial patch Kroger ad patch,MIL,Home pinstripes Bob Uecker memorial patch Northwestern Mutual ad patch
