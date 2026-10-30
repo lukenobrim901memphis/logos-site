@@ -6719,3 +6719,16 @@ Saved 9888 billions (12900 games checked) to /Users/luke/Desktop/logos-site/data
   BILLION: Kevon Looney (LAL) POR@LAL
 2026-10-27: 4 games, 8 new billions
 Saved 9896 billions (12904 games checked) to /Users/luke/Desktop/logos-site/data/billions.json
+2026-10-26: 9 games, 0 new billions
+2026-10-27: failed — https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates=20261027: Unexpected end of JSON input
+  BILLION: Braden Smith (IND) PHI@IND
+  BILLION: Kyle Anderson (TOR) ORL@TOR
+  BILLION: Charles Bassey (GS) GS@MIN
+  BILLION: Bryce McGowens (NO) DEN@NO
+  BILLION: Jae'Sean Tate (HOU) HOU@MIL
+  BILLION: Jericho Sims (MIL) HOU@MIL
+  BILLION: Micah Peavy (OKC) OKC@DAL
+  BILLION: Tobi Lawal (DAL) OKC@DAL
+  BILLION: Jett Howard (DAL) OKC@DAL
+2026-10-28: 12 games, 9 new billions
+Saved 9905 billions (12916 games checked) to /Users/luke/Desktop/logos-site/data/billions.json
