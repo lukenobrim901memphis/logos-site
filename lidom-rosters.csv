@@ -70,8 +70,8 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 25,P,Luis García,R,Estrellas Orientales,Active
 36,P,Patrick Weigel,R,Estrellas Orientales,Active
 46,P,Pedro Strop,R,Estrellas Orientales,Active
+50,P,Domingo Tapia,R,Estrellas Orientales,Active
 51,P,Carlos Belen,R,Estrellas Orientales,Active
-60,P,Domingo Tapia,R,Estrellas Orientales,Active
 63,P,Oddy Nunez,L,Estrellas Orientales,Active
 65,P,Geison Urbaez,R,Estrellas Orientales,Active
 89,P,Sammy Peralta,L,Estrellas Orientales,Active
@@ -128,16 +128,16 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 10,OF,Ismael Munguia,L,Estrellas Orientales,Inactive
 ,OF,Dairon Blanco,R,Estrellas Orientales,Inactive
 31,P,Enmanuel Mejia,R,Gigantes del Cibao,Active
-41,P,Antonio Santos,R,Gigantes del Cibao,Active
+43,P,Antonio Santos,R,Gigantes del Cibao,Active
 45,P,Cristopher Molina,R,Gigantes del Cibao,Active
 47,P,Joel Cesar,R,Gigantes del Cibao,Active
 49,P,Enoli Paredes,R,Gigantes del Cibao,Active
 54,P,Alex Young,L,Gigantes del Cibao,Active
 56,P,Helcris Olivárez,L,Gigantes del Cibao,Active
 57,P,Hansel Robles,R,Gigantes del Cibao,Active
-61,P,Brent Honeywell,R,Gigantes del Cibao,Active
 76,P,Alberto Pacheco,L,Gigantes del Cibao,Active
 77,P,Emiliano Teodo,R,Gigantes del Cibao,Active
+85,P,Brent Honeywell,R,Gigantes del Cibao,Active
 91,P,Luis Velasquez,R,Gigantes del Cibao,Active
 16,C,Frank Rodriguez,R,Gigantes del Cibao,Active
 50,C,Agustín Ramírez,R,Gigantes del Cibao,Active
