@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/navigation/favicon.png">
+    <style>
+        .games-intro { text-align: center; margin: 24px 20px 0; font-size: 1.1rem; opacity: 0.85; }
+        .portfolio-item .game-blurb {
+            font-family: var(--font-primary); color: var(--bg-forest); opacity: 0.8;
+            font-size: 1rem; line-height: 1.4; margin: 8px 0 0;
+        }
+        /* Placeholder card for a game that isn't built yet */
+        .portfolio-item.coming-soon { opacity: 0.55; cursor: default; border-style: dashed; }
+        .portfolio-item.coming-soon:hover { transform: none; box-shadow: none; background-color: var(--bg-cream-dark); }
+        .placeholder-icon { font-size: 5rem; line-height: 1; color: var(--accent-sage); }
+        @media (prefers-color-scheme: dark) {
+            .portfolio-item .game-blurb { color: var(--bg-cream); }
+            .portfolio-item.coming-soon:hover { background-color: rgba(255, 255, 255, 0.05); }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="sticky-header">
+        <a class="back-btn" href="index.html">← Back</a>
+        <h1>Games</h1>
+    </header>
+
+    <p class="games-intro">Pick a game.</p>
+
+    <main class="home-container">
+        <div class="portfolio-grid">
+            <a href="mlb-guess.html" class="portfolio-item">
+                <div class="logo-image-wrapper">
+                    <img src="images/navigation/almanac.png" alt="Almanac game icon">
+                </div>
+                <div class="item-info">
+                    <h2>Almanac</h2>
+                    <p class="game-blurb">Name the MLB player from his team, year, initials and three clues.</p>
+                </div>
+            </a>
+
+            <a href="sudoku.html" class="portfolio-item">
+                <div class="logo-image-wrapper">
+                    <img src="images/navigation/sudoku.png" alt="Daily Sudoku game icon">
+                </div>
+                <div class="item-info">
+                    <h2>Daily Sudoku</h2>
+                    <p class="game-blurb">A new medium puzzle every day at midnight.</p>
+                </div>
+            </a>
+        </div>
+    </main>
+
+</body>
+</html>

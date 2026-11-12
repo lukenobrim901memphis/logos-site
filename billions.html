@@ -13,12 +13,35 @@
   .billions-intro p { margin: 0 0 10px; }
   .pager { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 14px; font-family: var(--font-primary); font-size: 0.95rem; }
   .pager[hidden] { display: none; }
-  .rule { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 0 20px 6px; padding: 0; list-style: none; }
-  .rule li {
-    font-family: var(--font-primary); font-weight: bold; font-size: 0.8rem; letter-spacing: 0.5px;
-    padding: 3px 10px; border-radius: 4px;
-    background-color: var(--bg-cream-dark); color: var(--bg-forest); border: 1px solid var(--accent-sage);
+
+  /* Player search */
+  .player-search { position: relative; max-width: 460px; }
+  .find-player .sec-head { justify-content: flex-end; align-items: center; gap: 24px; }
+  .find-player .sec-head > div:first-child { text-align: right; }
+  .find-player .player-search { margin-left: auto; }
+  .player-search input {
+    width: 100%; box-sizing: border-box; font-family: var(--font-primary); font-size: 1.05rem;
+    padding: 10px 14px; border-radius: 8px; border: 2px solid var(--accent-sage);
+    background-color: var(--bg-cream-dark); color: var(--bg-forest);
   }
+  .player-search input:focus { outline: none; border-color: var(--bg-forest-light); }
+  .search-results {
+    position: absolute; left: 0; right: 0; top: calc(100% + 6px); z-index: 400;
+    margin: 0; padding: 4px; list-style: none; max-height: 340px; overflow-y: auto;
+    background-color: var(--bg-cream); border: 2px solid var(--accent-sage); border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(28, 45, 36, 0.2);
+  }
+  .search-results[hidden] { display: none; }
+  .search-results li {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+    padding: 9px 10px; border-radius: 4px; cursor: pointer; font-family: var(--font-primary);
+  }
+  .search-results li.active, .search-results li:hover { background-color: var(--bg-cream-dark); }
+  .search-results .nm { font-weight: bold; }
+  .search-results .ct { white-space: nowrap; font-size: 0.9rem; opacity: 0.8; }
+  .search-results li.none { cursor: default; opacity: 0.8; }
+  .search-results li.none:hover { background: none; }
+
   .sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 30px 0 12px; }
   .sec-head h2 { margin: 0; padding-bottom: 2px; }
   .sub { font-size: 0.95rem; opacity: 0.8; }
@@ -31,7 +54,7 @@
   }
   .day-btn:hover:not(:disabled) { background-color: var(--bg-forest-light); transform: translateY(-1px); }
   .day-btn:disabled { opacity: 0.35; cursor: default; }
-    .day-nav { position: relative; }
+  .day-nav { position: relative; }
 
   /* Calendar date picker */
   .cal {
@@ -124,12 +147,14 @@
 
   @media (max-width: 600px) {
     .sec-head { margin-top: 24px; }
-      .cal { left: 0; right: auto; }
+    .cal { left: 0; right: auto; }
+    .player-search { max-width: none; }
+    .find-player .sec-head { justify-content: flex-start; }
+    .find-player .sec-head > div:first-child { text-align: left; }
     .table-card th, .table-card td { padding: 8px 10px; }
   }
 
   @media (prefers-color-scheme: dark) {
-    .rule li { background-color: var(--bg-forest-light); color: var(--bg-cream); border-color: var(--accent-sage); }
     .day-btn { background-color: var(--bg-cream); color: var(--bg-forest); border-color: var(--bg-cream-dark); }
     .day-btn:hover:not(:disabled) { background-color: var(--bg-cream-dark); }
     .cal { background-color: var(--bg-forest); color: var(--bg-cream); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5); }
@@ -142,6 +167,10 @@
     .cal-day.selected { outline-color: var(--bg-cream); }
     .cal-legend i.g { background-color: rgba(255, 255, 255, 0.07); border-color: var(--bg-forest-light); }
     .cal-legend i.b { background-color: var(--accent-sage); border-color: var(--accent-sage); }
+    .player-search input { background-color: rgba(255, 255, 255, 0.07); color: var(--bg-cream); border-color: var(--bg-forest-light); }
+    .player-search input:focus { border-color: var(--accent-sage); }
+    .search-results { background-color: var(--bg-forest); border-color: var(--bg-forest-light); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5); }
+    .search-results li.active, .search-results li:hover { background-color: rgba(255, 255, 255, 0.1); }
     .season-pick select { background-color: var(--bg-forest-light); color: var(--bg-cream); }
     .table-card { background-color: rgba(255, 255, 255, 0.05); border-color: var(--bg-forest-light); }
     .table-card th { background-color: var(--bg-forest-light); }
@@ -162,7 +191,7 @@
   <h1>Billions</h1>
 </header>
 <div class="billions-intro">
-  <p>Billions are when a player plays less than 10 minutes, records less than 2 rebounds or assists and scores no points while taking no shots</p>
+  <p>Billions are when a player plays less than 10 minutes, records less than 2 rebounds, assists, steals and blocks and scores no points while taking no shots.</p>
 </div>
 
 <main class="billions-wrap">
@@ -174,9 +203,9 @@
       </div>
       <div class="day-nav">
         <button class="day-btn" id="prev-day" aria-label="Previous game day">‹ Prev</button>
-              <button class="day-btn" id="cal-btn" aria-haspopup="dialog" aria-expanded="false">Pick a date</button>
+        <button class="day-btn" id="cal-btn" aria-haspopup="dialog" aria-expanded="false">Pick a date</button>
         <button class="day-btn" id="next-day" aria-label="Next game day">Next ›</button>
-                <div class="cal" id="cal" role="dialog" aria-label="Pick a date" hidden>
+        <div class="cal" id="cal" role="dialog" aria-label="Pick a date" hidden>
           <div class="cal-head">
             <button class="cal-arrow" id="cal-prev" aria-label="Previous month">‹</button>
             <select id="cal-month" aria-label="Month"></select>
@@ -195,6 +224,20 @@
     <div class="table-card" id="day-table"></div>
   </section>
 
+  <section class="find-player">
+    <div class="sec-head">
+      <div>
+        <h2 class="section-heading">Find a player</h2>
+        <div class="sub">Type a name to see how many billions they have and when.</div>
+      </div>
+    </div>
+    <div class="player-search">
+      <input id="player-q" type="text" placeholder="Search players…" autocomplete="off" spellcheck="false"
+        role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="player-results" aria-label="Search players">
+      <ul class="search-results" id="player-results" role="listbox" hidden></ul>
+    </div>
+  </section>
+
   <section>
     <div class="sec-head">
       <div>
@@ -204,7 +247,7 @@
       <label class="season-pick">Season <select id="season"></select></label>
     </div>
     <div class="table-card" id="leaders"></div>
-      <div class="pager" id="leaders-pager" hidden>
+    <div class="pager" id="leaders-pager" hidden>
       <button class="day-btn" id="leaders-prev">‹ Prev</button>
       <span id="leaders-page"></span>
       <button class="day-btn" id="leaders-next">Next ›</button>
@@ -250,9 +293,9 @@
     `<td class="n${HIT.has(k) ? ' hit' : ''}${ZERO.has(k) ? ' z' : ''}">${esc(f(s))}</td>`).join('');
 
   let all = [], days = [], dayIdx = 0;
-    let gameDays = new Set(), billionsByDay = new Map();
-  const CAL_START = { y: 2016, m: 9 };   // October 2016 (months are 0-based)
-  let calView = { y: 2016, m: 9 };
+  let gameDays = new Set(), billionsByDay = new Map();
+  const CAL_START = { y: 2012, m: 9 };   // October 2012 (months are 0-based)
+  let calView = { y: 2012, m: 9 };
 
   function render(data) {
     // Season count for each billion: how many that player had in that season, through that game.
@@ -263,11 +306,19 @@
       b.seasonCount = running[k] = (running[k] || 0) + 1;
     }
 
-    // Day view: defaults to the latest game day the script processed.
-        // Every day that had games, and how many billions each day had.
+    // Every day that had games, and how many billions each day had.
     gameDays = new Set([...Object.values(data.processedEvents || {}), ...all.map(b => b.date), data.lastGameDate].filter(Boolean));
     billionsByDay = new Map();
     for (const b of all) billionsByDay.set(b.date, (billionsByDay.get(b.date) || 0) + 1);
+
+    // Everyone with at least one billion, for the player search.
+    const byPlayer = new Map();
+    for (const b of all) {
+      const p = byPlayer.get(b.athleteId) || { id: b.athleteId, n: 0 };
+      p.n++; p.name = b.name; p.team = b.team; p.key = fold(b.name);
+      byPlayer.set(b.athleteId, p);
+    }
+    players = [...byPlayer.values()];
 
     // Day view: defaults to the latest game day. Prev/Next step through game days.
     days = [...gameDays].sort();
@@ -282,7 +333,7 @@
     renderLeaders();
 
     $('updated').textContent = data.updated
-      ? `Updated ${new Date(data.updated).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })} · ${Object.keys(data.processedEvents || {}).length} games checked · Data: ESPN`
+      ? `Updated ${new Date(data.updated).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })} · ${Object.keys(data.processedEvents || {}).length} games checked · Data: ESPN & NBA.com`
       : '';
 
     openFromHash();
@@ -317,7 +368,7 @@
       : `<div class="empty">No billions on ${fmtDate(day, { month: 'long', day: 'numeric' })}</div>`;
   }
 
-    // ---------- Calendar ----------
+  // ---------- Calendar ----------
   const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const iso = (y, m, d) => `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
   const monthNum = v => v.y * 12 + v.m;
@@ -394,8 +445,69 @@
   };
   document.addEventListener('click', e => { if (!$('cal').hidden && !e.target.closest('#cal, #cal-btn')) closeCal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('cal').hidden) { closeCal(); $('cal-btn').focus(); } });
-  
-    const PAGE_SIZE = 25;   // players per page in the leaders table
+
+  // ---------- Player search ----------
+  let players = [], matches = [], active = -1;
+  // Lowercase and strip accents, so "jokic" finds "Jokić".
+  const fold = s => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+  function searchPlayers() {
+    const q = fold($('player-q').value.trim());
+    const box = $('player-results');
+    if (!q) { closeSearch(); return; }
+    const words = q.split(/\s+/);
+    matches = players
+      .filter(p => words.every(w => p.key.includes(w)))
+      .sort((a, b) => (b.key.startsWith(q) - a.key.startsWith(q)) || b.n - a.n || a.name.localeCompare(b.name))
+      .slice(0, 10);
+    active = matches.length ? 0 : -1;
+    box.innerHTML = matches.length
+      ? matches.map((p, i) => `<li role="option" id="pr-${i}" data-i="${i}"${i === active ? ' class="active" aria-selected="true"' : ''}>
+          <span><span class="nm">${esc(p.name)}</span> <span class="team">${esc(p.team)}</span></span>
+          <span class="ct">${p.n} billion${p.n === 1 ? '' : 's'}</span></li>`).join('')
+      : `<li class="none">No billions found for “${esc($('player-q').value.trim())}”</li>`;
+    box.hidden = false;
+    $('player-q').setAttribute('aria-expanded', 'true');
+    $('player-q').setAttribute('aria-activedescendant', active >= 0 ? 'pr-0' : '');
+  }
+  function closeSearch() {
+    $('player-results').hidden = true;
+    $('player-q').setAttribute('aria-expanded', 'false');
+    active = -1;
+  }
+  function highlight(i) {
+    active = (i + matches.length) % matches.length;
+    [...$('player-results').children].forEach((li, j) => {
+      li.classList.toggle('active', j === active);
+      li.setAttribute('aria-selected', j === active);
+      if (j === active) li.scrollIntoView({ block: 'nearest' });
+    });
+    $('player-q').setAttribute('aria-activedescendant', `pr-${active}`);
+  }
+  function pick(i) {
+    const p = matches[i];
+    if (!p) return;
+    closeSearch();
+    $('player-q').value = p.name;
+    openPlayer(p.id);
+  }
+  $('player-q').addEventListener('input', searchPlayers);
+  $('player-q').addEventListener('focus', () => { if ($('player-q').value.trim()) searchPlayers(); });
+  $('player-q').addEventListener('keydown', e => {
+    if ($('player-results').hidden || !matches.length) return;
+    if (e.key === 'ArrowDown') { e.preventDefault(); highlight(active + 1); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); highlight(active - 1); }
+    else if (e.key === 'Enter') { e.preventDefault(); pick(active); }
+    else if (e.key === 'Escape') closeSearch();
+  });
+  $('player-results').addEventListener('mousedown', e => {
+    const li = e.target.closest('li[data-i]');
+    if (li) { e.preventDefault(); pick(+li.dataset.i); }
+  });
+  document.addEventListener('click', e => { if (!e.target.closest('.player-search')) closeSearch(); });
+
+  // ---------- Leaders ----------
+  const PAGE_SIZE = 25;   // players per page in the leaders table
   let leadersPage = 1;
   $('leaders-prev').onclick = () => { leadersPage--; renderLeaders(); $('leaders').scrollIntoView({ block: 'nearest' }); };
   $('leaders-next').onclick = () => { leadersPage++; renderLeaders(); $('leaders').scrollIntoView({ block: 'nearest' }); };
@@ -421,10 +533,11 @@
     $('leaders-prev').disabled = leadersPage <= 1;
     $('leaders-next').disabled = leadersPage >= pages;
 
+    const showTeam = sel !== 'all';   // no Team column when looking at all seasons
     $('leaders').innerHTML = list.length
-      ? `<table><thead><tr><th class="n">#</th><th>Player</th><th>Team</th><th class="n">Billions</th><th>Most recent</th></tr></thead><tbody>${
-          shown.map(p => `<tr><td class="n rank">${p.rank}</td><td><button class="player-link" data-id="${esc(p.id)}">${esc(p.name)}</button></td>
-              <td class="team">${esc(p.last.team)}</td><td class="n big">${p.n}</td>
+      ? `<table><thead><tr><th class="n">#</th><th>Player</th>${showTeam ? '<th>Team</th>' : ''}<th class="n">Billions</th><th>Most recent</th></tr></thead><tbody>${
+              shown.map(p => `<tr><td class="n rank">${p.rank}</td><td><button class="player-link" data-id="${esc(p.id)}">${esc(p.name)}</button></td>
+              ${showTeam ? `<td class="team">${esc(p.last.team)}</td>` : ''}<td class="n big">${p.n}</td>
               <td class="team">${fmtDate(p.last.date)} · ${game(p.last)}</td></tr>`).join('')
         }</tbody></table>`
       : '<div class="empty">No billions yet this season.</div>';
@@ -453,7 +566,7 @@
   function openFromHash() {
     const m = location.hash.match(/^#player=(.+)$/);
     if (m) openPlayer(decodeURIComponent(m[1]));
-        const d = location.hash.match(/^#date=(\d{4}-\d{2}-\d{2})$/);
+    const d = location.hash.match(/^#date=(\d{4}-\d{2}-\d{2})$/);
     if (d && days.includes(d[1])) { dayIdx = days.indexOf(d[1]); renderDay(); }
   }
 
@@ -463,7 +576,7 @@
   });
   $('dlg-close').onclick = () => $('player-dlg').close();
   $('player-dlg').addEventListener('click', e => { if (e.target === e.currentTarget) e.currentTarget.close(); });
-    $('player-dlg').addEventListener('close', () => {
+  $('player-dlg').addEventListener('close', () => {
     if (location.hash.startsWith('#player=')) history.replaceState(null, '', location.pathname + location.search);
   });
   $('prev-day').onclick = () => { if (dayIdx > 0) showDate(days[dayIdx - 1]); };

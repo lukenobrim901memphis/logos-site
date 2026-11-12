@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Sudoku</title>
+<!-- Your site stylesheet. Change the path if it lives somewhere else. -->
+<link rel="stylesheet" href="style.css">
+<style>
+  :root { --mistake: #b5483b; }
+  @media (prefers-color-scheme: dark) { :root { --mistake: #e0806f; } }
+
+  .sudoku-wrap { max-width: 560px; margin: 0 auto; padding: 0 16px 48px; font-family: var(--font-primary); }
+  .meta { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin: 20px 0 12px; flex-wrap: wrap; }
+  .meta .date { font-size: 1.05rem; font-weight: bold; }
+  .meta .level { font-size: 0.8rem; font-weight: bold; letter-spacing: 1px; padding: 2px 10px; border-radius: 999px; border: 1px solid var(--accent-sage); margin-left: 6px; }
+  .timer { display: flex; align-items: center; gap: 8px; font-variant-numeric: tabular-nums; font-size: 1.05rem; }
+  .icon-btn {
+    font-family: var(--font-primary); font-weight: bold; font-size: 0.85rem; cursor: pointer;
+    padding: 5px 10px; border-radius: 6px; background: none; color: var(--bg-forest); border: 1px solid var(--accent-sage);
+  }
+  .icon-btn:hover { background-color: var(--bg-cream-dark); }
+
+  /* Grid */
+  .board-holder { position: relative; }
+  .board {
+    display: grid; grid-template-columns: repeat(9, 1fr); grid-template-rows: repeat(9, 1fr); width: 100%; aspect-ratio: 1;
+    border: 3px solid var(--bg-forest); border-radius: 6px; overflow: hidden; background-color: var(--bg-cream);
+    user-select: none; -webkit-user-select: none; touch-action: manipulation;
+  }
+  .cell {
+    position: relative; display: flex; align-items: center; justify-content: center;
+    border-right: 1px solid rgba(28, 45, 36, 0.25); border-bottom: 1px solid rgba(28, 45, 36, 0.25);
+    font-size: clamp(1.2rem, 5.6vw, 1.9rem); cursor: pointer; color: var(--bg-forest-light);
+    font-variant-numeric: tabular-nums;
+  }
+  .cell:nth-child(9n) { border-right: 0; }
+  .cell:nth-child(9n + 3), .cell:nth-child(9n + 6) { border-right: 2px solid var(--bg-forest); }
+  .cell:nth-child(n + 19):nth-child(-n + 27), .cell:nth-child(n + 46):nth-child(-n + 54) { border-bottom: 2px solid var(--bg-forest); }
+  .cell:nth-child(n + 73) { border-bottom: 0; }
+  .cell.given { color: var(--bg-forest); font-weight: bold; }
+  .cell.peer { background-color: var(--bg-cream-dark); }
+  .cell.same { background-color: rgba(142, 184, 151, 0.45); }
+  .cell.selected { background-color: var(--accent-sage); }
+  .cell.conflict { color: var(--mistake); }
+  .cell.conflict::after { content: ''; position: absolute; left: 50%; bottom: 10%; width: 5px; height: 5px; margin-left: -2.5px; border-radius: 50%; background: var(--mistake); }
+  .notes { position: absolute; inset: 2px; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); }
+  .notes span { display: flex; align-items: center; justify-content: center; font-size: clamp(0.5rem, 2vw, 0.72rem); color: var(--bg-forest); opacity: 0.75; font-weight: normal; }
+
+  .paused-cover {
+    position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+    background-color: var(--bg-cream-dark); border: 3px solid var(--bg-forest); border-radius: 6px; font-size: 1.2rem; font-weight: bold;
+  }
+
+  /* Controls */
+  .tools { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
+  .tool {
+    font-family: var(--font-primary); font-weight: bold; font-size: 0.95rem; cursor: pointer; padding: 10px 6px;
+    border-radius: 8px; background-color: var(--bg-cream-dark); color: var(--bg-forest); border: 1px solid var(--accent-sage);
+  }
+  .tool[aria-pressed="true"] { background-color: var(--bg-forest); color: var(--bg-cream); border-color: var(--bg-forest); }
+  .tool small { display: block; font-weight: normal; font-size: 0.7rem; opacity: 0.75; }
+  .pad { display: grid; grid-template-columns: repeat(9, 1fr); gap: 6px; margin-top: 10px; }
+  .num {
+    font-family: var(--font-primary); font-size: 1.4rem; font-weight: bold; cursor: pointer; padding: 10px 0;
+    border-radius: 8px; background-color: var(--bg-forest); color: var(--bg-cream); border: 1px solid var(--bg-forest-light);
+  }
+  .num:hover:not(:disabled) { background-color: var(--bg-forest-light); }
+  .num:disabled { opacity: 0.2; cursor: default; }
+  .tool:focus-visible, .num:focus-visible, .icon-btn:focus-visible { outline: 3px solid var(--accent-sage); outline-offset: 2px; }
+
+  .done-banner {
+    margin-top: 16px; padding: 18px; text-align: center; border-radius: 12px;
+    background-color: var(--bg-forest); color: var(--bg-cream);
+  }
+  .done-banner b { display: block; font-size: 1.4rem; margin-bottom: 4px; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 16px; }
+  .stat { text-align: center; padding: 10px 4px; border-radius: 8px; background-color: var(--bg-cream-dark); border: 1px solid var(--accent-sage); }
+  .stat b { display: block; font-size: 1.3rem; color: var(--bg-forest-light); font-variant-numeric: tabular-nums; }
+  .stat span { font-size: 0.75rem; opacity: 0.8; }
+  .help { margin-top: 18px; font-size: 0.88rem; line-height: 1.55; opacity: 0.8; text-align: center; }
+  [hidden] { display: none !important; }
+  .cell { min-width: 0; min-height: 0; }
+  @media (hover: none) { .tool small { display: none; } }   /* keyboard hints aren't useful on touch screens */
+
+  @media (prefers-color-scheme: dark) {
+    .board { background-color: var(--bg-forest); border-color: var(--accent-sage); }
+    .cell { border-color: rgba(142, 184, 151, 0.25); color: var(--accent-sage); }
+    .cell:nth-child(9n + 3), .cell:nth-child(9n + 6) { border-right-color: var(--accent-sage); }
+    .cell:nth-child(n + 19):nth-child(-n + 27), .cell:nth-child(n + 46):nth-child(-n + 54) { border-bottom-color: var(--accent-sage); }
+    .cell.given { color: var(--bg-cream); }
+    .cell.peer { background-color: rgba(255, 255, 255, 0.06); }
+    .cell.same { background-color: rgba(142, 184, 151, 0.28); }
+    .cell.selected { background-color: var(--bg-forest-light); }
+    .notes span { color: var(--bg-cream); }
+    .paused-cover { background-color: var(--bg-forest); border-color: var(--accent-sage); }
+    .icon-btn { color: var(--bg-cream); border-color: var(--bg-forest-light); }
+    .icon-btn:hover { background-color: rgba(255, 255, 255, 0.08); }
+    .tool, .stat { background-color: rgba(255, 255, 255, 0.05); color: var(--bg-cream); border-color: var(--bg-forest-light); }
+    .tool[aria-pressed="true"] { background-color: var(--accent-sage); color: var(--bg-forest); border-color: var(--accent-sage); }
+    .num { background-color: var(--bg-cream); color: var(--bg-forest); border-color: var(--bg-cream-dark); }
+    .num:hover:not(:disabled) { background-color: var(--bg-cream-dark); }
+    .stat b { color: var(--accent-sage); }
+    .done-banner { background-color: var(--bg-forest-light); }
+  }
+</style>
+</head>
+<body>
+<header class="sticky-header">
+  <a class="back-btn" href="games.html">← Back</a>
+  <h1>Daily Sudoku</h1>
+</header>
+
+<main class="sudoku-wrap">
+  <div class="meta">
+    <div><span class="date" id="date"></span><span class="level">Medium</span></div>
+    <div class="timer"><span id="timer">0:00</span><button class="icon-btn" id="pause" aria-label="Pause">Pause</button></div>
+  </div>
+
+  <div class="board-holder">
+    <div class="board" id="board" role="grid" aria-label="Sudoku grid" tabindex="0"></div>
+    <div class="paused-cover" id="paused" hidden>Paused<button class="icon-btn" id="resume">Resume</button></div>
+  </div>
+
+  <div class="tools">
+    <button class="tool" id="notes-btn" aria-pressed="false">Notes<small>N</small></button>
+    <button class="tool" id="erase-btn">Erase<small>Delete</small></button>
+    <button class="tool" id="undo-btn">Undo<small>Ctrl+Z</small></button>
+  </div>
+  <div class="pad" id="pad"></div>
+
+  <div class="done-banner" id="done" hidden><b>Solved!</b><span id="done-text"></span></div>
+
+  <div class="stats">
+    <div class="stat"><b id="st-solved">0</b><span>Solved</span></div>
+    <div class="stat"><b id="st-streak">0</b><span>Current streak</span></div>
+    <div class="stat"><b id="st-best">—</b><span>Best time</span></div>
+  </div>
+
+  <p class="help">A new puzzle every day at midnight. Click a square, then a number (or type it). Arrow keys move,
+    N switches notes on and off. Numbers that clash with another in the same row, column or box turn red.</p>
+</main>
+
+<script>
+// ---------- Sudoku engine: daily puzzle maker + human-style grader ----------
+// Everything here is deterministic: the same date always gives the same puzzle.
+const Sudoku = (() => {
+  const R = i => (i / 9) | 0, C = i => i % 9, B = i => ((R(i) / 3) | 0) * 3 + ((C(i) / 3) | 0);
+  const UNITS = [];
+  for (let k = 0; k < 9; k++) {
+    UNITS.push([...Array(9)].map((_, j) => k * 9 + j));                                         // rows
+    UNITS.push([...Array(9)].map((_, j) => j * 9 + k));                                         // columns
+    UNITS.push([...Array(9)].map((_, j) => (((k / 3) | 0) * 3 + ((j / 3) | 0)) * 9 + (k % 3) * 3 + (j % 3))); // boxes
+  }
+  const PEERS = [...Array(81)].map((_, i) =>
+    [...new Set(UNITS.filter(u => u.includes(i)).flat())].filter(j => j !== i));
+  const ALL = 0x3fe;   // bits 1..9
+  const pop = m => { let n = 0; while (m) { m &= m - 1; n++; } return n; };
+  const bits = m => { const out = []; for (let d = 1; d <= 9; d++) if (m & (1 << d)) out.push(d); return out; };
+
+  // Small seeded random number generator (mulberry32) and a string hash for the seed.
+  function rngFrom(str) {
+    let h = 1779033703 ^ str.length;
+    for (let i = 0; i < str.length; i++) { h = Math.imul(h ^ str.charCodeAt(i), 3432918353); h = (h << 13) | (h >>> 19); }
+    let a = h >>> 0;
+    return () => {
+      a |= 0; a = (a + 0x6d2b79f5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  const shuffle = (arr, rng) => { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(rng() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; };
+
+  // A random completely filled grid.
+  function fullGrid(rng) {
+    const g = Array(81).fill(0), rows = Array(9).fill(0), cols = Array(9).fill(0), boxes = Array(9).fill(0);
+    (function fill(i) {
+      if (i === 81) return true;
+      const free = ALL & ~(rows[R(i)] | cols[C(i)] | boxes[B(i)]);
+      for (const d of shuffle(bits(free), rng)) {
+        const b = 1 << d;
+        g[i] = d; rows[R(i)] |= b; cols[C(i)] |= b; boxes[B(i)] |= b;
+        if (fill(i + 1)) return true;
+        rows[R(i)] &= ~b; cols[C(i)] &= ~b; boxes[B(i)] &= ~b;
+      }
+      g[i] = 0;
+      return false;
+    })(0);
+    return g;
+  }
+
+  // How many solutions a puzzle has (stops counting at `limit`).
+  function countSolutions(puzzle, limit = 2) {
+    const g = puzzle.slice(), rows = Array(9).fill(0), cols = Array(9).fill(0), boxes = Array(9).fill(0);
+    for (let i = 0; i < 81; i++) if (g[i]) {
+      const b = 1 << g[i];
+      if ((rows[R(i)] | cols[C(i)] | boxes[B(i)]) & b) return 0;
+      rows[R(i)] |= b; cols[C(i)] |= b; boxes[B(i)] |= b;
+    }
+    let count = 0;
+    (function rec() {
+      let best = -1, bestMask = 0, bestN = 10;
+      for (let i = 0; i < 81; i++) if (!g[i]) {
+        const m = ALL & ~(rows[R(i)] | cols[C(i)] | boxes[B(i)]);
+        const n = pop(m);
+        if (n < bestN) { best = i; bestMask = m; bestN = n; if (n === 0) return; }
+      }
+      if (best < 0) { count++; return; }
+      for (const d of bits(bestMask)) {
+        const b = 1 << d;
+        g[best] = d; rows[R(best)] |= b; cols[C(best)] |= b; boxes[B(best)] |= b;
+        rec();
+        g[best] = 0; rows[R(best)] &= ~b; cols[C(best)] &= ~b; boxes[B(best)] &= ~b;
+        if (count >= limit) return;
+      }
+    })();
+    return count;
+  }
+
+  /**
+   * Solve the way a person would, using only these techniques:
+   *   level 1  naked single   (a cell with one possible number)
+   *   level 2  hidden single  (the only spot for a number in a row, column or box)
+   *   level 3  locked candidates (pointing / claiming) and naked / hidden pairs
+   * Returns whether it got all the way through and the hardest level it needed.
+   */
+  function grade(puzzle) {
+    const v = puzzle.slice(), cand = Array(81).fill(0);
+    for (let i = 0; i < 81; i++) if (!v[i]) {
+      let m = ALL;
+      for (const p of PEERS[i]) if (v[p]) m &= ~(1 << v[p]);
+      cand[i] = m;
+    }
+    const steps = { 1: 0, 2: 0, 3: 0 };
+    let maxLevel = 0;
+    const place = (i, d, level) => {
+      v[i] = d; cand[i] = 0;
+      for (const p of PEERS[i]) cand[p] &= ~(1 << d);
+      steps[level]++; maxLevel = Math.max(maxLevel, level);
+    };
+
+    outer: for (;;) {
+      for (let i = 0; i < 81; i++) if (!v[i] && cand[i] === 0) return { solved: false, maxLevel, steps };
+      // Level 1: naked singles
+      for (let i = 0; i < 81; i++) if (!v[i] && pop(cand[i]) === 1) { place(i, bits(cand[i])[0], 1); continue outer; }
+      // Level 2: hidden singles
+      for (const u of UNITS) for (let d = 1; d <= 9; d++) {
+        const b = 1 << d;
+        if (u.some(i => v[i] === d)) continue;
+        const spots = u.filter(i => !v[i] && (cand[i] & b));
+        if (spots.length === 1) { place(spots[0], d, 2); continue outer; }
+      }
+      // Level 3: eliminations
+      let changed = false;
+      const elim = (cells, mask) => {
+        for (const i of cells) if (!v[i] && (cand[i] & mask)) { cand[i] &= ~mask; changed = true; }
+      };
+      // Locked candidates: a number confined to one line inside a box (or one box inside a line).
+      for (const u of UNITS) for (let d = 1; d <= 9; d++) {
+        const b = 1 << d;
+        const spots = u.filter(i => !v[i] && (cand[i] & b));
+        if (spots.length < 2) continue;
+        for (const other of UNITS) {
+          if (other === u || !spots.every(i => other.includes(i))) continue;
+          elim(other.filter(i => !spots.includes(i)), b);
+        }
+      }
+      if (changed) { steps[3]++; maxLevel = Math.max(maxLevel, 3); continue; }
+      // Naked pairs and hidden pairs.
+      for (const u of UNITS) {
+        const empty = u.filter(i => !v[i]);
+        for (let a = 0; a < empty.length; a++) for (let c = a + 1; c < empty.length; c++) {
+          const m = cand[empty[a]];
+          if (pop(m) === 2 && cand[empty[c]] === m) elim(empty.filter(i => i !== empty[a] && i !== empty[c]), m);
+        }
+        for (let d1 = 1; d1 <= 9; d1++) for (let d2 = d1 + 1; d2 <= 9; d2++) {
+          const s1 = empty.filter(i => cand[i] & (1 << d1)), s2 = empty.filter(i => cand[i] & (1 << d2));
+          if (s1.length === 2 && s2.length === 2 && s1[0] === s2[0] && s1[1] === s2[1]) {
+            const keep = (1 << d1) | (1 << d2);
+            for (const i of s1) if (cand[i] & ~keep) { cand[i] &= keep; changed = true; }
+          }
+        }
+      }
+      if (changed) { steps[3]++; maxLevel = Math.max(maxLevel, 3); continue; }
+      break;
+    }
+    return { solved: v.every(Boolean), maxLevel, steps };
+  }
+
+  /**
+   * The puzzle for a date (YYYY-MM-DD). Medium = unique solution, 25–28 starting numbers,
+   * needs a pairs/locked-candidates step or at least 12 hidden singles, and never needs
+   * anything harder than that (no X-wings, chains or guessing).
+   */
+  function daily(date) {
+    let fallback = null;
+    for (let attempt = 0; attempt < 60; attempt++) {
+      const rng = rngFrom(`almanac-sudoku:${date}:${attempt}`);
+      const solution = fullGrid(rng);
+      const puzzle = solution.slice();
+      const target = 25 + Math.floor(rng() * 4);
+      let givens = 81;
+      // Remove numbers in mirror-image pairs (180° symmetry, like most newspaper puzzles).
+      for (const i of shuffle([...Array(41).keys()], rng)) {
+        if (givens <= target) break;
+        const j = 80 - i, a = puzzle[i], b = puzzle[j];
+        puzzle[i] = 0; puzzle[j] = 0;
+        if (countSolutions(puzzle, 2) === 1 && grade(puzzle).solved) givens -= i === j ? 1 : 2;
+        else { puzzle[i] = a; puzzle[j] = b; }
+      }
+      const g = grade(puzzle);
+      const result = { puzzle, solution, givens, ...g };
+      // Medium: needs real searching — either a pairs/locked-candidates step, or a dozen hidden singles.
+      if (g.solved && givens <= 28 && (g.maxLevel === 3 || g.steps[2] >= 12)) return result;
+      if (!fallback || givens < fallback.givens) fallback = result;
+    }
+    return fallback;
+  }
+
+  return { daily, grade, countSolutions, UNITS, PEERS };
+})();
+</script>
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const store = {
+    get(k, fallback) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : fallback; } catch { return fallback; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+  };
+  const localDate = (d = new Date()) =>
+    `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  const fmtTime = s => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+
+  let today, puzzle, solution, cells, notes, history, selected = 40, notesMode = false;
+  let seconds = 0, done = false, paused = false, tick = null;
+
+  // ---------- Setup ----------
+  function load() {
+    today = localDate();
+    const p = Sudoku.daily(today);
+    puzzle = p.puzzle; solution = p.solution;
+    const saved = store.get(`sudoku-${today}`, null);
+    cells = saved?.cells ?? puzzle.slice();
+    notes = (saved?.notes ?? Array(81).fill(0));
+    seconds = saved?.seconds ?? 0;
+    done = saved?.done ?? false;
+    history = [];
+    $('date').textContent = new Date(today + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    buildBoard(); draw(); drawStats();
+    $('done').hidden = !done;
+    if (done) $('done-text').textContent = `You finished today's puzzle in ${fmtTime(seconds)}. Come back tomorrow for a new one.`;
+    startClock();
+  }
+  const save = () => store.set(`sudoku-${today}`, { cells, notes, seconds, done });
+
+  function buildBoard() {
+    $('board').innerHTML = Array.from({ length: 81 }, (_, i) =>
+      `<div class="cell" role="gridcell" data-i="${i}" aria-label="Row ${Math.floor(i / 9) + 1}, column ${i % 9 + 1}"></div>`).join('');
+    $('pad').innerHTML = Array.from({ length: 9 }, (_, k) => `<button class="num" data-d="${k + 1}" aria-label="${k + 1}">${k + 1}</button>`).join('');
+  }
+
+  // ---------- Drawing ----------
+  function conflicts() {
+    const bad = new Set();
+    for (const u of Sudoku.UNITS) {
+      const seen = {};
+      for (const i of u) if (cells[i]) (seen[cells[i]] ??= []).push(i);
+      for (const list of Object.values(seen)) if (list.length > 1) list.forEach(i => { if (!puzzle[i]) bad.add(i); });
+    }
+    return bad;
+  }
+  function draw() {
+    const bad = conflicts();
+    const peers = new Set(Sudoku.PEERS[selected]);
+    const selVal = cells[selected];
+    $('board').querySelectorAll('.cell').forEach((el, i) => {
+      el.className = 'cell' + (puzzle[i] ? ' given' : '') + (i === selected ? ' selected' : '') +
+        (i !== selected && peers.has(i) ? ' peer' : '') + (i !== selected && selVal && cells[i] === selVal ? ' same' : '') +
+        (bad.has(i) ? ' conflict' : '');
+      if (cells[i]) el.textContent = cells[i];
+      else if (notes[i]) el.innerHTML = `<div class="notes">${[1, 2, 3, 4, 5, 6, 7, 8, 9].map(d => `<span>${notes[i] & (1 << d) ? d : ''}</span>`).join('')}</div>`;
+      else el.textContent = '';
+      el.setAttribute('aria-selected', String(i === selected));
+    });
+    // Grey out numbers that are already placed nine times.
+    const counts = Array(10).fill(0);
+    cells.forEach(v => counts[v]++);
+    $('pad').querySelectorAll('.num').forEach(b => { b.disabled = done || counts[+b.dataset.d] >= 9; });
+    $('notes-btn').setAttribute('aria-pressed', String(notesMode));
+  }
+
+  // ---------- Moves ----------
+  function setCell(i, d) {
+    if (done || paused || puzzle[i]) return;
+    const before = { i, v: cells[i], n: notes[i], peerNotes: null };
+    if (notesMode && d) {
+      if (cells[i]) return;
+      notes[i] ^= 1 << d;
+    } else {
+      cells[i] = cells[i] === d ? 0 : d;
+      notes[i] = 0;
+      // Placing a number clears it from the notes in its row, column and box.
+      if (cells[i]) {
+        before.peerNotes = Sudoku.PEERS[i].map(p => [p, notes[p]]);
+        for (const p of Sudoku.PEERS[i]) notes[p] &= ~(1 << d);
+      }
+    }
+    history.push(before);
+    afterMove();
+  }
+  function erase(i) {
+    if (done || paused || puzzle[i] || (!cells[i] && !notes[i])) return;
+    history.push({ i, v: cells[i], n: notes[i], peerNotes: null });
+    cells[i] = 0; notes[i] = 0;
+    afterMove();
+  }
+  function undo() {
+    if (done || paused) return;
+    const h = history.pop();
+    if (!h) return;
+    cells[h.i] = h.v; notes[h.i] = h.n;
+    if (h.peerNotes) for (const [p, n] of h.peerNotes) notes[p] = n;
+    selected = h.i;
+    afterMove();
+  }
+  function afterMove() {
+    if (cells.every((v, i) => v === solution[i])) finish();
+    save(); draw();
+  }
+
+  function finish() {
+    done = true; stopClock();
+    const stats = store.get('sudoku-stats', { solved: [], best: null });
+    if (!stats.solved.includes(today)) stats.solved.push(today);
+    if (stats.best == null || seconds < stats.best) stats.best = seconds;
+    store.set('sudoku-stats', stats);
+    $('done').hidden = false;
+    $('done-text').textContent = `You finished today's puzzle in ${fmtTime(seconds)}. Come back tomorrow for a new one.`;
+    drawStats();
+  }
+  function drawStats() {
+    const stats = store.get('sudoku-stats', { solved: [], best: null });
+    const solved = new Set(stats.solved);
+    // Streak: consecutive days solved, ending today (or yesterday if today isn't done yet).
+    let streak = 0;
+    const d = new Date(today + 'T12:00:00');
+    if (!solved.has(today)) d.setDate(d.getDate() - 1);
+    while (solved.has(localDate(d))) { streak++; d.setDate(d.getDate() - 1); }
+    $('st-solved').textContent = solved.size;
+    $('st-streak').textContent = streak;
+    $('st-best').textContent = stats.best == null ? '—' : fmtTime(stats.best);
+  }
+
+  // ---------- Clock ----------
+  function startClock() {
+    stopClock();
+    $('timer').textContent = fmtTime(seconds);
+    if (done) return;
+    tick = setInterval(() => {
+      if (paused || document.hidden) return;
+      seconds++; $('timer').textContent = fmtTime(seconds);
+      if (seconds % 5 === 0) save();
+    }, 1000);
+  }
+  function stopClock() { clearInterval(tick); tick = null; }
+  function setPaused(p) {
+    if (done) return;
+    paused = p;
+    $('paused').hidden = !p;
+    $('pause').textContent = p ? 'Resume' : 'Pause';
+    if (!p) $('board').focus();
+  }
+  $('pause').onclick = () => setPaused(!paused);
+  $('resume').onclick = () => setPaused(false);
+
+  // ---------- Input ----------
+  $('board').addEventListener('pointerdown', e => {
+    const c = e.target.closest('.cell');
+    if (!c) return;
+    selected = +c.dataset.i; draw(); $('board').focus();
+  });
+  $('pad').addEventListener('click', e => { const b = e.target.closest('.num'); if (b) setCell(selected, +b.dataset.d); });
+  $('notes-btn').onclick = () => { notesMode = !notesMode; draw(); };
+  $('erase-btn').onclick = () => erase(selected);
+  $('undo-btn').onclick = undo;
+
+  document.addEventListener('keydown', e => {
+    if (e.target.closest('input, textarea, select')) return;
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); undo(); return; }
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    const moves = { ArrowUp: -9, ArrowDown: 9, ArrowLeft: -1, ArrowRight: 1 };
+    if (moves[e.key] != null) {
+      e.preventDefault();
+      const r = Math.floor(selected / 9), c = selected % 9;
+      if (e.key === 'ArrowUp') selected = ((r + 8) % 9) * 9 + c;
+      if (e.key === 'ArrowDown') selected = ((r + 1) % 9) * 9 + c;
+      if (e.key === 'ArrowLeft') selected = r * 9 + (c + 8) % 9;
+      if (e.key === 'ArrowRight') selected = r * 9 + (c + 1) % 9;
+      draw(); return;
+    }
+    if (/^[1-9]$/.test(e.key)) { e.preventDefault(); setCell(selected, +e.key); return; }
+    if (['Backspace', 'Delete', '0'].includes(e.key)) { e.preventDefault(); erase(selected); return; }
+    if (e.key.toLowerCase() === 'n') { notesMode = !notesMode; draw(); }
+  });
+
+  // A new day while the page is open: load the new puzzle when you come back to it.
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { save(); return; }
+    if (localDate() !== today) load();
+  });
+  window.addEventListener('pagehide', save);
+
+  load();
+})();
+</script>
+</body>
+</html>
