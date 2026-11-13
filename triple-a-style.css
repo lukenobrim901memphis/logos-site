@@ -67,8 +67,8 @@
 .text-bees {
     color: #FFB81C !important
 }
-.text-railriders {
-    color: #0C2340 !important
+.text-highlanders {
+    color: #012b5d !important
 }
 .text-saints {
     color: #001489 !important
@@ -96,6 +96,45 @@
 }
 .text-padres {
     color: #041E42 !important
+}
+.text-railriders {
+    color: #0C2340 !important
+}
+.text-chiefs {
+    color: #0C2340 !important
+}
+.text-braves {
+    color: #002855 !important
+}
+.text-sky-sox {
+    color: #051C2C !important
+}
+.text-grizzlies {
+    color: #010101 !important
+}
+.text-51s {
+    color: #010101 !important
+}
+.text-zephyrs {
+    color: #041E42 !important
+}
+.text-baseball-club {
+    color: #002F6C !important
+}
+.text-dodgers {
+    color: #002F6C !important
+}
+.text-redhawks {
+    color: #0C2340 !important
+}
+.text-missions {
+    color: #041E42 !important
+}
+.text-skeeters {
+    color: #ECE81A !important
+}
+.text-wind-surge {
+    color: #0C2340 !important
 }
 
 #theme-night, #copa {
@@ -143,7 +182,7 @@
     .text-cubs{color: #C8102E !important; }
     .text-sounds{color: #C8102E !important; }
     .text-storm-chasers{color: #89734C !important;}
-    .text-railriders{color: #862633 !important; }
+    .text-highlanders{color: #6699c8 !important; }
     .text-saints{color: #6CACE4 !important;}
     .text-rainiers{color: #00685E !important;}
     .text-red-sox{color: #C8102E !important;}
@@ -169,4 +208,17 @@
     .text-baby-cakes{color: #008578 !important}
     .text-dodgers{color: #002F6C !important}
     .text-padres{color: #041E42 !important}
+    .text-railriders{color: #862633 !important}
+    .text-chiefs{color: #BA0C2F !important}
+    .text-braves{color: #BA0C2F !important}
+    .text-sky-sox{color: #8BB8E8 !important}
+    .text-grizzlies{color: #BA0C2F !important}
+    .text-51s{color: #012169 !important}
+    .text-zephyrs{color: #8D9093 !important}
+    .text-baseball-club{color: #E4002B !important}
+    .text-dodgers{color: #E4002B !important}
+    .text-redhawks{color: #C8102E !important}
+    .text-missions{color: #B9975B !important}
+    .text-skeeters{color: #0047BB !important}
+    .text-wind-surge{color: #C8102E !important}    
 }

@@ -22,7 +22,7 @@ const teamNameMap = {
     "express": "Round Rock",
     "river-cats": "Sacramento",
     "bees": "Salt Lake",
-    "railriders": "Scranton/Wilkes-Barre",
+    "highlanders": "Scranton/Wilkes-Barre",
     "saints": "St. Paul",
     "space-cowboys": "Sugar Land",
     "mets": "Syracuse",

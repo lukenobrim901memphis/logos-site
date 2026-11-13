@@ -53,7 +53,13 @@
   }
 
   /* Controls */
-  .tools { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
+  .tools { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 14px; }
+  .cell.hint { box-shadow: inset 0 0 0 3px var(--bg-forest-light); }
+  .cell.hint-target { box-shadow: inset 0 0 0 3px var(--bg-forest); }
+  .hint-msg {
+    margin: 10px 0 0; padding: 10px 14px; border-radius: 8px; font-size: 0.95rem; line-height: 1.45;
+    background-color: var(--bg-cream-dark); border-left: 4px solid var(--bg-forest-light);
+  }
   .tool {
     font-family: var(--font-primary); font-weight: bold; font-size: 0.95rem; cursor: pointer; padding: 10px 6px;
     border-radius: 8px; background-color: var(--bg-cream-dark); color: var(--bg-forest); border: 1px solid var(--accent-sage);
@@ -102,6 +108,9 @@
     .num:hover:not(:disabled) { background-color: var(--bg-cream-dark); }
     .stat b { color: var(--accent-sage); }
     .done-banner { background-color: var(--bg-forest-light); }
+    .cell.hint { box-shadow: inset 0 0 0 3px var(--accent-sage); }
+    .cell.hint-target { box-shadow: inset 0 0 0 3px var(--bg-cream); }
+    .hint-msg { background-color: rgba(255, 255, 255, 0.06); border-left-color: var(--accent-sage); }
   }
 </style>
 </head>
@@ -126,7 +135,9 @@
     <button class="tool" id="notes-btn" aria-pressed="false">Notes<small>N</small></button>
     <button class="tool" id="erase-btn">Erase<small>Delete</small></button>
     <button class="tool" id="undo-btn">Undo<small>Ctrl+Z</small></button>
+    <button class="tool" id="hint-btn">Hint<small>H</small></button>
   </div>
+  <p class="hint-msg" id="hint-msg" aria-live="polite" hidden></p>
   <div class="pad" id="pad"></div>
 
   <div class="done-banner" id="done" hidden><b>Solved!</b><span id="done-text"></span></div>
@@ -138,7 +149,7 @@
   </div>
 
   <p class="help">A new puzzle every day at midnight. Click a square, then a number (or type it). Arrow keys move,
-    N switches notes on and off. Numbers that clash with another in the same row, column or box turn red.</p>
+    N switches notes on and off. Stuck? Hint points you to the next move; press it again to fill it in. Numbers that clash with another in the same row, column or box turn red.</p>
 </main>
 
 <script>
@@ -334,6 +345,7 @@ const Sudoku = (() => {
 
   let today, puzzle, solution, cells, notes, history, selected = 40, notesMode = false;
   let seconds = 0, done = false, paused = false, tick = null;
+  let hintsUsed = 0, hint = null;   // hint = the step currently being pointed at
 
   // ---------- Setup ----------
   function load() {
@@ -345,14 +357,18 @@ const Sudoku = (() => {
     notes = (saved?.notes ?? Array(81).fill(0));
     seconds = saved?.seconds ?? 0;
     done = saved?.done ?? false;
+    hintsUsed = saved?.hints ?? 0;
+    hint = null; showHint('');
     history = [];
     $('date').textContent = new Date(today + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
     buildBoard(); draw(); drawStats();
     $('done').hidden = !done;
-    if (done) $('done-text').textContent = `You finished today's puzzle in ${fmtTime(seconds)}. Come back tomorrow for a new one.`;
+    if (done) $('done-text').textContent = doneText();
     startClock();
   }
-  const save = () => store.set(`sudoku-${today}`, { cells, notes, seconds, done });
+  const save = () => store.set(`sudoku-${today}`, { cells, notes, seconds, done, hints: hintsUsed });
+  const doneText = () => `You finished today's puzzle in ${fmtTime(seconds)}` +
+    (hintsUsed ? ` with ${hintsUsed} hint${hintsUsed === 1 ? '' : 's'}` : '') + '. Come back tomorrow for a new one.';
 
   function buildBoard() {
     $('board').innerHTML = Array.from({ length: 81 }, (_, i) =>
@@ -377,7 +393,8 @@ const Sudoku = (() => {
     $('board').querySelectorAll('.cell').forEach((el, i) => {
       el.className = 'cell' + (puzzle[i] ? ' given' : '') + (i === selected ? ' selected' : '') +
         (i !== selected && peers.has(i) ? ' peer' : '') + (i !== selected && selVal && cells[i] === selVal ? ' same' : '') +
-        (bad.has(i) ? ' conflict' : '');
+        (bad.has(i) ? ' conflict' : '') +
+        (hint?.area?.includes(i) ? ' hint' : '') + (hint && hint.shown === 'cell' && hint.i === i ? ' hint-target' : '');
       if (cells[i]) el.textContent = cells[i];
       else if (notes[i]) el.innerHTML = `<div class="notes">${[1, 2, 3, 4, 5, 6, 7, 8, 9].map(d => `<span>${notes[i] & (1 << d) ? d : ''}</span>`).join('')}</div>`;
       else el.textContent = '';
@@ -388,6 +405,8 @@ const Sudoku = (() => {
     cells.forEach(v => counts[v]++);
     $('pad').querySelectorAll('.num').forEach(b => { b.disabled = done || counts[+b.dataset.d] >= 9; });
     $('notes-btn').setAttribute('aria-pressed', String(notesMode));
+    $('hint-btn').disabled = done;
+    $('hint-btn').firstChild.textContent = hint ? 'Fill it in' : 'Hint';
   }
 
   // ---------- Moves ----------
@@ -425,6 +444,7 @@ const Sudoku = (() => {
     afterMove();
   }
   function afterMove() {
+    hint = null; showHint('');
     if (cells.every((v, i) => v === solution[i])) finish();
     save(); draw();
   }
@@ -433,10 +453,10 @@ const Sudoku = (() => {
     done = true; stopClock();
     const stats = store.get('sudoku-stats', { solved: [], best: null });
     if (!stats.solved.includes(today)) stats.solved.push(today);
-    if (stats.best == null || seconds < stats.best) stats.best = seconds;
+    if (!hintsUsed && (stats.best == null || seconds < stats.best)) stats.best = seconds;   // best time = no hints
     store.set('sudoku-stats', stats);
     $('done').hidden = false;
-    $('done-text').textContent = `You finished today's puzzle in ${fmtTime(seconds)}. Come back tomorrow for a new one.`;
+    $('done-text').textContent = doneText();
     drawStats();
   }
   function drawStats() {
@@ -451,6 +471,79 @@ const Sudoku = (() => {
     $('st-streak').textContent = streak;
     $('st-best').textContent = stats.best == null ? '—' : fmtTime(stats.best);
   }
+
+  // ---------- Hints ----------
+  const UNIT_NAME = ['row', 'column', 'box'];   // Sudoku.UNITS goes row, column, box for each index
+  function showHint(text) { $('hint-msg').textContent = text; $('hint-msg').hidden = !text; }
+
+  /** The next thing to point at: a wrong number, or the next move a person could find. */
+  function nextStep() {
+    const wrong = cells.findIndex((v, i) => v && !puzzle[i] && v !== solution[i]);
+    if (wrong >= 0) return { kind: 'wrong', i: wrong, area: [wrong] };
+
+    const cand = cells.map((v, i) => {
+      if (v) return 0;
+      let m = 0x3fe;
+      for (const p of Sudoku.PEERS[i]) if (cells[p]) m &= ~(1 << cells[p]);
+      return m;
+    });
+    const only = m => (m && !(m & (m - 1))) ? Math.log2(m) : 0;
+    // Hidden singles in boxes first (the easiest thing for people to spot), then lone squares, rows, columns.
+    const hidden = type => {
+      for (let u = type; u < Sudoku.UNITS.length; u += 3) {
+        const unit = Sudoku.UNITS[u];
+        for (let d = 1; d <= 9; d++) {
+          if (unit.some(i => cells[i] === d)) continue;
+          const spots = unit.filter(i => cand[i] & (1 << d));
+          if (spots.length === 1) return { kind: 'hidden', i: spots[0], d, unit: UNIT_NAME[type], area: unit };
+        }
+      }
+      return null;
+    };
+    const box = hidden(2);
+    if (box) return box;
+    for (let i = 0; i < 81; i++) {
+      const d = only(cand[i]);
+      if (d) return { kind: 'naked', i, d, area: [i] };
+    }
+    const line = hidden(0) || hidden(1);
+    if (line) return line;
+    // Nothing simple left: point at the square with the fewest possibilities.
+    let best = -1;
+    for (let i = 0; i < 81; i++) if (!cells[i] && (best < 0 || popcount(cand[i]) < popcount(cand[best]))) best = i;
+    return best >= 0 ? { kind: 'reveal', i: best, d: solution[best], area: [best] } : null;
+  }
+  const popcount = m => { let n = 0; while (m) { m &= m - 1; n++; } return n; };
+
+  function useHint() {
+    if (done || paused) return;
+    if (hint) {            // second press: do it
+      const h = hint;
+      if (h.kind === 'wrong') { erase(h.i); selected = h.i; }
+      else { const was = notesMode; notesMode = false; selected = h.i; setCell(h.i, h.d); notesMode = was; }
+      draw();
+      return;
+    }
+    const step = nextStep();
+    if (!step) return;
+    hintsUsed++;
+    hint = step;
+    if (step.kind === 'wrong') {
+      selected = step.i; hint.shown = 'cell';
+      showHint(`The highlighted ${cells[step.i]} isn't right. That's probably why you're stuck. Press Fill it in to clear it.`);
+    } else if (step.kind === 'hidden') {
+      hint.shown = 'area';
+      showHint(`Look at the highlighted ${step.unit}: there's only one square where a ${step.d} can go. Press Fill it in to see it.`);
+    } else if (step.kind === 'naked') {
+      selected = step.i; hint.shown = 'cell';
+      showHint(`Look at the highlighted square: every number but one is already used in its row, column or box. Press Fill it in to see it.`);
+    } else {
+      selected = step.i; hint.shown = 'cell';
+      showHint(`There's no simple move left here, so this one needs a trickier step. Press Fill it in for the highlighted square.`);
+    }
+    save(); draw();
+  }
+  $('hint-btn').onclick = useHint;
 
   // ---------- Clock ----------
   function startClock() {
@@ -502,6 +595,7 @@ const Sudoku = (() => {
     if (/^[1-9]$/.test(e.key)) { e.preventDefault(); setCell(selected, +e.key); return; }
     if (['Backspace', 'Delete', '0'].includes(e.key)) { e.preventDefault(); erase(selected); return; }
     if (e.key.toLowerCase() === 'n') { notesMode = !notesMode; draw(); }
+    if (e.key.toLowerCase() === 'h') useHint();
   });
 
   // A new day while the page is open: load the new puzzle when you come back to it.
