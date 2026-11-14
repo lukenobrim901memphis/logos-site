@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Baltimore Orioles Logo History</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../mlb-style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header class="sticky-header">
+    <a href="../../mlb.html" class="back-btn">← Back to MLB</a>
+    <h1 class="text-orioles">Baltimore Orioles</h1>
+</header>
+
+    <div class="category-header">Primary Logos</div>
+    <div id="primary-logos" class="grid"></div>
+
+    <div class="category-header">Alternate Logos</div>
+    <div id="alternate-logos" class="grid"></div>
+
+    <div class="category-header">Hat Logos</div>
+    <div id="hat-logos" class="grid"></div>
+
+    <div class="category-header">Jersey Logos</div>
+    <div id="jersey-logos" class="grid"></div>
+
+    <div class="category-header">Patches</div>
+    <div id="patches" class="grid"></div>
+
+    <div class="category-header">Holiday</div>
+    <div id="holiday" class="grid"></div>
+
+    <div class="category-header">Spring Training</div>
+    <div id="spring-training" class="grid"></div>
+
+    <div class="category-header">Batting Practice</div>
+    <div id="batting-practice" class="grid"></div>
+
+    <div class="category-header">Other</div>
+    <div id="other-logos" class="grid"></div>
+    
+    <script>
+        const path = "../../images/mlb-teams/baltimore-orioles/";
+        const allFiles = [
+"1966 World Series 50th anniversary patch 2016.png",
+"1983 World Series 40th anniversary patch 2023.png",
+"20th anniversary at Camden Yards patch 2012.png",
+"25 years at Camden Yards patch 2017.png",
+"30th anniversary at Camden Yards patch 2022.png",
+"4th of july hat logo 2013.png",
+"4th of July hat logo 2014.png",
+"4th of July hat logo 2015.png",
+"4th of July hat logo 2016.png",
+"4th of July hat logo 2017.png",
+"4th of July hat logo 2018.png",
+"4th of July hat logo 2019.png",
+"4th of July hat logo 2021.png",
+"4th of July hat logo 2022.png",
+"4th of July hat logo 2023.png",
+"4th of July hat logo 2024.png",
+"4th of July hat logo 2025.png",
+"4th of July hat logo 2026.png",
+"4th of July jersey logo 2015.png",
+"4th of July jersey logo 2016.png",
+"4th of July sleeve patch 2016.png",
+"4th of July sleeve patch 2017.png",
+"60th season patch 2014.png",
+"Armed Forces hat logo 2019.png",
+"Armed Forces hat logo 2022.png",
+"Armed Forces hat logo 2023.png",
+"Armed Forces hat logo 2024.png",
+"Armed Forces hat logo 2025.png",
+"Armed Forces Weekend hat logo 2021.png",
+"Armed Forces Weekend hat logo 2026.png",
+"B hat logo 2026-present.png",
+"Batting practice hat logo 2025.png",
+"Bird hat logo 2011.png",
+"Black jersey logo.png",
+"Black spring training jersey logo 2015.png",
+"Braille jersey logo 2018.png",
+"Brooks Robinson 5 memorial patch 2023.png",
+"Brooks Robinson number 5 memorial patch 2023.png",
+"Cal Ripken Jr. 2131 25th anniversary patch 2020.png",
+"City connect colorful sleeve patch 2023.png",
+"City connect gray sleeve patch 2024-2025.png",
+"City connect hat logo 2023-2025.png",
+"City connect hat logo 2026-present.png",
+"City connect jersey logo 2026-present.png",
+"City connect sleeve patch 2026-present.png",
+"Earl Weaver 4 memorial patch 2013.png",
+"Earth Day hat logo 2018.png",
+"Earth Day jersey logo 2018.png",
+"Earth Day sleeve patch 2018.png",
+"Father's Day hat logo 2016.png",
+"Father's Day hat logo 2017.png",
+"Father's Day hat logo 2018.png",
+"Father's Day hat logo 2019.png",
+"Father's Day hat logo 2021.png",
+"Father's Day hat logo 2022.png",
+"Father's Day hat logo 2023.png",
+"Father's Day hat logo 2024.png",
+"Father's Day jersey logo 2016.png",
+"Father's Day jersey logo 2017.png",
+"Father's Day sleeve patch 2016.png",
+"Father's Day sleeve patch 2017.png",
+"Frank Robinson 20 memorial patch 2019.png",
+"Hat logo.png",
+"Home 4th of July jersey logo 2017.png",
+"Home Memorial Day jersey logo 2017.png",
+"Home Memorial Day jersey logo 2018.png",
+"Home white jersey logo.png",
+"Home white Memorial Day jersey logo 2015.png",
+"Home white Military Appreciation jersey logo 2012.png",
+"Home white Military Appreciation jersey logo 2013.png",
+"Jackie Robinson Day patch 2021.png",
+"Maryland jersey logo 2017.png",
+"Maryland Pride hat logo 2017.png",
+"Maryland Pride jersey logo 2017.png",
+"Maryland Pride jersey logo 2018.png",
+"Maryland Pride jersey logo 2019.png",
+"Maryland Pride jersey pattern 2017.png",
+"Maryland Pride sleeve patch 2017.png",
+"Memorial Day hat logo 2012.png",
+"Memorial Day hat logo 2014.png",
+"Memorial Day hat logo 2016.png",
+"Memorial Day hat logo 2017.png",
+"Memorial Day hat logo 2018.png",
+"Memorial Day jersey logo 2016.png",
+"Memorial Day sleeve patch 2016.png",
+"Memorial Day sleeve patch 2017.png",
+"Memorial Day sleeve patch 2018.png",
+"Mike Flanagan FLANNY memorial patch 2011.png",
+"Mother's Day hat logo 2016.png",
+"Mother's Day hat logo 2017.png",
+"Mother's Day hat logo 2018.png",
+"Mother's Day hat logo 2019.png",
+"Mother's Day hat logo 2021.png",
+"Mother's Day hat logo 2022.png",
+"Mother's Day hat logo 2023.png",
+"Mother's Day hat logo 2024.png",
+"Mother's Day jersey logo 2016.png",
+"Mother's Day jersey logo 2017.png",
+"Mother's Day sleeve patch 2016.png",
+"Negro League Black Sox hat logo 2014.png",
+"Negro League Black Sox jersey logo 2014.png",
+"Negro League Elite Giants hat logo 2014.png",
+"Negro League Elite Giants jersey logo 2014.png",
+"Negro League Elite Giants sleeve patch 2014.png",
+"O's hat logo.png",
+"Orange jersey logo.png",
+"Players Weekend batting helmet logo 2019.png",
+"Players Weekend hat logo 2017.png",
+"Players Weekend hat logo 2018.png",
+"Players Weekend hat logo 2019.png",
+"Players Weekend jersey logo 2017.png",
+"Players Weekend jersey logo 2018.png",
+"Players Weekend jersey logo 2019.png",
+"Road 4th of July jersey logo 2017.png",
+"Road gray jersey logo.png",
+"Road gray Memorial Day jersey logo 2013.png",
+"Road gray Memorial Day jersey logo 2014.png",
+"Road Memorial Day jersey logo 2017.png",
+"Road Memorial Day jersey logo 2018.png",
+"Sleeve patch.png",
+"Spring training hat logo 2013.png",
+"Spring training hat logo 2019.png",
+"Spring training hat logo 2021.png",
+"Spring Training hat logo 2022.png",
+"Spring Training hat logo 2025.png",
+"Spring training hat logo 2026.png",
+"St. Patrick's Day hat logo 2016.png",
+"St. Patrick's Day hat logo 2025.png",
+"St. Patrick's Day hat logo 2026.png",
+"St. Patrick's Day jersey logo 2016.png",
+"St. Patrick's Day sleeve patch 2016.png",
+"Star Spangled Banner jersey logo 2014.png",
+"Swinging bird alt logo.png",
+"T. Rowe Price ad patch navy.png",
+"T. Rowe Price ad patch powder.png",
+"T. Rowe Price city connect patch 2026-present.png",
+"Throwback 1954 hat logo 2014.png",
+"Throwback 1954 jersey logo 2014.png",
+"Throwback 1966 hat logo 2016.png",
+"Throwback 1966 jersey logo 2016.png",
+"Throwback 1969 jersey logo 2019.png",
+"Throwback 1989 hat logo 2019.png",
+"Throwback 1989 jersey logo 2019.png",
+"Throwback 1994 hat logo 2014.png",
+"Throwback 1994 jersey logo 2014.png",
+"Throwback weekend hat logo 2026.png",
+"Throwback weekend hat logo.png",
+"Tom Clancy black memorial patch 2014.png",
+"Tom Clancy gray memorial patch 2014.png",
+"Tom Clancy orange memorial patch 2014.png",
+"Tom Clancy white memorial patch 2014.png",
+];
+
+allFiles.sort((a, b) => {
+    const getLastYear = (fileName) => {
+        const lower = fileName.toLowerCase();
+        
+        if (lower.includes("present")) return 9999;
+
+        const years = fileName.match(/\d{4}/g);
+        if (years && years.length > 0) {
+            return parseInt(years[years.length - 1]);
+        }
+        
+        return 0;
+    };
+
+    return getLastYear(a) - getLastYear(b);
+});     
+function openLightbox(imgSrc) {
+    document.getElementById('lightbox-img').src = imgSrc;
+    document.getElementById('lightbox').style.display = 'flex';
+}
+
+allFiles.forEach(fileName => {
+           let fullName = fileName.replace('logo ', '').replace('.png', '');
+           const datePattern = /\d{4}(?:-\d{4}|-present)?/g; 
+    const matches = fullName.match(datePattern);
+    const yearText = matches ? matches.join(', ') : "";
+    let nameWithoutYear = fullName;
+    if (matches) {
+        matches.forEach(m => {
+            nameWithoutYear = nameWithoutYear .replace(m, '')
+            .replace(/alternate/gi, '')
+                                     .replace(/logo\d*/gi, '')
+                                     .replace(/,/g, '')
+                                     .trim();
+        });
+    }
+    nameWithoutYear = nameWithoutYear.replace(/^-+|-+$/g, '').trim();
+    const cardHtml = `
+    <div class="logo-card" onclick="openLightbox('${path}${fileName}')">
+        <div class="logo-image-wrapper">
+            <img src="${path}${fileName}" alt="${fullName}" loading="lazy">
+        </div>
+        <div class="logo-caption">
+            ${nameWithoutYear ? `<div class="logo-name">${nameWithoutYear}</div>` : ''}
+            <div class="logo-year">${yearText}</div>
+        </div>
+    </div>`;
+    const lowerName = fileName.toLowerCase();
+
+    if (lowerName.includes("mother") || 
+        lowerName.includes("father") || 
+        lowerName.includes("july") || 
+        lowerName.includes("memorial day") ||
+        lowerName.includes("armed forces") || 
+        lowerName.includes("st. patrick")) {
+        document.getElementById('holiday').innerHTML += cardHtml;
+    }
+    else if (lowerName.includes("spring training")) {
+        document.getElementById('spring-training').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("primary logo")) {
+        document.getElementById('primary-logos').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("alternate")) {
+        document.getElementById('alternate-logos').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("batting practice")) {
+        document.getElementById('batting-practice').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("jersey")) {
+        document.getElementById('jersey-logos').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("hat")) {
+        document.getElementById('hat-logos').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("patch")) {
+        document.getElementById('patches').innerHTML += cardHtml;
+    } 
+    else {
+        document.getElementById('other-logos').innerHTML += cardHtml;
+    }
+});
+    </script>
+  
+  <div id="lightbox" class="lightbox" onclick="this.style.display='none'">
+    <span class="close-btn">&times;</span>
+    <img id="lightbox-img" src="" alt="Enlarged Logo">
+    <div id="lightbox-caption"></div>
+</div>
+
+</body>
+</html>

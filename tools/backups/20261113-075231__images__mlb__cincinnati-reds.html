@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cincinnati Reds Logo History</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../mlb-style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header class="sticky-header">
+    <a href="../../mlb.html" class="back-btn">← Back to MLB</a>
+    <h1 class="text-reds">Cincinnati Reds</h1>
+</header>
+
+    <div class="category-header">Primary Logos</div>
+    <div id="primary-logos" class="grid"></div>
+
+    <div class="category-header">Alternate Logos</div>
+    <div id="alternate-logos" class="grid"></div>
+
+    <div class="category-header">Hat Logos</div>
+    <div id="hat-logos" class="grid"></div>
+
+    <div class="category-header">Jersey Logos</div>
+    <div id="jersey-logos" class="grid"></div>
+
+    <div class="category-header">Patches</div>
+    <div id="patches" class="grid"></div>
+
+    <div class="category-header">Holiday</div>
+    <div id="holiday" class="grid"></div>
+
+    <div class="category-header">Spring Training</div>
+    <div id="spring-training" class="grid"></div>
+
+    <div class="category-header">Batting Practice</div>
+    <div id="batting-practice" class="grid"></div>
+
+    <div class="category-header">Other</div>
+    <div id="other-logos" class="grid"></div>
+    
+    <script>
+        const path = "../../images/mlb-teams/cincinnati-reds/";
+        const allFiles = [
+"150th anniversary patch 2019.png",
+"1902 throwback hat logo 2019.png",
+"1902 throwback jersey logo 2019.png",
+"1911 jersey logo 2019.png",
+"1911 throwback hat logo 2019.png",
+"1911 throwback jersey logo 2019.png",
+"1911 throwback sleeve patch 2019.png",
+"1912 throwback hat logo 2019.png",
+"1912 throwback sleeve patch 2019.png",
+"1916 throwback jersey logo 2016.png",
+"1919 throwback hat logo 2019.png",
+"1919 throwback jersey logo 2019.png",
+"1935 throwback hat logo 2019.png",
+"1936 throwback hat logo 2019.png",
+"1936 throwback jersey logo 2019.png",
+"1937 Negro League Tigers hat logo 2013.png",
+"1937 Negro League Tigers jersey logo 2016.png",
+"1939 throwback hat logo 2019.png",
+"1939 throwback jersey logo 2019.png",
+"1956 throwback hat logo 2019.png",
+"1956 throwback jersey logo 2019.png",
+"1961 throwback hat logo 2019.png",
+"1961 throwback jersey logo 2019.png",
+"1967 throwback hat logo 2019.png",
+"1967 throwback jersey logo 2019.png",
+"1969 throwback hat logo 2019.png",
+"1969 throwback jersey logo 2019.png",
+"1969 throwback sleeve patch 2019.png",
+"1976 throwback hat logo 2019.png",
+"1976 throwback jersey logo 2019.png",
+"1976 throwback sleeve patch 2019.png",
+"1990 throwback hat logo 2019.png",
+"1990 throwback jersey logo 2019.png",
+"1990 throwback sleeve patch 2019.png",
+"1991 throwback jersey logo 2012.png",
+"1995 throwback hat logo 2019.png",
+"1995 throwback jersey logo 2019.png",
+"1995 throwback sleeve patch 2019.png",
+"1999 throwback hat logo 2019.png",
+"1999 throwback jersey logo 2019.png",
+"1999 throwback sleeve patch 2019.png",
+"4th of July hat logo 2012.png",
+"4th of july hat logo 2013.png",
+"4th of July hat logo 2014.png",
+"4th of July hat logo 2015.png",
+"4th of July hat logo 2016.png",
+"4th of July hat logo 2017.png",
+"4th of July hat logo 2018.png",
+"4th of July hat logo 2019.png",
+"4th of July hat logo 2021.png",
+"4th of July hat logo 2022.png",
+"4th of July hat logo 2023.png",
+"4th of July hat logo 2024.png",
+"4th of July hat logo 2025.png",
+"4th of July hat logo 2026.png",
+"4th of July jersey logo 2015.png",
+"4th of July jersey logo 2016.png",
+"4th of July sleeve patch 2016.png",
+"All Star Game patch 2015.png",
+"Alt white jersey logo.png",
+"Armed Forces hat logo 2019.png",
+"Armed Forces hat logo 2022.png",
+"Armed Forces hat logo 2023.png",
+"Armed Forces hat logo 2024.png",
+"Armed Forces hat logo 2025.png",
+"Armed Forces Weekend hat logo 2021.png",
+"Armed Forces Weekend hat logo 2026.png",
+"Batting practice hat logo 2025.png",
+"Bernie Stowe memorial patch 2016.png",
+"Black hat logo 2026.png",
+"Camo 2017.png",
+"Camo hat logo 2017.png",
+"Camo jersey logo 2017 copy.png",
+"Camo jersey logo 2017.png",
+"Camo jersey sleeve patch 2017.png",
+"City connect hat logo 2023-present.png",
+"City connect hat logo 2026-present.png",
+"City connect jersey logo 2023-present.png",
+"City connect sleeve patch 2026-present.png",
+"Father's Day hat logo 2016.png",
+"Father's Day hat logo 2017.png",
+"Father's Day hat logo 2018.png",
+"Father's Day hat logo 2019.png",
+"Father's Day hat logo 2021.png",
+"Father's Day hat logo 2022.png",
+"Father's Day hat logo 2023.png",
+"Father's Day hat logo 2024.png",
+"Father's Day jersey logo 2016.png",
+"Father's Day jersey logo 2017.png",
+"Father's Day sleeve patch 2016.png",
+"Father's Day sleeve patch 2017.png",
+"Field of Dreams hat logo 2022.png",
+"Field of Dreams jersey logo 2022.png",
+"Field of Dreams throwback jersey logo.png",
+"Frank Robinson 20 memorial patch 2019.png",
+"Hat logo.png",
+"Home 4th of July jersey logo 2017.png",
+"Home 4th of July sleeve patch 2017.png",
+"Home red Memorial Day jersey logo 2015.png",
+"Home Spring Training hat logo 2018.png",
+"Home white jersey logo 2012.png",
+"Home white jersey logo.png",
+"Home white Memorial Day jersey logo 2013.png",
+"Home white military jersey logo 2018.png",
+"Home white sleeve patch 2012.png",
+"Jackie Robinson Day patch 2021.png",
+"Joe Morgan 8 memorial patch 2021.png",
+"Los Rojos jersey logo 2022.png",
+"Memorial Day hat logo 2012.png",
+"Memorial Day hat logo 2014.png",
+"Memorial Day hat logo 2015.png",
+"Memorial Day hat logo 2016.png",
+"Memorial Day hat logo 2017.png",
+"Memorial Day hat logo 2018.png",
+"Memorial Day jersey logo 2016.png",
+"Memorial Day sleeve patch 2016.png",
+"Memorial Day sleeve patch 2017.png",
+"Memorial Day sleeve patch 2018.png",
+"Military hat logo 2017.png",
+"Military hat logo.png",
+"Military jersey running Mr. Redlegs sleeve patch.png",
+"Military jersey sleeve patch 2017.png",
+"MLB CIN 150th anniversary patch 2019.png",
+"MLB CIN 1902 throwback hat logo 2019.png",
+"MLB CIN 1902 throwback jersey logo 2019.png",
+"MLB CIN 1911 jersey logo 2019.png",
+"MLB CIN 1911 throwback hat logo 2019.png",
+"MLB CIN 1911 throwback jersey logo 2019.png",
+"MLB CIN 1911 throwback sleeve patch 2019.png",
+"MLB CIN 1912 throwback hat logo 2019.png",
+"MLB CIN 1912 throwback sleeve patch 2019.png",
+"MLB CIN 1916 throwback jersey logo 2016.png",
+"MLB CIN 1919 throwback hat logo 2019.png",
+"MLB CIN 1919 throwback jersey logo 2019.png",
+"MLB CIN 1935 throwback hat logo 2019.png",
+"MLB CIN 1936 throwback hat logo 2019.png",
+"MLB CIN 1936 throwback jersey logo 2019.png",
+"MLB CIN 1937 Negro League Tigers hat logo 2013.png",
+"MLB CIN 1937 Negro League Tigers jersey logo 2016.png",
+"MLB CIN 1939 throwback hat logo 2019.png",
+"MLB CIN 1939 throwback jersey logo 2019.png",
+"MLB CIN 1956 throwback hat logo 2019.png",
+"MLB CIN 1956 throwback jersey logo 2019.png",
+"MLB CIN 1961 throwback hat logo 2019.png",
+"MLB CIN 1961 throwback jersey logo 2019.png",
+"MLB CIN 1967 throwback hat logo 2019.png",
+"MLB CIN 1967 throwback jersey logo 2019.png",
+"MLB CIN 1969 throwback hat logo 2019.png",
+"MLB CIN 1969 throwback jersey logo 2019.png",
+"MLB CIN 1969 throwback sleeve patch 2019.png",
+"MLB CIN 1976 throwback hat logo 2019.png",
+"MLB CIN 1976 throwback jersey logo 2019.png",
+"MLB CIN 1976 throwback sleeve patch 2019.png",
+"MLB CIN 1990 throwback hat logo 2019.png",
+"MLB CIN 1990 throwback jersey logo 2019.png",
+"MLB CIN 1990 throwback sleeve patch 2019.png",
+"MLB CIN 1991 throwback jersey logo 2012.png",
+"MLB CIN 1995 throwback hat logo 2019.png",
+"MLB CIN 1995 throwback jersey logo 2019.png",
+"MLB CIN 1995 throwback sleeve patch 2019.png",
+"MLB CIN 1999 throwback hat logo 2019.png",
+"MLB CIN 1999 throwback jersey logo 2019.png",
+"MLB CIN 1999 throwback sleeve patch 2019.png",
+"MLB CIN 4th of July hat logo 2012.png",
+"MLB CIN 4th of july hat logo 2013.png",
+"MLB CIN 4th of July hat logo 2014.png",
+"MLB CIN 4th of July hat logo 2015.png",
+"MLB CIN 4th of July hat logo 2016.png",
+"MLB CIN 4th of July hat logo 2017.png",
+"MLB CIN 4th of July hat logo 2018.png",
+"MLB CIN 4th of July hat logo 2019.png",
+"MLB CIN 4th of July hat logo 2021.png",
+"MLB CIN 4th of July hat logo 2022.png",
+"MLB CIN 4th of July hat logo 2023.png",
+"MLB CIN 4th of July hat logo 2024.png",
+"MLB CIN 4th of July hat logo 2025.png",
+"MLB CIN 4th of July hat logo 2026.png",
+"MLB CIN 4th of July jersey logo 2015.png",
+"MLB CIN 4th of July jersey logo 2016.png",
+"MLB CIN 4th of July sleeve patch 2016.png",
+"MLB CIN All Star Game patch 2015.png",
+"MLB CIN alt white jersey logo.png",
+"MLB CIN Armed Forces hat logo 2019.png",
+"MLB CIN Armed Forces hat logo 2022.png",
+"MLB CIN Armed Forces hat logo 2023.png",
+"MLB CIN Armed Forces hat logo 2024.png",
+"MLB CIN Armed Forces hat logo 2025.png",
+"MLB CIN Armed Forces Weekend hat logo 2021.png",
+"MLB CIN Armed Forces Weekend hat logo 2026.png",
+"MLB CIN batting practice hat logo 2025.png",
+"MLB CIN Bernie Stowe memorial patch 2016.png",
+"MLB CIN black hat logo 2026.png",
+"MLB CIN camo 2017.png",
+"MLB CIN camo hat logo 2017.png",
+"MLB CIN camo jersey logo 2017 copy.png",
+"MLB CIN camo jersey logo 2017.png",
+"MLB CIN camo jersey sleeve patch 2017.png",
+"MLB CIN city connect hat logo 2023-present.png",
+"MLB CIN city connect hat logo 2026-present.png",
+"MLB CIN city connect jersey logo 2023-present.png",
+"MLB CIN city connect sleeve patch 2026-present.png",
+"MLB CIN Father's Day hat logo 2016.png",
+"MLB CIN Father's Day hat logo 2017.png",
+"MLB CIN Father's Day hat logo 2018.png",
+"MLB CIN Father's Day hat logo 2019.png",
+"MLB CIN Father's Day hat logo 2021.png",
+"MLB CIN Father's Day hat logo 2022.png",
+"MLB CIN Father's Day hat logo 2023.png",
+"MLB CIN Father's Day hat logo 2024.png",
+"MLB CIN Father's Day jersey logo 2016.png",
+"MLB CIN Father's Day jersey logo 2017.png",
+"MLB CIN Father's Day sleeve patch 2016.png",
+"MLB CIN Father's Day sleeve patch 2017.png",
+"MLB CIN Field of Dreams hat logo 2022.png",
+"MLB CIN Field of Dreams jersey logo 2022.png",
+"MLB CIN Field of Dreams throwback jersey logo.png",
+"MLB CIN Frank Robinson 20 memorial patch 2019.png",
+"MLB CIN hat logo.png",
+"MLB CIN home 4th of July jersey logo 2017.png",
+"MLB CIN home 4th of July sleeve patch 2017.png",
+"MLB CIN home red Memorial Day jersey logo 2015.png",
+"MLB CIN home Spring Training hat logo 2018.png",
+"MLB CIN home white jersey logo 2012.png",
+"MLB CIN home white jersey logo.png",
+"MLB CIN home white Memorial Day jersey logo 2013.png",
+"MLB CIN home white military jersey logo 2018.png",
+"MLB CIN home white sleeve patch 2012.png",
+"MLB CIN Jackie Robinson Day patch 2021.png",
+"MLB CIN Joe Morgan 8 memorial patch 2021.png",
+"MLB CIN Los Rojos jersey logo 2022.png",
+"MLB CIN Memorial Day hat logo 2012.png",
+"MLB CIN Memorial Day hat logo 2014.png",
+"MLB CIN Memorial Day hat logo 2015.png",
+"MLB CIN Memorial Day hat logo 2016.png",
+"MLB CIN Memorial Day hat logo 2017.png",
+"MLB CIN Memorial Day hat logo 2018.png",
+"MLB CIN Memorial Day jersey logo 2016.png",
+"MLB CIN Memorial Day sleeve patch 2016.png",
+"MLB CIN Memorial Day sleeve patch 2017.png",
+"MLB CIN Memorial Day sleeve patch 2018.png",
+"MLB CIN military hat logo 2017.png",
+"MLB CIN military hat logo.png",
+"MLB CIN military jersey running Mr. Redlegs sleeve patch.png",
+"MLB CIN military jersey sleeve patch 2017.png",
+"MLB CIN Mother's Day hat logo 2016.png",
+"MLB CIN Mother's Day hat logo 2017.png",
+"MLB CIN Mother's Day hat logo 2018.png",
+"MLB CIN Mother's Day hat logo 2019.png",
+"MLB CIN Mother's Day hat logo 2021.png",
+"MLB CIN Mother's Day hat logo 2022.png",
+"MLB CIN Mother's Day hat logo 2023.png",
+"MLB CIN Mother's Day hat logo 2024.png",
+"MLB CIN Mother's Day jersey logo 2016.png",
+"MLB CIN Mother's Day jersey logo 2017.png",
+"MLB CIN Mother's Day sleeve patch 2016.png",
+"MLB CIN Mother's Day sleeve patch 2017.png",
+"MLB CIN Mr Redlegs jersey logo.png",
+"MLB CIN Mr Redlegs sleeve patch.png",
+"MLB CIN Pete Rose 14 Hall of Fame induction patch 2016.png",
+"MLB CIN Pete Rose 14 memorial patch.png",
+"MLB CIN Pete Rose statue dedication patch 2017.png",
+"MLB CIN Player's Weekend hat logo 2017.png",
+"MLB CIN Player's Weekend jersey logo 2017.png",
+"MLB CIN Players Weekend batting helmet logo 2019.png",
+"MLB CIN Players Weekend hat logo 2017.png",
+"MLB CIN Players Weekend hat logo 2018.png",
+"Mother's Day hat logo 2016.png",
+"Mother's Day hat logo 2017.png",
+"Mother's Day hat logo 2018.png",
+"Mother's Day hat logo 2019.png",
+"Mother's Day hat logo 2021.png",
+"Mother's Day hat logo 2022.png",
+"Mother's Day hat logo 2023.png",
+"Mother's Day hat logo 2024.png",
+"Mother's Day jersey logo 2016.png",
+"Mother's Day jersey logo 2017.png",
+"Mother's Day sleeve patch 2016.png",
+"Mother's Day sleeve patch 2017.png",
+"Mr Redlegs jersey logo.png",
+"Mr Redlegs sleeve patch.png",
+"Pete Rose 14 Hall of Fame induction patch 2016.png",
+"Pete Rose 14 memorial patch.png",
+"Pete Rose statue dedication patch 2017.png",
+"Player's Weekend hat logo 2017.png",
+"Player's Weekend jersey logo 2017.png",
+"Players Weekend batting helmet logo 2019.png",
+"Players Weekend hat logo 2017.png",
+"Players Weekend hat logo 2018.png",
+"Players Weekend hat logo 2019.png",
+"Players Weekend jersey logo 2017.png",
+"Players Weekend jersey logo 2018.png",
+"Players Weekend jersey logo 2019.png",
+"Red jersey logo.png",
+"Road 4th of July jersey logo 2017.png",
+"Road 4th of July sleeve patch 2017.png",
+"Road gray 150th anniversary patch 2019.png",
+"Road gray jersey logo 2012.png",
+"Road gray jersey logo.png",
+"Road gray Memorial Day jersey logo 2014.png",
+"Road gray Memorial Day jersey logo 2015.png",
+"Road gray sleeve patch 2012.png",
+"Road Memorial Day jersey logo 2017.png",
+"Road Memorial Day jersey logo 2018.png",
+"Road red jersey logo 2012.png",
+"Road Spring Training hat logo 2018.png",
+"Running Mr. Redlegs sleeve patch.png",
+"Speedway Classic hat pattern 2025.png",
+"Spring training black jersey logo.png",
+"Spring training hat logo 2018.png",
+"Spring training hat logo 2021.png",
+"Spring Training hat logo 2022.png",
+"Spring Training hat logo 2025.png",
+"Spring training hat logo 2026.png",
+"Spring Training jersey logo 2015.png",
+"Spring Training jersey logo 2019.png",
+"St. Patrick's Day hat logo 2014.png",
+"St. Patrick's Day hat logo 2016.png",
+"St. Patrick's Day hat logo 2017.png",
+"St. Patrick's Day hat logo 2018.png",
+"St. Patrick's Day hat logo 2019.png",
+"St. Patrick's Day hat logo 2021.png",
+"St. Patrick's Day hat logo 2022.png",
+"St. Patrick's Day hat logo 2025.png",
+"St. Patrick's Day hat logo 2026.png",
+"St. Patrick's Day jersey logo 2014.png",
+"St. Patrick's Day jersey logo 2015.png",
+"St. Patrick's Day jersey logo 2016.png",
+"St. Patrick's Day jersey logo 2017.png",
+"St. Patrick's Day jersey logo 2018.png",
+"St. Patrick's Day jersey logo 2019.png",
+"St. Patrick's Day jersey logo 2021.png",
+"St. Patrick's Day jersey logo 2022.png",
+"St. Patrick's Day jersey logo.png",
+"St. Patrick's Day sleeve patch 2016.png",
+"St. Patrick's Day sleeve patch 2017.png",
+"St. Patrick's Day sleeve patch 2018.png",
+"St. Patrick's Day sleeve patch 2019.png",
+"St. Patrick's Day sleeve patch 2021.png",
+"St. Patrick's Day sleeve patch 2022.png",
+"Throwback weekend hat logo 2025.png",
+"Throwback weekend hat logo 2026.png",
+];
+
+allFiles.sort((a, b) => {
+    const getLastYear = (fileName) => {
+        const lower = fileName.toLowerCase();
+        
+        if (lower.includes("present")) return 9999;
+
+        const years = fileName.match(/\d{4}/g);
+        if (years && years.length > 0) {
+            return parseInt(years[years.length - 1]);
+        }
+        
+        return 0;
+    };
+
+    return getLastYear(a) - getLastYear(b);
+});     
+function openLightbox(imgSrc) {
+    document.getElementById('lightbox-img').src = imgSrc;
+    document.getElementById('lightbox').style.display = 'flex';
+}
+
+allFiles.forEach(fileName => {
+           let fullName = fileName.replace('logo ', '').replace('.png', '');
+           const datePattern = /\d{4}(?:-\d{4}|-present)?/g; 
+    const matches = fullName.match(datePattern);
+    const yearText = matches ? matches.join(', ') : "";
+    let nameWithoutYear = fullName;
+    if (matches) {
+        matches.forEach(m => {
+            nameWithoutYear = nameWithoutYear .replace(m, '')
+            .replace(/alternate/gi, '')
+                                     .replace(/logo\d*/gi, '')
+                                     .replace(/,/g, '')
+                                     .trim();
+        });
+    }
+    nameWithoutYear = nameWithoutYear.replace(/^-+|-+$/g, '').trim();
+    const cardHtml = `
+    <div class="logo-card" onclick="openLightbox('${path}${fileName}')">
+        <div class="logo-image-wrapper">
+            <img src="${path}${fileName}" alt="${fullName}" loading="lazy">
+        </div>
+        <div class="logo-caption">
+            ${nameWithoutYear ? `<div class="logo-name">${nameWithoutYear}</div>` : ''}
+            <div class="logo-year">${yearText}</div>
+        </div>
+    </div>`;
+    const lowerName = fileName.toLowerCase();
+
+    if (lowerName.includes("mother") || 
+        lowerName.includes("father") || 
+        lowerName.includes("july") || 
+        lowerName.includes("memorial day") ||
+        lowerName.includes("armed forces") || 
+        lowerName.includes("st. patrick")) {
+        document.getElementById('holiday').innerHTML += cardHtml;
+    }
+    else if (lowerName.includes("spring training")) {
+        document.getElementById('spring-training').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("primary logo")) {
+        document.getElementById('primary-logos').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("alternate")) {
+        document.getElementById('alternate-logos').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("batting practice")) {
+        document.getElementById('batting-practice').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("jersey")) {
+        document.getElementById('jersey-logos').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("hat")) {
+        document.getElementById('hat-logos').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("patch")) {
+        document.getElementById('patches').innerHTML += cardHtml;
+    } 
+    else {
+        document.getElementById('other-logos').innerHTML += cardHtml;
+    }
+});
+    </script>
+  
+  <div id="lightbox" class="lightbox" onclick="this.style.display='none'">
+    <span class="close-btn">&times;</span>
+    <img id="lightbox-img" src="" alt="Enlarged Logo">
+    <div id="lightbox-caption"></div>
+</div>
+
+</body>
+</html>
