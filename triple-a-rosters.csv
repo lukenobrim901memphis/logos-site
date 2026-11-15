@@ -34,7 +34,6 @@
 5,OF,RJ Schreck,L,Buffalo,Active,No
 31,P,Gage Stanifer,R,Buffalo,Active,No
 21,P,Josh Stephan,R,Buffalo,Active,No
-34,INF,Peyton Williams,L,Buffalo,Active,No
 32,P,Josh Winckowski,R,Buffalo,Active,No
 46,P,Nick Altermatt,R,Charlotte,Active,No
 4,OF,Dru Baker,R,Charlotte,Active,No
@@ -96,6 +95,7 @@
 61,OF,Patrick Clohisy,L,Gwinnett,Active,No
 14,INF,Cal Conley,S,Gwinnett,Active,No
 8,INF,Lizandro Espinoza,R,Gwinnett,Active,No
+,OF,Tyler Freeman,R,Gwinnett,Active,No
 48,P,Cedric De Grandpre,R,Gwinnett,Active,No
 11,INF,Jordan Groshans,R,Gwinnett,Active,No
 71,P,Drue Hackenberg,R,Gwinnett,Active,No
@@ -155,6 +155,7 @@
 2,INF,Gage Miller,R,Jacksonville,Active,No
 ,P,Patrick Monteverde,L,Jacksonville,Active,No
 5,INF,Johnny Olmstead,R,Jacksonville,Active,No
+,P,Luis Palacios,L,Jacksonville,Active,No
 4,OF,Andrew Pintar,R,Jacksonville,Active,No
 36,P,Matt Pushard,R,Jacksonville,Active,No
 8,INF,Brayden Taylor,L,Jacksonville,Active,No
@@ -164,6 +165,7 @@
 ,P,Thomas White,L,Jacksonville,Active,No
 14,P,Jamie Arnold,L,Las Vegas,Active,No
 ,P,Blake Beers,R,Las Vegas,Active,No
+,P,Ben Bowden,L,Las Vegas,Active,No
 1,C,Cole Conn,S,Las Vegas,Active,No
 18,P,Nathan Dettmer,R,Las Vegas,Active,No
 12,C,Davis Diaz,R,Las Vegas,Active,No
@@ -186,11 +188,13 @@
 38,C,Jordan Dissin,R,Lehigh Valley,Active,No
 47,P,Tristan Garnett,L,Lehigh Valley,Active,No
 ,P,Connor Gillispie,R,Lehigh Valley,Active,No
+,P,Geoff Hartlieb,R,Lehigh Valley,Active,No
 21,OF,Jonathan Hogart,R,Lehigh Valley,Active,No
 25,P,Chuck King,R,Lehigh Valley,Active,No
 24,C,Paul McIntosh,R,Lehigh Valley,Active,No
 4,INF,Robert Moore,S,Lehigh Valley,Active,No
 48,P,Mitch Neunborn,R,Lehigh Valley,Active,No
+,INF,Bryan Ramos,R,Lehigh Valley,Active,No
 ,P,Andrew Walling,L,Lehigh Valley,Active,No
 37,P,Kevin Abel,R,Louisville,Active,No
 21,P,Jose Acuna,R,Louisville,Active,No
@@ -375,6 +379,7 @@
 16,C,Zach Humphreys,R,Salt Lake,Active,No
 18,P,Joel Hurtado,R,Salt Lake,Active,No
 24,IF,Niko Kavadas,L,Salt Lake,Active,No
+,P,Sammy Peralta,L,Salt Lake,Active,No
 3,OF,Nelson Rada,L,Salt Lake,Active,No
 13,OF,Raudi Rodriguez,R,Salt Lake,Active,No
 ,P,Hayden Seig,R,Salt Lake,Active,No
