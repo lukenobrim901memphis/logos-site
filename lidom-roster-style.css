@@ -2,7 +2,7 @@
 .text-estrellas { color: #016438 !important; }
 .text-gigantes { color: #8e1c3f !important; }
 .text-leones { color: #d82a34 !important; }
-.text-tigres { color: #062f87 !important; }
+.text-tigres { color: #ffffff !important; }
 .text-toros { color: #fd4000 !important;}
 
 .roster-table {
@@ -100,7 +100,7 @@
     .text-estrellas, .text-estrellas td { color: #016438 !important; }
     .text-gigantes, .text-gigantes td { color: #8e1c3f !important; }
     .text-leones, .text-leones td { color: #d82a34 !important; }
-    .text-tigres, .text-tigres td { color: #062f87 !important; }
+    .text-tigres, .text-tigres td { color: #ffffff !important; }
     .text-toros, .text-toros td { color: #fd4000 !important;}
 }
 
