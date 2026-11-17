@@ -1,0 +1,387 @@
+{
+ "header": {
+  "season": {
+   "type": 2
+  },
+  "competitions": [
+   {
+    "status": {
+     "type": {
+      "state": "post",
+      "completed": true,
+      "detail": "Final/SO",
+      "shortDetail": "Final/SO",
+      "name": "STATUS_FINAL"
+     }
+    },
+    "competitors": [
+     {
+      "homeAway": "away",
+      "team": {
+       "id": "8",
+       "location": "Los Angeles",
+       "name": "Kings",
+       "abbreviation": "LA",
+       "displayName": "Los Angeles Kings",
+       "shortDisplayName": "Kings"
+      },
+      "score": "1",
+      "linescores": [
+       {
+        "value": 0.0
+       },
+       {
+        "value": 0.0
+       },
+       {
+        "value": 1.0
+       },
+       {
+        "value": 0.0
+       },
+       {
+        "value": 0.0
+       }
+      ]
+     },
+     {
+      "homeAway": "home",
+      "team": {
+       "id": "18",
+       "location": "San Jose",
+       "name": "Sharks",
+       "abbreviation": "SJ",
+       "displayName": "San Jose Sharks",
+       "shortDisplayName": "Sharks"
+      },
+      "score": "2",
+      "linescores": [
+       {
+        "value": 0.0
+       },
+       {
+        "value": 1.0
+       },
+       {
+        "value": 0.0
+       },
+       {
+        "value": 0.0
+       },
+       {
+        "value": 1.0
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "boxscore": {
+  "players": [
+   {
+    "team": {
+     "id": "8",
+     "location": "Los Angeles",
+     "name": "Kings",
+     "abbreviation": "LA",
+     "displayName": "Los Angeles Kings",
+     "shortDisplayName": "Kings"
+    },
+    "statistics": [
+     {
+      "name": "forwards",
+      "labels": [
+       "G",
+       "A",
+       "+/-",
+       "S",
+       "TOI"
+      ],
+      "athletes": [
+       {
+        "athlete": {
+         "id": "301",
+         "displayName": "Anze Kopitar"
+        },
+        "stats": [
+         "0",
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "302",
+         "displayName": "Adrian Kempe"
+        },
+        "stats": [
+         "0",
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "303",
+         "displayName": "Drew Doughty"
+        },
+        "stats": [
+         "0",
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       }
+      ]
+     },
+     {
+      "name": "goalies",
+      "labels": [
+       "GA",
+       "SA",
+       "SV",
+       "SV%"
+      ],
+      "athletes": [
+       {
+        "athlete": {
+         "id": "350",
+         "displayName": "Darcy Kuemper"
+        },
+        "starter": true,
+        "stats": [
+         "1",
+         "29",
+         "28",
+         ".965"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "team": {
+     "id": "18",
+     "location": "San Jose",
+     "name": "Sharks",
+     "abbreviation": "SJ",
+     "displayName": "San Jose Sharks",
+     "shortDisplayName": "Sharks"
+    },
+    "statistics": [
+     {
+      "name": "forwards",
+      "labels": [
+       "G",
+       "A",
+       "+/-",
+       "S",
+       "TOI"
+      ],
+      "athletes": [
+       {
+        "athlete": {
+         "id": "401",
+         "displayName": "Macklin Celebrini"
+        },
+        "stats": [
+         "0",
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "402",
+         "displayName": "William Eklund"
+        },
+        "stats": [
+         "0",
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "403",
+         "displayName": "Tyler Toffoli"
+        },
+        "stats": [
+         "0",
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       }
+      ]
+     },
+     {
+      "name": "goalies",
+      "labels": [
+       "GA",
+       "SA",
+       "SV",
+       "SV%"
+      ],
+      "athletes": [
+       {
+        "athlete": {
+         "id": "450",
+         "displayName": "Yaroslav Askarov"
+        },
+        "starter": true,
+        "stats": [
+         "1",
+         "30",
+         "29",
+         ".966"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "teams": [
+   {
+    "team": {
+     "id": "8",
+     "location": "Los Angeles",
+     "name": "Kings",
+     "abbreviation": "LA",
+     "displayName": "Los Angeles Kings",
+     "shortDisplayName": "Kings"
+    },
+    "statistics": [
+     {
+      "name": "shotsTotal",
+      "displayValue": "30"
+     },
+     {
+      "name": "powerPlayGoals",
+      "displayValue": "1"
+     },
+     {
+      "name": "powerPlayOpportunities",
+      "displayValue": "3"
+     }
+    ]
+   },
+   {
+    "team": {
+     "id": "18",
+     "location": "San Jose",
+     "name": "Sharks",
+     "abbreviation": "SJ",
+     "displayName": "San Jose Sharks",
+     "shortDisplayName": "Sharks"
+    },
+    "statistics": [
+     {
+      "name": "shotsTotal",
+      "displayValue": "28"
+     },
+     {
+      "name": "powerPlayGoals",
+      "displayValue": "0"
+     },
+     {
+      "name": "powerPlayOpportunities",
+      "displayValue": "2"
+     }
+    ]
+   }
+  ]
+ },
+ "scoringPlays": [
+  {
+   "id": 1,
+   "period": {
+    "number": 2
+   },
+   "clock": {
+    "displayValue": "6:12"
+   },
+   "team": {
+    "id": "18"
+   },
+   "text": "Macklin Celebrini (9) Wrist Shot, assists: William Eklund (7), Tyler Toffoli (5)",
+   "type": {
+    "text": "Goal"
+   },
+   "scoringPlay": true
+  },
+  {
+   "id": 2,
+   "period": {
+    "number": 3
+   },
+   "clock": {
+    "displayValue": "14:40"
+   },
+   "team": {
+    "id": "8"
+   },
+   "text": "Adrian Kempe (10) Snap Shot, assists: Anze Kopitar (11)",
+   "type": {
+    "text": "Goal"
+   },
+   "scoringPlay": true,
+   "strength": {
+    "text": "Power Play"
+   }
+  },
+  {
+   "id": 3,
+   "period": {
+    "number": 5
+   },
+   "clock": {
+    "displayValue": "0:00"
+   },
+   "team": {
+    "id": "18"
+   },
+   "text": "Macklin Celebrini Shootout Goal",
+   "type": {
+    "text": "Goal"
+   },
+   "scoringPlay": true
+  },
+  {
+   "id": 4,
+   "period": {
+    "number": 5
+   },
+   "clock": {
+    "displayValue": "0:00"
+   },
+   "team": {
+    "id": "18"
+   },
+   "text": "William Eklund Shootout Goal",
+   "type": {
+    "text": "Goal"
+   },
+   "scoringPlay": true
+  }
+ ],
+ "gameInfo": {
+  "attendance": 17435,
+  "venue": {
+   "capacity": 17562
+  }
+ }
+}

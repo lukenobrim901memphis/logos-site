@@ -1,0 +1,191 @@
+{% import "_macros.html" as m %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scoreboard — {{ page.date_str }}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap">
+<link rel="stylesheet" href="{{ url_for('static', filename='agate.css') }}">
+{% set gap = 8 %}
+<style>
+.agate{column-count:{{ s.columns }};column-width:auto}
+.page{width:{{ s.columns * s.column_width + (s.columns - 1) * gap + 20 }}px;max-width:none}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="masthead-top">
+    <span class="mh-page">{{ s.page_label }}</span>
+    <span class="mh-divider">|</span>
+    <span class="mh-date-bold">{{ page.date_str }}</span>
+    <span class="mh-divider">|</span>
+    <span class="mh-site">SFCHRONICLE.COM</span>
+    <span class="mh-stars">★★★★★●</span>
+    <a class="mh-admin" href="/admin?date={{ page.page_date }}">admin</a>
+  </div>
+  <div class="mh-row">
+    <div class="mh-banner"><span class="mh-banner-title">Scoreboard</span></div>
+    <nav class="datenav" data-date="{{ page.page_date }}" data-today="{{ today }}">
+      <a class="dn-btn dn-prev" href="?date={{ page.prev_date }}">‹ Previous day</a>
+      <input class="dn-pick" type="date" value="{{ page.page_date }}" max="{{ today }}" aria-label="Pick a date">
+      <select class="dn-select" aria-label="Past pages" hidden></select>
+      <a class="dn-btn dn-next" href="?date={{ page.next_date }}"{% if page.page_date >= today %} hidden{% endif %}>Next day ›</a>
+      <a class="dn-btn dn-today" href="/"{% if page.page_date == today %} hidden{% endif %}>Today</a>
+    </nav>
+  </div>
+
+  <div class="agate" data-min-height="{{ s.min_height or 0 }}">
+
+    {% if page.odds %}{{ m.odds(page.odds) }}{% endif %}
+
+    {% if page.transactions %}
+    <div class="sec-hd">Transactions</div>
+    {% for t in page.transactions %}
+      <div class="rulehd">{{ t.label|upper }}</div>
+      {% for r in t.rows %}<div class="hang txn"><b>{{ r.team }}</b> — {{ r.text }}</div>{% endfor %}
+    {% endfor %}
+    {% endif %}
+
+    {% set ns = namespace(label='') %}
+    {% for sec in page.sections %}
+      {% if sec.label != ns.label %}
+        <div class="sec-hd">{{ sec.label }}</div>
+        {% set ns.label = sec.label %}
+      {% endif %}
+      {% if sec.sublabel %}<div class="hd2">{{ sec.sublabel }}</div>{% endif %}
+
+      {% if sec.kind == 'golf' %}{{ m.golf(sec.golf) }}
+      {% elif sec.kind == 'racing' %}{{ m.racing(sec.racing) }}
+      {% elif sec.kind == 'tennis' %}{{ m.tennis(sec.tennis) }}
+      {% else %}
+
+        {% if sec.rankings %}{{ m.rankings(sec.rankings) }}{% endif %}
+        {% if sec.standings %}{{ m.standings(sec.standings) }}{% endif %}
+
+        {% if sec.college %}
+          {% if sec.top25 %}<div class="rulehd">TOP 25</div>{{ m.results(sec.results_day, sec.top25) }}{% endif %}
+          {% if sec.featured_results %}<div class="rulehd">BAY AREA</div>{{ m.results(sec.results_day, sec.featured_results) }}{% endif %}
+          {% if sec.other_results %}<div class="rulehd">OTHER SCORES</div>{{ m.results(sec.results_day, sec.other_results) }}{% endif %}
+        {% else %}
+          {{ m.results(sec.results_day, sec.results) }}
+        {% endif %}
+
+        {{ m.schedule(sec.schedule) }}
+
+        {% for b in sec.boxes %}{{ m.box(b) }}{% endfor %}
+      {% endif %}
+    {% endfor %}
+
+    {% for c in page.custom %}
+      {% if c.title %}<div class="sec-hd">{{ c.title }}</div>{% endif %}
+      <div class="custom">{{ c.body|agate_text }}</div>
+    {% endfor %}
+
+    {% if not page.sections and not page.odds %}
+      <div class="note">No ESPN data for {{ page.date_str }}. Check your connection, or try
+        <code>?date=YYYY-MM-DD</code>.</div>
+    {% endif %}
+  </div>
+</div>
+<script>
+/* Fit names: every name starts in full. Only where a table, linescore or odds
+   line is too wide for its column, the longest name in it steps down to its
+   next shorter version (from data-alt) until everything fits. */
+function fitNames() {
+  function alts(el) { try { return JSON.parse(el.dataset.alt); } catch (e) { return []; } }
+  var boxes = [];
+  document.querySelectorAll('.fit').forEach(function (el) {
+    var c = el.closest('.odrow .f, .odrow .d, .lsx-lead') || el.closest('table');
+    if (c && boxes.indexOf(c) < 0) boxes.push(c);
+  });
+  boxes.forEach(function (c) {
+    var isTable = c.tagName === 'TABLE', fill = c.querySelector(':scope > .fill');
+    function tooWide() {
+      if (isTable) return c.offsetWidth > c.parentElement.clientWidth + 0.5;
+      return c.scrollWidth > c.clientWidth + 0.5 || (fill && fill.offsetWidth < 4);
+    }
+    for (var guard = 0; tooWide() && guard < 300; guard++) {
+      var spans = Array.prototype.filter.call(c.querySelectorAll('.fit'), function (s) {
+        return (+s.dataset.i || 0) < alts(s).length - 1;
+      });
+      if (!spans.length) break;
+      spans.sort(function (a, b) { return b.textContent.length - a.textContent.length; });
+      var s = spans[0], i = (+s.dataset.i || 0) + 1;
+      s.dataset.i = i; s.textContent = alts(s)[i];
+    }
+  });
+}
+
+/* Even columns: fill columns top-to-bottom at a fixed height, using the
+   shortest height at which everything fits in the set number of columns.
+   Every column (and its rule) then runs the full height of the page. */
+(function () {
+  var ag = document.querySelector('.agate');
+  if (!ag) return;
+  var minH = parseInt(ag.dataset.minHeight || '0', 10);
+  function fits(h) {
+    ag.style.height = h + 'px';
+    return ag.scrollWidth <= ag.clientWidth + 1;
+  }
+  function layout() {
+    ag.style.columnFill = 'balance'; ag.style.height = '';
+    var lo = Math.max(minH, Math.floor(ag.offsetHeight * 0.9));
+    ag.style.columnFill = 'auto';
+    var hi = Math.max(lo, ag.offsetHeight) + 50;
+    while (!fits(hi)) hi = Math.ceil(hi * 1.15);
+    if (fits(lo)) { hi = lo; }
+    else { while (hi - lo > 4) { var mid = (lo + hi) >> 1; if (fits(mid)) hi = mid; else lo = mid; } }
+    fits(hi);
+  }
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () { fitNames(); layout(); });
+  window.addEventListener('resize', function () { clearTimeout(window._agt); window._agt = setTimeout(layout, 150); });
+})();
+</script>
+<script>
+/* Date navigation. On your Mac (Flask) any date works via ?date=.
+   On the published site (data-static="1") only built pages exist, so the
+   buttons and the list come from archive.json, written by publish.py. */
+(function () {
+  var nav = document.querySelector('.datenav');
+  if (!nav) return;
+  var cur = nav.dataset.date;
+  var prev = nav.querySelector('.dn-prev'), next = nav.querySelector('.dn-next'),
+      today = nav.querySelector('.dn-today'), pick = nav.querySelector('.dn-pick'),
+      sel = nav.querySelector('.dn-select');
+  var isStatic = document.documentElement.dataset.static === '1';
+
+  if (!isStatic) {
+    pick.addEventListener('change', function () { if (pick.value) location.search = '?date=' + pick.value; });
+    return;
+  }
+  pick.hidden = true;
+  today.href = 'index.html';
+  function label(d) {
+    var dt = new Date(d + 'T12:00:00');
+    return dt.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+  }
+  fetch('archive.json', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (dates) {
+    dates.sort();
+    var older = dates.filter(function (d) { return d < cur; });
+    var newer = dates.filter(function (d) { return d > cur; });
+    if (older.length) { prev.href = older[older.length - 1] + '.html'; } else { prev.hidden = true; }
+    if (newer.length) { next.href = newer[0] + '.html'; next.hidden = false; } else { next.hidden = true; }
+    var latest = dates[dates.length - 1];
+    today.hidden = (cur === latest);
+    sel.innerHTML = dates.slice().reverse().map(function (d) {
+      return '<option value="' + d + '"' + (d === cur ? ' selected' : '') + '>' + label(d) + '</option>';
+    }).join('');
+    sel.hidden = false;
+    sel.addEventListener('change', function () { location.href = sel.value + '.html'; });
+  }).catch(function () {
+    prev.href = nav.querySelector('.dn-prev').getAttribute('href').replace('?date=', '') + '.html';
+    next.hidden = true;
+  });
+})();
+</script>
+</body>
+</html>

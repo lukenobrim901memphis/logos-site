@@ -1,0 +1,69 @@
+# GitHub Actions: rebuild the Chronicle agate pages every night at
+# 12:05 a.m. Pacific and commit them to the site.
+#
+# Install: copy this file to  logos-site/.github/workflows/chronicle-publish.yml
+# then commit and push. Run it by hand any time from the repo's Actions tab
+# ("Chronicle agate pages" -> "Run workflow").
+
+name: Chronicle agate pages
+
+on:
+  schedule:
+    # GitHub cron is UTC and ignores daylight saving, so schedule both
+    # 07:05 UTC (midnight PDT) and 08:05 UTC (midnight PST); the "gate"
+    # step below lets only the one that matches the current season run.
+    - cron: "5 7 * * *"
+    - cron: "5 8 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: chronicle-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      TZ: America/Los_Angeles
+      AGATE_SITE_DIR: ${{ github.workspace }}
+    steps:
+      - name: Midnight Pacific check
+        id: gate
+        run: |
+          offset=$(date +%z)                         # -0700 (PDT) or -0800 (PST)
+          sched="${{ github.event.schedule }}"
+          go=0
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then go=1; fi
+          if [ "$sched" = "5 7 * * *" ] && [ "$offset" = "-0700" ]; then go=1; fi
+          if [ "$sched" = "5 8 * * *" ] && [ "$offset" = "-0800" ]; then go=1; fi
+          echo "go=$go" >> "$GITHUB_OUTPUT"
+          echo "Pacific time now: $(date)  -> run: $go"
+
+      - uses: actions/checkout@v4
+        if: steps.gate.outputs.go == '1'
+
+      - uses: actions/setup-python@v5
+        if: steps.gate.outputs.go == '1'
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        if: steps.gate.outputs.go == '1'
+        run: pip install flask tzdata
+
+      - name: Build pages
+        if: steps.gate.outputs.go == '1'
+        run: python chronicle-src/scoreboard/tools/publish.py
+
+      - name: Commit and push
+        if: steps.gate.outputs.go == '1'
+        run: |
+          git config user.name  "chronicle-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add chronicle
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "Chronicle pages for $(date +%F)"
+          git push

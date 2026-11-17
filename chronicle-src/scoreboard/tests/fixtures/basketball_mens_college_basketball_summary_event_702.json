@@ -1,0 +1,289 @@
+{
+ "header": {
+  "season": {
+   "type": 2
+  },
+  "competitions": [
+   {
+    "status": {
+     "type": {
+      "state": "post",
+      "completed": true,
+      "detail": "Final",
+      "shortDetail": "Final",
+      "name": "STATUS_FINAL"
+     }
+    },
+    "competitors": [
+     {
+      "homeAway": "away",
+      "team": {
+       "id": "2250",
+       "location": "Gonzaga",
+       "name": "Bulldogs",
+       "abbreviation": "GONZ",
+       "displayName": "Gonzaga Bulldogs",
+       "shortDisplayName": "Bulldogs"
+      },
+      "score": "77",
+      "linescores": [
+       {
+        "value": 30.0
+       },
+       {
+        "value": 47.0
+       }
+      ]
+     },
+     {
+      "homeAway": "home",
+      "team": {
+       "id": "24",
+       "location": "Stanford",
+       "name": "Cardinal",
+       "abbreviation": "STAN",
+       "displayName": "Stanford Cardinal",
+       "shortDisplayName": "Cardinal"
+      },
+      "score": "79",
+      "linescores": [
+       {
+        "value": 38.0
+       },
+       {
+        "value": 41.0
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "boxscore": {
+  "teams": [
+   {
+    "team": {
+     "id": "2250",
+     "location": "Gonzaga",
+     "name": "Bulldogs",
+     "abbreviation": "GONZ",
+     "displayName": "Gonzaga Bulldogs",
+     "shortDisplayName": "Bulldogs"
+    },
+    "statistics": [
+     {
+      "name": "teamRebounds",
+      "displayValue": "8"
+     },
+     {
+      "name": "totalTurnovers",
+      "displayValue": "14"
+     },
+     {
+      "name": "turnoverPoints",
+      "displayValue": "17"
+     }
+    ]
+   },
+   {
+    "team": {
+     "id": "24",
+     "location": "Stanford",
+     "name": "Cardinal",
+     "abbreviation": "STAN",
+     "displayName": "Stanford Cardinal",
+     "shortDisplayName": "Cardinal"
+    },
+    "statistics": [
+     {
+      "name": "teamRebounds",
+      "displayValue": "10"
+     },
+     {
+      "name": "totalTurnovers",
+      "displayValue": "11"
+     },
+     {
+      "name": "turnoverPoints",
+      "displayValue": "12"
+     },
+     {
+      "name": "technicalFouls",
+      "displayValue": "1"
+     }
+    ]
+   }
+  ],
+  "players": [
+   {
+    "team": {
+     "id": "2250",
+     "location": "Gonzaga",
+     "name": "Bulldogs",
+     "abbreviation": "GONZ",
+     "displayName": "Gonzaga Bulldogs",
+     "shortDisplayName": "Bulldogs"
+    },
+    "statistics": [
+     {
+      "keys": [
+       "minutes",
+       "points",
+       "fieldGoalsMade-fieldGoalsAttempted",
+       "threePointFieldGoalsMade-threePointFieldGoalsAttempted",
+       "freeThrowsMade-freeThrowsAttempted",
+       "rebounds",
+       "assists",
+       "turnovers",
+       "steals",
+       "blocks",
+       "offensiveRebounds",
+       "defensiveRebounds",
+       "fouls",
+       "plusMinus"
+      ],
+      "labels": [
+       "MIN",
+       "PTS",
+       "FG",
+       "3PT",
+       "FT",
+       "REB",
+       "AST",
+       "TO",
+       "STL",
+       "BLK",
+       "OREB",
+       "DREB",
+       "PF",
+       "+/-"
+      ],
+      "athletes": [
+       {
+        "athlete": {
+         "id": "801",
+         "displayName": "Graham Ike"
+        },
+        "starter": true,
+        "didNotPlay": false,
+        "stats": [
+         "34",
+         "23",
+         "9-15",
+         "0-0",
+         "5-6",
+         "10",
+         "1",
+         "2",
+         "0",
+         "1",
+         "4",
+         "6",
+         "3",
+         "+5"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "9992250",
+         "displayName": "Bench Guy"
+        },
+        "didNotPlay": true,
+        "reason": "COACH'S DECISION",
+        "stats": []
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "team": {
+     "id": "24",
+     "location": "Stanford",
+     "name": "Cardinal",
+     "abbreviation": "STAN",
+     "displayName": "Stanford Cardinal",
+     "shortDisplayName": "Cardinal"
+    },
+    "statistics": [
+     {
+      "keys": [
+       "minutes",
+       "points",
+       "fieldGoalsMade-fieldGoalsAttempted",
+       "threePointFieldGoalsMade-threePointFieldGoalsAttempted",
+       "freeThrowsMade-freeThrowsAttempted",
+       "rebounds",
+       "assists",
+       "turnovers",
+       "steals",
+       "blocks",
+       "offensiveRebounds",
+       "defensiveRebounds",
+       "fouls",
+       "plusMinus"
+      ],
+      "labels": [
+       "MIN",
+       "PTS",
+       "FG",
+       "3PT",
+       "FT",
+       "REB",
+       "AST",
+       "TO",
+       "STL",
+       "BLK",
+       "OREB",
+       "DREB",
+       "PF",
+       "+/-"
+      ],
+      "athletes": [
+       {
+        "athlete": {
+         "id": "901",
+         "displayName": "Maxime Raynaud"
+        },
+        "starter": true,
+        "didNotPlay": false,
+        "stats": [
+         "36",
+         "25",
+         "10-18",
+         "2-5",
+         "3-4",
+         "11",
+         "2",
+         "1",
+         "1",
+         "2",
+         "3",
+         "8",
+         "2",
+         "+5"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "99924",
+         "displayName": "Bench Guy"
+        },
+        "didNotPlay": true,
+        "reason": "COACH'S DECISION",
+        "stats": []
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "gameInfo": {
+  "attendance": 5214,
+  "venue": {
+   "fullName": "Arena",
+   "capacity": 18064
+  }
+ }
+}

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NFL Fields</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="images/navigation/favicon.png">
+<style>
+  .fields-wrap { max-width: 1140px; margin: 0 auto; padding: 0 20px 48px; font-family: var(--font-primary); }
+  .fields-intro { text-align: center; margin: 14px 0 0; opacity: 0.85; }
+
+  /* Year picker */
+  .years { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 18px 0 6px; }
+  .year-btn {
+    font-family: var(--font-primary); font-weight: bold; font-size: 0.95rem; cursor: pointer;
+    padding: 6px 12px; border-radius: 6px; background: none; color: var(--bg-forest); border: 1px solid var(--accent-sage);
+  }
+  .year-btn:hover { background-color: var(--bg-cream-dark); }
+  .year-btn[aria-current="true"] { background-color: var(--bg-forest); color: var(--bg-cream); border-color: var(--bg-forest); }
+  .jump { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 10px 0 0; font-size: 0.95rem; }
+  .jump select, .team-pick select {
+    font-family: var(--font-primary); font-size: 0.95rem; padding: 6px 8px; border-radius: 6px;
+    border: 1px solid var(--accent-sage); background-color: var(--bg-cream-dark); color: var(--bg-forest);
+  }
+
+  /* By year / By team switch */
+  .view-tabs { display: flex; justify-content: center; margin: 18px 0 0; }
+  .view-tab {
+    font-family: var(--font-primary); font-weight: bold; font-size: 1rem; cursor: pointer; padding: 8px 18px;
+    background: none; color: var(--bg-forest); border: 2px solid var(--bg-forest);
+  }
+  .view-tab:first-child { border-radius: 8px 0 0 8px; }
+  .view-tab:last-child { border-radius: 0 8px 8px 0; border-left: 0; }
+  .view-tab[aria-selected="true"] { background-color: var(--bg-forest); color: var(--bg-cream); }
+  .team-pick { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 16px 0 0; font-size: 1rem; }
+  .team-pick select { font-size: 1rem; min-width: 240px; }
+  #year-controls[hidden], .team-pick[hidden] { display: none; }
+  .team-block h3 .history-link {
+    display: block; margin: 2px auto 0; font-size: 0.85rem; font-weight: normal; letter-spacing: 0;
+    background: none; border: 0; padding: 0; cursor: pointer; font-family: var(--font-primary);
+    color: var(--bg-forest-light); text-decoration: underline; text-underline-offset: 3px;
+  }
+  .team-block h3 .former { display: block; font-size: 0.9rem; font-weight: normal; opacity: 0.75; margin-top: 2px; }
+
+  .season-title { text-align: center; margin: 34px 0 4px; color: var(--accent-sage); font-size: 1.6rem; }
+  .season-count { text-align: center; font-size: 0.9rem; opacity: 0.7; margin: 0 0 6px; }
+
+  /* Team sections */
+  .team-block { margin-top: 30px; scroll-margin-top: 140px; }
+  .team-block h3 { text-align: center; margin: 0 0 14px; font-size: 1.25rem; letter-spacing: 0.5px; }
+  .field-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 22px 28px; }
+  .field-card {
+    width: 320px; max-width: 100%; margin: 0; padding: 0; border: 0; background: none; cursor: zoom-in;
+    font-family: var(--font-primary); color: inherit; text-align: center;
+  }
+  .field-card img {
+    display: block; width: 100%; height: auto; border-radius: 4px;
+    background-color: var(--bg-cream-dark); transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .field-card:hover img, .field-card:focus-visible img { transform: scale(1.03); box-shadow: 0 6px 18px rgba(28, 45, 36, 0.25); }
+  .field-card:focus-visible { outline: none; }
+  .field-card span { display: block; margin-top: 8px; font-size: 0.98rem; line-height: 1.3; }
+  .empty { text-align: center; margin-top: 40px; opacity: 0.8; }
+
+  /* Enlarged view (uses the .lightbox look from style.css) */
+  .lightbox.open { display: flex; }
+  .lightbox figure { margin: 0; display: flex; flex-direction: column; align-items: center; max-width: calc(100vw - 160px); cursor: default; }
+  .lightbox figure img { max-width: 100%; max-height: 74vh; box-sizing: border-box; }
+  .lb-caption { margin-top: 14px; color: var(--bg-cream); text-align: center; font-family: var(--font-primary); }
+  .lb-caption b { display: block; font-size: 1.3rem; }
+  .lb-caption span { font-size: 0.95rem; opacity: 0.8; }
+  .lb-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+    font-size: 26px; padding: 14px 16px; border: none; border-radius: 4px; cursor: pointer;
+    background-color: rgba(253, 251, 247, 0.15); color: var(--bg-cream);
+  }
+  .lb-arrow:hover { background-color: var(--bg-forest-light); }
+  .lb-prev { left: 14px; } .lb-next { right: 14px; }
+  .lightbox .close-btn { background: none; border: none; font-family: var(--font-primary); }
+
+  @media (max-width: 600px) {
+    .field-card { width: 100%; }
+    .lb-arrow { top: auto; bottom: 16px; transform: none; padding: 10px 16px; }
+    .lightbox figure { max-width: 94vw; }
+    .lightbox figure img { padding: 8px; }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .year-btn { color: var(--bg-cream); border-color: var(--bg-forest-light); }
+    .year-btn:hover { background-color: rgba(255, 255, 255, 0.08); }
+    .year-btn[aria-current="true"] { background-color: var(--accent-sage); color: var(--bg-forest); border-color: var(--accent-sage); }
+    .jump select, .team-pick select { background-color: var(--bg-forest-light); color: var(--bg-cream); }
+    .view-tab { color: var(--bg-cream); border-color: var(--accent-sage); }
+    .view-tab[aria-selected="true"] { background-color: var(--accent-sage); color: var(--bg-forest); }
+    .team-block h3 .history-link { color: var(--accent-sage); }
+    .field-card img { background-color: rgba(255, 255, 255, 0.05); }
+    .field-card:hover img { box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5); }
+  }
+</style>
+</head>
+<body>
+<header class="sticky-header">
+  <a class="back-btn" href="index.html">← Back</a>
+  <h1 id="title">NFL Fields</h1>
+</header>
+
+<main class="fields-wrap">
+  <p class="fields-intro">Select a field to enlarge it</p>
+  <div class="view-tabs" role="tablist" aria-label="Browse fields">
+    <button class="view-tab" role="tab" id="tab-year" aria-selected="true">By year</button>
+    <button class="view-tab" role="tab" id="tab-team" aria-selected="false">By team</button>
+  </div>
+  <div id="year-controls">
+    <nav class="years" id="years" aria-label="Season"></nav>
+    <div class="jump"><label for="jump">Jump to</label><select id="jump"></select></div>
+  </div>
+  <div class="team-pick" id="team-controls" hidden><label for="team-select">Team</label><select id="team-select"></select></div>
+  <h2 class="season-title" id="season-title"></h2>
+  <p class="season-count" id="season-count"></p>
+  <div id="teams"></div>
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged field">
+  <button class="close-btn" id="lb-close" aria-label="Close">&times;</button>
+  <button class="lb-arrow lb-prev" id="lb-prev" aria-label="Previous field">&#10094;</button>
+  <figure>
+    <img id="lb-img" alt="">
+    <figcaption class="lb-caption"><b id="lb-label"></b><span id="lb-team"></span></figcaption>
+  </figure>
+  <button class="lb-arrow lb-next" id="lb-next" aria-label="Next field">&#10095;</button>
+</div>
+
+<script src="data/fields.js"></script>
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+  const data = window.FIELDS_DATA;
+  if (!data || !Object.keys(data.years || {}).length) {
+    $('teams').innerHTML = '<p class="empty">No fields yet. Run  node build-fields.mjs  to add them.</p>';
+    return;
+  }
+  const years = Object.keys(data.years).sort((a, b) => b - a);
+
+  // Relocated / renamed teams count as one franchise, filed under today's name.
+  const FRANCHISE = {
+    'Oakland Raiders': 'Las Vegas Raiders', 'San Diego Chargers': 'Los Angeles Chargers',
+    'St. Louis Rams': 'Los Angeles Rams', 'St Louis Rams': 'Los Angeles Rams',
+    'Washington Redskins': 'Washington Commanders', 'Washington Football Team': 'Washington Commanders',
+  };
+  const franchiseOf = t => FRANCHISE[t] || t;
+  const franchises = [...new Set(years.flatMap(y => data.years[y].map(f => franchiseOf(f.team))))]
+    .sort((a, b) => (a === 'Other fields') - (b === 'Other fields') || a.localeCompare(b));
+
+  let mode = 'year', year = null, team = null;
+  let shown = [], openIndex = -1;   // shown = every field on screen, in order: { f, year }
+
+  const card = (f, y, i) =>
+    `<button class="field-card" data-i="${i}" aria-label="${esc(f.team)} ${y}: ${esc(f.label)}, enlarge">
+       <img src="${esc(f.thumb)}" width="${f.w}" height="${f.h}" alt="${esc(f.team)} ${y} field: ${esc(f.label)}" loading="lazy" decoding="async">
+       <span>${esc(f.label)}</span>
+     </button>`;
+
+  function setMode(m) {
+    mode = m;
+    $('tab-year').setAttribute('aria-selected', String(m === 'year'));
+    $('tab-team').setAttribute('aria-selected', String(m === 'team'));
+    $('year-controls').hidden = m !== 'year';
+    $('team-controls').hidden = m !== 'team';
+  }
+
+  // ---------- One season, every team ----------
+  function showYear(y, teamToShow) {
+    setMode('year');
+    year = years.includes(y) ? y : (year || years[0]);
+    const fields = data.years[year];
+    document.title = `${year} NFL Fields`;
+    $('title').textContent = `${year} NFL Fields`;
+    $('season-title').textContent = `${year} Season Fields`;
+    const teams = [...new Set(fields.map(f => f.team))];
+    $('season-count').textContent = `${fields.length} fields · ${teams.length} teams`;
+
+    $('years').innerHTML = years.map(y =>
+      `<button class="year-btn" data-year="${y}" aria-current="${y === year}">${y}</button>`).join('');
+    $('jump').innerHTML = `<option value="">Team…</option>` + teams.map(t => `<option value="${slug(t)}">${esc(t)}</option>`).join('');
+
+    shown = [];
+    $('teams').innerHTML = teams.map(t => {
+      const cards = fields.filter(f => f.team === t).map(f => { shown.push({ f, year }); return card(f, year, shown.length - 1); }).join('');
+      const link = t === 'Other fields' ? '' :
+        `<button class="history-link" data-team="${esc(franchiseOf(t))}">See every year →</button>`;
+      return `<section class="team-block" id="${slug(t)}"><h3>${esc(t)}${link}</h3><div class="field-grid">${cards}</div></section>`;
+    }).join('');
+
+    history.replaceState(null, '', `#${year}` + (teamToShow ? `/${teamToShow}` : ''));
+    if (teamToShow) document.getElementById(teamToShow)?.scrollIntoView();
+  }
+
+  // ---------- One team, every season ----------
+  function showTeam(name) {
+    setMode('team');
+    team = franchises.includes(name) ? name : (team || franchises[0]);
+    document.title = `${team} Fields`;
+    $('title').textContent = `${team} Fields`;
+    $('team-select').innerHTML = franchises.map(t => `<option${t === team ? ' selected' : ''}>${esc(t)}</option>`).join('');
+
+    shown = [];
+    const sections = [];
+    for (const y of years) {
+      const fields = data.years[y].filter(f => franchiseOf(f.team) === team);
+      if (!fields.length) continue;
+      const cards = fields.map(f => { shown.push({ f, year: y }); return card(f, y, shown.length - 1); }).join('');
+      const oldName = fields[0].team !== team ? `<span class="former">as the ${esc(fields[0].team)}</span>` : '';
+      sections.push(`<section class="team-block" id="y${y}"><h3>${y}${oldName}</h3><div class="field-grid">${cards}</div></section>`);
+    }
+    const seasons = shown.map(x => +x.year);
+    const count = new Set(seasons).size;
+    $('season-title').textContent = 'Field History';
+    $('season-count').textContent = `${shown.length} field${shown.length === 1 ? '' : 's'} · ${count} season${count === 1 ? '' : 's'}` +
+      (count > 1 ? ` · ${Math.min(...seasons)}–${Math.max(...seasons)}` : '');
+    $('teams').innerHTML = sections.join('') || '<p class="empty">No fields for this team yet.</p>';
+    history.replaceState(null, '', `#team/${slug(team)}`);
+  }
+
+  // ---------- Enlarged view ----------
+  function openField(i) {
+    openIndex = (i + shown.length) % shown.length;
+    const { f, year: y } = shown[openIndex];
+    $('lb-img').src = f.img;
+    $('lb-img').alt = `${f.team} ${y} field: ${f.label}`;
+    $('lb-label').textContent = f.label;
+    $('lb-team').textContent = `${f.team} · ${y}`;
+    $('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    $('lb-close').focus();
+  }
+  function closeField() {
+    if (openIndex < 0) return;
+    $('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+    document.querySelector(`.field-card[data-i="${openIndex}"]`)?.focus();
+    openIndex = -1;
+  }
+
+  $('years').onclick = e => { const b = e.target.closest('.year-btn'); if (b) { showYear(b.dataset.year); window.scrollTo(0, 0); } };
+  $('jump').onchange = e => {
+    const t = e.target.value; if (!t) return;
+    document.getElementById(t)?.scrollIntoView({ behavior: 'smooth' });
+    history.replaceState(null, '', `#${year}/${t}`);
+    e.target.value = '';
+  };
+  $('teams').onclick = e => {
+    const h = e.target.closest('.history-link');
+    if (h) { showTeam(h.dataset.team); window.scrollTo(0, 0); return; }
+    const c = e.target.closest('.field-card'); if (c) openField(+c.dataset.i);
+  };
+  $('tab-year').onclick = () => showYear(year);
+  $('tab-team').onclick = () => { showTeam(team); window.scrollTo(0, 0); };
+  $('team-select').onchange = e => showTeam(e.target.value);
+  $('lb-close').onclick = closeField;
+  $('lb-prev').onclick = e => { e.stopPropagation(); openField(openIndex - 1); };
+  $('lb-next').onclick = e => { e.stopPropagation(); openField(openIndex + 1); };
+  $('lightbox').onclick = e => { if (!e.target.closest('figure, .lb-arrow')) closeField(); };
+  document.addEventListener('keydown', e => {
+    if (openIndex < 0) return;
+    if (e.key === 'Escape') closeField();
+    else if (e.key === 'ArrowLeft') openField(openIndex - 1);
+    else if (e.key === 'ArrowRight') openField(openIndex + 1);
+  });
+
+  // Links: #2019 (a season), #2019/dallas-cowboys (a season, at that team), #team/dallas-cowboys (a team's history).
+  const fromHash = () => {
+    const [a, b] = location.hash.slice(1).split('/');
+    if (a === 'team') showTeam(franchises.find(t => slug(t) === b));
+    else showYear(a, b);
+  };
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
+})();
+</script>
+</body>
+</html>

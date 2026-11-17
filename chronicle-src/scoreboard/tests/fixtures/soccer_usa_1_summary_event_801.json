@@ -1,0 +1,229 @@
+{
+ "header": {
+  "competitions": [
+   {
+    "status": {
+     "type": {
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
+      "shortDetail": "FT",
+      "name": "STATUS_FINAL"
+     }
+    },
+    "competitors": [
+     {
+      "homeAway": "away",
+      "team": {
+       "id": "187",
+       "location": "LA",
+       "name": "Galaxy",
+       "abbreviation": "LA",
+       "displayName": "LA Galaxy",
+       "shortDisplayName": "LA Galaxy"
+      },
+      "score": "1",
+      "linescores": [
+       {
+        "value": 0.0
+       },
+       {
+        "value": 1.0
+       }
+      ]
+     },
+     {
+      "homeAway": "home",
+      "team": {
+       "id": "191",
+       "location": "San Jose",
+       "name": "Earthquakes",
+       "abbreviation": "SJ",
+       "displayName": "San Jose Earthquakes",
+       "shortDisplayName": "San Jose"
+      },
+      "score": "2",
+      "linescores": [
+       {
+        "value": 1.0
+       },
+       {
+        "value": 1.0
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "rosters": [
+  {
+   "team": {
+    "id": "191",
+    "location": "San Jose",
+    "name": "Earthquakes",
+    "abbreviation": "SJ",
+    "displayName": "San Jose Earthquakes",
+    "shortDisplayName": "San Jose"
+   },
+   "roster": [
+    {
+     "starter": true,
+     "formationPlace": "1",
+     "athlete": {
+      "displayName": "Daniel"
+     }
+    },
+    {
+     "starter": true,
+     "formationPlace": "9",
+     "athlete": {
+      "displayName": "Cristian Espinoza"
+     }
+    },
+    {
+     "starter": true,
+     "formationPlace": "10",
+     "athlete": {
+      "displayName": "Josef Mart\u00ednez"
+     }
+    },
+    {
+     "starter": false,
+     "subbedIn": true,
+     "athlete": {
+      "displayName": "Preston Judd"
+     }
+    }
+   ]
+  },
+  {
+   "team": {
+    "id": "187",
+    "location": "LA",
+    "name": "Galaxy",
+    "abbreviation": "LA",
+    "displayName": "LA Galaxy",
+    "shortDisplayName": "LA Galaxy"
+   },
+   "roster": [
+    {
+     "starter": true,
+     "formationPlace": "1",
+     "athlete": {
+      "displayName": "John McCarthy"
+     }
+    },
+    {
+     "starter": true,
+     "formationPlace": "10",
+     "athlete": {
+      "displayName": "Riqui Puig"
+     }
+    }
+   ]
+  }
+ ],
+ "keyEvents": [
+  {
+   "type": {
+    "text": "Goal"
+   },
+   "team": {
+    "id": "191",
+    "location": "San Jose",
+    "name": "Earthquakes",
+    "abbreviation": "SJ",
+    "displayName": "San Jose Earthquakes",
+    "shortDisplayName": "San Jose"
+   },
+   "clock": {
+    "displayValue": "34'"
+   },
+   "participants": [
+    {
+     "athlete": {
+      "displayName": "Josef Mart\u00ednez"
+     }
+    },
+    {
+     "athlete": {
+      "displayName": "Cristian Espinoza"
+     }
+    }
+   ]
+  },
+  {
+   "type": {
+    "text": "Yellow Card"
+   },
+   "team": {
+    "id": "187",
+    "location": "LA",
+    "name": "Galaxy",
+    "abbreviation": "LA",
+    "displayName": "LA Galaxy",
+    "shortDisplayName": "LA Galaxy"
+   },
+   "clock": {
+    "displayValue": "41'"
+   },
+   "participants": [
+    {
+     "athlete": {
+      "displayName": "Riqui Puig"
+     }
+    }
+   ]
+  },
+  {
+   "type": {
+    "text": "Penalty - Scored"
+   },
+   "team": {
+    "id": "187",
+    "location": "LA",
+    "name": "Galaxy",
+    "abbreviation": "LA",
+    "displayName": "LA Galaxy",
+    "shortDisplayName": "LA Galaxy"
+   },
+   "clock": {
+    "displayValue": "62'"
+   },
+   "participants": [
+    {
+     "athlete": {
+      "displayName": "Riqui Puig"
+     }
+    }
+   ]
+  },
+  {
+   "type": {
+    "text": "Goal - Header"
+   },
+   "team": {
+    "id": "191",
+    "location": "San Jose",
+    "name": "Earthquakes",
+    "abbreviation": "SJ",
+    "displayName": "San Jose Earthquakes",
+    "shortDisplayName": "San Jose"
+   },
+   "clock": {
+    "displayValue": "90'+3'"
+   },
+   "participants": [
+    {
+     "athlete": {
+      "displayName": "Preston Judd"
+     }
+    }
+   ]
+  }
+ ],
+ "gameInfo": {
+  "attendance": 18000
+ }
+}

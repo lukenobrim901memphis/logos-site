@@ -1,0 +1,110 @@
+{
+ "children": [
+  {
+   "name": "National Football Conference",
+   "children": [
+    {
+     "name": "NFC West",
+     "standings": {
+      "entries": [
+       {
+        "team": {
+         "id": "25",
+         "location": "San Francisco",
+         "name": "49ers",
+         "abbreviation": "SF",
+         "displayName": "San Francisco 49ers",
+         "shortDisplayName": "49ers"
+        },
+        "stats": [
+         {
+          "name": "wins",
+          "displayValue": "7"
+         },
+         {
+          "name": "losses",
+          "displayValue": "3"
+         },
+         {
+          "name": "ties",
+          "displayValue": "0"
+         },
+         {
+          "name": "pointsFor",
+          "displayValue": "260"
+         },
+         {
+          "name": "pointsAgainst",
+          "displayValue": "190"
+         },
+         {
+          "name": "Home",
+          "type": "home",
+          "summary": "4-1"
+         },
+         {
+          "name": "Road",
+          "type": "road",
+          "summary": "3-2"
+         },
+         {
+          "name": "vs. Div.",
+          "type": "vsdiv",
+          "summary": "2-1"
+         }
+        ]
+       },
+       {
+        "team": {
+         "id": "26",
+         "location": "Seattle",
+         "name": "Seahawks",
+         "abbreviation": "SEA",
+         "displayName": "Seattle Seahawks",
+         "shortDisplayName": "Seahawks"
+        },
+        "stats": [
+         {
+          "name": "wins",
+          "displayValue": "6"
+         },
+         {
+          "name": "losses",
+          "displayValue": "4"
+         },
+         {
+          "name": "ties",
+          "displayValue": "0"
+         },
+         {
+          "name": "pointsFor",
+          "displayValue": "230"
+         },
+         {
+          "name": "pointsAgainst",
+          "displayValue": "220"
+         },
+         {
+          "name": "Home",
+          "type": "home",
+          "summary": "3-2"
+         },
+         {
+          "name": "Road",
+          "type": "road",
+          "summary": "3-2"
+         },
+         {
+          "name": "vs. Div.",
+          "type": "vsdiv",
+          "summary": "1-2"
+         }
+        ]
+       }
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+ "transactions": [
+  {
+   "date": "2026-11-15T08:00Z",
+   "team": {
+    "id": "9",
+    "location": "Golden State",
+    "name": "Warriors",
+    "abbreviation": "GS",
+    "displayName": "Golden State Warriors",
+    "shortDisplayName": "Warriors"
+   },
+   "description": "Assigned F Gui Santos to Santa Cruz (G League)."
+  },
+  {
+   "date": "2026-11-15T08:00Z",
+   "team": {
+    "id": "23",
+    "location": "Sacramento",
+    "name": "Kings",
+    "abbreviation": "SAC",
+    "displayName": "Sacramento Kings",
+    "shortDisplayName": "Kings"
+   },
+   "description": "Recalled G Devin Carter from Stockton (G League)."
+  },
+  {
+   "date": "2026-11-14T08:00Z",
+   "team": {
+    "id": "19",
+    "location": "Orlando",
+    "name": "Magic",
+    "abbreviation": "ORL",
+    "displayName": "Orlando Magic",
+    "shortDisplayName": "Magic"
+   },
+   "description": "Old transaction."
+  }
+ ]
+}

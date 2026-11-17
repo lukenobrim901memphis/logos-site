@@ -1,0 +1,88 @@
+{
+ "children": [
+  {
+   "name": "Western Conference",
+   "children": [
+    {
+     "name": "Pacific Division",
+     "standings": {
+      "entries": [
+       {
+        "team": {
+         "id": "18",
+         "location": "San Jose",
+         "name": "Sharks",
+         "abbreviation": "SJ",
+         "displayName": "San Jose Sharks",
+         "shortDisplayName": "Sharks"
+        },
+        "stats": [
+         {
+          "name": "wins",
+          "displayValue": "9"
+         },
+         {
+          "name": "losses",
+          "displayValue": "7"
+         },
+         {
+          "name": "otLosses",
+          "displayValue": "2"
+         },
+         {
+          "name": "points",
+          "displayValue": "20"
+         },
+         {
+          "name": "pointsFor",
+          "displayValue": "55"
+         },
+         {
+          "name": "pointsAgainst",
+          "displayValue": "50"
+         }
+        ]
+       },
+       {
+        "team": {
+         "id": "8",
+         "location": "Los Angeles",
+         "name": "Kings",
+         "abbreviation": "LA",
+         "displayName": "Los Angeles Kings",
+         "shortDisplayName": "Kings"
+        },
+        "stats": [
+         {
+          "name": "wins",
+          "displayValue": "10"
+         },
+         {
+          "name": "losses",
+          "displayValue": "5"
+         },
+         {
+          "name": "otLosses",
+          "displayValue": "3"
+         },
+         {
+          "name": "points",
+          "displayValue": "23"
+         },
+         {
+          "name": "pointsFor",
+          "displayValue": "60"
+         },
+         {
+          "name": "pointsAgainst",
+          "displayValue": "48"
+         }
+        ]
+       }
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

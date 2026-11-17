@@ -1,0 +1,70 @@
+{
+ "events": [
+  {
+   "id": "t1",
+   "name": "Nitto ATP Finals",
+   "groupings": [
+    {
+     "grouping": {
+      "displayName": "Men's Singles"
+     },
+     "competitions": [
+      {
+       "date": "2026-11-15T14:00Z",
+       "status": {
+        "type": {
+         "state": "post",
+         "completed": true,
+         "detail": "Final",
+         "shortDetail": "Final",
+         "name": "STATUS_FINAL"
+        }
+       },
+       "round": {
+        "displayName": "Final"
+       },
+       "competitors": [
+        {
+         "winner": true,
+         "athlete": {
+          "displayName": "Jannik Sinner",
+          "flag": {
+           "alt": "Italy"
+          }
+         },
+         "linescores": [
+          {
+           "value": 6
+          },
+          {
+           "value": 7,
+           "tiebreak": 7
+          }
+         ]
+        },
+        {
+         "winner": false,
+         "athlete": {
+          "displayName": "Carlos Alcaraz",
+          "flag": {
+           "alt": "Spain"
+          }
+         },
+         "linescores": [
+          {
+           "value": 4
+          },
+          {
+           "value": 6,
+           "tiebreak": 5
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,67 @@
+{
+ "leagues": [
+  {
+   "season": {
+    "type": {
+     "type": 2
+    }
+   }
+  }
+ ],
+ "events": [
+  {
+   "id": "405",
+   "date": "2026-11-18T03:30Z",
+   "name": "",
+   "competitions": [
+    {
+     "id": "405",
+     "date": "2026-11-18T03:30Z",
+     "competitors": [
+      {
+       "homeAway": "away",
+       "team": {
+        "id": "6",
+        "location": "Dallas",
+        "name": "Mavericks",
+        "abbreviation": "DAL",
+        "displayName": "Dallas Mavericks",
+        "shortDisplayName": "Mavericks"
+       }
+      },
+      {
+       "homeAway": "home",
+       "team": {
+        "id": "9",
+        "location": "Golden State",
+        "name": "Warriors",
+        "abbreviation": "GS",
+        "displayName": "Golden State Warriors",
+        "shortDisplayName": "Warriors"
+       }
+      }
+     ],
+     "status": {
+      "type": {
+       "state": "pre",
+       "completed": false,
+       "detail": "Scheduled",
+       "shortDetail": "Scheduled",
+       "name": "STATUS_SCHEDULED"
+      }
+     },
+     "neutralSite": false
+    }
+   ],
+   "status": {
+    "type": {
+     "state": "pre",
+     "completed": false,
+     "detail": "Scheduled",
+     "shortDetail": "Scheduled",
+     "name": "STATUS_SCHEDULED"
+    }
+   }
+  }
+ ]
+}

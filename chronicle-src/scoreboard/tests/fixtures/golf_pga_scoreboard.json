@@ -1,0 +1,109 @@
+{
+ "events": [
+  {
+   "id": "g1",
+   "name": "The RSM Classic",
+   "date": "2026-11-12T12:00Z",
+   "endDate": "2026-11-15T23:00Z",
+   "status": {
+    "type": {
+     "state": "post",
+     "completed": true,
+     "detail": "Final",
+     "shortDetail": "Final",
+     "name": "STATUS_FINAL"
+    }
+   },
+   "competitions": [
+    {
+     "competitors": [
+      {
+       "order": 2,
+       "athlete": {
+        "displayName": "Ludvig \u00c5berg"
+       },
+       "score": "-18",
+       "linescores": [
+        {
+         "value": 66
+        },
+        {
+         "value": 64
+        },
+        {
+         "value": 67
+        },
+        {
+         "value": 65
+        }
+       ]
+      },
+      {
+       "order": 1,
+       "athlete": {
+        "displayName": "Collin Morikawa"
+       },
+       "score": "-20",
+       "linescores": [
+        {
+         "value": 65
+        },
+        {
+         "value": 64
+        },
+        {
+         "value": 65
+        },
+        {
+         "value": 66
+        }
+       ]
+      },
+      {
+       "order": 3,
+       "athlete": {
+        "displayName": "Max Homa"
+       },
+       "score": "-18",
+       "linescores": [
+        {
+         "value": 67
+        },
+        {
+         "value": 65
+        },
+        {
+         "value": 64
+        },
+        {
+         "value": 66
+        }
+       ]
+      },
+      {
+       "order": 4,
+       "athlete": {
+        "displayName": "Joel Dahmen"
+       },
+       "score": "E",
+       "linescores": [
+        {
+         "value": 70
+        },
+        {
+         "value": 70
+        },
+        {
+         "value": 70
+        },
+        {
+         "value": 70
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

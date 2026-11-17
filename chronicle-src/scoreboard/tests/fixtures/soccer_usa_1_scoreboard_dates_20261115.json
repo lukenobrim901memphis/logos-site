@@ -1,0 +1,85 @@
+{
+ "leagues": [
+  {
+   "season": {
+    "type": {
+     "type": 3
+    }
+   }
+  }
+ ],
+ "events": [
+  {
+   "id": "801",
+   "date": "2026-11-16T02:00Z",
+   "name": "",
+   "competitions": [
+    {
+     "id": "801",
+     "date": "2026-11-16T02:00Z",
+     "competitors": [
+      {
+       "homeAway": "away",
+       "team": {
+        "id": "187",
+        "location": "LA",
+        "name": "Galaxy",
+        "abbreviation": "LA",
+        "displayName": "LA Galaxy",
+        "shortDisplayName": "LA Galaxy"
+       },
+       "score": "1",
+       "linescores": [
+        {
+         "value": 0.0
+        },
+        {
+         "value": 1.0
+        }
+       ]
+      },
+      {
+       "homeAway": "home",
+       "team": {
+        "id": "191",
+        "location": "San Jose",
+        "name": "Earthquakes",
+        "abbreviation": "SJ",
+        "displayName": "San Jose Earthquakes",
+        "shortDisplayName": "San Jose"
+       },
+       "score": "2",
+       "linescores": [
+        {
+         "value": 1.0
+        },
+        {
+         "value": 1.0
+        }
+       ]
+      }
+     ],
+     "status": {
+      "type": {
+       "state": "post",
+       "completed": true,
+       "detail": "FT",
+       "shortDetail": "FT",
+       "name": "STATUS_FINAL"
+      }
+     },
+     "neutralSite": false
+    }
+   ],
+   "status": {
+    "type": {
+     "state": "post",
+     "completed": true,
+     "detail": "FT",
+     "shortDetail": "FT",
+     "name": "STATUS_FINAL"
+    }
+   }
+  }
+ ]
+}

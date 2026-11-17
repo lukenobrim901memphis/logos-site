@@ -1,0 +1,540 @@
+{
+ "header": {
+  "season": {
+   "type": 2
+  },
+  "competitions": [
+   {
+    "status": {
+     "type": {
+      "state": "post",
+      "completed": true,
+      "detail": "Final",
+      "shortDetail": "Final",
+      "name": "STATUS_FINAL"
+     }
+    },
+    "competitors": [
+     {
+      "homeAway": "away",
+      "team": {
+       "id": "1",
+       "location": "New Jersey",
+       "name": "Devils",
+       "abbreviation": "NJ",
+       "displayName": "New Jersey Devils",
+       "shortDisplayName": "Devils"
+      },
+      "score": "4",
+      "linescores": [
+       {
+        "value": 2.0
+       },
+       {
+        "value": 1.0
+       },
+       {
+        "value": 1.0
+       }
+      ]
+     },
+     {
+      "homeAway": "home",
+      "team": {
+       "id": "4",
+       "location": "Chicago",
+       "name": "Blackhawks",
+       "abbreviation": "CHI",
+       "displayName": "Chicago Blackhawks",
+       "shortDisplayName": "Blackhawks"
+      },
+      "score": "3",
+      "linescores": [
+       {
+        "value": 1.0
+       },
+       {
+        "value": 1.0
+       },
+       {
+        "value": 1.0
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "boxscore": {
+  "players": [
+   {
+    "team": {
+     "id": "1",
+     "location": "New Jersey",
+     "name": "Devils",
+     "abbreviation": "NJ",
+     "displayName": "New Jersey Devils",
+     "shortDisplayName": "Devils"
+    },
+    "statistics": [
+     {
+      "name": "forwards",
+      "labels": [
+       "G",
+       "A",
+       "+/-",
+       "S",
+       "TOI"
+      ],
+      "athletes": [
+       {
+        "athlete": {
+         "id": "101",
+         "displayName": "Jack Hughes"
+        },
+        "stats": [
+         "0",
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "102",
+         "displayName": "Jesper Bratt"
+        },
+        "stats": [
+         "0",
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "103",
+         "displayName": "Dougie Hamilton"
+        },
+        "stats": [
+         "0",
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "104",
+         "displayName": "Nico Hischier"
+        },
+        "stats": [
+         "0",
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       }
+      ]
+     },
+     {
+      "name": "goalies",
+      "labels": [
+       "GA",
+       "SA",
+       "SV",
+       "SV%"
+      ],
+      "athletes": [
+       {
+        "athlete": {
+         "id": "150",
+         "displayName": "Jacob Markstrom"
+        },
+        "starter": true,
+        "stats": [
+         "3",
+         "28",
+         "25",
+         ".892"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "team": {
+     "id": "4",
+     "location": "Chicago",
+     "name": "Blackhawks",
+     "abbreviation": "CHI",
+     "displayName": "Chicago Blackhawks",
+     "shortDisplayName": "Blackhawks"
+    },
+    "statistics": [
+     {
+      "name": "forwards",
+      "labels": [
+       "G",
+       "A",
+       "+/-",
+       "S",
+       "TOI"
+      ],
+      "athletes": [
+       {
+        "athlete": {
+         "id": "201",
+         "displayName": "Connor Bedard"
+        },
+        "stats": [
+         "0",
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "202",
+         "displayName": "Seth Jones"
+        },
+        "stats": [
+         "0",
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "203",
+         "displayName": "Taylor Hall"
+        },
+        "stats": [
+         "0",
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       }
+      ]
+     },
+     {
+      "name": "goalies",
+      "labels": [
+       "GA",
+       "SA",
+       "SV",
+       "SV%"
+      ],
+      "athletes": [
+       {
+        "athlete": {
+         "id": "250",
+         "displayName": "Petr Mrazek"
+        },
+        "starter": true,
+        "stats": [
+         "4",
+         "30",
+         "26",
+         ".866"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "teams": [
+   {
+    "team": {
+     "id": "1",
+     "location": "New Jersey",
+     "name": "Devils",
+     "abbreviation": "NJ",
+     "displayName": "New Jersey Devils",
+     "shortDisplayName": "Devils"
+    },
+    "statistics": [
+     {
+      "name": "shotsTotal",
+      "displayValue": "30"
+     },
+     {
+      "name": "powerPlayGoals",
+      "displayValue": "1"
+     },
+     {
+      "name": "powerPlayOpportunities",
+      "displayValue": "3"
+     }
+    ]
+   },
+   {
+    "team": {
+     "id": "4",
+     "location": "Chicago",
+     "name": "Blackhawks",
+     "abbreviation": "CHI",
+     "displayName": "Chicago Blackhawks",
+     "shortDisplayName": "Blackhawks"
+    },
+    "statistics": [
+     {
+      "name": "shotsTotal",
+      "displayValue": "28"
+     },
+     {
+      "name": "powerPlayGoals",
+      "displayValue": "0"
+     },
+     {
+      "name": "powerPlayOpportunities",
+      "displayValue": "2"
+     }
+    ]
+   }
+  ]
+ },
+ "plays": [
+  {
+   "id": 1,
+   "period": {
+    "number": 1
+   },
+   "clock": {
+    "displayValue": "19:00"
+   },
+   "team": {
+    "id": "1"
+   },
+   "text": "Shot by Hischier",
+   "type": {
+    "text": "Shot"
+   },
+   "scoringPlay": false
+  },
+  {
+   "id": 2,
+   "period": {
+    "number": 1
+   },
+   "clock": {
+    "displayValue": "17:20"
+   },
+   "team": {
+    "id": "1"
+   },
+   "text": "Jack Hughes (8) Wrist Shot, assists: Jesper Bratt (12), Dougie Hamilton (6)",
+   "type": {
+    "text": "Goal"
+   },
+   "scoringPlay": true,
+   "participants": [
+    {
+     "athlete": {
+      "id": "101"
+     }
+    },
+    {
+     "athlete": {
+      "id": "102"
+     }
+    },
+    {
+     "athlete": {
+      "id": "103"
+     }
+    }
+   ],
+   "strength": {
+    "text": "Power Play"
+   }
+  },
+  {
+   "id": 3,
+   "period": {
+    "number": 1
+   },
+   "clock": {
+    "displayValue": "12:00"
+   },
+   "team": {
+    "id": "4"
+   },
+   "text": "Connor Bedard (6) Snap Shot, assists: Seth Jones (4)",
+   "type": {
+    "text": "Goal"
+   },
+   "scoringPlay": true,
+   "participants": [
+    {
+     "athlete": {
+      "id": "201"
+     }
+    },
+    {
+     "athlete": {
+      "id": "202"
+     }
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "period": {
+    "number": 1
+   },
+   "clock": {
+    "displayValue": "05:00"
+   },
+   "team": {
+    "id": "1"
+   },
+   "text": "Nico Hischier (7) Backhand, assists: none",
+   "type": {
+    "text": "Goal"
+   },
+   "scoringPlay": true,
+   "participants": [
+    {
+     "athlete": {
+      "id": "104"
+     }
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "period": {
+    "number": 2
+   },
+   "clock": {
+    "displayValue": "10:00"
+   },
+   "team": {
+    "id": "1"
+   },
+   "text": "Jesper Bratt (5) Wrist Shot, assists: Jack Hughes (9)",
+   "type": {
+    "text": "Goal"
+   },
+   "scoringPlay": true,
+   "participants": [
+    {
+     "athlete": {
+      "id": "102"
+     }
+    },
+    {
+     "athlete": {
+      "id": "101"
+     }
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "period": {
+    "number": 2
+   },
+   "clock": {
+    "displayValue": "02:00"
+   },
+   "team": {
+    "id": "4"
+   },
+   "text": "Taylor Hall (3) Slap Shot, assists: Connor Bedard (7), Seth Jones (5)",
+   "type": {
+    "text": "Goal"
+   },
+   "scoringPlay": true,
+   "participants": [
+    {
+     "athlete": {
+      "id": "203"
+     }
+    },
+    {
+     "athlete": {
+      "id": "201"
+     }
+    },
+    {
+     "athlete": {
+      "id": "202"
+     }
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "period": {
+    "number": 3
+   },
+   "clock": {
+    "displayValue": "15:30"
+   },
+   "team": {
+    "id": "4"
+   },
+   "text": "Connor Bedard (7) Wrist Shot",
+   "type": {
+    "text": "Goal"
+   },
+   "scoringPlay": true,
+   "participants": [
+    {
+     "athlete": {
+      "id": "201"
+     }
+    }
+   ]
+  },
+  {
+   "id": 8,
+   "period": {
+    "number": 3
+   },
+   "clock": {
+    "displayValue": "00:45"
+   },
+   "team": {
+    "id": "1"
+   },
+   "text": "Jack Hughes (9) Empty Net, assists: Nico Hischier (4)",
+   "type": {
+    "text": "Goal"
+   },
+   "scoringPlay": true,
+   "participants": [
+    {
+     "athlete": {
+      "id": "101"
+     }
+    },
+    {
+     "athlete": {
+      "id": "104"
+     }
+    }
+   ],
+   "strength": {
+    "text": "Empty Net"
+   }
+  }
+ ],
+ "gameInfo": {
+  "attendance": 18977
+ }
+}

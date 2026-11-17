@@ -1,0 +1,656 @@
+/* ═══════════════════════════════════════════════
+   MLB Chronicle — style.css
+   ═══════════════════════════════════════════════ */
+
+/* ── Fonts ── */
+@font-face { font-family:'Ford Antenna'; src:url('/static/fonts/FordAntenna-Bold.ttf') format('truetype'); font-weight:700; font-style:normal; }
+@font-face { font-family:'Ford Antenna'; src:url('/static/fonts/FordAntenna-Regular.ttf') format('truetype'); font-weight:400; font-style:normal; }
+@font-face { font-family:'Ford Antenna Cond'; src:url('/static/fonts/Ford Antenna Cond Bold.ttf') format('truetype'); font-weight:700; font-style:normal; }
+@font-face { font-family:'Farnham Display'; src:url('/static/fonts/FarnhamDisplay-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
+@font-face { font-family:'Archer Medium'; src:url('/static/fonts/ArcherMediumPro.otf') format('opentype'); font-weight:500; font-style:normal; }
+@font-face { font-family:'Archer Bold'; src:url('/static/fonts/ArcherBoldPro.otf') format('opentype'); font-weight:700; font-style:normal; }
+@font-face { font-family:'Ford Antenna Cond Med'; src:url('/static/fonts/ford-antenna-medium-cnd-587bd97171cbd.otf') format('opentype'); font-weight:500; font-style:normal; }
+@font-face { font-family:'Ford Antenna Cond'; src:url('/static/fonts/FordAntennaCondRegular-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
+@font-face { font-family:'Davis'; src:url('/static/fonts/davis-mediumitalic.ttf') format('truetype'); font-weight:500; font-style:italic; }
+@font-face { font-family:'Farnham Display Bold'; src:url('/static/fonts/FarnhamDisplay-Bold.otf') format('opentype'); font-weight:700; font-style:normal; }
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+
+body { background:#f5f0e8; }
+.page {
+  background:#f5f0e8;
+  color:#111;
+  font-family:'Ford Antenna', sans-serif;
+  font-size:8px;
+  padding:8px 10px;
+  max-width:1800px;
+  margin:0 auto;
+}
+
+
+/* ── Masthead ── */
+.masthead-top {
+  border-bottom:2px solid #111;
+  padding-bottom:3px;
+  margin-bottom:6px;
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+}
+.mh-page {
+  font-family:'Farnham Display Bold', 'Georgia', serif;
+  font-weight:700;
+  font-size:12px;
+}
+.mh-divider {
+  color:#111;
+  font-weight:400;
+  font-size:11px;
+}
+.mh-date-bold {
+  font-family:'Farnham Display Bold', 'Georgia', serif;
+  font-weight:700;
+  font-size:11px;
+}
+.mh-site {
+  font-family:'Farnham Display', 'Georgia', serif;
+  font-weight:400;
+  font-size:px;
+  text-transform:uppercase;
+}
+.mh-stars {
+  margin-left:4px;
+  font-size:7px;
+  letter-spacing:1.5px;
+  color:#111;
+}
+.mh-banner {
+  background:#8caa6a;
+  color:#fff;
+  display:inline-block;
+  padding:4px 18px 6px;
+  margin-bottom:6px;
+}
+.mh-banner-title {
+  font-family:'Archer Bold', 'Georgia', serif;
+  font-weight:700;
+  font-size:26px;
+  letter-spacing:-0.5px;
+  text-transform:uppercase;
+}
+.mh-rule { flex:1; height:1px; background:#111; margin:0 4px; align-self:center; }
+.mh-date { font-size:8px; color:#444; font-style:italic; }
+.section-divider { border:none; border-top:2px solid #111; margin:5px 0; }
+
+/* ══════════════════════════════════════════
+   STANDINGS
+   ══════════════════════════════════════════ */
+.standings-wrap { margin-bottom:0; }
+.league-block { margin-bottom:4px; }
+.league-block + .league-block .league-row {
+  border-top:2px solid #111;
+}
+.league-row {
+  display:flex;
+  align-items:stretch;
+  margin-bottom:2px;
+}
+.lg-letter {
+  font-family:'Archer Bold','Georgia',serif;
+  font-weight:700;
+  font-size:60px;
+  font-style:normal;
+  padding:0 6px 0 0;
+  margin-right:10px;
+  display:flex;
+  align-items:center;
+  min-width:32px;
+  justify-content:center;
+  line-height:1;
+}
+.divs-wrap {
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:0 10px;
+  flex:1;
+  padding:3px 0;
+}
+.divs-wrap > div {
+  border-left:1px solid #111;
+  padding-left:8px;
+}
+.divs-wrap > div:first-child {
+  border-left:none;
+  padding-left:0;
+}
+/* Division label is inline with the table header row */
+.div-inner { }
+.div-label {
+  font-family:'Ford Antenna Cond',sans-serif;
+  font-weight:700;
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:0.3px;
+}
+table.st {
+  width:100%;
+  border-collapse:collapse;
+  font-size:9px;
+  line-height:1.32;
+}
+table.st thead tr th { border-bottom:0.75px solid #111; padding:1px 2px; }
+table.st th {
+  font-family:'Ford Antenna Cond',sans-serif;
+  font-weight:700;
+  text-align:center;
+  padding:0 2px;
+  font-size:9px;
+  white-space:nowrap;
+}
+table.st th.st-name { text-align:left; }
+/* Division name as first column header */
+table.st th.st-div {
+  text-align:left;
+  font-family:'Ford Antenna Cond',sans-serif;
+  font-weight:700;
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:0.3px;
+  white-space:nowrap;
+}
+table.st td {
+  font-family:'Ford Antenna Cond Med', sans-serif;
+  font-weight:500;
+  text-align:center;
+  padding:0 2px;
+  white-space:nowrap;
+  font-size:9px;
+}
+table.st td.st-name {
+  text-align:left;
+  font-family:'Ford Antenna Cond',sans-serif;
+  font-weight:700;
+}
+table.st tr.st-row td { border-bottom:0.75px solid #111; }
+
+/* ── Schedule ── */
+.sched-wrap {
+  border-left:1px solid #111;
+  padding-left:8px;
+}
+.sched-hdr {
+  font-family:'Archer Medium','Georgia',serif;
+  font-weight:500;
+  font-size:13px;
+  text-transform:uppercase;
+  padding-bottom:1px;
+  margin-bottom:2px;
+  letter-spacing:-0.3px;
+}
+table.sch {
+  width:100%;
+  border-collapse:collapse;
+  font-size:8px;
+  line-height:1.42;
+}
+table.sch th {
+  font-family:'Ford Antenna Cond',sans-serif;
+  font-weight:700;
+  text-align:left;
+  padding:0 3px 1px 0;
+  border-bottom:0.5px solid #111;
+  font-size:7.5px;
+}
+table.sch th:last-child { text-align:right; }
+table.sch td {
+  font-family:'Ford Antenna Cond',sans-serif;
+  font-weight:400;
+  padding:0 3px 0 0;
+  vertical-align:top;
+  font-size:8px;
+}
+table.sch td:last-child { text-align:right; white-space:nowrap; }
+table.sch td b { font-family:'Ford Antenna Cond',sans-serif; font-weight:700; }
+.tom-hdr {
+  font-family:'Ford Antenna Cond',sans-serif;
+  font-weight:700;
+  font-size:8px;
+  margin:4px 0 2px;
+  border-top:0.5px solid #111;
+  padding-top:3px;
+}
+.tom-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0 4px;
+  font-family:'Ford Antenna Cond',sans-serif;
+  font-size:7.5px;
+  line-height:1.55;
+}
+
+/* ══════════════════════════════════════════
+   BEST OF THE DAY + SCHEDULE ROW
+   ══════════════════════════════════════════ */
+.botd-row {
+  display:grid;
+  grid-template-columns:1fr 350px;
+  gap:0 10px;
+  margin-bottom:5px;
+  align-items:start;
+}
+.botd-header-row {
+  padding-bottom:2px;
+  margin-bottom:5px;
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+}
+.botd-label {
+  font-family:'Archer Medium','Georgia',serif;
+  font-weight:500;
+  font-style:normal;
+  font-size:15px;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  flex-shrink:0;
+}
+.botd-inner {
+  display:grid;
+  grid-template-columns:1fr 280px;
+  gap:0 10px;
+  align-items:start;
+}
+.botd-headline {
+  font-family:'Davis',serif;
+  font-weight:500;
+  font-style:italic;
+  font-size:9px;
+  line-height:1.2;
+}
+.botd-text-col {
+  height:280px;
+  overflow:hidden;
+}
+
+.botd-body {
+  font-family:'Farnham Display','Georgia',serif;
+  font-weight:400;
+  font-size:12px;
+  line-height:1.25;
+  column-count:2;
+  column-gap:10px;
+  column-rule:1px solid #111;
+}
+.botd-body p {
+  margin:0;
+  text-indent:1em;
+}
+
+.botd-body p:first-child {
+  text-indent:0;
+}
+.botd-photo {
+  width:100%;
+  height:280px;
+  object-fit:cover;
+  display:block;
+  border:0.5px solid #bbb;
+}
+.botd-photo-placeholder {
+  width:100%;
+  height:280px;
+  background:#ddd8ce;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:8px;
+  color:#888;
+  font-style:italic;
+  border:0.5px solid #bbb;
+}
+.botd-source {
+  font-family:'Farnham Display','Georgia',serif;
+  font-style:italic;
+  font-size:7.5px;
+  text-align:right;
+  margin-top:3px;
+}
+.botd-empty { font-size:8px; color:#666; font-style:italic; padding:8px 0; }
+.botd-empty a { color:#111; }
+
+/* ══════════════════════════════════════════
+   BOX SCORE GRID — 8 columns
+   ══════════════════════════════════════════ */
+.bsgrid {
+  display:grid;
+  grid-template-columns:repeat(8,1fr);
+  gap:0;
+  border-left:0.5px solid #111;
+}
+.cell {
+  border-right:0.5px solid #111;
+  border-bottom:0.5px solid #111;
+  display:flex;
+  flex-direction:column;
+  min-height:550px;
+  height:550px;
+  overflow:hidden;
+}
+.cell-top { padding:3px 3px 0; }
+.gtitle {
+  font-family:'Ford Antenna',sans-serif;
+  font-weight:700;
+  font-size:10px;
+  padding-bottom:1px;
+  margin-bottom:0;
+  line-height:1.2;
+}
+.recap-area {
+  flex:1;
+  min-height:0;
+  overflow:hidden;
+  padding:3px 3px 2px;
+  position:relative;
+}
+.recap-text {
+  font-family:'Ford Antenna', sans-serif;
+  font-weight:400;
+  font-size:8px;
+  line-height:1.45;
+  color:#111;
+  white-space:pre-wrap;
+  overflow:hidden;
+}
+/* Word count hint shown in admin only */
+.recap-hint {
+  font-size:6px;
+  color:#888;
+  font-style:italic;
+  position:absolute;
+  bottom:2px;
+  right:4px;
+}
+.cell-stats { padding:0 3px 3px; margin-top:auto; }
+.bat-gap {
+  height:0.5px;
+  margin-bottom:4px;
+}
+
+/* ── Batting table ── */
+table.bat {
+  width:100%;
+  border-collapse:collapse;
+  font-size:7px;
+  line-height:1.15;
+}
+table.bat th {
+  font-family:'Ford Antenna Cond',sans-serif;
+  font-weight:700;
+  text-align:right;
+  padding:0 1px;
+  border-bottom:0.5px solid #111;
+  font-size:6.5px;
+  white-space:nowrap;
+}
+table.bat th.bat-name { text-align:left; }
+table.bat td {
+  font-family:'Ford Antenna Cond', sans-serif;
+  font-weight:400;
+  text-align:right;
+  padding:0 1px;
+  white-space:nowrap;
+}
+table.bat td.bat-name {
+  text-align:left;
+  max-width:70px;
+  white-space:normal;
+  word-break:break-word;
+}
+table.bat tr.tot td {
+  font-family:'Ford Antenna Cond',sans-serif;
+  font-weight:700;
+  border-top:0.5px solid #111;
+}
+table.bat tr.tot td.bat-name { text-align:left; }
+table.bat tbody tr:first-child td {
+  padding-top:1px;
+}
+
+/* ── Linescore ── */
+.ls {
+  font-family:'Ford Antenna Cond',sans-serif;
+  font-size:7px;
+  line-height:1.1;
+  font-variant-numeric:tabular-nums;
+  border-top:0.5px solid #111;
+  padding-top:2px;
+  margin-top:1px;
+}
+.ls-table {
+  width:100%;
+  border-collapse:collapse;
+}
+.ls-table td {
+  font-family:'Ford Antenna Cond', sans-serif;
+  font-weight:700;
+  white-space:nowrap;
+  text-align: center;
+}
+
+.ls-row { display:flex; align-items:baseline; text-align:center}
+.ls-tm { font-weight:700; min-width:58px; width:auto; flex-shrink:0; text-align:left !important; }
+.ls-innings { flex:1; letter-spacing:0.5px; white-space:nowrap; text-align:center;}
+.ls-rhe { font-weight:700; white-space:nowrap; margin-left:2px; text-align:center; min-width:10px; }
+.ls-inn { text-align:left}
+.ls-grp { padding-right:3px !important; }
+hr.thin { border:none; border-top:0.5px solid #111; height:0.5px; margin-bottom:4px}
+
+/* ── Notes ── */
+.nt {
+  font-family:'Ford Antenna',sans-serif;
+  font-weight:400;
+  font-size:6.5px;
+  line-height:1.25;
+  margin:0px 0;
+  color:#111;
+  text-indent:4px;
+}
+.nt b { font-family:'Ford Antenna Cond',sans-serif; font-weight:700; }
+.nt-val { font-family:'Ford Antenna Cond',sans-serif; font-weight:400; }
+
+/* ── Postponed cell ── */
+.cell--ppd {
+  padding:3px 3px 0;
+  display:flex;
+  min-height:80px;
+  border-right:0.5px solid #111;
+  border-bottom:0.5px solid #111;
+}
+.ppd-title {
+  font-family:'Ford Antenna',sans-serif;
+  font-weight:700;
+  font-size:10px;
+  padding-bottom:1px;
+  margin-bottom:0;
+  line-height:1.2;
+  font-style: italic;
+}
+.ppd-note {
+  font-family:'Ford Antenna', sans-serif;
+  font-weight:400;
+  font-size:8px;
+  line-height:1.45;
+  color:#111;
+  white-space:pre-wrap;
+  overflow:hidden;
+}
+
+/* ── Pitching ── */
+.pit-lbl { display:none; }
+table.pit {
+  width:100%;
+  border-collapse:collapse;
+  font-size:6.5px;
+  line-height:1.15;
+  margin-bottom:0
+}
+table.pit th {
+  font-family:'Ford Antenna Cond',sans-serif;
+  font-weight:700;
+  text-align:right;
+  padding:0 1px;
+  border-bottom:0.5px solid #111;
+  font-size:6px;
+  white-space:nowrap;
+}
+table.pit th.pit-name { text-align:left; }
+table.pit td {
+  font-family:'Ford Antenna Cond', sans-serif;
+  font-weight:400;
+  text-align:right;
+  padding:0 1px;
+  white-space:nowrap;
+}
+table.pit td.pit-name {
+  text-align:left;
+  max-width:60px;
+  white-space:normal;
+  word-break:break-word;
+}
+table.pit tbody tr:first-child td {
+  padding-top:1px;
+  padding-bottom:0;
+}
+.pit-gap {
+  height:0.5px;
+  border-bottom:0.5px solid #111;
+  margin-bottom:4px;
+}
+
+/* ── Leaders cell — stacked NL then AL ── */
+.cell--leaders { min-height:340px; }
+.leaders-inner { padding:3px; flex:1; display:flex; flex-direction:column; gap:4px; }
+.leaders-block { }
+.leaders-block-hdr {
+  font-family:'Ford Antenna Cond',sans-serif;
+  font-weight:700;
+  font-size:7.5px;
+  text-transform:uppercase;
+  border-bottom:0.75px solid #111;
+  margin-bottom:2px;
+  letter-spacing:0.3px;
+}
+.lsub {
+   font-family:'Ford Antenna Cond', sans-serif;
+  font-size:7px;
+  font-style:italic;
+  color:black;
+  margin-bottom:2px;
+  text-align: center;
+}
+table.ltab {
+  width:100%;
+  border-collapse:collapse;
+  font-size:7px;
+  line-height:1.28;
+  margin-bottom:2px;
+}
+table.ltab th {
+  font-family:'Ford Antenna Cond',sans-serif;
+  font-weight:700;
+  text-align:right;
+  padding:0 1px;
+  border-bottom:0.5px solid #111;
+  font-size:6.5px;
+}
+table.ltab th.lt-name { text-align:left; }
+table.ltab td {
+  font-family:'Ford Antenna Cond', sans-serif;
+  font-weight:400;
+  text-align:right;
+  padding:0 1px;
+  white-space:nowrap;
+}
+table.ltab td.lt-name { text-align:left; font-weight:700; }
+table.ltab td.lt-name em { font-weight:400; font-style:normal; }
+.lnt {
+  font-family:'Ford Antenna Cond', sans-serif;
+  font-weight:400;
+  font-size:7px;
+  line-height:1.42;
+  color:#111;
+}
+.lnt b { font-weight:700; }
+
+/* ══════════════════════════════════════════
+   TRANSACTIONS / ON THIS DATE sidebar cells
+   ══════════════════════════════════════════ */
+.cell--sidebar {
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  padding:3px;
+}
+.sidebar-block {
+  display:flex;
+  flex-direction:column;
+}
+.sidebar-block + .sidebar-block {
+  border-top:0.5px solid #111;
+  margin-top:4px;
+  padding-top:4px;
+}
+.sidebar-hdr {
+  font-family:'Ford Antenna Cond', sans-serif;
+  font-weight:700;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  background:#111;
+  color:#f5f0e8;
+  text-align:center;
+}
+.txn-league-label {
+  font-family:'Ford Antenna Cond', sans-serif;
+  font-weight:400;
+  font-style:italic;
+  font-size:7px;
+  text-align:center;
+  margin-bottom:1px;
+}
+.txn-list {
+  font-family:'Ford Antenna Cond', sans-serif;
+  font-weight:400;
+  font-size:7px;
+  line-height:1.1;
+  margin-bottom:2px;
+}
+.txn-list b {
+  font-family:'Ford Antenna Cond', sans-serif;
+  font-weight:700;
+}
+.otd-text {
+  font-family:'Ford Antenna Cond', sans-serif;
+  font-weight:400;
+  font-size:7px;
+  line-height:1.1;
+  white-space:pre-wrap;
+  margin-bottom:5px;
+}
+.otd-text b {
+  font-family:'Ford Antenna Cond', sans-serif;
+  font-weight:700;
+  font-size:7px;
+}
+.otd-empty-space {
+  flex:1;
+  min-height:60px;
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

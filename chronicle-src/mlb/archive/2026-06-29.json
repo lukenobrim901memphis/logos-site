@@ -1,0 +1,5166 @@
+[
+  {
+    "game_pk": 824822,
+    "title": "Chicago 8, Baltimore 2",
+    "away": {
+      "name": "Chicago",
+      "abbr": "CWS",
+      "batters": [
+        {
+          "name": "Antonacci lf",
+          "ab": 4,
+          "r": 2,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".291",
+          "season_ab": 223
+        },
+        {
+          "name": "Perez lf",
+          "ab": 0,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".250",
+          "season_ab": 12
+        },
+        {
+          "name": "Vargas 3b",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".252",
+          "season_ab": 298
+        },
+        {
+          "name": "C. Montgomery ss",
+          "ab": 5,
+          "r": 1,
+          "h": 1,
+          "bi": 1,
+          "bb": 0,
+          "so": 2,
+          "avg": ".221",
+          "season_ab": 294
+        },
+        {
+          "name": "Teel c",
+          "ab": 5,
+          "r": 0,
+          "h": 1,
+          "bi": 1,
+          "bb": 0,
+          "so": 3,
+          "avg": ".227",
+          "season_ab": 22
+        },
+        {
+          "name": "Grichuk dh",
+          "ab": 5,
+          "r": 0,
+          "h": 1,
+          "bi": 1,
+          "bb": 0,
+          "so": 0,
+          "avg": ".265",
+          "season_ab": 117
+        },
+        {
+          "name": "B. Montgomery rf",
+          "ab": 3,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 1,
+          "so": 1,
+          "avg": ".250",
+          "season_ab": 64
+        },
+        {
+          "name": "Peters cf",
+          "ab": 4,
+          "r": 1,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".283",
+          "season_ab": 212
+        },
+        {
+          "name": "Meidroth 2b",
+          "ab": 2,
+          "r": 2,
+          "h": 1,
+          "bi": 0,
+          "bb": 2,
+          "so": 0,
+          "avg": ".277",
+          "season_ab": 303
+        },
+        {
+          "name": "Gonzalez 1b",
+          "ab": 4,
+          "r": 2,
+          "h": 2,
+          "bi": 3,
+          "bb": 0,
+          "so": 1,
+          "avg": ".235",
+          "season_ab": 68
+        }
+      ],
+      "totals": {
+        "ab": 36,
+        "r": 8,
+        "h": 10,
+        "bi": 6,
+        "bb": 4,
+        "so": 8
+      },
+      "pitchers": [
+        {
+          "name": "Burke",
+          "ip": "5\u2153",
+          "h": 4,
+          "r": 2,
+          "er": 2,
+          "bb": 3,
+          "so": 8,
+          "np": 89,
+          "era": "3.69",
+          "note": ""
+        },
+        {
+          "name": "Murphy",
+          "ip": "\u2154",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 1,
+          "so": 0,
+          "np": 12,
+          "era": "4.41",
+          "note": ""
+        },
+        {
+          "name": "Taylor W, 4-1",
+          "ip": "2",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 2,
+          "np": 24,
+          "era": "2.70",
+          "note": "(W, 4-1)"
+        },
+        {
+          "name": "Eisert",
+          "ip": "1",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 3,
+          "np": 17,
+          "era": "4.98",
+          "note": ""
+        }
+      ]
+    },
+    "home": {
+      "name": "Baltimore",
+      "abbr": "BAL",
+      "batters": [
+        {
+          "name": "Henderson ss",
+          "ab": 3,
+          "r": 1,
+          "h": 2,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".224",
+          "season_ab": 352
+        },
+        {
+          "name": "Ward lf",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".253",
+          "season_ab": 320
+        },
+        {
+          "name": "Rutschman c",
+          "ab": 2,
+          "r": 0,
+          "h": 0,
+          "bi": 2,
+          "bb": 0,
+          "so": 1,
+          "avg": ".252",
+          "season_ab": 206
+        },
+        {
+          "name": "Alonso 1b",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 3,
+          "avg": ".248",
+          "season_ab": 322
+        },
+        {
+          "name": "Basallo dh",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".251",
+          "season_ab": 239
+        },
+        {
+          "name": "Beavers rf",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".229",
+          "season_ab": 109
+        },
+        {
+          "name": "Cowser cf",
+          "ab": 2,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 2,
+          "so": 2,
+          "avg": ".232",
+          "season_ab": 181
+        },
+        {
+          "name": "Alexander 3b",
+          "ab": 3,
+          "r": 1,
+          "h": 0,
+          "bi": 0,
+          "bb": 1,
+          "so": 2,
+          "avg": ".297",
+          "season_ab": 185
+        },
+        {
+          "name": "Holliday 2b",
+          "ab": 3,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".208",
+          "season_ab": 96
+        }
+      ],
+      "totals": {
+        "ab": 29,
+        "r": 2,
+        "h": 4,
+        "bi": 2,
+        "bb": 4,
+        "so": 13
+      },
+      "pitchers": [
+        {
+          "name": "Baz",
+          "ip": "7",
+          "h": 4,
+          "r": 2,
+          "er": 2,
+          "bb": 4,
+          "so": 6,
+          "np": 109,
+          "era": "4.19",
+          "note": ""
+        },
+        {
+          "name": "Wolfram L, 1-2",
+          "ip": "\u2154",
+          "h": 1,
+          "r": 2,
+          "er": 2,
+          "bb": 0,
+          "so": 1,
+          "np": 24,
+          "era": "3.96",
+          "note": "(L, 1-2)"
+        },
+        {
+          "name": "Garcia",
+          "ip": "\u2153",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 0,
+          "np": 6,
+          "era": "2.60",
+          "note": ""
+        },
+        {
+          "name": "Cano",
+          "ip": "\u2153",
+          "h": 4,
+          "r": 4,
+          "er": 2,
+          "bb": 0,
+          "so": 0,
+          "np": 16,
+          "era": "2.67",
+          "note": ""
+        },
+        {
+          "name": "Walker",
+          "ip": "\u2154",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 1,
+          "np": 11,
+          "era": "3.86",
+          "note": ""
+        }
+      ]
+    },
+    "away_runs": 8,
+    "home_runs": 2,
+    "away_hits": 10,
+    "home_hits": 4,
+    "away_errors": 0,
+    "home_errors": 1,
+    "away_line": "002 000 024",
+    "home_line": "101 000 000",
+    "away_innings": [
+      "0",
+      "0",
+      "2",
+      "0",
+      "0",
+      "0",
+      "0",
+      "2",
+      "4"
+    ],
+    "home_innings": [
+      "1",
+      "0",
+      "1",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "bat_notes": "<b>E</b>\u2014<span class='nt-val'>Alexander (5)</span>. <b>LOB</b>\u2014<span class='nt-val'>Chicago 6, Baltimore 6</span>. <b>2B</b>\u2014<span class='nt-val'>Vargas (15); C. Montgomery (15); B. Montgomery (6); Meidroth (15); Gonzalez (2); Henderson (15)</span>. <b>SB</b>\u2014<span class='nt-val'>Vargas (11); Cowser (4)</span>. <b>SF</b>\u2014<span class='nt-val'>Rutschman</span>. <b>DP</b>\u2014<span class='nt-val'>Baltimore 1 (Holliday, Alonso)</span>.",
+    "pit_notes": "<b>WP</b>\u2014<span class='nt-val'>Baz</span>. <b>HBP</b>\u2014<span class='nt-val'>Antonacci (by Wolfram)</span>. <b>Inherited runners-scored</b>\u2014<span class='nt-val'>Murphy 1-0; Garcia 1-1; Walker 2-2</span>. <b>Umpires</b>\u2014<span class='nt-val'>Home, Bruce Dreckman; First, Mark Wegner; Second, Carlos Torres; Third, Nate Tomlinson</span>. <b>T</b>\u2014<span class='nt-val'>2:57</span>. <b>Att</b>\u2014<span class='nt-val'>17,146</span>.",
+    "recap": "",
+    "postponed": false,
+    "recap_height": 106,
+    "recap_words": 67,
+    "game_number": 1
+  },
+  {
+    "game_pk": 823444,
+    "title": "Pirates 11, Phils 7",
+    "away": {
+      "name": "Pittsburgh",
+      "abbr": "PIT",
+      "batters": [
+        {
+          "name": "Griffin dh",
+          "ab": 5,
+          "r": 1,
+          "h": 2,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".276",
+          "season_ab": 203
+        },
+        {
+          "name": "Lowe 2b",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 1,
+          "bb": 0,
+          "so": 3,
+          "avg": ".239",
+          "season_ab": 309
+        },
+        {
+          "name": "Reynolds lf",
+          "ab": 4,
+          "r": 2,
+          "h": 1,
+          "bi": 0,
+          "bb": 1,
+          "so": 1,
+          "avg": ".285",
+          "season_ab": 305
+        },
+        {
+          "name": "O'Hearn 1b",
+          "ab": 5,
+          "r": 2,
+          "h": 2,
+          "bi": 1,
+          "bb": 0,
+          "so": 1,
+          "avg": ".288",
+          "season_ab": 264
+        },
+        {
+          "name": "Valdez rf",
+          "ab": 3,
+          "r": 2,
+          "h": 2,
+          "bi": 2,
+          "bb": 2,
+          "so": 1,
+          "avg": ".289",
+          "season_ab": 45
+        },
+        {
+          "name": "Cook pr-cf",
+          "ab": 0,
+          "r": 1,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".154",
+          "season_ab": 26
+        },
+        {
+          "name": "Rodriguez c",
+          "ab": 3,
+          "r": 1,
+          "h": 2,
+          "bi": 4,
+          "bb": 2,
+          "so": 0,
+          "avg": ".271",
+          "season_ab": 85
+        },
+        {
+          "name": "Callihan 3b",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 1,
+          "bb": 0,
+          "so": 1,
+          "avg": ".246",
+          "season_ab": 57
+        },
+        {
+          "name": "Gonzales ph-3b",
+          "ab": 2,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".295",
+          "season_ab": 292
+        },
+        {
+          "name": "Triolo ss",
+          "ab": 4,
+          "r": 1,
+          "h": 1,
+          "bi": 1,
+          "bb": 0,
+          "so": 2,
+          "avg": ".239",
+          "season_ab": 155
+        },
+        {
+          "name": "Mangum cf-rf",
+          "ab": 4,
+          "r": 1,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".296",
+          "season_ab": 189
+        }
+      ],
+      "totals": {
+        "ab": 37,
+        "r": 11,
+        "h": 11,
+        "bi": 10,
+        "bb": 5,
+        "so": 13
+      },
+      "pitchers": [
+        {
+          "name": "Ashcraft W, 8-3",
+          "ip": "6",
+          "h": 5,
+          "r": 5,
+          "er": 5,
+          "bb": 1,
+          "so": 8,
+          "np": 97,
+          "era": "3.33",
+          "note": "(W, 8-3)"
+        },
+        {
+          "name": "Sisk H, 5",
+          "ip": "1",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 1,
+          "np": 14,
+          "era": "2.23",
+          "note": "(H, 5)"
+        },
+        {
+          "name": "Soto H, 7",
+          "ip": "\u2154",
+          "h": 2,
+          "r": 2,
+          "er": 2,
+          "bb": 0,
+          "so": 1,
+          "np": 20,
+          "era": "4.37",
+          "note": "(H, 7)"
+        },
+        {
+          "name": "Ramirez H, 5",
+          "ip": "\u2153",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 1,
+          "so": 1,
+          "np": 16,
+          "era": "3.69",
+          "note": "(H, 5)"
+        },
+        {
+          "name": "Montgomery",
+          "ip": "1",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 1,
+          "so": 2,
+          "np": 19,
+          "era": "4.68",
+          "note": ""
+        }
+      ]
+    },
+    "home": {
+      "name": "Philadelphia",
+      "abbr": "PHI",
+      "batters": [
+        {
+          "name": "Turner ss",
+          "ab": 5,
+          "r": 2,
+          "h": 2,
+          "bi": 1,
+          "bb": 0,
+          "so": 2,
+          "avg": ".235",
+          "season_ab": 341
+        },
+        {
+          "name": "Schwarber dh",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 1,
+          "bb": 1,
+          "so": 1,
+          "avg": ".253",
+          "season_ab": 304
+        },
+        {
+          "name": "Harper 1b",
+          "ab": 4,
+          "r": 1,
+          "h": 1,
+          "bi": 2,
+          "bb": 1,
+          "so": 2,
+          "avg": ".275",
+          "season_ab": 298
+        },
+        {
+          "name": "Marsh lf",
+          "ab": 5,
+          "r": 2,
+          "h": 2,
+          "bi": 2,
+          "bb": 0,
+          "so": 3,
+          "avg": ".322",
+          "season_ab": 295
+        },
+        {
+          "name": "Bohm 3b",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".222",
+          "season_ab": 293
+        },
+        {
+          "name": "Stott 2b",
+          "ab": 4,
+          "r": 1,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".236",
+          "season_ab": 275
+        },
+        {
+          "name": "Realmuto c",
+          "ab": 3,
+          "r": 0,
+          "h": 1,
+          "bi": 1,
+          "bb": 0,
+          "so": 0,
+          "avg": ".207",
+          "season_ab": 198
+        },
+        {
+          "name": "Rincones Jr. rf",
+          "ab": 2,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".111",
+          "season_ab": 36
+        },
+        {
+          "name": "Hill ph-rf",
+          "ab": 0,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".241",
+          "season_ab": 112
+        },
+        {
+          "name": "Crawford cf",
+          "ab": 4,
+          "r": 1,
+          "h": 2,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".247",
+          "season_ab": 239
+        }
+      ],
+      "totals": {
+        "ab": 34,
+        "r": 7,
+        "h": 9,
+        "bi": 7,
+        "bb": 3,
+        "so": 13
+      },
+      "pitchers": [
+        {
+          "name": "Nola L, 3-5",
+          "ip": "4\u2153",
+          "h": 8,
+          "r": 8,
+          "er": 7,
+          "bb": 2,
+          "so": 5,
+          "np": 86,
+          "era": "6.04",
+          "note": "(L, 3-5)"
+        },
+        {
+          "name": "Johnson",
+          "ip": "1\u2154",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 1,
+          "so": 4,
+          "np": 24,
+          "era": "4.82",
+          "note": ""
+        },
+        {
+          "name": "Mayza",
+          "ip": "2",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 1,
+          "so": 2,
+          "np": 35,
+          "era": "2.79",
+          "note": ""
+        },
+        {
+          "name": "Shugart",
+          "ip": "1",
+          "h": 2,
+          "r": 3,
+          "er": 3,
+          "bb": 1,
+          "so": 2,
+          "np": 24,
+          "era": "4.97",
+          "note": ""
+        }
+      ]
+    },
+    "away_runs": 11,
+    "home_runs": 7,
+    "away_hits": 11,
+    "home_hits": 9,
+    "away_errors": 0,
+    "home_errors": 2,
+    "away_line": "000 260 003",
+    "home_line": "203 000 020",
+    "away_innings": [
+      "0",
+      "0",
+      "0",
+      "2",
+      "6",
+      "0",
+      "0",
+      "0",
+      "3"
+    ],
+    "home_innings": [
+      "2",
+      "0",
+      "3",
+      "0",
+      "0",
+      "0",
+      "0",
+      "2",
+      "0"
+    ],
+    "bat_notes": "<b>E</b>\u2014<span class='nt-val'>Realmuto (5); Turner (11)</span>. <b>LOB</b>\u2014<span class='nt-val'>Pittsburgh 5, Philadelphia 6</span>. <b>2B</b>\u2014<span class='nt-val'>Griffin (10); Reynolds (20); Mangum (8)</span>. <b>HR</b>\u2014<span class='nt-val'>Valdez (6) off Nola, Triolo (1) off Nola, Rodriguez (4) off Shugart; Turner (8) off Ashcraft, Marsh (13) off Ashcraft, Marsh (14) off Soto, Harper (20) off Ashcraft</span>. <b>SB</b>\u2014<span class='nt-val'>Griffin (15); Crawford (10)</span>. <b>SF</b>\u2014<span class='nt-val'>Lowe; Schwarber</span>. <b>SAC</b>\u2014<span class='nt-val'>Hill</span>.",
+    "pit_notes": "<b>WP</b>\u2014<span class='nt-val'>Ramirez</span>. <b>HBP</b>\u2014<span class='nt-val'>Realmuto (by Sisk)</span>. <b>Inherited runners-scored</b>\u2014<span class='nt-val'>Ramirez 1-1; Johnson 3-3</span>. <b>Umpires</b>\u2014<span class='nt-val'>Home, Andy Fletcher; First, Alex Tosi; Second, Cory Blaser; Third, Jansen Visconti</span>. <b>T</b>\u2014<span class='nt-val'>3:03</span>. <b>Att</b>\u2014<span class='nt-val'>39,791</span>.",
+    "recap": "",
+    "postponed": false,
+    "recap_height": 88,
+    "recap_words": 56,
+    "game_number": 1
+  },
+  {
+    "game_pk": 823529,
+    "title": "Detroit 7, N.Y. Yankees 3",
+    "away": {
+      "name": "Detroit",
+      "abbr": "DET",
+      "batters": [
+        {
+          "name": "Vierling lf",
+          "ab": 5,
+          "r": 2,
+          "h": 1,
+          "bi": 1,
+          "bb": 0,
+          "so": 1,
+          "avg": ".203",
+          "season_ab": 212
+        },
+        {
+          "name": "Dingler c",
+          "ab": 4,
+          "r": 2,
+          "h": 1,
+          "bi": 1,
+          "bb": 0,
+          "so": 2,
+          "avg": ".262",
+          "season_ab": 290
+        },
+        {
+          "name": "McGonigle 3b",
+          "ab": 4,
+          "r": 1,
+          "h": 2,
+          "bi": 2,
+          "bb": 0,
+          "so": 2,
+          "avg": ".284",
+          "season_ab": 306
+        },
+        {
+          "name": "Torkelson 1b",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 1,
+          "bb": 1,
+          "so": 1,
+          "avg": ".214",
+          "season_ab": 281
+        },
+        {
+          "name": "Lee 2b",
+          "ab": 5,
+          "r": 0,
+          "h": 2,
+          "bi": 2,
+          "bb": 0,
+          "so": 0,
+          "avg": ".258",
+          "season_ab": 128
+        },
+        {
+          "name": "J. Jones dh",
+          "ab": 1,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".140",
+          "season_ab": 93
+        },
+        {
+          "name": "Carpenter ph-dh",
+          "ab": 3,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".236",
+          "season_ab": 174
+        },
+        {
+          "name": "McKinstry ss",
+          "ab": 5,
+          "r": 1,
+          "h": 2,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".197",
+          "season_ab": 178
+        },
+        {
+          "name": "Malgeri rf",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".200",
+          "season_ab": 10
+        },
+        {
+          "name": "Outman cf",
+          "ab": 4,
+          "r": 1,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".168",
+          "season_ab": 95
+        }
+      ],
+      "totals": {
+        "ab": 39,
+        "r": 7,
+        "h": 11,
+        "bi": 7,
+        "bb": 2,
+        "so": 9
+      },
+      "pitchers": [
+        {
+          "name": "Mize W, 3-5",
+          "ip": "7",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 10,
+          "np": 88,
+          "era": "2.63",
+          "note": "(W, 3-5)"
+        },
+        {
+          "name": "Sommers",
+          "ip": "1",
+          "h": 2,
+          "r": 3,
+          "er": 3,
+          "bb": 1,
+          "so": 2,
+          "np": 23,
+          "era": "3.38",
+          "note": ""
+        },
+        {
+          "name": "Anderson",
+          "ip": "1",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 1,
+          "np": 8,
+          "era": "4.09",
+          "note": ""
+        }
+      ]
+    },
+    "home": {
+      "name": "N.Y. Yankees",
+      "abbr": "NYY",
+      "batters": [
+        {
+          "name": "Rice dh",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 3,
+          "avg": ".269",
+          "season_ab": 294
+        },
+        {
+          "name": "Bellinger lf",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".258",
+          "season_ab": 302
+        },
+        {
+          "name": "Goldschmidt 1b",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".284",
+          "season_ab": 208
+        },
+        {
+          "name": "Chisholm Jr. 2b",
+          "ab": 1,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".222",
+          "season_ab": 284
+        },
+        {
+          "name": "Cabrera 2b",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".000",
+          "season_ab": 6
+        },
+        {
+          "name": "Dominguez rf",
+          "ab": 2,
+          "r": 1,
+          "h": 0,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".209",
+          "season_ab": 86
+        },
+        {
+          "name": "Volpe ss",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".246",
+          "season_ab": 114
+        },
+        {
+          "name": "S. Jones cf",
+          "ab": 3,
+          "r": 1,
+          "h": 2,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".235",
+          "season_ab": 68
+        },
+        {
+          "name": "Wells c",
+          "ab": 2,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".155",
+          "season_ab": 168
+        },
+        {
+          "name": "Rosario ph",
+          "ab": 1,
+          "r": 1,
+          "h": 1,
+          "bi": 3,
+          "bb": 0,
+          "so": 0,
+          "avg": ".258",
+          "season_ab": 132
+        },
+        {
+          "name": "Sanchez c",
+          "ab": 0,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".286",
+          "season_ab": 21
+        },
+        {
+          "name": "Caballero 3b",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".249",
+          "season_ab": 237
+        }
+      ],
+      "totals": {
+        "ab": 30,
+        "r": 3,
+        "h": 3,
+        "bi": 3,
+        "bb": 1,
+        "so": 13
+      },
+      "pitchers": [
+        {
+          "name": "Weathers L, 3-6",
+          "ip": "1\u2154",
+          "h": 7,
+          "r": 5,
+          "er": 2,
+          "bb": 1,
+          "so": 3,
+          "np": 55,
+          "era": "4.08",
+          "note": "(L, 3-6)"
+        },
+        {
+          "name": "De los Santos",
+          "ip": "2",
+          "h": 2,
+          "r": 2,
+          "er": 0,
+          "bb": 0,
+          "so": 0,
+          "np": 29,
+          "era": "1.04",
+          "note": ""
+        },
+        {
+          "name": "Hill",
+          "ip": "1\u2153",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 0,
+          "np": 9,
+          "era": "4.02",
+          "note": ""
+        },
+        {
+          "name": "Bird",
+          "ip": "1\u2153",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 2,
+          "np": 14,
+          "era": "4.62",
+          "note": ""
+        },
+        {
+          "name": "Yarbrough",
+          "ip": "\u2154",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 1,
+          "so": 1,
+          "np": 19,
+          "era": "3.94",
+          "note": ""
+        },
+        {
+          "name": "Doval",
+          "ip": "1",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 3,
+          "np": 15,
+          "era": "4.55",
+          "note": ""
+        },
+        {
+          "name": "Headrick",
+          "ip": "1",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 0,
+          "np": 9,
+          "era": "1.58",
+          "note": ""
+        }
+      ]
+    },
+    "away_runs": 7,
+    "home_runs": 3,
+    "away_hits": 11,
+    "home_hits": 3,
+    "away_errors": 0,
+    "home_errors": 2,
+    "away_line": "140 200 000",
+    "home_line": "000 000 030",
+    "away_innings": [
+      "1",
+      "4",
+      "0",
+      "2",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "home_innings": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "3",
+      "0"
+    ],
+    "bat_notes": "<b>E</b>\u2014<span class='nt-val'>Caballero (7); Bellinger (2)</span>. <b>LOB</b>\u2014<span class='nt-val'>Detroit 9, N.Y. Yankees 1</span>. <b>2B</b>\u2014<span class='nt-val'>Dingler (16); Lee (6); Carpenter (5); S. Jones (4)</span>. <b>HR</b>\u2014<span class='nt-val'>Rosario (8) off Sommers</span>. <b>SF</b>\u2014<span class='nt-val'>Dingler</span>.",
+    "pit_notes": "<b>HBP</b>\u2014<span class='nt-val'>McGonigle (by Bird)</span>. <b>Inherited runners-scored</b>\u2014<span class='nt-val'>De los Santos 2-0; Hill 1-0</span>. <b>Umpires</b>\u2014<span class='nt-val'>Home, Alfonso M\u00e1rquez; First, Mike Estabrook; Second, Lance Barrett; Third, Malachi Moore</span>. <b>T</b>\u2014<span class='nt-val'>2:41</span>. <b>Att</b>\u2014<span class='nt-val'>40,506</span>.",
+    "recap": "",
+    "postponed": false,
+    "recap_height": 72,
+    "recap_words": 45,
+    "game_number": 1
+  },
+  {
+    "game_pk": 822792,
+    "title": "Toronto 2, N.Y. Mets 1",
+    "away": {
+      "name": "N.Y. Mets",
+      "abbr": "NYM",
+      "batters": [
+        {
+          "name": "Benge rf",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".257",
+          "season_ab": 307
+        },
+        {
+          "name": "Soto lf",
+          "ab": 3,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".301",
+          "season_ab": 236
+        },
+        {
+          "name": "Bichette 3b-2b-3b",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".251",
+          "season_ab": 342
+        },
+        {
+          "name": "Lindor ss",
+          "ab": 4,
+          "r": 1,
+          "h": 1,
+          "bi": 1,
+          "bb": 0,
+          "so": 0,
+          "avg": ".220",
+          "season_ab": 109
+        },
+        {
+          "name": "Young 1b",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".234",
+          "season_ab": 107
+        },
+        {
+          "name": "Ewing cf",
+          "ab": 2,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".275",
+          "season_ab": 149
+        },
+        {
+          "name": "Vientos dh",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".209",
+          "season_ab": 230
+        },
+        {
+          "name": "Baty 2b",
+          "ab": 2,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".208",
+          "season_ab": 245
+        },
+        {
+          "name": "Mauricio ph-2b",
+          "ab": 2,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".182",
+          "season_ab": 44
+        },
+        {
+          "name": "Alvarez c",
+          "ab": 3,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".250",
+          "season_ab": 176
+        },
+        {
+          "name": "Torrens c",
+          "ab": 0,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".214",
+          "season_ab": 140
+        }
+      ],
+      "totals": {
+        "ab": 32,
+        "r": 1,
+        "h": 5,
+        "bi": 1,
+        "bb": 2,
+        "so": 5
+      },
+      "pitchers": [
+        {
+          "name": "Manaea L, 1-3",
+          "ip": "5\u2154",
+          "h": 3,
+          "r": 2,
+          "er": 2,
+          "bb": 2,
+          "so": 4,
+          "np": 90,
+          "era": "4.71",
+          "note": "(L, 1-3)"
+        },
+        {
+          "name": "Warren",
+          "ip": "1\u2153",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 2,
+          "so": 2,
+          "np": 30,
+          "era": "2.45",
+          "note": ""
+        },
+        {
+          "name": "Gerber",
+          "ip": "1",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 2,
+          "np": 9,
+          "era": "1.50",
+          "note": ""
+        }
+      ]
+    },
+    "home": {
+      "name": "Toronto",
+      "abbr": "TOR",
+      "batters": [
+        {
+          "name": "Springer dh",
+          "ab": 4,
+          "r": 1,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 3,
+          "avg": ".221",
+          "season_ab": 240
+        },
+        {
+          "name": "Lukes rf",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".304",
+          "season_ab": 158
+        },
+        {
+          "name": "Guerrero Jr. 1b",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".268",
+          "season_ab": 299
+        },
+        {
+          "name": "Okamoto 3b",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".236",
+          "season_ab": 301
+        },
+        {
+          "name": "Clement ss-2b",
+          "ab": 3,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".299",
+          "season_ab": 314
+        },
+        {
+          "name": "Valenzuela c",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 1,
+          "so": 1,
+          "avg": ".240",
+          "season_ab": 150
+        },
+        {
+          "name": "Urias 2b",
+          "ab": 2,
+          "r": 1,
+          "h": 1,
+          "bi": 0,
+          "bb": 1,
+          "so": 1,
+          "avg": ".333",
+          "season_ab": 12
+        },
+        {
+          "name": "Varsho cf",
+          "ab": 0,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".258",
+          "season_ab": 240
+        },
+        {
+          "name": "Pinango lf",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".270",
+          "season_ab": 137
+        },
+        {
+          "name": "Gimenez ss",
+          "ab": 0,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".242",
+          "season_ab": 260
+        },
+        {
+          "name": "Straw cf-lf",
+          "ab": 2,
+          "r": 0,
+          "h": 0,
+          "bi": 1,
+          "bb": 0,
+          "so": 0,
+          "avg": ".237",
+          "season_ab": 131
+        }
+      ],
+      "totals": {
+        "ab": 27,
+        "r": 2,
+        "h": 4,
+        "bi": 1,
+        "bb": 4,
+        "so": 8
+      },
+      "pitchers": [
+        {
+          "name": "Yesavage W, 4-3",
+          "ip": "6\u2154",
+          "h": 3,
+          "r": 1,
+          "er": 1,
+          "bb": 0,
+          "so": 3,
+          "np": 94,
+          "era": "3.34",
+          "note": "(W, 4-3)"
+        },
+        {
+          "name": "Fluharty H, 11",
+          "ip": "\u2153",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 0,
+          "np": 2,
+          "era": "4.45",
+          "note": "(H, 11)"
+        },
+        {
+          "name": "Rogers H, 18",
+          "ip": "1",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 1,
+          "so": 0,
+          "np": 9,
+          "era": "1.82",
+          "note": "(H, 18)"
+        },
+        {
+          "name": "Varland S, 17-17",
+          "ip": "1",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 1,
+          "so": 2,
+          "np": 23,
+          "era": "0.98",
+          "note": "(S, 17)"
+        }
+      ]
+    },
+    "away_runs": 1,
+    "home_runs": 2,
+    "away_hits": 5,
+    "home_hits": 4,
+    "away_errors": 2,
+    "home_errors": 1,
+    "away_line": "000 000 100",
+    "home_line": "100 010 00x",
+    "away_innings": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "1",
+      "0",
+      "0"
+    ],
+    "home_innings": [
+      "1",
+      "0",
+      "0",
+      "0",
+      "1",
+      "0",
+      "0",
+      "0",
+      "x"
+    ],
+    "bat_notes": "<b>E</b>\u2014<span class='nt-val'>Lindor (3); Ewing (2); Yesavage (1)</span>. <b>LOB</b>\u2014<span class='nt-val'>N.Y. Mets 7, Toronto 7</span>. <b>2B</b>\u2014<span class='nt-val'>Soto (8)</span>. <b>3B</b>\u2014<span class='nt-val'>Springer (1)</span>. <b>HR</b>\u2014<span class='nt-val'>Lindor (3) off Yesavage</span>. <b>CS</b>\u2014<span class='nt-val'>Ewing (6)</span>. <b>SF</b>\u2014<span class='nt-val'>Straw</span>. <b>GIDP</b>\u2014<span class='nt-val'>Straw</span>. <b>DP</b>\u2014<span class='nt-val'>N.Y. Mets 1 (Baty, Lindor, Young)</span>. <b>IBB</b>\u2014<span class='nt-val'>Soto</span>.",
+    "pit_notes": "<span class='nt-val'>Warren pitched to 2 batters in the 8th inning</span>. <b>HBP</b>\u2014<span class='nt-val'>Ewing (by Yesavage); Okamoto (by Manaea)</span>. <b>Inherited runners-scored</b>\u2014<span class='nt-val'>Warren 2-0; Gerber 2-0; Fluharty 1-0</span>. <b>Umpires</b>\u2014<span class='nt-val'>Home, James Hoye; First, Sean Barber; Second, John Libka; Third, D</span>. <b>T</b>\u2014<span class='nt-val'>2:24</span>. <b>Att</b>\u2014<span class='nt-val'>41,634</span>.",
+    "recap": "",
+    "postponed": false,
+    "recap_height": 95,
+    "recap_words": 60,
+    "game_number": 1
+  },
+  {
+    "game_pk": 824741,
+    "title": "Boston 6, Washington 3",
+    "away": {
+      "name": "Washington",
+      "abbr": "WSH",
+      "batters": [
+        {
+          "name": "Wood lf",
+          "ab": 4,
+          "r": 1,
+          "h": 1,
+          "bi": 1,
+          "bb": 0,
+          "so": 2,
+          "avg": ".258",
+          "season_ab": 330
+        },
+        {
+          "name": "Chaparro dh",
+          "ab": 2,
+          "r": 1,
+          "h": 1,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".163",
+          "season_ab": 43
+        },
+        {
+          "name": "Tena ph-dh",
+          "ab": 1,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".220",
+          "season_ab": 150
+        },
+        {
+          "name": "Mead 3b",
+          "ab": 4,
+          "r": 0,
+          "h": 2,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".227",
+          "season_ab": 220
+        },
+        {
+          "name": "Abrams ss",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 2,
+          "bb": 0,
+          "so": 2,
+          "avg": ".275",
+          "season_ab": 306
+        },
+        {
+          "name": "Crews rf",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".219",
+          "season_ab": 137
+        },
+        {
+          "name": "Young cf",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".221",
+          "season_ab": 253
+        },
+        {
+          "name": "Lile ph",
+          "ab": 1,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".248",
+          "season_ab": 327
+        },
+        {
+          "name": "Garcia Jr. 1b",
+          "ab": 3,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".280",
+          "season_ab": 261
+        },
+        {
+          "name": "Nunez 2b",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".234",
+          "season_ab": 239
+        },
+        {
+          "name": "Vivas ph",
+          "ab": 1,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".258",
+          "season_ab": 155
+        },
+        {
+          "name": "Ruiz c",
+          "ab": 3,
+          "r": 1,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".278",
+          "season_ab": 176
+        }
+      ],
+      "totals": {
+        "ab": 33,
+        "r": 3,
+        "h": 7,
+        "bi": 3,
+        "bb": 2,
+        "so": 12
+      },
+      "pitchers": [
+        {
+          "name": "Mikolas L, 2-7",
+          "ip": "7",
+          "h": 9,
+          "r": 6,
+          "er": 6,
+          "bb": 0,
+          "so": 3,
+          "np": 97,
+          "era": "5.44",
+          "note": "(L, 2-7)"
+        },
+        {
+          "name": "Kent",
+          "ip": "1",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 1,
+          "so": 1,
+          "np": 19,
+          "era": "4.76",
+          "note": ""
+        }
+      ]
+    },
+    "home": {
+      "name": "Boston",
+      "abbr": "BOS",
+      "batters": [
+        {
+          "name": "Yoshida dh",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".250",
+          "season_ab": 160
+        },
+        {
+          "name": "Rafaela cf",
+          "ab": 4,
+          "r": 1,
+          "h": 2,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".283",
+          "season_ab": 293
+        },
+        {
+          "name": "Abreu rf",
+          "ab": 3,
+          "r": 1,
+          "h": 1,
+          "bi": 1,
+          "bb": 0,
+          "so": 0,
+          "avg": ".268",
+          "season_ab": 310
+        },
+        {
+          "name": "Contreras 1b",
+          "ab": 2,
+          "r": 1,
+          "h": 1,
+          "bi": 3,
+          "bb": 0,
+          "so": 1,
+          "avg": ".282",
+          "season_ab": 287
+        },
+        {
+          "name": "Monasterio 1b",
+          "ab": 2,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".220",
+          "season_ab": 127
+        },
+        {
+          "name": "Duran lf",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".197",
+          "season_ab": 309
+        },
+        {
+          "name": "Durbin 3b",
+          "ab": 3,
+          "r": 1,
+          "h": 1,
+          "bi": 1,
+          "bb": 1,
+          "so": 0,
+          "avg": ".231",
+          "season_ab": 247
+        },
+        {
+          "name": "Seigler 2b",
+          "ab": 3,
+          "r": 1,
+          "h": 2,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".361",
+          "season_ab": 36
+        },
+        {
+          "name": "Narvaez c",
+          "ab": 2,
+          "r": 0,
+          "h": 0,
+          "bi": 1,
+          "bb": 0,
+          "so": 1,
+          "avg": ".197",
+          "season_ab": 137
+        },
+        {
+          "name": "Cheng ss",
+          "ab": 3,
+          "r": 1,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".167",
+          "season_ab": 12
+        }
+      ],
+      "totals": {
+        "ab": 30,
+        "r": 6,
+        "h": 9,
+        "bi": 6,
+        "bb": 1,
+        "so": 4
+      },
+      "pitchers": [
+        {
+          "name": "Suarez W, 4-3",
+          "ip": "6",
+          "h": 5,
+          "r": 3,
+          "er": 3,
+          "bb": 1,
+          "so": 8,
+          "np": 95,
+          "era": "2.94",
+          "note": "(W, 4-3)"
+        },
+        {
+          "name": "Coulombe H, 7",
+          "ip": "1",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 1,
+          "so": 0,
+          "np": 19,
+          "era": "4.26",
+          "note": "(H, 7)"
+        },
+        {
+          "name": "Guerrero H, 7",
+          "ip": "1",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 2,
+          "np": 15,
+          "era": "3.07",
+          "note": "(H, 7)"
+        },
+        {
+          "name": "Whitlock S, 1-2",
+          "ip": "1",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 2,
+          "np": 11,
+          "era": "2.60",
+          "note": "(S, 1)"
+        }
+      ]
+    },
+    "away_runs": 3,
+    "home_runs": 6,
+    "away_hits": 7,
+    "home_hits": 9,
+    "away_errors": 0,
+    "home_errors": 0,
+    "away_line": "100 002 000",
+    "home_line": "411 000 00x",
+    "away_innings": [
+      "1",
+      "0",
+      "0",
+      "0",
+      "0",
+      "2",
+      "0",
+      "0",
+      "0"
+    ],
+    "home_innings": [
+      "4",
+      "1",
+      "1",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "x"
+    ],
+    "bat_notes": "<b>LOB</b>\u2014<span class='nt-val'>Washington 5, Boston 3</span>. <b>2B</b>\u2014<span class='nt-val'>Abrams (16); Seigler (4)</span>. <b>HR</b>\u2014<span class='nt-val'>Wood (21) off Suarez; Contreras (18) off Mikolas, Durbin (7) off Mikolas</span>. <b>SB</b>\u2014<span class='nt-val'>Seigler (1)</span>. <b>SF</b>\u2014<span class='nt-val'>Abreu; Narvaez</span>. <b>DP</b>\u2014<span class='nt-val'>Boston 1 (Durbin, Seigler, Monasterio)</span>.",
+    "pit_notes": "<b>Umpires</b>\u2014<span class='nt-val'>Home, Edwin Moscoso; First, Nic Lentz; Second, Hunter Wendelstedt; Third, Vic Carapazza</span>. <b>T</b>\u2014<span class='nt-val'>2:22</span>. <b>Att</b>\u2014<span class='nt-val'>32,000</span>.",
+    "recap": "",
+    "postponed": false,
+    "recap_height": 102,
+    "recap_words": 64,
+    "game_number": 1
+  },
+  {
+    "game_pk": 824420,
+    "title": "Texas 6, Cleveland 3",
+    "away": {
+      "name": "Texas",
+      "abbr": "TEX",
+      "batters": [
+        {
+          "name": "Foscue dh",
+          "ab": 5,
+          "r": 0,
+          "h": 2,
+          "bi": 2,
+          "bb": 0,
+          "so": 1,
+          "avg": ".276",
+          "season_ab": 87
+        },
+        {
+          "name": "Jung 3b",
+          "ab": 5,
+          "r": 1,
+          "h": 2,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".294",
+          "season_ab": 309
+        },
+        {
+          "name": "Duran rf",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".267",
+          "season_ab": 255
+        },
+        {
+          "name": "Burger 1b",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 2,
+          "bb": 0,
+          "so": 2,
+          "avg": ".257",
+          "season_ab": 300
+        },
+        {
+          "name": "Higashioka c",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".221",
+          "season_ab": 140
+        },
+        {
+          "name": "Diaz c",
+          "ab": 0,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".288",
+          "season_ab": 59
+        },
+        {
+          "name": "Osuna lf",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".252",
+          "season_ab": 139
+        },
+        {
+          "name": "Cauley 2b",
+          "ab": 3,
+          "r": 2,
+          "h": 1,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".333",
+          "season_ab": 3
+        },
+        {
+          "name": "Lopez ss",
+          "ab": 4,
+          "r": 1,
+          "h": 2,
+          "bi": 1,
+          "bb": 0,
+          "so": 1,
+          "avg": ".322",
+          "season_ab": 87
+        },
+        {
+          "name": "Carter cf",
+          "ab": 3,
+          "r": 2,
+          "h": 2,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".182",
+          "season_ab": 198
+        }
+      ],
+      "totals": {
+        "ab": 36,
+        "r": 6,
+        "h": 11,
+        "bi": 5,
+        "bb": 1,
+        "so": 10
+      },
+      "pitchers": [
+        {
+          "name": "Alexander",
+          "ip": "1",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 2,
+          "np": 16,
+          "era": "2.55",
+          "note": ""
+        },
+        {
+          "name": "Paddack",
+          "ip": "4",
+          "h": 7,
+          "r": 2,
+          "er": 2,
+          "bb": 0,
+          "so": 1,
+          "np": 68,
+          "era": "6.79",
+          "note": ""
+        },
+        {
+          "name": "Ahlstrom W, 3-0",
+          "ip": "1",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 1,
+          "so": 0,
+          "np": 13,
+          "era": "4.09",
+          "note": "(W, 3-0)"
+        },
+        {
+          "name": "Junis H, 11",
+          "ip": "1",
+          "h": 2,
+          "r": 1,
+          "er": 1,
+          "bb": 0,
+          "so": 1,
+          "np": 16,
+          "era": "2.80",
+          "note": "(H, 11)"
+        },
+        {
+          "name": "Latz S, 17-19",
+          "ip": "2",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 1,
+          "np": 17,
+          "era": "1.76",
+          "note": "(S, 17)"
+        }
+      ]
+    },
+    "home": {
+      "name": "Cleveland",
+      "abbr": "CLE",
+      "batters": [
+        {
+          "name": "Bazzana 2b",
+          "ab": 5,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".250",
+          "season_ab": 200
+        },
+        {
+          "name": "Rocchio ss",
+          "ab": 5,
+          "r": 1,
+          "h": 2,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".271",
+          "season_ab": 277
+        },
+        {
+          "name": "DeLauter dh",
+          "ab": 4,
+          "r": 0,
+          "h": 2,
+          "bi": 1,
+          "bb": 0,
+          "so": 1,
+          "avg": ".269",
+          "season_ab": 249
+        },
+        {
+          "name": "Hoskins 1b",
+          "ab": 3,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".185",
+          "season_ab": 195
+        },
+        {
+          "name": "Manzardo ph-1b",
+          "ab": 1,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".229",
+          "season_ab": 231
+        },
+        {
+          "name": "Watson rf",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".286",
+          "season_ab": 35
+        },
+        {
+          "name": "Fry lf",
+          "ab": 2,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".212",
+          "season_ab": 113
+        },
+        {
+          "name": "Schneemann ph-cf",
+          "ab": 2,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".212",
+          "season_ab": 212
+        },
+        {
+          "name": "Kwan cf-lf",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".211",
+          "season_ab": 266
+        },
+        {
+          "name": "Arias 3b",
+          "ab": 3,
+          "r": 1,
+          "h": 1,
+          "bi": 1,
+          "bb": 1,
+          "so": 0,
+          "avg": ".217",
+          "season_ab": 60
+        },
+        {
+          "name": "Hedges c",
+          "ab": 4,
+          "r": 1,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".268",
+          "season_ab": 112
+        }
+      ],
+      "totals": {
+        "ab": 37,
+        "r": 3,
+        "h": 10,
+        "bi": 2,
+        "bb": 1,
+        "so": 5
+      },
+      "pitchers": [
+        {
+          "name": "Messick L, 7-5",
+          "ip": "6\u2154",
+          "h": 8,
+          "r": 4,
+          "er": 4,
+          "bb": 0,
+          "so": 5,
+          "np": 83,
+          "era": "2.85",
+          "note": "(L, 7-5)"
+        },
+        {
+          "name": "Holderman",
+          "ip": "1\u2153",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 3,
+          "np": 14,
+          "era": "1.48",
+          "note": ""
+        },
+        {
+          "name": "Sabrowski",
+          "ip": "\u2154",
+          "h": 3,
+          "r": 2,
+          "er": 1,
+          "bb": 1,
+          "so": 1,
+          "np": 18,
+          "era": "3.13",
+          "note": ""
+        },
+        {
+          "name": "Festa",
+          "ip": "\u2153",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 1,
+          "np": 5,
+          "era": "3.89",
+          "note": ""
+        }
+      ]
+    },
+    "away_runs": 6,
+    "home_runs": 3,
+    "away_hits": 11,
+    "home_hits": 10,
+    "away_errors": 1,
+    "home_errors": 1,
+    "away_line": "000 101 202",
+    "home_line": "000 020 100",
+    "away_innings": [
+      "0",
+      "0",
+      "0",
+      "1",
+      "0",
+      "1",
+      "2",
+      "0",
+      "2"
+    ],
+    "home_innings": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "2",
+      "0",
+      "1",
+      "0",
+      "0"
+    ],
+    "bat_notes": "<b>E</b>\u2014<span class='nt-val'>Cauley (1); Kwan (2)</span>. <b>LOB</b>\u2014<span class='nt-val'>Texas 5, Cleveland 8</span>. <b>2B</b>\u2014<span class='nt-val'>Foscue (6); Jung (20); DeLauter (13)</span>. <b>3B</b>\u2014<span class='nt-val'>Cauley (1)</span>. <b>HR</b>\u2014<span class='nt-val'>Arias (3) off Paddack</span>. <b>SB</b>\u2014<span class='nt-val'>Rocchio (14)</span>. <b>SAC</b>\u2014<span class='nt-val'>Carter</span>. <b>GIDP</b>\u2014<span class='nt-val'>Kwan</span>. <b>DP</b>\u2014<span class='nt-val'>Texas 1 (Paddack, Lopez, Burger)</span>. <b>IBB</b>\u2014<span class='nt-val'>Arias</span>.",
+    "pit_notes": "<span class='nt-val'>Paddack pitched to 1 batter in the 6th inning</span>. <b>WP</b>\u2014<span class='nt-val'>Ahlstrom; Junis</span>. <b>Balk</b>\u2014<span class='nt-val'>Messick</span>. <b>Inherited runners-scored</b>\u2014<span class='nt-val'>Ahlstrom 1-0; Holderman 1-0; Festa 1-0</span>. <b>Umpires</b>\u2014<span class='nt-val'>Home, Erich Bacchus; First, Brian O'Nora; Second, Chris Segal; Third, Laz Diaz</span>. <b>T</b>\u2014<span class='nt-val'>2:43</span>. <b>Att</b>\u2014<span class='nt-val'>20,379</span>.",
+    "recap": "",
+    "postponed": false,
+    "recap_height": 88,
+    "recap_words": 56,
+    "game_number": 1
+  },
+  {
+    "game_pk": 823771,
+    "title": "Milwaukee 5, Cincinnati 3",
+    "away": {
+      "name": "Cincinnati",
+      "abbr": "CIN",
+      "batters": [
+        {
+          "name": "De La Cruz dh",
+          "ab": 5,
+          "r": 1,
+          "h": 1,
+          "bi": 2,
+          "bb": 0,
+          "so": 2,
+          "avg": ".267",
+          "season_ab": 255
+        },
+        {
+          "name": "Stewart 3b",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".254",
+          "season_ab": 315
+        },
+        {
+          "name": "Steer 1b",
+          "ab": 4,
+          "r": 1,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".238",
+          "season_ab": 281
+        },
+        {
+          "name": "Bleday lf",
+          "ab": 3,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".242",
+          "season_ab": 198
+        },
+        {
+          "name": "Myers cf",
+          "ab": 2,
+          "r": 0,
+          "h": 1,
+          "bi": 1,
+          "bb": 0,
+          "so": 0,
+          "avg": ".256",
+          "season_ab": 117
+        },
+        {
+          "name": "Friedl cf",
+          "ab": 2,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".173",
+          "season_ab": 162
+        },
+        {
+          "name": "Marte rf",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".194",
+          "season_ab": 93
+        },
+        {
+          "name": "Stephenson c",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".225",
+          "season_ab": 200
+        },
+        {
+          "name": "McLain ss",
+          "ab": 3,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".199",
+          "season_ab": 256
+        },
+        {
+          "name": "Arroyo 2b",
+          "ab": 4,
+          "r": 1,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".277",
+          "season_ab": 65
+        }
+      ],
+      "totals": {
+        "ab": 35,
+        "r": 3,
+        "h": 9,
+        "bi": 3,
+        "bb": 1,
+        "so": 10
+      },
+      "pitchers": [
+        {
+          "name": "Lodolo",
+          "ip": "5",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 4,
+          "so": 4,
+          "np": 96,
+          "era": "5.05",
+          "note": ""
+        },
+        {
+          "name": "Petty",
+          "ip": "1\u2154",
+          "h": 4,
+          "r": 3,
+          "er": 3,
+          "bb": 2,
+          "so": 1,
+          "np": 43,
+          "era": "4.71",
+          "note": "(BS, 1)"
+        },
+        {
+          "name": "Moll L, 1-6",
+          "ip": "1",
+          "h": 1,
+          "r": 1,
+          "er": 1,
+          "bb": 0,
+          "so": 1,
+          "np": 10,
+          "era": "4.15",
+          "note": "(L, 1-6)"
+        },
+        {
+          "name": "Antone",
+          "ip": "\u2153",
+          "h": 1,
+          "r": 1,
+          "er": 1,
+          "bb": 0,
+          "so": 0,
+          "np": 9,
+          "era": "2.70",
+          "note": ""
+        }
+      ]
+    },
+    "home": {
+      "name": "Milwaukee",
+      "abbr": "MIL",
+      "batters": [
+        {
+          "name": "Chourio lf-cf-lf",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 1,
+          "so": 2,
+          "avg": ".291",
+          "season_ab": 206
+        },
+        {
+          "name": "Turang 2b",
+          "ab": 4,
+          "r": 1,
+          "h": 1,
+          "bi": 1,
+          "bb": 0,
+          "so": 1,
+          "avg": ".260",
+          "season_ab": 300
+        },
+        {
+          "name": "Contreras c",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".298",
+          "season_ab": 299
+        },
+        {
+          "name": "Vaughn 1b",
+          "ab": 3,
+          "r": 1,
+          "h": 2,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".339",
+          "season_ab": 124
+        },
+        {
+          "name": "Mitchell pr-cf",
+          "ab": 0,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".247",
+          "season_ab": 219
+        },
+        {
+          "name": "Sanchez dh",
+          "ab": 1,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".219",
+          "season_ab": 128
+        },
+        {
+          "name": "Yelich ph-dh",
+          "ab": 1,
+          "r": 1,
+          "h": 0,
+          "bi": 0,
+          "bb": 1,
+          "so": 1,
+          "avg": ".262",
+          "season_ab": 195
+        },
+        {
+          "name": "Perkins cf",
+          "ab": 1,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".159",
+          "season_ab": 88
+        },
+        {
+          "name": "Bauers ph-lf-1b",
+          "ab": 2,
+          "r": 0,
+          "h": 1,
+          "bi": 1,
+          "bb": 0,
+          "so": 0,
+          "avg": ".264",
+          "season_ab": 246
+        },
+        {
+          "name": "Frelick rf",
+          "ab": 3,
+          "r": 1,
+          "h": 2,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".244",
+          "season_ab": 238
+        },
+        {
+          "name": "Pratt ss",
+          "ab": 2,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".211",
+          "season_ab": 38
+        },
+        {
+          "name": "Hamilton ph-3b",
+          "ab": 1,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".236",
+          "season_ab": 191
+        },
+        {
+          "name": "Ortiz 3b-ss",
+          "ab": 4,
+          "r": 1,
+          "h": 1,
+          "bi": 2,
+          "bb": 0,
+          "so": 1,
+          "avg": ".201",
+          "season_ab": 169
+        }
+      ],
+      "totals": {
+        "ab": 29,
+        "r": 5,
+        "h": 7,
+        "bi": 4,
+        "bb": 6,
+        "so": 6
+      },
+      "pitchers": [
+        {
+          "name": "Gasser",
+          "ip": "5\u2154",
+          "h": 7,
+          "r": 3,
+          "er": 3,
+          "bb": 1,
+          "so": 5,
+          "np": 96,
+          "era": "4.54",
+          "note": ""
+        },
+        {
+          "name": "Patrick",
+          "ip": "1\u2153",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 2,
+          "np": 21,
+          "era": "3.82",
+          "note": ""
+        },
+        {
+          "name": "Ashby W, 11-1",
+          "ip": "1",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 1,
+          "np": 15,
+          "era": "3.24",
+          "note": "(W, 11-1)"
+        },
+        {
+          "name": "Megill S, 11-13",
+          "ip": "1",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 2,
+          "np": 10,
+          "era": "3.38",
+          "note": "(S, 11)"
+        }
+      ]
+    },
+    "away_runs": 3,
+    "home_runs": 5,
+    "away_hits": 9,
+    "home_hits": 7,
+    "away_errors": 1,
+    "home_errors": 2,
+    "away_line": "100 020 000",
+    "home_line": "000 002 12x",
+    "away_innings": [
+      "1",
+      "0",
+      "0",
+      "0",
+      "2",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "home_innings": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "2",
+      "1",
+      "2",
+      "x"
+    ],
+    "bat_notes": "<b>E</b>\u2014<span class='nt-val'>Lodolo (1); Patrick (1); Ortiz (7)</span>. <b>LOB</b>\u2014<span class='nt-val'>Cincinnati 7, Milwaukee 8</span>. <b>2B</b>\u2014<span class='nt-val'>Stephenson (9); Frelick (12)</span>. <b>HR</b>\u2014<span class='nt-val'>De La Cruz (13) off Gasser; Turang (12) off Petty, Ortiz (2) off Antone</span>. <b>SAC</b>\u2014<span class='nt-val'>McLain; Hamilton</span>. <b>GIDP</b>\u2014<span class='nt-val'>Bleday; Contreras</span>. <b>DP</b>\u2014<span class='nt-val'>Cincinnati 1 (Arroyo, Steer); Milwaukee 1 (Turang, Pratt, Vaughn)</span>.",
+    "pit_notes": "<b>WP</b>\u2014<span class='nt-val'>Petty</span>. <b>HBP</b>\u2014<span class='nt-val'>Contreras (by Lodolo)</span>. <b>Inherited runners-scored</b>\u2014<span class='nt-val'>Moll 1-0; Antone 1-1; Patrick 1-0</span>. <b>Umpires</b>\u2014<span class='nt-val'>Home, Dan Bellino; First, Mark Ripperger; Second, Brock Ballou; Third, Dan Merzel</span>. <b>T</b>\u2014<span class='nt-val'>2:52</span>. <b>Att</b>\u2014<span class='nt-val'>28,059</span>.",
+    "recap": "",
+    "postponed": false,
+    "recap_height": 78,
+    "recap_words": 49,
+    "game_number": 1
+  },
+  {
+    "game_pk": 824662,
+    "title": "Chicago 3, San Diego 2",
+    "away": {
+      "name": "San Diego",
+      "abbr": "SD",
+      "batters": [
+        {
+          "name": "Tatis Jr. rf",
+          "ab": 5,
+          "r": 0,
+          "h": 1,
+          "bi": 1,
+          "bb": 0,
+          "so": 2,
+          "avg": ".282",
+          "season_ab": 319
+        },
+        {
+          "name": "Taylor lf",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".319",
+          "season_ab": 72
+        },
+        {
+          "name": "Sheets ph",
+          "ab": 1,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".230",
+          "season_ab": 239
+        },
+        {
+          "name": "Bowen lf",
+          "ab": 0,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".129",
+          "season_ab": 31
+        },
+        {
+          "name": "Machado 3b",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".186",
+          "season_ab": 296
+        },
+        {
+          "name": "Andujar dh",
+          "ab": 4,
+          "r": 1,
+          "h": 3,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".259",
+          "season_ab": 205
+        },
+        {
+          "name": "France 1b",
+          "ab": 4,
+          "r": 0,
+          "h": 2,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".260",
+          "season_ab": 169
+        },
+        {
+          "name": "Merrill cf",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".213",
+          "season_ab": 310
+        },
+        {
+          "name": "Bogaerts ss",
+          "ab": 3,
+          "r": 1,
+          "h": 2,
+          "bi": 1,
+          "bb": 1,
+          "so": 0,
+          "avg": ".234",
+          "season_ab": 274
+        },
+        {
+          "name": "Fermin c",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".145",
+          "season_ab": 131
+        },
+        {
+          "name": "Cronenworth 2b",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".140",
+          "season_ab": 100
+        }
+      ],
+      "totals": {
+        "ab": 35,
+        "r": 2,
+        "h": 11,
+        "bi": 2,
+        "bb": 2,
+        "so": 7
+      },
+      "pitchers": [
+        {
+          "name": "Canning",
+          "ip": "4\u2153",
+          "h": 5,
+          "r": 2,
+          "er": 2,
+          "bb": 2,
+          "so": 3,
+          "np": 75,
+          "era": "7.09",
+          "note": ""
+        },
+        {
+          "name": "Hart",
+          "ip": "\u2154",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 1,
+          "so": 1,
+          "np": 12,
+          "era": "4.05",
+          "note": ""
+        },
+        {
+          "name": "Rodriguez",
+          "ip": "\u2154",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 2,
+          "np": 15,
+          "era": "2.06",
+          "note": ""
+        },
+        {
+          "name": "Morejon",
+          "ip": "1\u2153",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 1,
+          "so": 2,
+          "np": 22,
+          "era": "3.32",
+          "note": ""
+        },
+        {
+          "name": "Adam L, 2-2",
+          "ip": "1",
+          "h": 2,
+          "r": 1,
+          "er": 1,
+          "bb": 0,
+          "so": 1,
+          "np": 24,
+          "era": "2.51",
+          "note": "(L, 2-2)"
+        },
+        {
+          "name": "Miller",
+          "ip": "\u2154",
+          "h": 2,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 0,
+          "np": 7,
+          "era": "0.78",
+          "note": ""
+        }
+      ]
+    },
+    "home": {
+      "name": "Chicago",
+      "abbr": "CHC",
+      "batters": [
+        {
+          "name": "Crow-Armstrong cf",
+          "ab": 3,
+          "r": 1,
+          "h": 2,
+          "bi": 0,
+          "bb": 2,
+          "so": 0,
+          "avg": ".284",
+          "season_ab": 320
+        },
+        {
+          "name": "Bregman 3b",
+          "ab": 4,
+          "r": 0,
+          "h": 2,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".242",
+          "season_ab": 326
+        },
+        {
+          "name": "Busch 1b",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 1,
+          "so": 2,
+          "avg": ".233",
+          "season_ab": 305
+        },
+        {
+          "name": "Suzuki dh",
+          "ab": 4,
+          "r": 1,
+          "h": 2,
+          "bi": 2,
+          "bb": 0,
+          "so": 1,
+          "avg": ".266",
+          "season_ab": 256
+        },
+        {
+          "name": "Happ lf",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".221",
+          "season_ab": 303
+        },
+        {
+          "name": "Hoerner 2b",
+          "ab": 3,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".243",
+          "season_ab": 333
+        },
+        {
+          "name": "Conforto rf",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 1,
+          "bb": 0,
+          "so": 1,
+          "avg": ".233",
+          "season_ab": 116
+        },
+        {
+          "name": "Amaya c",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 3,
+          "avg": ".219",
+          "season_ab": 114
+        },
+        {
+          "name": "Swanson ss",
+          "ab": 4,
+          "r": 1,
+          "h": 2,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".195",
+          "season_ab": 272
+        }
+      ],
+      "totals": {
+        "ab": 34,
+        "r": 3,
+        "h": 10,
+        "bi": 3,
+        "bb": 4,
+        "so": 9
+      },
+      "pitchers": [
+        {
+          "name": "Imanaga",
+          "ip": "6\u2153",
+          "h": 9,
+          "r": 2,
+          "er": 2,
+          "bb": 0,
+          "so": 4,
+          "np": 97,
+          "era": "4.30",
+          "note": ""
+        },
+        {
+          "name": "Hollowell",
+          "ip": "1\u2153",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 1,
+          "so": 2,
+          "np": 24,
+          "era": "4.76",
+          "note": ""
+        },
+        {
+          "name": "Thielbar",
+          "ip": "\u2153",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 1,
+          "so": 0,
+          "np": 14,
+          "era": "4.24",
+          "note": ""
+        },
+        {
+          "name": "Thornton W, 3-2",
+          "ip": "1",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 1,
+          "np": 12,
+          "era": "2.63",
+          "note": "(W, 3-2)"
+        }
+      ]
+    },
+    "away_runs": 2,
+    "home_runs": 3,
+    "away_hits": 11,
+    "home_hits": 10,
+    "away_errors": 0,
+    "home_errors": 0,
+    "away_line": "001 100 000",
+    "home_line": "000 110 001",
+    "away_innings": [
+      "0",
+      "0",
+      "1",
+      "1",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "home_innings": [
+      "0",
+      "0",
+      "0",
+      "1",
+      "1",
+      "0",
+      "0",
+      "0",
+      "1"
+    ],
+    "bat_notes": "<span class='nt-val'>Two out when winning run scored.</span>. <b>LOB</b>\u2014<span class='nt-val'>San Diego 9, Chicago 11</span>. <b>2B</b>\u2014<span class='nt-val'>Andujar (14); Bogaerts (5); Suzuki (11); Swanson (10)</span>. <b>SB</b>\u2014<span class='nt-val'>Merrill (18)</span>. <b>CS</b>\u2014<span class='nt-val'>Tatis Jr. (9)</span>. <b>SF</b>\u2014<span class='nt-val'>Suzuki</span>. <b>SAC</b>\u2014<span class='nt-val'>Cronenworth</span>. <b>GIDP</b>\u2014<span class='nt-val'>Suzuki</span>. <b>DP</b>\u2014<span class='nt-val'>San Diego 2 (Machado, Cronenworth, France), (Bowen, Fermin)</span>. <b>IBB</b>\u2014<span class='nt-val'>Bogaerts</span>.",
+    "pit_notes": "<span class='nt-val'>Adam pitched to 2 batters in the 9th inning</span>. <b>HBP</b>\u2014<span class='nt-val'>Hoerner (by Canning)</span>. <b>Inherited runners-scored</b>\u2014<span class='nt-val'>Hart 2-1; Morejon 2-0; Miller 2-1; Thielbar 1-0</span>. <b>Umpires</b>\u2014<span class='nt-val'>Home, Ryan Wills; First, Jeremie Rehak; Second, Dan Iassogna; Third, Adam Beck</span>. <b>T</b>\u2014<span class='nt-val'>3:11</span>. <b>Att</b>\u2014<span class='nt-val'>37,607</span>.",
+    "recap": "",
+    "postponed": false,
+    "recap_height": 90,
+    "recap_words": 57,
+    "game_number": 1
+  },
+  {
+    "game_pk": 824176,
+    "title": "Minnesota 5, Houston 4",
+    "away": {
+      "name": "Minnesota",
+      "abbr": "MIN",
+      "batters": [
+        {
+          "name": "Larnach lf",
+          "ab": 5,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".286",
+          "season_ab": 220
+        },
+        {
+          "name": "Lee 3b",
+          "ab": 5,
+          "r": 1,
+          "h": 2,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".251",
+          "season_ab": 299
+        },
+        {
+          "name": "Clemens 2b",
+          "ab": 5,
+          "r": 0,
+          "h": 0,
+          "bi": 1,
+          "bb": 0,
+          "so": 2,
+          "avg": ".237",
+          "season_ab": 257
+        },
+        {
+          "name": "Bell dh",
+          "ab": 4,
+          "r": 1,
+          "h": 1,
+          "bi": 2,
+          "bb": 0,
+          "so": 0,
+          "avg": ".243",
+          "season_ab": 300
+        },
+        {
+          "name": "Lewis 1b",
+          "ab": 4,
+          "r": 1,
+          "h": 1,
+          "bi": 1,
+          "bb": 0,
+          "so": 2,
+          "avg": ".214",
+          "season_ab": 187
+        },
+        {
+          "name": "Caratini c",
+          "ab": 2,
+          "r": 1,
+          "h": 1,
+          "bi": 1,
+          "bb": 2,
+          "so": 0,
+          "avg": ".241",
+          "season_ab": 195
+        },
+        {
+          "name": "Kreidler cf",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".289",
+          "season_ab": 97
+        },
+        {
+          "name": "Gray ss",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".243",
+          "season_ab": 148
+        },
+        {
+          "name": "Keaschall rf",
+          "ab": 3,
+          "r": 1,
+          "h": 1,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".245",
+          "season_ab": 277
+        }
+      ],
+      "totals": {
+        "ab": 35,
+        "r": 5,
+        "h": 8,
+        "bi": 5,
+        "bb": 4,
+        "so": 8
+      },
+      "pitchers": [
+        {
+          "name": "Z. Matthews W, 4-5",
+          "ip": "7",
+          "h": 4,
+          "r": 1,
+          "er": 1,
+          "bb": 1,
+          "so": 7,
+          "np": 89,
+          "era": "4.15",
+          "note": "(W, 4-5)"
+        },
+        {
+          "name": "Adams",
+          "ip": "1\u2154",
+          "h": 1,
+          "r": 2,
+          "er": 2,
+          "bb": 2,
+          "so": 1,
+          "np": 35,
+          "era": "7.06",
+          "note": ""
+        },
+        {
+          "name": "Gomez S, 9-9",
+          "ip": "\u2153",
+          "h": 1,
+          "r": 1,
+          "er": 1,
+          "bb": 0,
+          "so": 0,
+          "np": 7,
+          "era": "3.66",
+          "note": "(S, 9)"
+        }
+      ]
+    },
+    "home": {
+      "name": "Houston",
+      "abbr": "HOU",
+      "batters": [
+        {
+          "name": "Altuve 2b",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".236",
+          "season_ab": 242
+        },
+        {
+          "name": "Alvarez dh",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 1,
+          "so": 1,
+          "avg": ".308",
+          "season_ab": 305
+        },
+        {
+          "name": "I. Paredes 3b",
+          "ab": 3,
+          "r": 1,
+          "h": 0,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".253",
+          "season_ab": 288
+        },
+        {
+          "name": "Walker 1b",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".237",
+          "season_ab": 321
+        },
+        {
+          "name": "Trammell cf",
+          "ab": 4,
+          "r": 1,
+          "h": 2,
+          "bi": 2,
+          "bb": 0,
+          "so": 1,
+          "avg": ".275",
+          "season_ab": 91
+        },
+        {
+          "name": "Smith rf",
+          "ab": 4,
+          "r": 2,
+          "h": 2,
+          "bi": 2,
+          "bb": 0,
+          "so": 0,
+          "avg": ".222",
+          "season_ab": 284
+        },
+        {
+          "name": "Loperfido lf",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".212",
+          "season_ab": 99
+        },
+        {
+          "name": "Allen ss",
+          "ab": 2,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 1,
+          "so": 1,
+          "avg": ".258",
+          "season_ab": 66
+        },
+        {
+          "name": "Vazquez c",
+          "ab": 3,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".216",
+          "season_ab": 162
+        }
+      ],
+      "totals": {
+        "ab": 31,
+        "r": 4,
+        "h": 6,
+        "bi": 4,
+        "bb": 3,
+        "so": 8
+      },
+      "pitchers": [
+        {
+          "name": "Lambert L, 6-5",
+          "ip": "5\u2154",
+          "h": 5,
+          "r": 4,
+          "er": 4,
+          "bb": 3,
+          "so": 4,
+          "np": 100,
+          "era": "3.51",
+          "note": "(L, 6-5)"
+        },
+        {
+          "name": "Pearson",
+          "ip": "1\u2153",
+          "h": 1,
+          "r": 1,
+          "er": 1,
+          "bb": 1,
+          "so": 0,
+          "np": 18,
+          "era": "3.38",
+          "note": ""
+        },
+        {
+          "name": "Ullola",
+          "ip": "2",
+          "h": 2,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 4,
+          "np": 30,
+          "era": "0.00",
+          "note": ""
+        }
+      ]
+    },
+    "away_runs": 5,
+    "home_runs": 4,
+    "away_hits": 8,
+    "home_hits": 6,
+    "away_errors": 0,
+    "home_errors": 1,
+    "away_line": "000 202 100",
+    "home_line": "000 010 003",
+    "away_innings": [
+      "0",
+      "0",
+      "0",
+      "2",
+      "0",
+      "2",
+      "1",
+      "0",
+      "0"
+    ],
+    "home_innings": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "1",
+      "0",
+      "0",
+      "0",
+      "3"
+    ],
+    "bat_notes": "<b>E</b>\u2014<span class='nt-val'>Allen (1)</span>. <b>LOB</b>\u2014<span class='nt-val'>Minnesota 7, Houston 3</span>. <b>HR</b>\u2014<span class='nt-val'>Lewis (8) off Lambert, Caratini (7) off Lambert, Bell (10) off Lambert; Smith (10) off Matthews, Smith (11) off Gomez, Trammell (3) off Adams</span>. <b>SB</b>\u2014<span class='nt-val'>Keaschall (12)</span>. <b>GIDP</b>\u2014<span class='nt-val'>I. Paredes; Vazquez</span>. <b>DP</b>\u2014<span class='nt-val'>Minnesota 2 (Gray, Clemens, Lewis), (Lewis)</span>.",
+    "pit_notes": "<b>WP</b>\u2014<span class='nt-val'>Lambert</span>. <b>Inherited runners-scored</b>\u2014<span class='nt-val'>Pearson 2-0</span>. <b>Umpires</b>\u2014<span class='nt-val'>Home, Brennan Miller; First, John Tumpane; Second, Chris Conroy; Third, Willie Traynor</span>. <b>T</b>\u2014<span class='nt-val'>2:44</span>. <b>Att</b>\u2014<span class='nt-val'>22,969</span>.",
+    "recap": "",
+    "postponed": false,
+    "recap_height": 137,
+    "recap_words": 87,
+    "game_number": 1
+  },
+  {
+    "game_pk": 824339,
+    "title": "Miami 10, Colorado 7",
+    "away": {
+      "name": "Miami",
+      "abbr": "MIA",
+      "batters": [
+        {
+          "name": "Lopez ss",
+          "ab": 5,
+          "r": 1,
+          "h": 2,
+          "bi": 1,
+          "bb": 0,
+          "so": 0,
+          "avg": ".333",
+          "season_ab": 333
+        },
+        {
+          "name": "Edwards 2b",
+          "ab": 5,
+          "r": 1,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".297",
+          "season_ab": 310
+        },
+        {
+          "name": "Ruiz lf",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".256",
+          "season_ab": 82
+        },
+        {
+          "name": "Caissie ph-rf",
+          "ab": 2,
+          "r": 1,
+          "h": 2,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".239",
+          "season_ab": 201
+        },
+        {
+          "name": "Pauley 3b",
+          "ab": 0,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".176",
+          "season_ab": 91
+        },
+        {
+          "name": "Hernandez rf-lf",
+          "ab": 3,
+          "r": 1,
+          "h": 1,
+          "bi": 0,
+          "bb": 2,
+          "so": 0,
+          "avg": ".219",
+          "season_ab": 169
+        },
+        {
+          "name": "Stowers 1b",
+          "ab": 3,
+          "r": 3,
+          "h": 1,
+          "bi": 0,
+          "bb": 1,
+          "so": 1,
+          "avg": ".228",
+          "season_ab": 224
+        },
+        {
+          "name": "Jimenez dh",
+          "ab": 2,
+          "r": 0,
+          "h": 1,
+          "bi": 2,
+          "bb": 0,
+          "so": 1,
+          "avg": ".195",
+          "season_ab": 82
+        },
+        {
+          "name": "Conine ph-dh",
+          "ab": 2,
+          "r": 2,
+          "h": 1,
+          "bi": 3,
+          "bb": 1,
+          "so": 1,
+          "avg": ".227",
+          "season_ab": 44
+        },
+        {
+          "name": "Marsee cf",
+          "ab": 5,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".193",
+          "season_ab": 290
+        },
+        {
+          "name": "Sanoja 3b-rf",
+          "ab": 5,
+          "r": 1,
+          "h": 3,
+          "bi": 3,
+          "bb": 0,
+          "so": 0,
+          "avg": ".266",
+          "season_ab": 188
+        },
+        {
+          "name": "Mack c",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 1,
+          "bb": 0,
+          "so": 0,
+          "avg": ".250",
+          "season_ab": 128
+        }
+      ],
+      "totals": {
+        "ab": 39,
+        "r": 10,
+        "h": 13,
+        "bi": 10,
+        "bb": 4,
+        "so": 6
+      },
+      "pitchers": [
+        {
+          "name": "Alcantara W, 9-4",
+          "ip": "5\u2154",
+          "h": 7,
+          "r": 5,
+          "er": 5,
+          "bb": 5,
+          "so": 3,
+          "np": 96,
+          "era": "4.20",
+          "note": "(W, 9-4)"
+        },
+        {
+          "name": "Petersen H, 13",
+          "ip": "1\u2153",
+          "h": 1,
+          "r": 1,
+          "er": 1,
+          "bb": 0,
+          "so": 1,
+          "np": 17,
+          "era": "3.22",
+          "note": "(H, 13)"
+        },
+        {
+          "name": "Faucher",
+          "ip": "1",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 0,
+          "np": 9,
+          "era": "3.38",
+          "note": ""
+        },
+        {
+          "name": "Fairbanks",
+          "ip": "1",
+          "h": 2,
+          "r": 1,
+          "er": 1,
+          "bb": 0,
+          "so": 1,
+          "np": 19,
+          "era": "6.84",
+          "note": ""
+        }
+      ]
+    },
+    "home": {
+      "name": "Colorado",
+      "abbr": "COL",
+      "batters": [
+        {
+          "name": "McCarthy lf",
+          "ab": 5,
+          "r": 0,
+          "h": 2,
+          "bi": 2,
+          "bb": 0,
+          "so": 0,
+          "avg": ".306",
+          "season_ab": 229
+        },
+        {
+          "name": "Moniak dh",
+          "ab": 5,
+          "r": 0,
+          "h": 0,
+          "bi": 1,
+          "bb": 0,
+          "so": 2,
+          "avg": ".260",
+          "season_ab": 169
+        },
+        {
+          "name": "Goodman c",
+          "ab": 5,
+          "r": 1,
+          "h": 2,
+          "bi": 1,
+          "bb": 0,
+          "so": 2,
+          "avg": ".245",
+          "season_ab": 302
+        },
+        {
+          "name": "Rumfield 1b",
+          "ab": 4,
+          "r": 1,
+          "h": 1,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".294",
+          "season_ab": 293
+        },
+        {
+          "name": "Carrigg cf",
+          "ab": 4,
+          "r": 2,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".267",
+          "season_ab": 60
+        },
+        {
+          "name": "Johnston rf",
+          "ab": 2,
+          "r": 1,
+          "h": 0,
+          "bi": 0,
+          "bb": 2,
+          "so": 0,
+          "avg": ".312",
+          "season_ab": 253
+        },
+        {
+          "name": "Karros 3b",
+          "ab": 4,
+          "r": 1,
+          "h": 2,
+          "bi": 2,
+          "bb": 0,
+          "so": 0,
+          "avg": ".255",
+          "season_ab": 231
+        },
+        {
+          "name": "Tovar ss",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 1,
+          "bb": 0,
+          "so": 0,
+          "avg": ".207",
+          "season_ab": 276
+        },
+        {
+          "name": "Julien 2b",
+          "ab": 2,
+          "r": 1,
+          "h": 2,
+          "bi": 0,
+          "bb": 2,
+          "so": 0,
+          "avg": ".232",
+          "season_ab": 190
+        }
+      ],
+      "totals": {
+        "ab": 34,
+        "r": 7,
+        "h": 10,
+        "bi": 7,
+        "bb": 5,
+        "so": 5
+      },
+      "pitchers": [
+        {
+          "name": "S. Sullivan",
+          "ip": "4\u2154",
+          "h": 6,
+          "r": 5,
+          "er": 5,
+          "bb": 2,
+          "so": 5,
+          "np": 82,
+          "era": "8.64",
+          "note": ""
+        },
+        {
+          "name": "Vodnik L, 2-3",
+          "ip": "1\u2153",
+          "h": 2,
+          "r": 1,
+          "er": 1,
+          "bb": 0,
+          "so": 0,
+          "np": 18,
+          "era": "6.66",
+          "note": "(L, 2-3)"
+        },
+        {
+          "name": "Senzatela",
+          "ip": "\u2154",
+          "h": 4,
+          "r": 4,
+          "er": 4,
+          "bb": 1,
+          "so": 0,
+          "np": 27,
+          "era": "3.07",
+          "note": ""
+        },
+        {
+          "name": "Agnos",
+          "ip": "2\u2153",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 1,
+          "so": 1,
+          "np": 31,
+          "era": "7.36",
+          "note": ""
+        }
+      ]
+    },
+    "away_runs": 10,
+    "home_runs": 7,
+    "away_hits": 13,
+    "home_hits": 10,
+    "away_errors": 0,
+    "home_errors": 0,
+    "away_line": "020 040 400",
+    "home_line": "032 000 101",
+    "away_innings": [
+      "0",
+      "2",
+      "0",
+      "0",
+      "4",
+      "0",
+      "4",
+      "0",
+      "0"
+    ],
+    "home_innings": [
+      "0",
+      "3",
+      "2",
+      "0",
+      "0",
+      "0",
+      "1",
+      "0",
+      "1"
+    ],
+    "bat_notes": "<b>LOB</b>\u2014<span class='nt-val'>Miami 7, Colorado 6</span>. <b>2B</b>\u2014<span class='nt-val'>Lopez (22); Hernandez (4); Stowers (15); Sanoja (14); McCarthy (16); Goodman (13); Karros (15); Julien (7)</span>. <b>3B</b>\u2014<span class='nt-val'>Sanoja (1)</span>. <b>HR</b>\u2014<span class='nt-val'>Lopez (7) off Sullivan, Conine (3) off Vodnik; Goodman (26) off Petersen</span>. <b>SB</b>\u2014<span class='nt-val'>Edwards (13)</span>. <b>CS</b>\u2014<span class='nt-val'>Goodman (3)</span>. <b>SF</b>\u2014<span class='nt-val'>Tovar</span>. <b>GIDP</b>\u2014<span class='nt-val'>Stowers</span>. <b>DP</b>\u2014<span class='nt-val'>Miami 1 (Edwards, Lopez); Colorado 1 (Rumfield, Tovar, Rumfield)</span>.",
+    "pit_notes": "<b>HBP</b>\u2014<span class='nt-val'>Stowers (by S. Sullivan)</span>. <b>Inherited runners-scored</b>\u2014<span class='nt-val'>Petersen 2-0; Vodnik 2-2; Agnos 1-0</span>. <b>Umpires</b>\u2014<span class='nt-val'>Home, Paul Clemons; First, Quinn Wolcott; Second, Dexter Kelley; Third, Ramon De Jesus</span>. <b>T</b>\u2014<span class='nt-val'>2:58</span>. <b>Att</b>\u2014<span class='nt-val'>22,910</span>.",
+    "recap": "",
+    "postponed": false,
+    "recap_height": 96,
+    "recap_words": 61,
+    "game_number": 1
+  },
+  {
+    "game_pk": 824986,
+    "title": "L.A. Dodgers 9, Athletics 4",
+    "away": {
+      "name": "L.A. Dodgers",
+      "abbr": "LAD",
+      "batters": [
+        {
+          "name": "Ohtani dh",
+          "ab": 5,
+          "r": 1,
+          "h": 2,
+          "bi": 3,
+          "bb": 0,
+          "so": 1,
+          "avg": ".297",
+          "season_ab": 293
+        },
+        {
+          "name": "Pages cf",
+          "ab": 5,
+          "r": 1,
+          "h": 2,
+          "bi": 2,
+          "bb": 0,
+          "so": 2,
+          "avg": ".269",
+          "season_ab": 327
+        },
+        {
+          "name": "Freeman 1b",
+          "ab": 5,
+          "r": 0,
+          "h": 2,
+          "bi": 1,
+          "bb": 0,
+          "so": 0,
+          "avg": ".290",
+          "season_ab": 310
+        },
+        {
+          "name": "Betts ss",
+          "ab": 5,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".235",
+          "season_ab": 200
+        },
+        {
+          "name": "T. Hernandez lf",
+          "ab": 5,
+          "r": 1,
+          "h": 2,
+          "bi": 0,
+          "bb": 0,
+          "so": 3,
+          "avg": ".280",
+          "season_ab": 186
+        },
+        {
+          "name": "Tucker rf",
+          "ab": 4,
+          "r": 1,
+          "h": 2,
+          "bi": 0,
+          "bb": 1,
+          "so": 1,
+          "avg": ".242",
+          "season_ab": 289
+        },
+        {
+          "name": "M. Muncy 3b",
+          "ab": 5,
+          "r": 1,
+          "h": 2,
+          "bi": 2,
+          "bb": 0,
+          "so": 1,
+          "avg": ".265",
+          "season_ab": 260
+        },
+        {
+          "name": "Rojas 2b",
+          "ab": 3,
+          "r": 2,
+          "h": 2,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".277",
+          "season_ab": 119
+        },
+        {
+          "name": "Freeland ph-2b",
+          "ab": 2,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".231",
+          "season_ab": 173
+        },
+        {
+          "name": "Rushing c",
+          "ab": 4,
+          "r": 2,
+          "h": 2,
+          "bi": 1,
+          "bb": 1,
+          "so": 1,
+          "avg": ".247",
+          "season_ab": 150
+        }
+      ],
+      "totals": {
+        "ab": 43,
+        "r": 9,
+        "h": 17,
+        "bi": 9,
+        "bb": 2,
+        "so": 10
+      },
+      "pitchers": [
+        {
+          "name": "Lauer W, 4-5",
+          "ip": "6",
+          "h": 9,
+          "r": 3,
+          "er": 3,
+          "bb": 1,
+          "so": 2,
+          "np": 95,
+          "era": "4.84",
+          "note": "(W, 4-5)"
+        },
+        {
+          "name": "Hurt",
+          "ip": "1",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 3,
+          "np": 15,
+          "era": "3.58",
+          "note": ""
+        },
+        {
+          "name": "J. Hernandez",
+          "ip": "1\u2153",
+          "h": 2,
+          "r": 1,
+          "er": 1,
+          "bb": 1,
+          "so": 1,
+          "np": 30,
+          "era": "8.15",
+          "note": ""
+        },
+        {
+          "name": "Dreyer",
+          "ip": "\u2154",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 1,
+          "so": 1,
+          "np": 12,
+          "era": "3.51",
+          "note": ""
+        }
+      ]
+    },
+    "home": {
+      "name": "Athletics",
+      "abbr": "ATH",
+      "batters": [
+        {
+          "name": "Bolte cf",
+          "ab": 5,
+          "r": 0,
+          "h": 1,
+          "bi": 1,
+          "bb": 0,
+          "so": 0,
+          "avg": ".295",
+          "season_ab": 139
+        },
+        {
+          "name": "Langeliers c",
+          "ab": 5,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".263",
+          "season_ab": 319
+        },
+        {
+          "name": "Kurtz 1b",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 1,
+          "so": 1,
+          "avg": ".279",
+          "season_ab": 305
+        },
+        {
+          "name": "Heim dh",
+          "ab": 5,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".236",
+          "season_ab": 127
+        },
+        {
+          "name": "Thomas lf",
+          "ab": 3,
+          "r": 1,
+          "h": 2,
+          "bi": 1,
+          "bb": 0,
+          "so": 0,
+          "avg": ".221",
+          "season_ab": 77
+        },
+        {
+          "name": "Cortes ph-lf",
+          "ab": 1,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".273",
+          "season_ab": 183
+        },
+        {
+          "name": "Meneses ph",
+          "ab": 1,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".091",
+          "season_ab": 11
+        },
+        {
+          "name": "Butler rf",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 1,
+          "so": 1,
+          "avg": ".201",
+          "season_ab": 209
+        },
+        {
+          "name": "M. Muncy 3b",
+          "ab": 3,
+          "r": 1,
+          "h": 1,
+          "bi": 0,
+          "bb": 1,
+          "so": 1,
+          "avg": ".234",
+          "season_ab": 145
+        },
+        {
+          "name": "Williams ss",
+          "ab": 3,
+          "r": 1,
+          "h": 2,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".302",
+          "season_ab": 63
+        },
+        {
+          "name": "McNeil ph-2b",
+          "ab": 1,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".233",
+          "season_ab": 245
+        },
+        {
+          "name": "Kuroda-Grauer 2b-ss",
+          "ab": 4,
+          "r": 1,
+          "h": 3,
+          "bi": 1,
+          "bb": 0,
+          "so": 0,
+          "avg": ".750",
+          "season_ab": 4
+        }
+      ],
+      "totals": {
+        "ab": 38,
+        "r": 4,
+        "h": 11,
+        "bi": 3,
+        "bb": 3,
+        "so": 7
+      },
+      "pitchers": [
+        {
+          "name": "Jump L, 3-2",
+          "ip": "4\u2154",
+          "h": 11,
+          "r": 5,
+          "er": 5,
+          "bb": 0,
+          "so": 5,
+          "np": 91,
+          "era": "2.93",
+          "note": "(L, 3-2)"
+        },
+        {
+          "name": "Krook",
+          "ip": "\u2153",
+          "h": 2,
+          "r": 3,
+          "er": 3,
+          "bb": 1,
+          "so": 1,
+          "np": 18,
+          "era": "17.18",
+          "note": ""
+        },
+        {
+          "name": "Sterner",
+          "ip": "1",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 2,
+          "np": 15,
+          "era": "3.96",
+          "note": ""
+        },
+        {
+          "name": "Morris",
+          "ip": "3",
+          "h": 3,
+          "r": 1,
+          "er": 1,
+          "bb": 1,
+          "so": 2,
+          "np": 51,
+          "era": "12.86",
+          "note": ""
+        }
+      ]
+    },
+    "away_runs": 9,
+    "home_runs": 4,
+    "away_hits": 17,
+    "home_hits": 11,
+    "away_errors": 0,
+    "home_errors": 0,
+    "away_line": "020 303 010",
+    "home_line": "030 000 001",
+    "away_innings": [
+      "0",
+      "2",
+      "0",
+      "3",
+      "0",
+      "3",
+      "0",
+      "1",
+      "0"
+    ],
+    "home_innings": [
+      "0",
+      "3",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "1"
+    ],
+    "bat_notes": "<b>LOB</b>\u2014<span class='nt-val'>L.A. Dodgers 9, Athletics 10</span>. <b>2B</b>\u2014<span class='nt-val'>Kuroda-Grauer (1)</span>. <b>HR</b>\u2014<span class='nt-val'>Muncy (17) off Jump, Pages (16) off Jump, Ohtani (18) off Krook; Thomas (3) off Lauer</span>. <b>SB</b>\u2014<span class='nt-val'>Bolte (11)</span>. <b>GIDP</b>\u2014<span class='nt-val'>Betts</span>. <b>DP</b>\u2014<span class='nt-val'>Athletics 1 (Williams, Kuroda, Grauer, Kurtz)</span>.",
+    "pit_notes": "<span class='nt-val'>Krook pitched to 3 batters in the 6th inning</span>. <b>WP</b>\u2014<span class='nt-val'>Dreyer</span>. <b>Inherited runners-scored</b>\u2014<span class='nt-val'>Dreyer 2-1; Krook 1-0</span>. <b>Umpires</b>\u2014<span class='nt-val'>Home, Manny Gonzalez; First, Steven Jaschinski; Second, Tom Hanahan; Third, Ron Kulpa</span>. <b>T</b>\u2014<span class='nt-val'>3:05</span>. <b>Att</b>\u2014<span class='nt-val'>12,394</span>.",
+    "recap": "",
+    "postponed": false,
+    "recap_height": 87,
+    "recap_words": 55,
+    "game_number": 1
+  },
+  {
+    "game_pk": 823121,
+    "title": "Seattle 6, L.A. Angels 2",
+    "away": {
+      "name": "L.A. Angels",
+      "abbr": "LAA",
+      "batters": [
+        {
+          "name": "Neto ss",
+          "ab": 3,
+          "r": 2,
+          "h": 2,
+          "bi": 1,
+          "bb": 1,
+          "so": 1,
+          "avg": ".226",
+          "season_ab": 327
+        },
+        {
+          "name": "Guzman 3b",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 1,
+          "bb": 0,
+          "so": 1,
+          "avg": ".268",
+          "season_ab": 71
+        },
+        {
+          "name": "Schanuel 1b",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".262",
+          "season_ab": 252
+        },
+        {
+          "name": "Soler dh",
+          "ab": 3,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".223",
+          "season_ab": 233
+        },
+        {
+          "name": "Meckler lf",
+          "ab": 3,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".284",
+          "season_ab": 102
+        },
+        {
+          "name": "Siri ph",
+          "ab": 1,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".264",
+          "season_ab": 72
+        },
+        {
+          "name": "Adell rf",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".249",
+          "season_ab": 334
+        },
+        {
+          "name": "Peraza 2b",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".255",
+          "season_ab": 239
+        },
+        {
+          "name": "Lowe cf",
+          "ab": 3,
+          "r": 0,
+          "h": 2,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".214",
+          "season_ab": 140
+        },
+        {
+          "name": "O'Hoppe c",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".231",
+          "season_ab": 182
+        }
+      ],
+      "totals": {
+        "ab": 32,
+        "r": 2,
+        "h": 8,
+        "bi": 2,
+        "bb": 2,
+        "so": 8
+      },
+      "pitchers": [
+        {
+          "name": "Johnson L, 1-3",
+          "ip": "5",
+          "h": 4,
+          "r": 3,
+          "er": 1,
+          "bb": 0,
+          "so": 3,
+          "np": 81,
+          "era": "7.40",
+          "note": "(L, 1-3)"
+        },
+        {
+          "name": "Farris",
+          "ip": "3",
+          "h": 2,
+          "r": 3,
+          "er": 3,
+          "bb": 2,
+          "so": 3,
+          "np": 46,
+          "era": "3.93",
+          "note": ""
+        }
+      ]
+    },
+    "home": {
+      "name": "Seattle",
+      "abbr": "SEA",
+      "batters": [
+        {
+          "name": "Crawford 3b",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".218",
+          "season_ab": 243
+        },
+        {
+          "name": "Rodriguez cf",
+          "ab": 3,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".254",
+          "season_ab": 339
+        },
+        {
+          "name": "Canzone dh",
+          "ab": 4,
+          "r": 1,
+          "h": 1,
+          "bi": 1,
+          "bb": 0,
+          "so": 1,
+          "avg": ".273",
+          "season_ab": 194
+        },
+        {
+          "name": "Arozarena lf",
+          "ab": 3,
+          "r": 1,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".280",
+          "season_ab": 286
+        },
+        {
+          "name": "Naylor 1b",
+          "ab": 3,
+          "r": 2,
+          "h": 0,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".254",
+          "season_ab": 311
+        },
+        {
+          "name": "Raleigh c",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 2,
+          "bb": 0,
+          "so": 2,
+          "avg": ".167",
+          "season_ab": 204
+        },
+        {
+          "name": "Young 2b",
+          "ab": 3,
+          "r": 2,
+          "h": 3,
+          "bi": 3,
+          "bb": 0,
+          "so": 0,
+          "avg": ".260",
+          "season_ab": 311
+        },
+        {
+          "name": "Robles rf",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".232",
+          "season_ab": 69
+        },
+        {
+          "name": "Emerson ss",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 2,
+          "avg": ".200",
+          "season_ab": 115
+        }
+      ],
+      "totals": {
+        "ab": 30,
+        "r": 6,
+        "h": 6,
+        "bi": 6,
+        "bb": 2,
+        "so": 6
+      },
+      "pitchers": [
+        {
+          "name": "Kirby W, 7-7",
+          "ip": "8",
+          "h": 7,
+          "r": 2,
+          "er": 2,
+          "bb": 1,
+          "so": 7,
+          "np": 100,
+          "era": "3.81",
+          "note": "(W, 7-7)"
+        },
+        {
+          "name": "Ferrer",
+          "ip": "1",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 1,
+          "so": 1,
+          "np": 19,
+          "era": "2.50",
+          "note": ""
+        }
+      ]
+    },
+    "away_runs": 2,
+    "home_runs": 6,
+    "away_hits": 8,
+    "home_hits": 6,
+    "away_errors": 1,
+    "home_errors": 0,
+    "away_line": "101 000 000",
+    "home_line": "001 203 00x",
+    "away_innings": [
+      "1",
+      "0",
+      "1",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "home_innings": [
+      "0",
+      "0",
+      "1",
+      "2",
+      "0",
+      "3",
+      "0",
+      "0",
+      "x"
+    ],
+    "bat_notes": "<b>E</b>\u2014<span class='nt-val'>Guzman (2)</span>. <b>LOB</b>\u2014<span class='nt-val'>L.A. Angels 5, Seattle 3</span>. <b>2B</b>\u2014<span class='nt-val'>Neto (17); Lowe (4)</span>. <b>HR</b>\u2014<span class='nt-val'>Neto (18) off Kirby; Young (8) off Johnson, Young (9) off Farris, Canzone (13) off Farris</span>. <b>SB</b>\u2014<span class='nt-val'>Naylor (15)</span>. <b>GIDP</b>\u2014<span class='nt-val'>Schanuel; Adell; Peraza; Canzone</span>. <b>DP</b>\u2014<span class='nt-val'>L.A. Angels 1 (Schanuel, Neto); Seattle 2 (Young, Emerson, Naylor), (2 Emerson, Young, Naylor)</span>.",
+    "pit_notes": "<b>HBP</b>\u2014<span class='nt-val'>Arozarena (by Johnson)</span>. <b>Umpires</b>\u2014<span class='nt-val'>Home, Chris Guccione; First, Nestor Ceja; Second, Charlie Ramos; Third, David Rackley</span>. <b>T</b>\u2014<span class='nt-val'>2:10</span>. <b>Att</b>\u2014<span class='nt-val'>37,100</span>.",
+    "recap": "",
+    "postponed": false,
+    "recap_height": 143,
+    "recap_words": 91,
+    "game_number": 1
+  },
+  {
+    "game_pk": 825065,
+    "title": "Arizona 5, Giants 4",
+    "away": {
+      "name": "Giants",
+      "abbr": "SF",
+      "batters": [
+        {
+          "name": "Chapman 3b",
+          "ab": 5,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".237",
+          "season_ab": 304
+        },
+        {
+          "name": "Arraez 2b",
+          "ab": 4,
+          "r": 0,
+          "h": 2,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".326",
+          "season_ab": 313
+        },
+        {
+          "name": "Schmitt ss",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 1,
+          "bb": 0,
+          "so": 0,
+          "avg": ".287",
+          "season_ab": 300
+        },
+        {
+          "name": "Devers 1b",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".240",
+          "season_ab": 325
+        },
+        {
+          "name": "Ramos rf",
+          "ab": 4,
+          "r": 1,
+          "h": 1,
+          "bi": 1,
+          "bb": 0,
+          "so": 0,
+          "avg": ".267",
+          "season_ab": 172
+        },
+        {
+          "name": "Eldridge dh",
+          "ab": 4,
+          "r": 1,
+          "h": 2,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".285",
+          "season_ab": 144
+        },
+        {
+          "name": "Bericoto lf",
+          "ab": 3,
+          "r": 1,
+          "h": 2,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".286",
+          "season_ab": 35
+        },
+        {
+          "name": "Lee ph",
+          "ab": 1,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".321",
+          "season_ab": 287
+        },
+        {
+          "name": "Haase c",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".182",
+          "season_ab": 66
+        },
+        {
+          "name": "Cavanaugh ph",
+          "ab": 1,
+          "r": 0,
+          "h": 1,
+          "bi": 1,
+          "bb": 0,
+          "so": 0,
+          "avg": ".286",
+          "season_ab": 7
+        },
+        {
+          "name": "Cox cf",
+          "ab": 1,
+          "r": 0,
+          "h": 0,
+          "bi": 1,
+          "bb": 0,
+          "so": 0,
+          "avg": ".280",
+          "season_ab": 25
+        },
+        {
+          "name": "Gilbert ph-cf",
+          "ab": 1,
+          "r": 1,
+          "h": 0,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".232",
+          "season_ab": 164
+        }
+      ],
+      "totals": {
+        "ab": 34,
+        "r": 4,
+        "h": 9,
+        "bi": 4,
+        "bb": 1,
+        "so": 3
+      },
+      "pitchers": [
+        {
+          "name": "Mahle L, 1-8",
+          "ip": "4\u2153",
+          "h": 4,
+          "r": 4,
+          "er": 4,
+          "bb": 3,
+          "so": 3,
+          "np": 85,
+          "era": "5.67",
+          "note": "(L, 1-8)"
+        },
+        {
+          "name": "Hentges",
+          "ip": "\u2153",
+          "h": 1,
+          "r": 0,
+          "er": 0,
+          "bb": 2,
+          "so": 0,
+          "np": 16,
+          "era": "2.40",
+          "note": ""
+        },
+        {
+          "name": "Brubaker",
+          "ip": "3\u2153",
+          "h": 1,
+          "r": 1,
+          "er": 1,
+          "bb": 1,
+          "so": 0,
+          "np": 42,
+          "era": "2.74",
+          "note": ""
+        }
+      ]
+    },
+    "home": {
+      "name": "Arizona",
+      "abbr": "AZ",
+      "batters": [
+        {
+          "name": "Marte 2b",
+          "ab": 3,
+          "r": 2,
+          "h": 1,
+          "bi": 1,
+          "bb": 1,
+          "so": 0,
+          "avg": ".263",
+          "season_ab": 320
+        },
+        {
+          "name": "Perdomo ss",
+          "ab": 3,
+          "r": 0,
+          "h": 1,
+          "bi": 3,
+          "bb": 1,
+          "so": 1,
+          "avg": ".246",
+          "season_ab": 280
+        },
+        {
+          "name": "Carroll rf",
+          "ab": 2,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 2,
+          "so": 1,
+          "avg": ".276",
+          "season_ab": 301
+        },
+        {
+          "name": "Moreno c",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 1,
+          "so": 0,
+          "avg": ".276",
+          "season_ab": 192
+        },
+        {
+          "name": "Gurriel Jr. dh",
+          "ab": 4,
+          "r": 0,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".220",
+          "season_ab": 132
+        },
+        {
+          "name": "Kepler lf",
+          "ab": 4,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 1,
+          "avg": ".000",
+          "season_ab": 9
+        },
+        {
+          "name": "Arenado 3b",
+          "ab": 2,
+          "r": 2,
+          "h": 2,
+          "bi": 1,
+          "bb": 1,
+          "so": 0,
+          "avg": ".243",
+          "season_ab": 268
+        },
+        {
+          "name": "P. Smith 1b",
+          "ab": 3,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".153",
+          "season_ab": 59
+        },
+        {
+          "name": "Vargas 1b",
+          "ab": 0,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".256",
+          "season_ab": 250
+        },
+        {
+          "name": "Troy cf",
+          "ab": 3,
+          "r": 1,
+          "h": 1,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".232",
+          "season_ab": 95
+        },
+        {
+          "name": "Barrosa cf",
+          "ab": 0,
+          "r": 0,
+          "h": 0,
+          "bi": 0,
+          "bb": 0,
+          "so": 0,
+          "avg": ".179",
+          "season_ab": 106
+        }
+      ],
+      "totals": {
+        "ab": 27,
+        "r": 5,
+        "h": 6,
+        "bi": 5,
+        "bb": 6,
+        "so": 3
+      },
+      "pitchers": [
+        {
+          "name": "Rodriguez W, 7-2",
+          "ip": "7",
+          "h": 5,
+          "r": 1,
+          "er": 1,
+          "bb": 0,
+          "so": 1,
+          "np": 91,
+          "era": "2.21",
+          "note": "(W, 7-2)"
+        },
+        {
+          "name": "Ginkel",
+          "ip": "\u2154",
+          "h": 1,
+          "r": 1,
+          "er": 1,
+          "bb": 1,
+          "so": 1,
+          "np": 15,
+          "era": "3.06",
+          "note": ""
+        },
+        {
+          "name": "Garcia H, 8",
+          "ip": "\u2153",
+          "h": 0,
+          "r": 0,
+          "er": 0,
+          "bb": 0,
+          "so": 1,
+          "np": 3,
+          "era": "2.45",
+          "note": "(H, 8)"
+        },
+        {
+          "name": "Sewald S, 19-20",
+          "ip": "1",
+          "h": 3,
+          "r": 2,
+          "er": 2,
+          "bb": 0,
+          "so": 0,
+          "np": 19,
+          "era": "4.50",
+          "note": "(S, 19)"
+        }
+      ]
+    },
+    "away_runs": 4,
+    "home_runs": 5,
+    "away_hits": 9,
+    "home_hits": 6,
+    "away_errors": 0,
+    "home_errors": 1,
+    "away_line": "000 010 012",
+    "home_line": "100 031 00x",
+    "away_innings": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "1",
+      "0",
+      "0",
+      "1",
+      "2"
+    ],
+    "home_innings": [
+      "1",
+      "0",
+      "0",
+      "0",
+      "3",
+      "1",
+      "0",
+      "0",
+      "x"
+    ],
+    "bat_notes": "<b>E</b>\u2014<span class='nt-val'>Arenado (4)</span>. <b>LOB</b>\u2014<span class='nt-val'>Giants 6, Arizona 4</span>. <b>2B</b>\u2014<span class='nt-val'>Arraez (18); Perdomo (12); Gurriel Jr. (7)</span>. <b>HR</b>\u2014<span class='nt-val'>Ramos (5) off Sewald; Marte (16) off Mahle, Arenado (9) off Brubaker</span>. <b>CS</b>\u2014<span class='nt-val'>Perdomo (8)</span>. <b>SF</b>\u2014<span class='nt-val'>Schmitt</span>. <b>GIDP</b>\u2014<span class='nt-val'>Ramos; Moreno</span>. <b>DP</b>\u2014<span class='nt-val'>Giants 2 (Chapman, Arraez, Devers), (Arraez, Devers); Arizona 1 (Perdomo, Marte, P. Smith)</span>.",
+    "pit_notes": "<b>WP</b>\u2014<span class='nt-val'>Hentges</span>. <b>Inherited runners-scored</b>\u2014<span class='nt-val'>Hentges 3-3; Brubaker 2-0; Garcia 1-0</span>. <b>Umpires</b>\u2014<span class='nt-val'>Home, Tripp Gibson; First, Ryan Blakney; Second, Nick Mahrley; Third, Ben May</span>. <b>T</b>\u2014<span class='nt-val'>2:28</span>. <b>Att</b>\u2014<span class='nt-val'>18,838</span>.",
+    "recap": "",
+    "postponed": false,
+    "recap_height": 86,
+    "recap_words": 54,
+    "game_number": 1
+  }
+]

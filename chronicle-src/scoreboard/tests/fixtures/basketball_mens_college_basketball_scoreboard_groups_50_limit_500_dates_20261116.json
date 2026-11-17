@@ -1,0 +1,76 @@
+{
+ "leagues": [
+  {
+   "season": {
+    "type": {
+     "type": 2
+    }
+   }
+  }
+ ],
+ "events": [
+  {
+   "id": "704",
+   "date": "2026-11-17T02:00Z",
+   "name": "",
+   "competitions": [
+    {
+     "id": "704",
+     "date": "2026-11-17T02:00Z",
+     "competitors": [
+      {
+       "homeAway": "away",
+       "team": {
+        "id": "24",
+        "location": "Stanford",
+        "name": "Cardinal",
+        "abbreviation": "STAN",
+        "displayName": "Stanford Cardinal",
+        "shortDisplayName": "Cardinal"
+       }
+      },
+      {
+       "homeAway": "home",
+       "team": {
+        "id": "2250",
+        "location": "Gonzaga",
+        "name": "Bulldogs",
+        "abbreviation": "GONZ",
+        "displayName": "Gonzaga Bulldogs",
+        "shortDisplayName": "Bulldogs"
+       },
+       "curatedRank": {
+        "current": 12
+       }
+      }
+     ],
+     "status": {
+      "type": {
+       "state": "pre",
+       "completed": false,
+       "detail": "Final",
+       "shortDetail": "Final",
+       "name": "STATUS_SCHEDULED"
+      }
+     },
+     "neutralSite": false,
+     "odds": [
+      {
+       "details": "GONZ -9.5",
+       "overUnder": 151.5
+      }
+     ]
+    }
+   ],
+   "status": {
+    "type": {
+     "state": "pre",
+     "completed": false,
+     "detail": "Final",
+     "shortDetail": "Final",
+     "name": "STATUS_SCHEDULED"
+    }
+   }
+  }
+ ]
+}

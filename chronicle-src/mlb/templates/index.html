@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baseball — {{ date_str }}</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="page">
+
+  <!-- ══ MASTHEAD ══ -->
+  <div class="masthead-top">
+    <span class="mh-page">B4</span>
+    <span class="mh-divider">|</span>
+    <span class="mh-date-bold">{{ date_str }}</span>
+    <span class="mh-divider">|</span>
+    <span class="mh-site">SFCHRONICLE.COM</span>
+    <span class="mh-stars">★★★★★●</span>
+  </div>
+  <div class="mh-banner">
+    <span class="mh-banner-title">Baseball</span>
+  </div>
+ 
+
+  <!-- ══ STANDINGS ══ -->
+  <div class="standings-wrap">
+    {% for league in ["NL", "AL"] %}
+    <div class="league-block">
+      <div class="league-row">
+        <div class="lg-letter">{{ league }}</div>
+        <div class="divs-wrap">
+          {% for div_id in div_order[league] %}
+            {% set div = standings[league].get(div_id) %}
+            {% if div %}
+            <div>
+              <table class="st">
+                <thead>
+                  <tr>
+                    <!-- Division name replaces the blank team name header -->
+                    <th class="st-div">{{ div.name }}</th>
+                    <th>W</th><th>L</th><th>Pct</th><th>GB</th>
+                    <th>Streak</th><th>L10</th><th>Home</th><th>Away</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for t in div.teams %}
+                  <tr class="st-row">
+                    <td class="st-name">{{ t.name }}</td>
+                    <td>{{ t.wins }}</td>
+                    <td>{{ t.losses }}</td>
+                    <td>{{ t.pct }}</td>
+                    <td>{{ t.gb }}</td>
+                    <td>{{ t.streak }}</td>
+                    <td>{{ t.l10 }}</td>
+                    <td>{{ t.home }}</td>
+                    <td>{{ t.away }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ══ BEST OF THE DAY + SCHEDULE ══ -->
+  <div class="botd-row">
+    <div class="botd-content">
+      <div class="botd-header-row">
+        <span class="botd-label">BEST OF THE DAY</span>
+        {% if botd and botd.get('headline') %}
+        <span class="botd-headline">{{ botd.get('headline', '') }}</span>
+        {% endif %}
+      </div>
+      {% if botd and botd.get('story') %}
+      <div class="botd-inner">
+        <div class="botd-text-col">
+          <div class="botd-body">{{ botd.get('story_html', '') | safe }}</div>
+          <div class="botd-source">Luke Firoozye</div>
+        </div>
+        <div class="botd-photo-col">
+          {% if botd.get('photo') %}
+          <img src="{{ botd.photo }}" alt="Best of the Day photo" class="botd-photo">
+          {% else %}
+          <div class="botd-photo-placeholder">Photo</div>
+          {% endif %}
+          <div class="botd-photo-credit">{{ botd.get('photo_credit', '') }}</div>
+        </div>
+      </div>
+      {% else %}
+      <div class="botd-empty">No Best of the Day written. <a href="/admin">Go to admin</a> to write one.</div>
+      {% endif %}
+    </div>
+
+    <div class="sched-wrap">
+      <div class="sched-hdr">{{ schedule.today.label|upper }}</div>
+      <table class="sch">
+        <thead>
+          <tr><th>Visitor</th><th>Home</th><th>Time</th></tr>
+        </thead>
+        <tbody>
+          {% for g in schedule.today.games %}
+          <tr>
+            <td><b>{{ g.away }}</b> ({{ g.away_pitcher }})</td>
+            <td><b>{{ g.home }}</b> ({{ g.home_pitcher }})</td>
+            <td>{{ g.time }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="tom-hdr">{{ schedule.tomorrow.label }}</div>
+      <div class="tom-grid">
+        {% set tom = schedule.tomorrow.games %}
+        {% set mid = ((tom|length) / 2)|round(0, 'ceil')|int %}
+        <div>{% for g in tom[:mid] %}<div>{{ g.away }} at {{ g.home }}, {{ g.time }}</div>{% endfor %}</div>
+        <div>{% for g in tom[mid:] %}<div>{{ g.away }} at {{ g.home }}, {{ g.time }}</div>{% endfor %}</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+<!-- ══ BOX SCORE GRID ══ -->
+  <div class="bsgrid">
+    {% for game in boxscores %}
+ 
+    {% if game.get('postponed') %}
+    <div class="cell cell--ppd">
+      <div class="ppd-title">{{ game.title }}</div>
+    </div>
+    {% else %}
+    <div class="cell">
+      <div class="cell-top">
+        <div class="gtitle">{{ game.title }}</div>
+      </div>
+      <div class="recap-area">
+        <div class="recap-text">{{ game.recap }}</div>
+      </div>
+      <div class="cell-stats">
+ 
+        <table class="bat">
+          <thead><tr>
+            <th class="bat-name">{{ game.away.name }}</th>
+            <th>AB</th><th>R</th><th>H</th><th>BI</th><th>BB</th><th>SO</th><th>Avg</th>
+          </tr></thead>
+          <tbody>
+            {% for b in game.away.batters %}
+            <tr>
+              <td class="bat-name">{{ b.name }}</td>
+              <td>{{ b.ab }}</td><td>{{ b.r }}</td><td>{{ b.h }}</td>
+              <td>{{ b.bi }}</td><td>{{ b.bb }}</td><td>{{ b.so }}</td>
+              <td>{{ '—' if (b.avg in ('.000', '.---') and b.season_ab == 0) else b.avg }}</td>
+            </tr>
+            {% endfor %}
+            <tr class="tot">
+              <td class="bat-name">Totals</td>
+              <td>{{ game.away.totals.ab }}</td><td>{{ game.away.totals.r }}</td>
+              <td>{{ game.away.totals.h }}</td><td>{{ game.away.totals.bi }}</td>
+              <td>{{ game.away.totals.bb }}</td><td>{{ game.away.totals.so }}</td><td></td>
+            </tr>
+          </tbody>
+        </table>
+ 
+        <div class="bat-gap"></div>
+ 
+        <table class="bat">
+          <thead><tr>
+            <th class="bat-name">{{ game.home.name }}</th>
+            <th>AB</th><th>R</th><th>H</th><th>BI</th><th>BB</th><th>SO</th><th>Avg</th>
+          </tr></thead>
+          <tbody>
+            {% for b in game.home.batters %}
+            <tr>
+              <td class="bat-name">{{ b.name }}</td>
+              <td>{{ b.ab }}</td><td>{{ b.r }}</td><td>{{ b.h }}</td>
+              <td>{{ b.bi }}</td><td>{{ b.bb }}</td><td>{{ b.so }}</td>
+              <td>{{ '—' if (b.avg in ('.000', '.---') and b.season_ab == 0) else b.avg }}</td>
+            </tr>
+            {% endfor %}
+            <tr class="tot">
+              <td class="bat-name">Totals</td>
+              <td>{{ game.home.totals.ab }}</td><td>{{ game.home.totals.r }}</td>
+              <td>{{ game.home.totals.h }}</td><td>{{ game.home.totals.bi }}</td>
+              <td>{{ game.home.totals.bb }}</td><td>{{ game.home.totals.so }}</td><td></td>
+            </tr>
+          </tbody>
+        </table>
+ 
+        <div class="ls">
+          <table class="ls-table">
+            <tbody>
+              <tr>
+                <td class="ls-tm">{{ game.away.name }}</td>
+                {% for run in game.away_innings %}
+                <td class="ls-inn{% if loop.index % 3 == 0 and not loop.last %} ls-grp{% endif %}">{{ run }}</td>
+                {% endfor %}
+                <td class="ls-dash">—</td>
+                <td class="ls-rhe">{{ game.away_runs }}</td>
+                <td class="ls-rhe">{{ game.away_hits }}</td>
+                <td class="ls-rhe">{{ game.away_errors }}</td>
+              </tr>
+              <tr>
+                <td class="ls-tm">{{ game.home.name }}</td>
+                {% for run in game.home_innings %}
+                <td class="ls-inn{% if loop.index % 3 == 0 and not loop.last %} ls-grp{% endif %}">{{ run }}</td>
+                {% endfor %}
+                <td class="ls-dash">—</td>
+                <td class="ls-rhe">{{ game.home_runs }}</td>
+                <td class="ls-rhe">{{ game.home_hits }}</td>
+                <td class="ls-rhe">{{ game.home_errors }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+ 
+        <hr class="thin">
+        <div class="nt">{{ game.bat_notes|safe }}</div>
+ 
+        <table class="pit">
+          <thead><tr>
+            <th class="pit-name">{{ game.away.name }}</th>
+            <th>IP</th><th>H</th><th>R</th><th>ER</th><th>BB</th><th>SO</th><th>NP</th><th>ERA</th>
+          </tr></thead>
+          <tbody>
+            {% for p in game.away.pitchers %}
+            <tr>
+              <td class="pit-name">{{ p.name }}</td>
+              <td>{{ p.ip }}</td><td>{{ p.h }}</td><td>{{ p.r }}</td><td>{{ p.er }}</td>
+              <td>{{ p.bb }}</td><td>{{ p.so }}</td><td>{{ p.np }}</td><td>{{ p.era }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+ 
+        <div class="pit-gap"></div>
+ 
+        <table class="pit">
+          <thead><tr>
+            <th class="pit-name">{{ game.home.name }}</th>
+            <th>IP</th><th>H</th><th>R</th><th>ER</th><th>BB</th><th>SO</th><th>NP</th><th>ERA</th>
+          </tr></thead>
+          <tbody>
+            {% for p in game.home.pitchers %}
+            <tr>
+              <td class="pit-name">{{ p.name }}</td>
+              <td>{{ p.ip }}</td><td>{{ p.h }}</td><td>{{ p.r }}</td><td>{{ p.er }}</td>
+              <td>{{ p.bb }}</td><td>{{ p.so }}</td><td>{{ p.np }}</td><td>{{ p.era }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+ 
+        <hr class="thin">
+        <div class="nt">{{ game.pit_notes|safe }}</div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+
+    {% if show_leaders %}
+    <!-- Leaders cell — NL on top, AL below, no toggle -->
+    <div class="cell cell--leaders">
+      <div class="cell-top"><div class="gtitle">&nbsp;</div></div>
+      <div class="leaders-inner">
+        <div class="lsub">Through yesterday's games</div>
+
+        {% for league in ["NL", "AL"] %}
+        <div class="leaders-block">
+          <div class="leaders-block-hdr">{{ league }} Leaders</div>
+          <table class="ltab">
+            <thead><tr>
+              <th class="lt-name"></th>
+              <th>G</th><th>AB</th><th>R</th><th>H</th><th>Avg.</th>
+            </tr></thead>
+            <tbody>
+              {% for entry in leaders.get(league, {}).get('BATTING AVG', []) %}
+              <tr>
+                <td class="lt-name"><b>{{ entry.name }}</b> <em>{{ entry.team }}</em></td>
+                <td>{{ entry.get('g','') }}</td>
+                <td>{{ entry.get('ab','') }}</td>
+                <td>{{ entry.get('r','') }}</td>
+                <td>{{ entry.get('h','') }}</td>
+                <td>{{ entry.value }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <div class="lnt">
+            {% for label, entries in leaders.get(league, {}).items() %}
+            {% if label != 'BATTING AVG' %}
+            <b>{{ label }}—</b>{% for e in entries %}{{ e.name }}, {{ e.team }}, {{ e.value }}{% if not loop.last %}; {% endif %}{% endfor %}. 
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+{% endif %}
+
+{% if show_transactions %}
+    <!-- Transactions cell -->
+    <div class="cell cell--sidebar">
+      <div class="sidebar-hdr">Transactions</div>
+      {% for league in ["AL", "NL"] %}
+      {% if transactions.get(league) %}
+      <div class="txn-league-label">{{ 'American League' if league == 'AL' else 'National League' }}</div>
+      <div class="txn-list">
+        {% for t in transactions[league] %}
+        <div><b>{{ t.team|upper }}</b> – {{ t.text }}</div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if show_otd %}
+    <!-- On This Date cell -->
+    <div class="cell cell--sidebar">
+      <div class="sidebar-hdr">On This Date</div>
+      <div class="txn-league-label">{{ otd_date_str }}</div>
+      {% if otd and otd.get('events') %}
+      {% for ev in otd.events %}
+      <div class="otd-text"><b>{{ ev.year }}</b> — {{ ev.text }}</div>
+      {% endfor %}
+      {% endif %}
+    </div>
+    {% endif %}
+
+  </div><!-- /bsgrid -->
+</div><!-- /page -->
+</body>
+</html>

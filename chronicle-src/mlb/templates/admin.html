@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — MLB Chronicle</title>
+<link rel="stylesheet" href="/static/style.css">
+<style>
+.admin-page{background:#f5f0e8;min-height:100vh;padding:16px 20px;font-family:'Ford Antenna',sans-serif;font-size:11px;color:#111}
+.admin-header{border-top:3px solid #111;border-bottom:1px solid #111;padding:4px 0;margin-bottom:12px;display:flex;align-items:baseline;gap:12px}
+.admin-header h1{font-size:18px;font-weight:900;letter-spacing:-0.5px}
+.admin-header a{font-size:9px;color:#555;text-decoration:none;border:0.5px solid #888;padding:2px 6px}
+.admin-header a:hover{background:#111;color:#f5f0e8}
+.section-hdr{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;border-top:2px solid #111;border-bottom:1px solid #111;padding:4px 0;margin-bottom:10px}
+.botd-card{border:2px solid #111;margin-bottom:20px;background:#fff}
+.botd-card-header{background:#111;color:#f5f0e8;padding:5px 10px;font-size:11px;font-weight:700;letter-spacing:0.3px}
+.botd-card-body{padding:12px 14px}
+.game-card{border:0.5px solid #999;margin-bottom:12px;background:#fff}
+.game-card-header{background:#111;color:#f5f0e8;padding:4px 8px;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:space-between}
+.game-card-body{padding:10px 12px}
+.form-row{margin-bottom:8px}
+.form-row label{display:block;font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:3px;color:#444}
+.form-row textarea{width:100%;border:0.5px solid #bbb;padding:5px 7px;font-family:'Farnham Display','PT Serif',Georgia,serif;font-size:10px;line-height:1.5;background:#f9f7f2;resize:vertical;min-height:80px;color:#111}
+.form-row input[type=text]{width:100%;border:0.5px solid #bbb;padding:4px 7px;font-family:'Ford Antenna',sans-serif;font-size:10px;background:#f9f7f2;color:#111}
+.form-row input[type=file]{font-size:9px;color:#555}
+.word-counter{display:flex;align-items:center;gap:10px;margin-top:3px;font-size:8.5px;color:#555}
+.word-count-num{font-weight:700;color:#111}
+.fit-bar-wrap{flex:1;height:6px;background:#ddd;border-radius:3px;overflow:hidden}
+.fit-bar{height:100%;border-radius:3px;transition:width 0.15s,background 0.15s;background:#2d6a2d}
+.fit-bar.warn{background:#c8a84b}
+.fit-bar.over{background:#b02020}
+.fit-label{font-size:8px;white-space:nowrap}
+
+.btn-save{background:#111;color:#f5f0e8;border:none;padding:5px 14px;font-family:'Ford Antenna',sans-serif;font-size:9px;font-weight:700;cursor:pointer;text-transform:uppercase;letter-spacing:0.5px;margin-top:4px}
+.btn-save:hover{background:#333}
+.photo-preview{max-width:120px;max-height:120px;margin-top:4px;border:0.5px solid #ccc}
+.saved-badge{display:inline-block;background:#2d6a2d;color:#fff;font-size:8px;padding:1px 6px;margin-left:8px;vertical-align:middle}
+ 
+/* Live preview: an exact mini box-score cell using the real site CSS classes */
+.live-preview-wrap{display:grid;grid-template-columns:160.562px 1fr;gap:14px;align-items:start}
+.live-preview-cell{width:160.562px}
+.live-preview-cell .cell{width:160.562px}
+.live-preview-cell .recap-text{display:none}
+.live-preview-cell textarea.live-recap-input{
+  font-family:'Ford Antenna', sans-serif;
+  font-weight:400;
+  font-size:8px;
+  line-height:1.45;
+  color:#111;
+  width:100%;
+  height:100%;
+  border:none;
+  outline:none;
+  background:transparent;
+  resize:none;
+  padding:0;
+  overflow:hidden;
+}
+.live-preview-cell .recap-area{ position:relative; }
+.live-preview-overflow-flag{display:none;font-size:8px;color:#b02020;font-weight:700;margin-top:4px}
+.live-preview-overflow-flag.visible{display:block}
+</style>
+</head>
+<body>
+<div class="admin-page">
+  <div class="admin-header">
+    <h1>MLB Chronicle — Admin</h1>
+    <a href="/">← View page</a>
+  </div>
+
+  <!-- ══ BEST OF THE DAY — standalone section ══ -->
+  <div class="section-hdr">Best of the Day</div>
+  <div class="botd-card">
+    <div class="botd-card-header">★ Best of the Day Story</div>
+    <div class="botd-card-body">
+      <form action="/save_botd" method="POST" enctype="multipart/form-data">
+
+        <div class="form-row">
+          <label>Headline (e.g. "Angels 10, Mariners 9")</label>
+          <input type="text" name="botd_headline" value="{{ botd.get('headline', '') }}" placeholder="e.g. Angels 10, Mariners 9">
+        </div>
+
+        <div class="form-row">
+          <label>Dateline (e.g. "ANAHEIM —")</label>
+          <input type="text" name="botd_dateline" value="{{ botd.get('dateline', '') }}" placeholder="e.g. ANAHEIM —">
+        </div>
+
+        <div class="form-row">
+          <label>Story</label>
+          <textarea name="botd_story" placeholder="Write the Best of the Day player feature here..." style="min-height:160px">{{ botd.get('story', '') }}</textarea>
+        </div>
+
+        <div class="form-row">
+          <label>Photo</label>
+          {% if botd.get('photo') %}
+          <img src="{{ botd.photo }}" class="photo-preview"><br>
+          {% endif %}
+          <input type="file" name="photo" accept="image/*">
+        </div>
+
+        <div class="form-row">
+          <label>Photo credit (e.g. "Sean M. Haffey / Getty Images")</label>
+          <input type="text" name="photo_credit" value="{{ botd.get('photo_credit', '') }}" placeholder="e.g. Sean M. Haffey / Getty Images">
+        </div>
+
+        <button type="submit" class="btn-save">Save Best of the Day</button>
+        {% if botd.get('story') %}
+        <span class="saved-badge">Saved</span>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+
+  <!-- ══ ON THIS DATE — standalone section ══ -->
+  <div class="section-hdr">On This Date</div>
+  <div class="botd-card">
+    <div class="botd-card-header">On This Date</div>
+    <div class="botd-card-body">
+      <form action="/save_otd" method="POST">
+        <div class="form-row">
+          <label>Events — one per line, formatted as: Year — Event text</label>
+          <textarea name="otd_text" placeholder="1917 — In baseball's greatest relief effort, Ernie Shore of the Boston Red Sox came in for Babe Ruth...
+1932 — Lou Gehrig plays his 1,103rd successive game in a New York uniform...
+1950 — Hoot Evers' winning home run in the ninth inning gave the Detroit Tigers a 10-9 victory..." style="min-height:160px">{{ otd.get('raw_text', '') }}</textarea>
+        </div>
+        <button type="submit" class="btn-save">Save On This Date</button>
+        {% if otd.get('events') %}
+        <span class="saved-badge">Saved</span>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+
+   <!-- ══ BOX SCORE RECAPS ══ -->
+  <div class="section-hdr">Box Score Recaps</div>
+ 
+  {% for game in games %}
+  {% set recap = recaps.get(game.game_pk|string, {}) %}
+  <div class="game-card">
+    <div class="game-card-header">
+      <span>{{ game.title }}</span>
+      {% if recap.get('text') %}
+      <span style="background:#2d6a2d;color:#fff;font-size:8px;padding:1px 6px;">✓ Saved</span>
+      {% endif %}
+    </div>
+    <div class="game-card-body">
+      <form action="/save_recap" method="POST">
+        <input type="hidden" name="game_pk" value="{{ game.game_pk }}">
+ 
+        {% if game.get('postponed') %}
+        <div class="form-row">
+          <label>Postponement note</label>
+          <textarea name="text" style="min-height:50px" placeholder="e.g. Postponed due to rain. Will be made up July 4.">{{ recap.get('text', '') }}</textarea>
+        </div>
+ 
+        {% else %}
+        <div class="form-row">
+          <label>Recap — live preview is the exact box score cell</label>
+          <div class="live-preview-wrap">
+ 
+            <div class="live-preview-cell">
+              <div class="cell" style="overflow:visible">
+                <div class="cell-top">
+                  <div class="gtitle">{{ game.title }}</div>
+                </div>
+                <div class="recap-area">
+                  <textarea name="text" class="recap-ta live-recap-input" data-pk="{{ game.game_pk }}" placeholder="Write your game recap here..." oninput="updateCounter(this); updateLivePreview(this); scheduleAutoSave(this)">{{ recap.get('text', '') }}</textarea>
+                </div>
+                <div class="cell-stats">
+ 
+                  <table class="bat">
+                    <thead><tr>
+                      <th class="bat-name">{{ game.away.name }}</th>
+                      <th>AB</th><th>R</th><th>H</th><th>BI</th><th>BB</th><th>SO</th><th>Avg</th>
+                    </tr></thead>
+                    <tbody>
+                      {% for b in game.away.batters %}
+                      <tr>
+                        <td class="bat-name">{{ b.name }}</td>
+                        <td>{{ b.ab }}</td><td>{{ b.r }}</td><td>{{ b.h }}</td>
+                        <td>{{ b.bi }}</td><td>{{ b.bb }}</td><td>{{ b.so }}</td>
+                        <td>{{ '—' if (b.avg in ('.000', '.---') and b.season_ab == 0) else b.avg }}</td>
+                      </tr>
+                      {% endfor %}
+                      <tr class="tot">
+                        <td class="bat-name">Totals</td>
+                        <td>{{ game.away.totals.ab }}</td><td>{{ game.away.totals.r }}</td>
+                        <td>{{ game.away.totals.h }}</td><td>{{ game.away.totals.bi }}</td>
+                        <td>{{ game.away.totals.bb }}</td><td>{{ game.away.totals.so }}</td><td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+ 
+                  <div class="bat-gap"></div>
+ 
+                  <table class="bat">
+                    <thead><tr>
+                      <th class="bat-name">{{ game.home.name }}</th>
+                      <th>AB</th><th>R</th><th>H</th><th>BI</th><th>BB</th><th>SO</th><th>Avg</th>
+                    </tr></thead>
+                    <tbody>
+                      {% for b in game.home.batters %}
+                      <tr>
+                        <td class="bat-name">{{ b.name }}</td>
+                        <td>{{ b.ab }}</td><td>{{ b.r }}</td><td>{{ b.h }}</td>
+                        <td>{{ b.bi }}</td><td>{{ b.bb }}</td><td>{{ b.so }}</td>
+                        <td>{{ '—' if (b.avg in ('.000', '.---') and b.season_ab == 0) else b.avg }}</td>
+                      </tr>
+                      {% endfor %}
+                      <tr class="tot">
+                        <td class="bat-name">Totals</td>
+                        <td>{{ game.home.totals.ab }}</td><td>{{ game.home.totals.r }}</td>
+                        <td>{{ game.home.totals.h }}</td><td>{{ game.home.totals.bi }}</td>
+                        <td>{{ game.home.totals.bb }}</td><td>{{ game.home.totals.so }}</td><td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+ 
+                  <div class="ls">
+                    <table class="ls-table">
+                      <tbody>
+                        <tr>
+                          <td class="ls-tm">{{ game.away.name }}</td>
+                          {% for run in game.away_innings %}
+                          <td class="ls-inn{% if loop.index % 3 == 0 and not loop.last %} ls-grp{% endif %}">{{ run }}</td>
+                          {% endfor %}
+                          <td class="ls-dash">—</td>
+                          <td class="ls-rhe">{{ game.away_runs }}</td>
+                          <td class="ls-rhe">{{ game.away_hits }}</td>
+                          <td class="ls-rhe">{{ game.away_errors }}</td>
+                        </tr>
+                        <tr>
+                          <td class="ls-tm">{{ game.home.name }}</td>
+                          {% for run in game.home_innings %}
+                          <td class="ls-inn{% if loop.index % 3 == 0 and not loop.last %} ls-grp{% endif %}">{{ run }}</td>
+                          {% endfor %}
+                          <td class="ls-dash">—</td>
+                          <td class="ls-rhe">{{ game.home_runs }}</td>
+                          <td class="ls-rhe">{{ game.home_hits }}</td>
+                          <td class="ls-rhe">{{ game.home_errors }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+ 
+                  <hr class="thin">
+                  <div class="nt">{{ game.bat_notes|safe }}</div>
+ 
+                  <table class="pit">
+                    <thead><tr>
+                      <th class="pit-name">{{ game.away.name }}</th>
+                      <th>IP</th><th>H</th><th>R</th><th>ER</th><th>BB</th><th>SO</th><th>NP</th><th>ERA</th>
+                    </tr></thead>
+                    <tbody>
+                      {% for p in game.away.pitchers %}
+                      <tr>
+                        <td class="pit-name">{{ p.name }}</td>
+                        <td>{{ p.ip }}</td><td>{{ p.h }}</td><td>{{ p.r }}</td><td>{{ p.er }}</td>
+                        <td>{{ p.bb }}</td><td>{{ p.so }}</td><td>{{ p.np }}</td><td>{{ p.era }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+ 
+                  <div class="bat-gap"></div>
+ 
+                  <table class="pit">
+                    <thead><tr>
+                      <th class="pit-name">{{ game.home.name }}</th>
+                      <th>IP</th><th>H</th><th>R</th><th>ER</th><th>BB</th><th>SO</th><th>NP</th><th>ERA</th>
+                    </tr></thead>
+                    <tbody>
+                      {% for p in game.home.pitchers %}
+                      <tr>
+                        <td class="pit-name">{{ p.name }}</td>
+                        <td>{{ p.ip }}</td><td>{{ p.h }}</td><td>{{ p.r }}</td><td>{{ p.er }}</td>
+                        <td>{{ p.bb }}</td><td>{{ p.so }}</td><td>{{ p.np }}</td><td>{{ p.era }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+ 
+                  <hr class="thin">
+                  <div class="nt">{{ game.pit_notes|safe }}</div>
+                </div>
+              </div>
+              <div class="live-preview-overflow-flag" id="overflow-{{ game.game_pk }}">⚠ Recap is overflowing the actual cell — trim the text</div>
+            </div>
+ 
+            <div>
+              <div class="word-counter" id="counter-{{ game.game_pk }}">
+                <span class="word-count-num" id="wc-{{ game.game_pk }}">0</span> words
+                <div class="fit-bar-wrap"><div class="fit-bar" id="bar-{{ game.game_pk }}" style="width:0%"></div></div>
+                <span class="fit-label" id="fit-{{ game.game_pk }}">—</span>
+              </div>
+              <div style="font-size:8px;margin-top:3px;height:12px" id="autosave-{{ game.game_pk }}"></div>
+              <p style="font-size:9px;color:#666;margin-top:8px;line-height:1.5">
+                This preview on the left renders the exact same CSS classes used on the live page, at full size. Type directly into the recap area — if your text pushes past the bottom of the box and a warning appears below it, the text is overflowing on the real page too.
+              </p>
+            </div>
+ 
+          </div>
+        </div>
+        {% endif %}
+ 
+        <button type="submit" class="btn-save">Save</button>
+      </form>
+    </div>
+  </div>
+  {% endfor %}
+ 
+  {% if not games %}
+  <p style="font-size:11px;color:#555;margin-top:20px">No completed games found for yesterday. Check back after games finish.</p>
+  {% endif %}
+</div>
+ 
+<script>
+const WARN_WORDS = 80;
+const MAX_WORDS  = 110;
+ 
+function countWords(text) {
+  return text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+}
+ 
+function updateCounter(ta) {
+  const pk  = ta.dataset.pk;
+  const wc  = countWords(ta.value);
+  const wcEl  = document.getElementById('wc-'  + pk);
+  const bar   = document.getElementById('bar-' + pk);
+  const label = document.getElementById('fit-' + pk);
+
+  // Real overflow signal: does the text exceed the actual recap area?
+  const isOverflowing = ta.scrollHeight > ta.clientHeight + 1;
+  const fillPct = Math.min((ta.clientHeight / Math.max(ta.scrollHeight, 1)) * 100, 100);
+  // When not overflowing, show how full the box is (closer to 100% = fuller)
+  const pct = isOverflowing ? 100 : (100 - fillPct) + (fillPct * 0); // placeholder, replaced below
+  const usedPct = isOverflowing ? 100 : Math.min((ta.scrollHeight / ta.clientHeight) * 100, 100);
+
+  wcEl.textContent = wc;
+  bar.style.width = usedPct + '%';
+
+  if (wc === 0) {
+    bar.className = 'fit-bar'; label.textContent = '—'; label.style.color = '#888';
+  } else if (!isOverflowing && usedPct < 85) {
+    bar.className = 'fit-bar'; label.textContent = 'Good fit'; label.style.color = '#2d6a2d';
+  } else if (!isOverflowing) {
+    bar.className = 'fit-bar warn'; label.textContent = 'Getting tight'; label.style.color = '#a07000';
+  } else {
+    bar.className = 'fit-bar over'; label.textContent = 'Overflowing — trim text'; label.style.color = '#b02020';
+  }
+}
+ 
+function updateLivePreview(ta) {
+  const pk = ta.dataset.pk;
+  const flag = document.getElementById('overflow-' + pk);
+  if (!ta) return;
+
+  // Do NOT resize the textarea — it stays at its natural .recap-area
+  // height, exactly like the real page, so excess text is clipped
+  // rather than pushing the layout taller.
+  const isOverflowing = ta.scrollHeight > ta.clientHeight + 1; // +1px rounding tolerance
+  flag.classList.toggle('visible', isOverflowing);
+  ta.closest('.cell').style.outline = isOverflowing ? '2px solid #b02020' : 'none';
+}
+ 
+document.querySelectorAll('.recap-ta').forEach(ta => {
+  updateCounter(ta);
+  updateLivePreview(ta);
+});
+
+// ── Auto-save ──────────────────────────────────────────────────────────────
+const autoSaveTimers = {};
+const AUTO_SAVE_DELAY = 1500; // ms after the user stops typing
+
+function scheduleAutoSave(ta) {
+  const pk = ta.dataset.pk;
+  clearTimeout(autoSaveTimers[pk]);
+  autoSaveTimers[pk] = setTimeout(() => doAutoSave(ta), AUTO_SAVE_DELAY);
+}
+
+function doAutoSave(ta) {
+  const pk = ta.dataset.pk;
+  const indicator = document.getElementById('autosave-' + pk);
+
+  const formData = new FormData();
+  formData.append('game_pk', pk);
+  formData.append('text', ta.value);
+
+  if (indicator) {
+    indicator.textContent = 'Saving…';
+    indicator.style.color = '#a07000';
+  }
+
+  fetch('/save_recap', {
+    method: 'POST',
+    headers: { 'X-Auto-Save': '1' },
+    body: formData,
+  })
+    .then(res => res.json())
+    .then(() => {
+      if (indicator) {
+        indicator.textContent = 'Saved ✓';
+        indicator.style.color = '#2d6a2d';
+        setTimeout(() => { indicator.textContent = ''; }, 2000);
+      }
+    })
+    .catch(() => {
+      if (indicator) {
+        indicator.textContent = 'Save failed';
+        indicator.style.color = '#b02020';
+      }
+    });
+// ── Notes auto-save ────────────────────────────────────────────────────────
+let notesAutoSaveTimer = null;
+
+function scheduleNotesAutoSave() {
+  clearTimeout(notesAutoSaveTimer);
+  notesAutoSaveTimer = setTimeout(() => {
+    const indicator = document.getElementById('notes-autosave-indicator');
+    const ta = document.getElementById('notes-body-ta');
+    const headline = document.querySelector('input[name="notes_headline"]');
+    if (!ta) return;
+
+    const formData = new FormData();
+    formData.append('notes_headline', headline ? headline.value : '');
+    formData.append('notes_body', ta.value);
+
+    if (indicator) { indicator.textContent = 'Saving…'; indicator.style.color = '#a07000'; }
+
+    fetch('/save_notes', {
+      method: 'POST',
+      headers: { 'X-Auto-Save': '1' },
+      body: formData,
+    })
+      .then(res => res.json())
+      .then(() => {
+        if (indicator) {
+          indicator.textContent = 'Saved ✓';
+          indicator.style.color = '#2d6a2d';
+          setTimeout(() => { indicator.textContent = ''; }, 2000);
+        }
+      })
+      .catch(() => {
+        if (indicator) { indicator.textContent = 'Save failed'; indicator.style.color = '#b02020'; }
+      });
+  }, 1500);}
+
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+{
+ "leagues": [
+  {
+   "season": {
+    "type": {
+     "type": 2
+    }
+   }
+  }
+ ],
+ "events": [
+  {
+   "id": "401",
+   "date": "2026-11-16T03:30Z",
+   "name": "",
+   "competitions": [
+    {
+     "id": "401",
+     "date": "2026-11-16T03:30Z",
+     "competitors": [
+      {
+       "homeAway": "away",
+       "team": {
+        "id": "19",
+        "location": "Orlando",
+        "name": "Magic",
+        "abbreviation": "ORL",
+        "displayName": "Orlando Magic",
+        "shortDisplayName": "Magic"
+       },
+       "score": "100",
+       "linescores": [
+        {
+         "value": 25.0
+        },
+        {
+         "value": 20.0
+        },
+        {
+         "value": 30.0
+        },
+        {
+         "value": 25.0
+        }
+       ]
+      },
+      {
+       "homeAway": "home",
+       "team": {
+        "id": "9",
+        "location": "Golden State",
+        "name": "Warriors",
+        "abbreviation": "GS",
+        "displayName": "Golden State Warriors",
+        "shortDisplayName": "Warriors"
+       },
+       "score": "118",
+       "linescores": [
+        {
+         "value": 30.0
+        },
+        {
+         "value": 28.0
+        },
+        {
+         "value": 31.0
+        },
+        {
+         "value": 29.0
+        }
+       ]
+      }
+     ],
+     "status": {
+      "type": {
+       "state": "post",
+       "completed": true,
+       "detail": "Final",
+       "shortDetail": "Final",
+       "name": "STATUS_FINAL"
+      }
+     },
+     "neutralSite": false
+    }
+   ],
+   "status": {
+    "type": {
+     "state": "post",
+     "completed": true,
+     "detail": "Final",
+     "shortDetail": "Final",
+     "name": "STATUS_FINAL"
+    }
+   }
+  },
+  {
+   "id": "402",
+   "date": "2026-11-16T01:00Z",
+   "name": "",
+   "competitions": [
+    {
+     "id": "402",
+     "date": "2026-11-16T01:00Z",
+     "competitors": [
+      {
+       "homeAway": "away",
+       "team": {
+        "id": "6",
+        "location": "Dallas",
+        "name": "Mavericks",
+        "abbreviation": "DAL",
+        "displayName": "Dallas Mavericks",
+        "shortDisplayName": "Mavericks"
+       },
+       "score": "99",
+       "linescores": [
+        {
+         "value": 20.0
+        },
+        {
+         "value": 22.0
+        },
+        {
+         "value": 25.0
+        },
+        {
+         "value": 22.0
+        },
+        {
+         "value": 10.0
+        }
+       ]
+      },
+      {
+       "homeAway": "home",
+       "team": {
+        "id": "25",
+        "location": "Oklahoma City",
+        "name": "Thunder",
+        "abbreviation": "OKC",
+        "displayName": "Oklahoma City Thunder",
+        "shortDisplayName": "Thunder"
+       },
+       "score": "112",
+       "linescores": [
+        {
+         "value": 18.0
+        },
+        {
+         "value": 26.0
+        },
+        {
+         "value": 30.0
+        },
+        {
+         "value": 16.0
+        },
+        {
+         "value": 22.0
+        }
+       ]
+      }
+     ],
+     "status": {
+      "type": {
+       "state": "post",
+       "completed": true,
+       "detail": "Final/OT",
+       "shortDetail": "Final/OT",
+       "name": "STATUS_FINAL"
+      }
+     },
+     "neutralSite": false
+    }
+   ],
+   "status": {
+    "type": {
+     "state": "post",
+     "completed": true,
+     "detail": "Final/OT",
+     "shortDetail": "Final/OT",
+     "name": "STATUS_FINAL"
+    }
+   }
+  }
+ ]
+}

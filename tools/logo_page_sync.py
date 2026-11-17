@@ -43,7 +43,7 @@ NOTIFY = True                         # macOS notification when a page is update
 # Team codes stripped from the start of a file name. Covers "MiLB ABQ ",
 # "MLB COL ", "MiLB SWB-" etc. (2-5 letters, then a space, dash or underscore).
 PREFIX_PATTERNS = [
-    re.compile(r"^\s*(?:MiLB|MLB)[\s_-]+[A-Za-z]{2,5}[\s_-]+"),
+    re.compile(r"^\s*(?:MiLB|MLB|LMB|NFL|NBA|WBC|LIDOM)[\s_-]+[A-Za-z]{2,5}[\s_-]+"),
 ]
 
 PATH_LINE = re.compile(r"""const\s+path\s*=\s*["']([^"']+)["']""")

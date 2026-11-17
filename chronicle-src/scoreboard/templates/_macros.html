@@ -1,0 +1,288 @@
+{# ════════════════════════════════════════════════════════════════════════
+   Agate building blocks. Every block is .blk (kept whole across columns).
+   ════════════════════════════════════════════════════════════════════════ #}
+
+{% macro tm(t) -%}
+  {%- if t.rank %}No. {{ t.rank }} {% endif -%}
+  {%- if t.featured %}<b>{{ t.name }}</b>{% else %}{{ t.name }}{% endif -%}
+{%- endmacro %}
+
+{# ── Linescore: both teams in one table so the periods line up ── #}
+{% macro linescores(a, h) -%}
+{%- set n = [a.line|length, h.line|length]|max -%}
+<table class="lsx">
+  {%- for side in [a, h] %}
+  <tr>
+    <td class="lsx-nm"><span class="lsx-lead"><span class="nm">{{ side.city|fit }}</span><span class="fill"></span></span></td>
+    {%- for v in side.line %}<td class="lsx-p">{{ v }}</td>{% endfor %}
+    {%- for _ in range(n - side.line|length) %}<td class="lsx-p"></td>{% endfor %}
+    <td class="lsx-dash">—</td><td class="lsx-tot">{{ side.score }}</td>
+  </tr>
+  {%- endfor %}
+</table>
+{%- endmacro %}
+
+{# ── Standings ── #}
+{% macro standings(st) %}
+<div class="hd2">Standings</div>
+{% for g in st.groups %}
+<div class="blk">
+  {% if g.conference %}<div class="conf">{{ g.conference|upper }}</div>{% endif %}
+  <table class="st">
+    <thead>
+      <tr><th class="div" colspan="{{ st.columns|length + 1 }}">{{ g.name }}</th></tr>
+      <tr><th></th>{% for c in st.columns %}<th>{{ c }}</th>{% endfor %}</tr>
+    </thead>
+    <tbody>
+    {% for r in g.rows %}
+      <tr{% if r.featured %} class="feat"{% endif %}>
+        <td class="nm">{{ r.name|fit }}</td>
+        {% for c in st.columns %}<td>{{ r[c] }}</td>{% endfor %}
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endfor %}
+{% if st.note %}<div class="note"><b>Note:</b> {{ st.note }}</div>{% endif %}
+{% endmacro %}
+
+{# ── Rankings ── #}
+{% macro rankings(rk) %}
+<div class="blk">
+  <div class="rulehd">{{ rk.title|upper }}</div>
+  <table class="rk">
+    <thead><tr><th></th><th class="nm"></th><th>Rec</th><th>Pts</th><th>Pv</th></tr></thead>
+    <tbody>
+    {% for r in rk.rows %}
+      <tr{% if r.featured %} class="feat"{% endif %}>
+        <td>{{ r.rank }}.</td><td class="nm">{{ r.name|fit }}{{ r.fpv }}</td>
+        <td>{{ r.record }}</td><td>{{ r.pts }}</td><td>{{ r.prev }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% if rk.others %}<div class="note"><b>Others receiving votes:</b> {{ rk.others }}.</div>{% endif %}
+</div>
+{% endmacro %}
+
+{# ── Result lines ── #}
+{% macro results(label, rows) %}
+{% if rows %}
+<div class="blk-soft">
+  <div class="dayhd">{{ label }}</div>
+  {% for r in rows %}
+    <div class="ln">
+    {%- if r.ppd -%}{{ r.text }}
+    {%- else -%}
+      {{ tm(r.w) }} {{ r.ws }}, {{ tm(r.l) }} {{ r.ls }}{% if r.suffix %}, {{ r.suffix }}{% endif %}
+    {%- endif -%}
+    </div>
+  {% endfor %}
+</div>
+{% endif %}
+{% endmacro %}
+
+{# ── Schedules ── #}
+{% macro schedule(days) %}
+{% for d in days %}
+<div class="blk-soft">
+  <div class="dayhd">{{ d.day }}</div>
+  {% for g in d.games %}
+    <div class="ln">{{ tm(g.away) }} {{ 'vs.' if g.neutral else 'at' }} {{ tm(g.home) }}, {{ g.time }}</div>
+  {% endfor %}
+</div>
+{% endfor %}
+{% endmacro %}
+
+{# ── Odds (Chronicle: FAVORITE ..SPREAD (O/U).. UNDERDOG, home team in CAPS) ── #}
+{% macro odds(groups) %}
+<div class="sec-hd">Odds</div>
+{% for g in groups %}
+<div class="hd3">{{ g.label }}</div>
+{% set ns = namespace(day=None) %}
+{% for o in g.lines %}
+  {% if o.day != ns.day %}{% set ns.day = o.day %}
+  <div class="oddday">{{ o.day|upper }}</div>
+  <div class="odhdr"><span>FAVORITE</span><span class="sp">SPREAD</span><span class="r">UNDERDOG</span></div>
+  {% endif %}
+  <div class="odrow">
+    <span class="f"><span class="t">{% if o.fav_feat %}<b>{{ o.fav|fit }}</b>{% else %}{{ o.fav|fit }}{% endif %}</span><span class="fill"></span></span>
+    <span class="sp">{{ o.line }}{% if o.ou %} ({{ o.ou }}){% endif %}</span>
+    <span class="d"><span class="fill"></span><span class="t">{% if o.dog_feat %}<b>{{ o.dog|fit }}</b>{% else %}{{ o.dog|fit }}{% endif %}</span></span>
+  </div>
+{% endfor %}
+{% endfor %}
+{% endmacro %}
+
+{# ════════════════════════ BOX SCORES ════════════════════════ #}
+
+{% macro basketball(b) %}
+<div class="box blk">
+  <div class="boxtitle">{{ b.title }}</div>
+  {{ linescores(b.away, b.home) }}
+  {% for t in b.teams %}
+  <div class="teamhd">{{ t.name }}</div>
+  <table class="bb">
+    <thead>
+      <tr><th></th><th></th><th>FG</th><th>FT</th><th>Reb</th><th></th><th></th><th></th></tr>
+      <tr><th></th><th>Min</th><th>M-A</th><th>M-A</th><th>O-T</th><th>A</th><th>PF</th><th>Pts</th></tr>
+    </thead>
+    <tbody>
+    {% for r in t.rows %}
+      <tr><td class="nm">{{ r.name|fit }}</td><td>{{ r.min }}</td><td>{{ r.fg }}</td><td>{{ r.ft }}</td>
+          <td>{{ r.reb }}</td><td>{{ r.a }}</td><td>{{ r.pf }}</td><td>{{ r.pts }}</td></tr>
+    {% endfor %}
+      <tr class="tot"><td class="nm">Totals</td><td>{{ t.totals.min }}</td><td>{{ t.totals.fg }}</td>
+          <td>{{ t.totals.ft }}</td><td>{{ t.totals.reb }}</td><td>{{ t.totals.a }}</td>
+          <td>{{ t.totals.pf }}</td><td>{{ t.totals.pts }}</td></tr>
+    </tbody>
+  </table>
+  <div class="para">{{ t.notes|safe }}</div>
+  {% endfor %}
+  {% if b.game_notes %}<div class="para">{{ b.game_notes|safe }}</div>{% endif %}
+  {% if b.attendance %}<div class="para"><b>Att.:</b> {{ b.attendance }}.</div>{% endif %}
+</div>
+{% endmacro %}
+
+{% macro hockey(b) %}
+<div class="box blk">
+  <div class="boxtitle">{{ b.title }}</div>
+  {{ linescores(b.away, b.home) }}
+  {% if b.so_note %}<div class="center"><b>{{ b.so_note }}</b></div>{% endif %}
+  {% for p in b.periods %}
+  <div class="para"><b>{{ p.name }} —</b> {{ p.goals }}</div>
+  {% endfor %}
+  {% if b.sog %}<div class="para"><b>Shots on goal —</b> {{ b.sog }}</div>{% endif %}
+  {% if b.pp %}<div class="para"><b>Power-play opportunities —</b> {{ b.pp }}</div>{% endif %}
+  {% if b.goalies %}<div class="para"><b>Goalies —</b> {{ b.goalies }}</div>{% endif %}
+  {% if b.attendance %}<div class="para"><b>Att.:</b> {{ b.attendance }}.</div>{% endif %}
+</div>
+{% endmacro %}
+
+{% macro football(b) %}
+<div class="box blk">
+  <div class="boxtitle">{{ b.title }}</div>
+  {{ linescores(b.away, b.home) }}
+  <div class="teamhd">SCORING</div>
+  {% for q in b.scoring %}
+  <div class="center qhd">{{ q.name }}</div>
+  {% for pl in q.plays %}<div class="hang">{{ pl }}</div>{% endfor %}
+  {% endfor %}
+  {% if b.attendance %}<div class="hang">A—{{ b.attendance }}.</div>{% endif %}
+  {% if b.team_stats %}
+  <div class="teamhd">TEAM STATISTICS</div>
+  <table class="fbt">
+    <thead><tr><th></th><th>{{ b.abbr_away }}</th><th>{{ b.abbr_home }}</th></tr></thead>
+    <tbody>
+    {% for label, a, h in b.team_stats %}
+      <tr><td class="nm"><span class="dl"><span>{{ label }}</span><span class="fill"></span></span></td><td>{{ a }}</td><td>{{ h }}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+  {% if b.individual %}
+  <div class="teamhd">INDIVIDUAL STATISTICS</div>
+  {% for k, v in b.individual %}<div class="para"><b>{{ k }}</b>—{{ v }}</div>{% endfor %}
+  {% endif %}
+</div>
+{% endmacro %}
+
+{% macro baseball(b) %}
+<div class="box blk">
+  <div class="boxtitle">{{ b.title }}</div>
+  {% for t in b.teams %}
+  <table class="bsb">
+    <thead><tr><th class="nm">{{ t.name }}</th><th>AB</th><th>R</th><th>H</th><th>BI</th><th>BB</th><th>SO</th><th>Avg</th></tr></thead>
+    <tbody>
+    {% for r in t.batters %}
+      <tr><td class="nm">{{ r.name }}</td><td>{{ r.ab }}</td><td>{{ r.r }}</td><td>{{ r.h }}</td>
+          <td>{{ r.bi }}</td><td>{{ r.bb }}</td><td>{{ r.so }}</td><td>{{ r.avg }}</td></tr>
+    {% endfor %}
+      <tr class="tot"><td class="nm">Totals</td><td>{{ t.totals.ab }}</td><td>{{ t.totals.r }}</td>
+          <td>{{ t.totals.h }}</td><td>{{ t.totals.bi }}</td><td>{{ t.totals.bb }}</td><td>{{ t.totals.so }}</td><td></td></tr>
+    </tbody>
+  </table>
+  {% endfor %}
+  {{ linescores(b.away, b.home) }}
+  {% if b.notes %}<div class="para">{{ b.notes|safe }}</div>{% endif %}
+  {% for t in b.teams %}
+  <table class="bsb pit">
+    <thead><tr><th class="nm">{{ t.name }}</th><th>IP</th><th>H</th><th>R</th><th>ER</th><th>BB</th><th>SO</th><th>NP</th><th>ERA</th></tr></thead>
+    <tbody>
+    {% for p in t.pitchers %}
+      <tr><td class="nm">{{ p.name }}</td><td>{{ p.ip }}</td><td>{{ p.h }}</td><td>{{ p.r }}</td><td>{{ p.er }}</td>
+          <td>{{ p.bb }}</td><td>{{ p.so }}</td><td>{{ p.np }}</td><td>{{ p.era }}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% endfor %}
+  {% if b.attendance %}<div class="para"><b>A</b>—{{ b.attendance }}.</div>{% endif %}
+</div>
+{% endmacro %}
+
+{% macro soccer(b) %}
+<div class="box blk">
+  <div class="boxtitle">{{ b.title }}</div>
+  {{ linescores(b.away, b.home) }}
+  <div class="para"><b>Goals</b>—{{ b.goals }}</div>
+  <div class="para"><b>Cautions</b>—{{ b.cards }}</div>
+  <div class="para"><b>Ejections</b>—{{ b.ejections }}</div>
+  {% if b.lineups %}<div class="para"><b>Lineups</b>—{{ b.lineups }}</div>{% endif %}
+  {% if b.attendance %}<div class="para"><b>Att.:</b> {{ b.attendance }}.</div>{% endif %}
+</div>
+{% endmacro %}
+
+{% macro box(b) %}
+  {% if b.kind == 'basketball' %}{{ basketball(b) }}
+  {% elif b.kind == 'hockey' %}{{ hockey(b) }}
+  {% elif b.kind == 'football' %}{{ football(b) }}
+  {% elif b.kind == 'baseball' %}{{ baseball(b) }}
+  {% elif b.kind == 'soccer' %}{{ soccer(b) }}{% endif %}
+{% endmacro %}
+
+{# ════════════════════════ INDIVIDUAL SPORTS ════════════════════════ #}
+
+{% macro golf(events) %}
+{% for e in events %}
+<div class="blk-soft">
+  <div class="rulehd">{{ e.name|upper }}</div>
+  <div class="center"><i>{{ e.status }}</i></div>
+  <table class="gf">
+    {% for p in e.players %}
+    <tr><td class="pos">{{ p.pos }}</td><td class="nm">{{ p.name|fit }}</td>
+        <td class="r">{{ p.line }}{% if p.total %}—{{ p.total }}{% endif %}</td>
+        <td class="r">{{ p.par_str }}</td></tr>
+    {% endfor %}
+  </table>
+</div>
+{% endfor %}
+{% endmacro %}
+
+{% macro racing(events) %}
+{% for e in events %}
+<div class="blk-soft">
+  <div class="rulehd">{{ e.name|upper }}</div>
+  <div class="center"><i>{{ e.day }}{% if e.where %} at {{ e.where }}{% endif %}</i></div>
+  <div class="para">
+  {% for d in e.drivers %}{{ d.pos }}. {% if d.num %}(#{{ d.num }}) {% endif %}{{ d.name }}{% if d.extra %}, {{ d.extra }}{% endif %}{{ '; ' if not loop.last else '.' }}{% endfor %}
+  </div>
+</div>
+{% endfor %}
+{% endmacro %}
+
+{% macro tennis(events) %}
+{% for e in events %}
+<div class="blk-soft">
+  <div class="rulehd">{{ e.name|upper }}</div>
+  {% for s in e.sections %}
+    {% if s.label %}<div class="subhd">{{ s.label }}</div>{% endif %}
+    {% set ns = namespace(r='') %}
+    {% for l in s.lines %}
+      {% if l.round and l.round != ns.r %}{% set ns.r = l.round %}<div class="center"><i>{{ l.round }}</i></div>{% endif %}
+      <div class="hang">{{ l.text }}.</div>
+    {% endfor %}
+  {% endfor %}
+</div>
+{% endfor %}
+{% endmacro %}

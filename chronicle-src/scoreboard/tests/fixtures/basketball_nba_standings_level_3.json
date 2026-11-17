@@ -1,0 +1,163 @@
+{
+ "children": [
+  {
+   "name": "Western Conference",
+   "children": [
+    {
+     "name": "Pacific Division",
+     "standings": {
+      "entries": [
+       {
+        "team": {
+         "id": "23",
+         "location": "Sacramento",
+         "name": "Kings",
+         "abbreviation": "SAC",
+         "displayName": "Sacramento Kings",
+         "shortDisplayName": "Kings"
+        },
+        "stats": [
+         {
+          "name": "wins",
+          "value": 6,
+          "displayValue": "6"
+         },
+         {
+          "name": "losses",
+          "displayValue": "7"
+         }
+        ]
+       },
+       {
+        "team": {
+         "id": "9",
+         "location": "Golden State",
+         "name": "Warriors",
+         "abbreviation": "GS",
+         "displayName": "Golden State Warriors",
+         "shortDisplayName": "Warriors"
+        },
+        "stats": [
+         {
+          "name": "wins",
+          "displayValue": "10"
+         },
+         {
+          "name": "losses",
+          "displayValue": "3"
+         }
+        ]
+       },
+       {
+        "team": {
+         "id": "13",
+         "location": "Los Angeles",
+         "name": "Lakers",
+         "abbreviation": "LAL",
+         "displayName": "Los Angeles Lakers",
+         "shortDisplayName": "Lakers"
+        },
+        "stats": [
+         {
+          "name": "wins",
+          "displayValue": "7"
+         },
+         {
+          "name": "losses",
+          "displayValue": "6"
+         }
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "name": "Southwest Division",
+     "standings": {
+      "entries": [
+       {
+        "team": {
+         "id": "6",
+         "location": "Dallas",
+         "name": "Mavericks",
+         "abbreviation": "DAL",
+         "displayName": "Dallas Mavericks",
+         "shortDisplayName": "Mavericks"
+        },
+        "stats": [
+         {
+          "name": "wins",
+          "displayValue": "8"
+         },
+         {
+          "name": "losses",
+          "displayValue": "6"
+         }
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "name": "Northwest Division",
+     "standings": {
+      "entries": [
+       {
+        "team": {
+         "id": "25",
+         "location": "Oklahoma City",
+         "name": "Thunder",
+         "abbreviation": "OKC",
+         "displayName": "Oklahoma City Thunder",
+         "shortDisplayName": "Thunder"
+        },
+        "stats": [
+         {
+          "name": "wins",
+          "displayValue": "12"
+         },
+         {
+          "name": "losses",
+          "displayValue": "2"
+         }
+        ]
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "Eastern Conference",
+   "children": [
+    {
+     "name": "Southeast Division",
+     "standings": {
+      "entries": [
+       {
+        "team": {
+         "id": "19",
+         "location": "Orlando",
+         "name": "Magic",
+         "abbreviation": "ORL",
+         "displayName": "Orlando Magic",
+         "shortDisplayName": "Magic"
+        },
+        "stats": [
+         {
+          "name": "wins",
+          "displayValue": "7"
+         },
+         {
+          "name": "losses",
+          "displayValue": "7"
+         }
+        ]
+       }
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

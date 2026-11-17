@@ -1,0 +1,76 @@
+{
+ "leagues": [
+  {
+   "season": {
+    "type": {
+     "type": 2
+    }
+   }
+  }
+ ],
+ "events": [
+  {
+   "id": "503",
+   "date": "2026-11-17T00:00Z",
+   "name": "",
+   "competitions": [
+    {
+     "id": "503",
+     "date": "2026-11-17T00:00Z",
+     "competitors": [
+      {
+       "homeAway": "away",
+       "team": {
+        "id": "4",
+        "location": "Chicago",
+        "name": "Blackhawks",
+        "abbreviation": "CHI",
+        "displayName": "Chicago Blackhawks",
+        "shortDisplayName": "Blackhawks"
+       }
+      },
+      {
+       "homeAway": "home",
+       "team": {
+        "id": "18",
+        "location": "San Jose",
+        "name": "Sharks",
+        "abbreviation": "SJ",
+        "displayName": "San Jose Sharks",
+        "shortDisplayName": "Sharks"
+       }
+      }
+     ],
+     "status": {
+      "type": {
+       "state": "pre",
+       "completed": false,
+       "detail": "Final",
+       "shortDetail": "Final",
+       "name": "STATUS_SCHEDULED"
+      }
+     },
+     "neutralSite": false,
+     "odds": [
+      {
+       "details": "SJ -125",
+       "overUnder": 6.0,
+       "homeTeamOdds": {
+        "favorite": true
+       }
+      }
+     ]
+    }
+   ],
+   "status": {
+    "type": {
+     "state": "pre",
+     "completed": false,
+     "detail": "Final",
+     "shortDetail": "Final",
+     "name": "STATUS_SCHEDULED"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luke's Agate Pages</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/navigation/favicon.png">
+    <style>
+        /* Extras for this page only. Weights are set explicitly so nothing
+           inherits bold from the card styles in style.css. */
+        .agate-status { font-size: 0.8em; font-weight: normal; margin-top: 4px; opacity: 0.75; }
+        .agate-archive { max-width: 1000px; margin: 30px auto 0; padding: 0 20px 40px; font-weight: normal; }
+        .agate-archive-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .agate-archive h2 { font-weight: bold; margin: 0 0 10px; }
+        .agate-archive ul { list-style: none; padding: 0; margin: 0; columns: 2; }
+        .agate-archive li { padding: 2px 0; font-weight: normal; }
+        .agate-archive a { color: inherit; font-weight: normal; }
+        @media (max-width: 640px) { .agate-archive-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-btn">← Back to Home</a>
+
+    <header class="sticky-header">
+        <h1>Luke's Agate Pages</h1>
+    </header>
+
+    <main class="home-container">
+        <div class="logo-grid">
+
+            <a href="chronicle/scoreboard/index.html" class="logo-card">
+                <div class="logo-image-wrapper">
+                    <img src="images/navigation/scoreboard.png" alt="Scoreboard Agate Page">
+                </div>
+                <div class="logo-caption">
+                    <div class="logo-name">Scoreboard</div>
+                    <div class="agate-status" id="scoreboard-status">Every sport, updated nightly</div>
+                </div>
+            </a>
+
+            <a href="chronicle/mlb/index.html" class="logo-card" id="mlb-card">
+                <div class="logo-image-wrapper">
+                    <img src="images/navigation/baseball.png" alt="Baseball Agate Page">
+                </div>
+                <div class="logo-caption">
+                    <div class="logo-name">Baseball</div>
+                    <div class="agate-status" id="mlb-status">MLB box scores and recaps</div>
+                </div>
+            </a>
+
+        </div>
+
+        <section class="agate-archive">
+            <div class="agate-archive-grid">
+                <div>
+                    <h2>Past Scoreboards</h2>
+                    <ul id="scoreboard-archive"><li>Loading…</li></ul>
+                </div>
+                <div>
+                    <h2>Past Baseball Pages</h2>
+                    <ul id="mlb-archive"><li>Loading…</li></ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+<script>
+/* The lists and the off-season note come from files that tools/publish.py
+   rewrites every night, so this page never needs editing. */
+function label(d) {
+    return new Date(d + 'T12:00:00').toLocaleDateString('en-US',
+        { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+}
+function getJSON(url, fallback) {
+    return fetch(url, { cache: 'no-store' })
+        .then(function (r) { return r.ok ? r.json() : fallback; })
+        .catch(function () { return fallback; });
+}
+function fillArchive(listId, folder, dates) {
+    var ul = document.getElementById(listId);
+    dates = dates.slice().sort().reverse().slice(0, 60);
+    ul.innerHTML = dates.map(function (d) {
+        return '<li><a href="' + folder + '/' + d + '.html">' + label(d) + '</a></li>';
+    }).join('') || '<li>No pages yet</li>';
+}
+
+Promise.all([
+    getJSON('chronicle/status.json', {}),
+    getJSON('chronicle/scoreboard/archive.json', []),
+    getJSON('chronicle/mlb/archive.json', [])
+]).then(function (res) {
+    var st = res[0], sbDates = res[1], mlbDates = res[2];
+    fillArchive('scoreboard-archive', 'chronicle/scoreboard', sbDates);
+    fillArchive('mlb-archive', 'chronicle/mlb', mlbDates);
+
+    if (st.page_date) {
+        document.getElementById('scoreboard-status').textContent = 'Latest: ' + label(st.page_date);
+    }
+    var card = document.getElementById('mlb-card'), msg = document.getElementById('mlb-status');
+    if (!mlbDates.length) {                    // nothing published yet: no dead link
+        card.removeAttribute('href');
+        card.style.cursor = 'default';
+    }
+    if (st.mlb_active === false) {
+        msg.textContent = 'Off-season. ' + (st.mlb_note || 'Back next spring.');
+    }
+});
+</script>
+</body>
+</html>

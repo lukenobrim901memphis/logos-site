@@ -1,0 +1,139 @@
+{
+ "leagues": [
+  {
+   "season": {
+    "type": {
+     "type": 2
+    }
+   }
+  }
+ ],
+ "events": [
+  {
+   "id": "403",
+   "date": "2026-11-17T03:00Z",
+   "name": "",
+   "competitions": [
+    {
+     "id": "403",
+     "date": "2026-11-17T03:00Z",
+     "competitors": [
+      {
+       "homeAway": "away",
+       "team": {
+        "id": "13",
+        "location": "Los Angeles",
+        "name": "Lakers",
+        "abbreviation": "LAL",
+        "displayName": "Los Angeles Lakers",
+        "shortDisplayName": "Lakers"
+       }
+      },
+      {
+       "homeAway": "home",
+       "team": {
+        "id": "23",
+        "location": "Sacramento",
+        "name": "Kings",
+        "abbreviation": "SAC",
+        "displayName": "Sacramento Kings",
+        "shortDisplayName": "Kings"
+       }
+      }
+     ],
+     "status": {
+      "type": {
+       "state": "pre",
+       "completed": false,
+       "detail": "Scheduled",
+       "shortDetail": "Scheduled",
+       "name": "STATUS_SCHEDULED"
+      }
+     },
+     "neutralSite": false,
+     "odds": [
+      {
+       "details": "LAL -3.5",
+       "overUnder": 226.5,
+       "awayTeamOdds": {
+        "favorite": true
+       },
+       "homeTeamOdds": {
+        "favorite": false
+       }
+      }
+     ]
+    }
+   ],
+   "status": {
+    "type": {
+     "state": "pre",
+     "completed": false,
+     "detail": "Scheduled",
+     "shortDetail": "Scheduled",
+     "name": "STATUS_SCHEDULED"
+    }
+   }
+  },
+  {
+   "id": "404",
+   "date": "2026-11-17T00:00Z",
+   "name": "",
+   "competitions": [
+    {
+     "id": "404",
+     "date": "2026-11-17T00:00Z",
+     "competitors": [
+      {
+       "homeAway": "away",
+       "team": {
+        "id": "19",
+        "location": "Orlando",
+        "name": "Magic",
+        "abbreviation": "ORL",
+        "displayName": "Orlando Magic",
+        "shortDisplayName": "Magic"
+       }
+      },
+      {
+       "homeAway": "home",
+       "team": {
+        "id": "25",
+        "location": "Oklahoma City",
+        "name": "Thunder",
+        "abbreviation": "OKC",
+        "displayName": "Oklahoma City Thunder",
+        "shortDisplayName": "Thunder"
+       }
+      }
+     ],
+     "status": {
+      "type": {
+       "state": "pre",
+       "completed": false,
+       "detail": "Scheduled",
+       "shortDetail": "Scheduled",
+       "name": "STATUS_SCHEDULED"
+      }
+     },
+     "neutralSite": false,
+     "odds": [
+      {
+       "details": "OKC -11",
+       "overUnder": 219.0
+      }
+     ]
+    }
+   ],
+   "status": {
+    "type": {
+     "state": "pre",
+     "completed": false,
+     "detail": "Scheduled",
+     "shortDetail": "Scheduled",
+     "name": "STATUS_SCHEDULED"
+    }
+   }
+  }
+ ]
+}

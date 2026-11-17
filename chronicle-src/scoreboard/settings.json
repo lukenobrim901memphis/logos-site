@@ -1,0 +1,113 @@
+{
+  "page_label": "B10",
+  "columns": 6,
+  "column_width": 150,
+  "min_height": 0,
+  "layout_version": 5,
+  "featured": [
+    "San Francisco 49ers",
+    "Golden State Warriors",
+    "San Jose Sharks",
+    "San Francisco Giants",
+    "Athletics",
+    "Golden State Valkyries",
+    "San Jose Earthquakes",
+    "Bay FC",
+    "California Golden Bears",
+    "Stanford Cardinal",
+    "San Jose State Spartans",
+    "Saint Mary's Gaels",
+    "San Francisco Dons",
+    "Santa Clara Broncos"
+  ],
+  "leagues": {
+    "nfl": {
+      "mode": "auto",
+      "box": ""
+    },
+    "nba": {
+      "mode": "auto",
+      "box": ""
+    },
+    "nhl": {
+      "mode": "auto",
+      "box": ""
+    },
+    "wnba": {
+      "mode": "auto",
+      "box": ""
+    },
+    "mls": {
+      "mode": "auto",
+      "box": ""
+    },
+    "nwsl": {
+      "mode": "auto",
+      "box": ""
+    },
+    "epl": {
+      "mode": "auto",
+      "box": ""
+    },
+    "cfb": {
+      "mode": "auto",
+      "box": ""
+    },
+    "mcbb": {
+      "mode": "auto",
+      "box": ""
+    },
+    "wcbb": {
+      "mode": "auto",
+      "box": ""
+    },
+    "pga": {
+      "mode": "auto",
+      "box": ""
+    },
+    "lpga": {
+      "mode": "auto",
+      "box": ""
+    },
+    "nascar": {
+      "mode": "auto",
+      "box": ""
+    },
+    "f1": {
+      "mode": "auto",
+      "box": ""
+    },
+    "atp": {
+      "mode": "auto",
+      "box": ""
+    },
+    "wta": {
+      "mode": "auto",
+      "box": ""
+    }
+  },
+  "order": [
+    "nfl",
+    "nba",
+    "nhl",
+    "wnba",
+    "mls",
+    "nwsl",
+    "epl",
+    "cfb",
+    "mcbb",
+    "wcbb",
+    "pga",
+    "lpga",
+    "nascar",
+    "f1",
+    "atp",
+    "wta"
+  ],
+  "box_overrides": {},
+  "college_results": "top25",
+  "show_odds": true,
+  "show_transactions": true,
+  "golf_limit": 30,
+  "custom_sections": []
+}

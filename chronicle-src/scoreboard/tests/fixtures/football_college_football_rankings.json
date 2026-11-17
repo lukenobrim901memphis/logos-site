@@ -1,0 +1,58 @@
+{
+ "rankings": [
+  {
+   "name": "AP Top 25",
+   "type": "ap",
+   "ranks": [
+    {
+     "current": 1,
+     "previous": 1,
+     "points": 1550,
+     "firstPlaceVotes": 60,
+     "recordSummary": "10-0",
+     "team": {
+      "location": "Ohio State",
+      "displayName": "Ohio State Buckeyes"
+     }
+    },
+    {
+     "current": 2,
+     "previous": 3,
+     "points": 1480,
+     "firstPlaceVotes": 2,
+     "recordSummary": "10-0",
+     "team": {
+      "location": "Indiana",
+      "displayName": "Indiana Hoosiers"
+     }
+    },
+    {
+     "current": 3,
+     "previous": 2,
+     "points": 1400,
+     "recordSummary": "9-1",
+     "team": {
+      "location": "Texas",
+      "displayName": "Texas Longhorns"
+     }
+    }
+   ],
+   "others": [
+    {
+     "team": {
+      "location": "California",
+      "displayName": "California Golden Bears"
+     },
+     "points": 14
+    },
+    {
+     "team": {
+      "location": "Army",
+      "displayName": "Army Black Knights"
+     },
+     "points": 3
+    }
+   ]
+  }
+ ]
+}

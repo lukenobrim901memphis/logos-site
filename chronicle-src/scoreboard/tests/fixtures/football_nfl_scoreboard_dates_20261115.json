@@ -1,0 +1,181 @@
+{
+ "leagues": [
+  {
+   "season": {
+    "type": {
+     "type": 2
+    }
+   }
+  }
+ ],
+ "events": [
+  {
+   "id": "601",
+   "date": "2026-11-16T00:25Z",
+   "name": "",
+   "competitions": [
+    {
+     "id": "601",
+     "date": "2026-11-16T00:25Z",
+     "competitors": [
+      {
+       "homeAway": "away",
+       "team": {
+        "id": "26",
+        "location": "Seattle",
+        "name": "Seahawks",
+        "abbreviation": "SEA",
+        "displayName": "Seattle Seahawks",
+        "shortDisplayName": "Seahawks"
+       },
+       "score": "20",
+       "linescores": [
+        {
+         "value": 7.0
+        },
+        {
+         "value": 3.0
+        },
+        {
+         "value": 0.0
+        },
+        {
+         "value": 10.0
+        }
+       ]
+      },
+      {
+       "homeAway": "home",
+       "team": {
+        "id": "25",
+        "location": "San Francisco",
+        "name": "49ers",
+        "abbreviation": "SF",
+        "displayName": "San Francisco 49ers",
+        "shortDisplayName": "49ers"
+       },
+       "score": "27",
+       "linescores": [
+        {
+         "value": 7.0
+        },
+        {
+         "value": 10.0
+        },
+        {
+         "value": 7.0
+        },
+        {
+         "value": 3.0
+        }
+       ]
+      }
+     ],
+     "status": {
+      "type": {
+       "state": "post",
+       "completed": true,
+       "detail": "Final",
+       "shortDetail": "Final",
+       "name": "STATUS_FINAL"
+      }
+     },
+     "neutralSite": false
+    }
+   ],
+   "status": {
+    "type": {
+     "state": "post",
+     "completed": true,
+     "detail": "Final",
+     "shortDetail": "Final",
+     "name": "STATUS_FINAL"
+    }
+   }
+  },
+  {
+   "id": "602",
+   "date": "2026-11-15T21:05Z",
+   "name": "",
+   "competitions": [
+    {
+     "id": "602",
+     "date": "2026-11-15T21:05Z",
+     "competitors": [
+      {
+       "homeAway": "away",
+       "team": {
+        "id": "7",
+        "location": "Denver",
+        "name": "Broncos",
+        "abbreviation": "DEN",
+        "displayName": "Denver Broncos",
+        "shortDisplayName": "Broncos"
+       },
+       "score": "17",
+       "linescores": [
+        {
+         "value": 0.0
+        },
+        {
+         "value": 10.0
+        },
+        {
+         "value": 7.0
+        },
+        {
+         "value": 0.0
+        }
+       ]
+      },
+      {
+       "homeAway": "home",
+       "team": {
+        "id": "12",
+        "location": "Kansas City",
+        "name": "Chiefs",
+        "abbreviation": "KC",
+        "displayName": "Kansas City Chiefs",
+        "shortDisplayName": "Chiefs"
+       },
+       "score": "24",
+       "linescores": [
+        {
+         "value": 7.0
+        },
+        {
+         "value": 7.0
+        },
+        {
+         "value": 3.0
+        },
+        {
+         "value": 7.0
+        }
+       ]
+      }
+     ],
+     "status": {
+      "type": {
+       "state": "post",
+       "completed": true,
+       "detail": "Final",
+       "shortDetail": "Final",
+       "name": "STATUS_FINAL"
+      }
+     },
+     "neutralSite": false
+    }
+   ],
+   "status": {
+    "type": {
+     "state": "post",
+     "completed": true,
+     "detail": "Final",
+     "shortDetail": "Final",
+     "name": "STATUS_FINAL"
+    }
+   }
+  }
+ ]
+}

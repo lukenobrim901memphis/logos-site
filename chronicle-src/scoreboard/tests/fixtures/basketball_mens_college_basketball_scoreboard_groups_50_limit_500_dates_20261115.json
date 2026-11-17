@@ -1,0 +1,219 @@
+{
+ "leagues": [
+  {
+   "season": {
+    "type": {
+     "type": 2
+    }
+   }
+  }
+ ],
+ "events": [
+  {
+   "id": "701",
+   "date": "2026-11-15T20:00Z",
+   "name": "",
+   "competitions": [
+    {
+     "id": "701",
+     "date": "2026-11-15T20:00Z",
+     "competitors": [
+      {
+       "homeAway": "away",
+       "team": {
+        "id": "26",
+        "location": "UCLA",
+        "name": "Bruins",
+        "abbreviation": "UCLA",
+        "displayName": "UCLA Bruins",
+        "shortDisplayName": "Bruins"
+       },
+       "score": "70",
+       "linescores": [
+        {
+         "value": 35.0
+        },
+        {
+         "value": 35.0
+        }
+       ]
+      },
+      {
+       "homeAway": "home",
+       "team": {
+        "id": "150",
+        "location": "Duke",
+        "name": "Blue Devils",
+        "abbreviation": "DUKE",
+        "displayName": "Duke Blue Devils",
+        "shortDisplayName": "Blue Devils"
+       },
+       "score": "81",
+       "linescores": [
+        {
+         "value": 40.0
+        },
+        {
+         "value": 41.0
+        }
+       ],
+       "curatedRank": {
+        "current": 3
+       }
+      }
+     ],
+     "status": {
+      "type": {
+       "state": "post",
+       "completed": true,
+       "detail": "Final",
+       "shortDetail": "Final",
+       "name": "STATUS_FINAL"
+      }
+     },
+     "neutralSite": false
+    }
+   ],
+   "status": {
+    "type": {
+     "state": "post",
+     "completed": true,
+     "detail": "Final",
+     "shortDetail": "Final",
+     "name": "STATUS_FINAL"
+    }
+   }
+  },
+  {
+   "id": "702",
+   "date": "2026-11-15T22:00Z",
+   "name": "",
+   "competitions": [
+    {
+     "id": "702",
+     "date": "2026-11-15T22:00Z",
+     "competitors": [
+      {
+       "homeAway": "away",
+       "team": {
+        "id": "2250",
+        "location": "Gonzaga",
+        "name": "Bulldogs",
+        "abbreviation": "GONZ",
+        "displayName": "Gonzaga Bulldogs",
+        "shortDisplayName": "Bulldogs"
+       },
+       "score": "77",
+       "linescores": [
+        {
+         "value": 30.0
+        },
+        {
+         "value": 47.0
+        }
+       ],
+       "curatedRank": {
+        "current": 12
+       }
+      },
+      {
+       "homeAway": "home",
+       "team": {
+        "id": "24",
+        "location": "Stanford",
+        "name": "Cardinal",
+        "abbreviation": "STAN",
+        "displayName": "Stanford Cardinal",
+        "shortDisplayName": "Cardinal"
+       },
+       "score": "79",
+       "linescores": [
+        {
+         "value": 38.0
+        },
+        {
+         "value": 41.0
+        }
+       ]
+      }
+     ],
+     "status": {
+      "type": {
+       "state": "post",
+       "completed": true,
+       "detail": "Final",
+       "shortDetail": "Final",
+       "name": "STATUS_FINAL"
+      }
+     },
+     "neutralSite": false
+    }
+   ],
+   "status": {
+    "type": {
+     "state": "post",
+     "completed": true,
+     "detail": "Final",
+     "shortDetail": "Final",
+     "name": "STATUS_FINAL"
+    }
+   }
+  },
+  {
+   "id": "703",
+   "date": "2026-11-15T18:00Z",
+   "name": "",
+   "competitions": [
+    {
+     "id": "703",
+     "date": "2026-11-15T18:00Z",
+     "competitors": [
+      {
+       "homeAway": "away",
+       "team": {
+        "id": "349",
+        "location": "Army",
+        "name": "Black Knights",
+        "abbreviation": "ARMY",
+        "displayName": "Army Black Knights",
+        "shortDisplayName": "Black Knights"
+       },
+       "score": "60"
+      },
+      {
+       "homeAway": "home",
+       "team": {
+        "id": "2426",
+        "location": "Navy",
+        "name": "Midshipmen",
+        "abbreviation": "NAVY",
+        "displayName": "Navy Midshipmen",
+        "shortDisplayName": "Midshipmen"
+       },
+       "score": "64"
+      }
+     ],
+     "status": {
+      "type": {
+       "state": "post",
+       "completed": true,
+       "detail": "Final",
+       "shortDetail": "Final",
+       "name": "STATUS_FINAL"
+      }
+     },
+     "neutralSite": false
+    }
+   ],
+   "status": {
+    "type": {
+     "state": "post",
+     "completed": true,
+     "detail": "Final",
+     "shortDetail": "Final",
+     "name": "STATUS_FINAL"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,74 @@
+{
+ "events": [
+  {
+   "id": "f1",
+   "name": "Las Vegas Grand Prix",
+   "date": "2026-11-14T00:00Z",
+   "competitions": [
+    {
+     "type": {
+      "abbreviation": "Qual"
+     },
+     "date": "2026-11-14T06:00Z",
+     "status": {
+      "type": {
+       "state": "post",
+       "completed": true,
+       "detail": "Final",
+       "shortDetail": "Final",
+       "name": "STATUS_FINAL"
+      }
+     },
+     "competitors": []
+    },
+    {
+     "type": {
+      "abbreviation": "Race"
+     },
+     "date": "2026-11-15T06:00Z",
+     "status": {
+      "type": {
+       "state": "post",
+       "completed": true,
+       "detail": "Final",
+       "shortDetail": "Final",
+       "name": "STATUS_FINAL"
+      }
+     },
+     "venue": {
+      "fullName": "Las Vegas Strip Circuit"
+     },
+     "competitors": [
+      {
+       "order": 2,
+       "athlete": {
+        "displayName": "Lando Norris",
+        "flag": {
+         "alt": "Britain"
+        }
+       }
+      },
+      {
+       "order": 1,
+       "athlete": {
+        "displayName": "Max Verstappen",
+        "flag": {
+         "alt": "Netherlands"
+        }
+       }
+      },
+      {
+       "order": 3,
+       "athlete": {
+        "displayName": "Charles Leclerc",
+        "flag": {
+         "alt": "Monaco"
+        }
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,162 @@
+/* ═══════════════════════════════════════════════
+   Chronicle Scoreboard — agate.css
+   Every element is styled in exactly one place; no rule overrides another.
+   Page width and column count come from /admin (set in scoreboard.html).
+   ═══════════════════════════════════════════════ */
+
+/* ── Fonts (same files as the MLB page, in static/fonts/) ── */
+@font-face { font-family:'Ford Antenna'; src:url('/static/fonts/FordAntenna-Bold.ttf') format('truetype'); font-weight:700; }
+@font-face { font-family:'Ford Antenna'; src:url('/static/fonts/FordAntenna-Regular.ttf') format('truetype'); font-weight:400; }
+@font-face { font-family:'Ford Antenna Cond'; src:url('/static/fonts/Ford Antenna Cond Bold.ttf') format('truetype'); font-weight:700; }
+@font-face { font-family:'Ford Antenna Cond'; src:url('/static/fonts/FordAntennaCondRegular-Regular.otf') format('opentype'); font-weight:400; }
+@font-face { font-family:'Ford Antenna Cond Regular'; src:url('/static/fonts/FordAntennaCondRegular-Regular.otf') format('opentype'); font-weight:400; }
+@font-face { font-family:'Farnham Display'; src:url('/static/fonts/FarnhamDisplay-Regular.otf') format('opentype'); font-weight:400; }
+@font-face { font-family:'Farnham Display Bold'; src:url('/static/fonts/FarnhamDisplay-Bold.otf') format('opentype'); font-weight:700; }
+@font-face { font-family:'Archer Bold'; src:url('/static/fonts/ArcherBoldPro.otf') format('opentype'); font-weight:700; }
+
+:root{
+  /* families */
+  --cond:'Ford Antenna Cond','Roboto Condensed','Arial Narrow',sans-serif;
+  --cond-reg:'Ford Antenna Cond Regular','Roboto Condensed','Arial Narrow',sans-serif;
+  --sans:'Ford Antenna','Roboto','Helvetica Neue',Arial,sans-serif;
+  --ink:#111; --paper:#f5f0e8; --gray:#8b8b8b; --green:#8caa6a;
+  --dots:". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ";
+
+  /* ── FONT SIZES: change these to shrink or grow the page ── */
+  --fs-body:      7.5px;   /* agate text: results, schedules, notes, standings */
+  --fs-boxtable:  7px;     /* basketball box score tables */
+  --fs-section:   11px;    /* gray bars: ODDS, NBA, NHL … */
+  --fs-hd2:       11px;    /* "Standings", "Men", "PGA Tour" */
+  --fs-hd3:       11px;    /* league names under ODDS / TRANSACTIONS */
+  --fs-rulehd:    8px;     /* WESTERN CONFERENCE, AP TOP 25, division names */
+  --fs-subhd:     7.5px;   /* small centered subheads outside box scores */
+  --fs-boxtitle:  11px;    /* "Warriors 118, Magic 100" */
+  --fs-linescore: 8.5px;   /* "Dallas ……20 22 25 32 — 99" */
+  --fs-boxhead:   8px;     /* DALLAS, SCORING, TEAM STATISTICS */
+  --fs-oddsday:   8px;     /* MONDAY in the odds */
+  --fs-oddshead:  7px;     /* FAVORITE  SPREAD  UNDERDOG */
+  --fs-odds:      7px;     /* odds lines: WARRIORS ..14½ (232).. Orlando */
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper)}
+.page{background:var(--paper);color:var(--ink);font-family:var(--cond);font-size:var(--fs-body);
+      line-height:1.22;padding:8px 10px;margin:0 auto}
+
+/* ── Dot leaders (linescores, odds, football stats all share this) ── */
+.fill{flex:1;overflow:hidden;white-space:nowrap}
+.fill::before{content:var(--dots);letter-spacing:0px}
+
+/* ── Masthead ── */
+.masthead-top{border-bottom:2px solid var(--ink);padding-bottom:3px;margin-bottom:6px;display:flex;align-items:baseline;gap:8px}
+.mh-page{font-family:'Farnham Display Bold',Georgia,serif;font-weight:700;font-size:12px}
+.mh-date-bold{font-family:'Farnham Display Bold',Georgia,serif;font-weight:700;font-size:11px}
+.mh-divider{font-size:11px}
+.mh-site{font-family:'Farnham Display',Georgia,serif;font-size:10px;text-transform:uppercase}
+.mh-stars{margin-left:4px;font-size:7px;letter-spacing:1.5px}
+.mh-admin{margin-left:auto;font-family:var(--sans);font-size:8px;color:#777;text-decoration:none}
+.mh-row{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin-bottom:8px}
+.mh-banner{background:var(--green);color:#fff;display:inline-block;padding:4px 18px 6px}
+.mh-banner-title{font-family:'Archer Bold',Georgia,serif;font-weight:700;font-size:26px;letter-spacing:-.5px;text-transform:uppercase}
+
+/* ── Date navigation (screen only, so it never prints) ── */
+@media screen{.datenav{display:flex;align-items:center;gap:6px;font-family:var(--sans);font-size:10px}}
+.datenav [hidden]{display:none!important}
+.dn-btn{background:var(--ink);color:var(--paper);text-decoration:none;font-weight:700;
+        padding:4px 9px;text-transform:uppercase;letter-spacing:.3px;font-size:9px}
+.dn-btn:hover{background:#444}
+.dn-today{background:var(--green)}
+.dn-pick,.dn-select{font:inherit;font-size:10px;border:.75px solid var(--ink);background:#fff;padding:2px 4px;color:var(--ink)}
+
+/* ── Column flow ── */
+.agate{column-gap:8px;column-rule:1px solid var(--ink);column-fill:balance;padding-bottom:2px}
+.blk,.box{break-inside:avoid}
+
+/* ── Headings ── */
+.sec-hd{background:var(--gray);color:#fff;font-family:var(--sans);font-weight:700;font-size:var(--fs-section);
+        text-transform:uppercase;letter-spacing:.3px;padding:2px 5px 1px;margin:8px 0 4px;
+        break-after:avoid;break-inside:avoid}
+.sec-hd:first-child{margin-top:0}
+.hd2{font-family:var(--sans);font-weight:700;font-size:var(--fs-hd2);margin:4px 0 2px;break-after:avoid}
+.hd3{font-family:var(--sans);font-weight:700;font-size:var(--fs-hd3);margin:5px 0 2px;break-after:avoid}
+.conf,.rulehd{font-family:var(--sans);font-weight:700;font-size:var(--fs-rulehd);text-align:center;letter-spacing:.2px;
+              border-top:1.5px solid var(--ink);border-bottom:.75px solid var(--ink);
+              padding:1px 0;margin:4px 0 1px;break-after:avoid}
+.subhd{font-family:var(--sans);font-weight:700;font-size:var(--fs-subhd);text-align:center;
+       padding:.5px 0;margin:3px 0 1px;break-after:avoid}
+.dayhd{font-style:italic;text-align:center;margin-top:2px;break-after:avoid}
+.center{text-align:center}
+.qhd{font-weight:700}
+.note{margin:2px 0 3px}
+
+/* ── Lines ── */
+.ln,.hang{padding-left:6px;text-indent:-6px}
+.txn{padding-top:1px;padding-bottom:1px}
+.para{text-indent:6px;text-align:justify;hyphens:auto}
+.gap{height:3px}
+
+/* ── Tables (no row rules, as in the Chronicle) ── */
+table{width:100%;border-collapse:collapse;font-size:var(--fs-body);line-height:1.2}
+th{font-weight:700;text-align:right;padding:0 1px;white-space:nowrap}
+td{text-align:right;padding:0 1px;white-space:nowrap;font-variant-numeric:tabular-nums}
+td.nm,th.nm{text-align:left}
+.feat td.nm{font-weight:700}
+table.st{margin-bottom:2px}
+table.st th.div{text-align:center;font-family:var(--sans);font-size:var(--fs-rulehd);padding-top:1px}
+table.rk td:first-child{width:12px}
+table.gf td.pos{text-align:left;width:14px}
+
+/* ── Odds: FAVORITE ....SPREAD (O/U).... UNDERDOG ── */
+.oddday{font-family:var(--sans);font-weight:700;font-size:var(--fs-oddsday);text-align:center;
+        border-top:1.5px solid var(--ink);border-bottom:.75px solid var(--ink);margin:3px 0 1px;padding:.5px 0}
+.odhdr,.odrow{display:grid;grid-template-columns:1fr auto 1fr;column-gap:2px;align-items:baseline;line-height:1.25}
+.odhdr{font-family:var(--sans);font-weight:700;font-size:var(--fs-oddshead);margin-bottom:1px}
+.odhdr .r{text-align:right}
+.odrow{font-size:var(--fs-odds)}
+.odrow .f,.odrow .d{display:flex;min-width:0;overflow:hidden}
+.odrow .d{justify-content:flex-end}
+.odrow .t{white-space:nowrap}
+.sp{text-align:center;white-space:nowrap}
+
+/* ══ Box scores ══ */
+/* heavy rule over every title */
+.box{border-top:2px solid var(--ink);margin:10px 0 3px;padding-top:3px}
+.boxtitle{font-family:var(--sans);font-weight:700;font-size:var(--fs-boxtitle);line-height:1.1;margin:1px 0 4px}
+
+/* linescore: one table for both teams, periods in right-aligned columns */
+table.lsx{font-family:var(--cond-reg);font-size:var(--fs-linescore);line-height:1.25}
+table.lsx td{padding:0}
+table.lsx td.lsx-nm{width:100%;max-width:0;overflow:hidden;text-align:left}
+table.lsx td.lsx-p{padding-left:3px}
+table.lsx td.lsx-dash{padding:0 1px 0 2px}
+.lsx-lead{display:flex;align-items:baseline}
+.lsx-lead .nm{font-family:var(--cond);font-weight:700;white-space:nowrap}
+.lsx-lead .fill{margin:0 2px 0 1px}
+
+/* team names (DALLAS) and football heads (SCORING …): heavy rule above, thin below */
+.teamhd{font-family:var(--sans);font-weight:700;font-size:var(--fs-boxhead);text-align:center;
+        letter-spacing:.2px;border-top:1.75px solid var(--ink);border-bottom:.75px solid var(--ink);
+        padding:1px 0 .5px;margin:5px 0 2px}
+
+/* basketball */
+table.bb{font-size:var(--fs-boxtable)}
+table.bb thead th{line-height:1.05}
+table.bb th,table.bb td{padding:0 0 0 1.5px}
+
+/* baseball (only used if MLB is ever turned back on here) */
+table.bsb{margin-top:3px}
+table.bsb thead th{border-bottom:.5px solid var(--ink)}
+
+/* football team statistics: label ........ value */
+table.fbt{table-layout:fixed}
+table.fbt thead th{font-family:var(--sans)}
+table.fbt th:nth-child(2),table.fbt th:nth-child(3),
+table.fbt td:nth-child(2),table.fbt td:nth-child(3){width:34px}
+table.fbt td.nm{overflow:hidden}
+.dl{display:flex;align-items:baseline}
+.dl .fill{margin-left:1px}
+
+@media print{
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  .mh-admin,.datenav{display:none}
+}

@@ -236,7 +236,6 @@
 ,P,Will Childers,R,Nashville,Active,No
 5,INF,Daniel Guilarte,R,Nashville,Active,No
 34,P,Tyson Hardin,R,Nashville,Active,No
-44,P,Blake Holub,R,Nashville,Active,No
 49,P,Edwin Jimenez,R,Nashville,Active,No
 ,P,Jared Koenig,L,Nashville,Active,No
 52,P,Tate Kuehner,L,Nashville,Active,No
@@ -250,6 +249,7 @@
 7,INF,Jett Williams,R,Nashville,Active,No
 28,C,Ethan Anderson,S,Norfolk,Active,No
 4,C,Silas Ardoin,R,Norfolk,Active,No
+,INF,José Barrero,R,Norfolk,Active,No
 1,OF,Enrique Bradfield Jr.,L,Norfolk,Active,No
 29,P,Trace Bright,R,Norfolk,Active,No
 31,INF,Brandon Butterworth,R,Norfolk,Active,No
@@ -275,6 +275,7 @@
 34,P,Levi Wells,R,Norfolk,Active,No
 12,C,Creed Willems,L,Norfolk,Active,No
 18,P,Chris Campos,R,Oklahoma City,Active,No
+,C,Christian Cerda,R,Oklahoma City,Active,No
 4,OF,Zach Ehrhard,R,Oklahoma City,Active,No
 29,P,Jackson Ferris,L,Oklahoma City,Active,No
 ,INF,Tyler Fitzgerald,R,Oklahoma City,Active,No
@@ -285,6 +286,7 @@
 12,P,Griff McGarry,R,Oklahoma City,Active,No
 7,INF,Noah Miller,S,Oklahoma City,Active,No
 17,OF,Chris Newell,L,Oklahoma City,Active,No
+,P,Carlos Peña,L,Oklahoma City,Active,No
 45,P,Christian Romero,R,Oklahoma City,Active,No
 13,OF,Mike Sirota,R,Oklahoma City,Active,No
 3,OF,James Tibbs III,L,Oklahoma City,Active,No
@@ -359,6 +361,7 @@
 2,INF,Thomas Gavello,L,Sacramento,Active,No
 48,C,Fernando Gonzalez,R,Sacramento,Active,No
 29,INF,Parks Harber,R,Sacramento,Active,No
+,P,Blake Holub,R,Sacramento,Active,No
 ,P,Seth Lonsway,L,Sacramento,Active,No
 49,P,Logan Martin,R,Sacramento,Active,No
 51,P,Darien Smith,R,Sacramento,Active,No
