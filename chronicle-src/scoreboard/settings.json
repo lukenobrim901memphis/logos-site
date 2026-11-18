@@ -109,5 +109,6 @@
   "show_odds": true,
   "show_transactions": true,
   "golf_limit": 30,
-  "custom_sections": []
+  "custom_sections": [],
+  "copy_fonts": true
 }

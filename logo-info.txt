@@ -1,0 +1,573 @@
+== MLB (    4530 files, 8.0K)
+MLB/MLB CLE Memorial Day sleeve patch 2018.png
+MLB/MLB NYM Mr. Met logo 2014.png
+MLB/MLB PIT spring training hat logo 2019.png
+MLB/MLB PHI David Montgomery DPM memorial patch 2019.png
+MLB/MLB CIN camo 2017.png
+MLB/MLB COL road gray Memorial Day jersey logo 2013.png
+MLB/MLB DET batting practice hat logo 2025.png
+MLB/MLB OAK 1965 throwback jersey logo 2015.png
+MLB/MLB BOS 4th of July hat logo 2021.png
+MLB/MLB SFG city connect sleeve pattern 2021-2024.png
+MLB/MLB PIT Spring Training hat logo 2025.png
+MLB/MLB SDP road gray jersey logo 2011-2015.png
+-- codes used:
+   1 100th
+   1 150
+  15 4th
+   1 AL
+ 159 ARI
+   4 Armed
+  22 ATH
+ 140 ATL
+ 151 BAL
+   1 Baseball
+   1 Black
+ 157 BOS
+   1 BRK
+   1 Canadian
+ 153 CHC
+   1 Childhood
+ 135 CHW
+ 197 CIN
+   3 Civil
+ 131 CLE
+ 115 COL
+ 137 DET
+   3 Father's
+   6 FLA
+   1 Fort
+   1 Hall
+ 170 HOU
+   1 Independence
+   3 Jackie
+   1 KCA
+ 195 KCR
+ 131 LAA
+ 140 LAD
+   3 Little
+   3 London
+   5 Lou
+   7 Memorial
+   5 Mexico
+ 147 MIA
+ 163 MIL
+ 165 MIN
+   2 Mother's
+   1 Negro
+   1 Nippon
+   1 NL
+   1 NLDS
+ 154 NYM
+ 103 NYY
+ 119 OAK
+ 151 PHI
+ 137 PIT
+   2 Play
+   2 Player's
+   2 Roberto
+   1 Sandy
+ 173 SDP
+ 155 SEA
+   1 SEP
+ 166 SFG
+   1 Speedway
+  11 Spring
+ 163 STL
+ 127 TBR
+ 140 TEX
+   1 Tokyo
+  96 TOR
+   1 United
+   1 USA
+   1 World
+ 138 WSN
+   1 WSS
+== NBA (     336 files, 860K)
+NBA/NBA BRK City Edition jersey logo 2025.png
+NBA/NBA BRK black jersey logo.png
+NBA/NBA MIA Noche Latina jersey logo 2014.png
+NBA/NBA POR Pride jersey logo.png
+NBA/NBA SAS team logo.png
+NBA/NBA DET City Edition jersey logo 2025.png
+NBA/NBA OKC primary logo 2009-present.png
+NBA/NBA MEM white jersey logo.png
+NBA/NBA DAL City Edition jersey logo 2025.png
+NBA/NBA TOR City Edition jersey logo 2026.png
+NBA/NBA ORL City Edition jersey logo 2025.png
+NBA/NBA ORL team logo 2025.png
+-- codes used:
+  25 ATL
+  13 BOS
+   9 BRK
+  12 CHA
+  10 CHI
+  13 CLE
+  11 DAL
+  10 DEN
+   8 DET
+  11 GSW
+   9 HOU
+  13 IND
+   9 LAC
+  10 LAL
+   9 MEM
+  13 MIA
+  10 MIL
+   8 MIN
+   4 NOH
+  10 NOP
+  11 NYK
+   8 OKC
+  12 ORL
+   8 PHI
+  11 PHX
+   9 POR
+  18 SAC
+  13 SAS
+  11 TOR
+   9 UTA
+   9 WAS
+== NFL (      70 files,   0B)
+NFL/NFL BAL end zone logo 2002-2015.png
+NFL/NFL CAR logo.png
+NFL/NFL SEA logo.png
+NFL/NFL ATL Atlanta throwback end zone logo 2019-present.png
+NFL/NFL KC logo.png
+NFL/NFL ATL 50th season logo 2015.png
+NFL/NFL ARI Cardinals end zone logo 2006-present.png
+NFL/NFL Play 60 logo 2007-2016.png
+NFL/NFL Pink October logo 2015.png
+NFL/NFL NYG logo.png
+NFL/NFL ARI team logo.png
+NFL/NFL TEN shield logo.png
+-- codes used:
+   1 100th
+   1 50
+   6 ARI
+  10 ATL
+   3 Back
+   2 BAL
+   3 BUF
+   1 CAR
+   1 CHI
+   1 CIN
+   2 DAL
+   1 DEN
+   1 GB
+   2 HOU
+   1 IND
+   2 JAX
+   1 KC
+   1 Kickoff
+   1 LAR
+   1 LV
+   2 MIA
+   1 MIN
+   2 NE
+   1 NO
+   1 NYG
+   2 NYJ
+   1 OAK
+   1 PHI
+   2 Pink
+   1 PIT
+   1 Play
+   2 SEA
+   3 SF
+   1 Super
+   1 TB
+   5 TEN
+   1 WAS
+== MiLB (     788 files,   0B)
+MiLB/MiLB NFK Caballitos del Mar de Norfolk hat logo.png
+MiLB/MiLB SLK Abejas hat logo.png
+MiLB/MiLB ABQ black hat logo.png
+MiLB/MiLB DHB blue jersey logo.png
+MiLB/MiLB MEM white hat logo.png
+MiLB/MiLB CLB sleeve patch.png
+MiLB/MiLB CLB road gray jersey logo.png
+MiLB/MiLB IWA Demonios de Des Moines jersey logo.png
+MiLB/MiLB WOR Wepas copa sleeve logo.png
+MiLB/MiLB NFK Tandangs hat logo.png
+MiLB/MiLB ELP road gray jersey logo.png
+MiLB/MiLB OKC Pack the Park Pink hat logo 2026.png
+-- codes used:
+  29 ABQ
+  22 BFL
+  39 CHR
+  20 CLB
+   1 Copa
+   7 CSP
+  20 DHB
+  28 ELP
+  20 FRE
+  24 GWI
+   1 IE
+  31 INA
+  16 IWA
+  17 JCK
+  39 LHV
+  32 LOU
+  24 LVG
+  16 MEM
+  27 NFK
+  14 NOR
+  23 NVL
+  30 OKC
+  15 OMA
+   9 ONT
+   7 PAW
+  14 REN
+  24 ROC
+  24 RRK
+  18 SAC
+   8 SAL
+   3 SAN
+  17 SKT
+  27 SLK
+  23 STP
+  23 SWB
+  32 SYR
+  18 TAC
+  18 TOL
+   1 TUC
+   5 WCH
+  22 WOR
+== LIDOM (     101 files,   0B)
+LIDOM/LIDOM AGU aguilucho white jersey logo.png
+LIDOM/LIDOM ESC black jersey logo copy.png
+LIDOM/LIDOM GIG red jersey logo.png
+LIDOM/LIDOM ESS green jersey right sleeve pattern.png
+LIDOM/LIDOM ESC Induveca red back ad patch.png
+LIDOM/LIDOM ESC Induveca ad patch.png
+LIDOM/LIDOM GIG white panel hat logo 2026.png
+LIDOM/LIDOM AZU gray jersey logo.png
+LIDOM/LIDOM AZU black jersey logo copy.png
+LIDOM/LIDOM ESC black jersey logo.png
+LIDOM/LIDOM GIG black jersey logo.png
+LIDOM/LIDOM AZU white jersey logo.png
+-- codes used:
+  18 AGU
+   1 Arrieta
+   8 AZU
+  18 ESC
+  21 ESS
+  12 GIG
+  23 LCY
+== LMB (      69 files,   0B)
+LMB/LMB MON home white jersey logo.png
+LMB/LMB CHI logo.png
+LMB/LMB CMP white jersey logo.png
+LMB/LMB MON hat logo.png
+LMB/LMB YUC hat logo.png
+LMB/LMB DUR white jersey sleeve patch.png
+LMB/LMB OAX road black jersey logo.png
+LMB/LMB GUA road jersey logo.png
+LMB/LMB MCD road red hat logo.png
+LMB/LMB PUE road hat logo.png
+LMB/LMB QUE hat logo.png
+LMB/LMB TIJ home white jersey logo.png
+-- codes used:
+   4 ASU
+   1 CHI
+   3 CMP
+   3 DLA
+   6 DUR
+   3 GUA
+   1 JAL
+   3 LEO
+   4 MCD
+   3 MON
+   3 MTY
+   3 OAX
+   4 PUE
+   3 QRO
+   4 QUE
+   3 SLT
+   3 TIJ
+   4 TRR
+   4 VER
+   4 VIL
+   3 YUC
+== WBC (      90 files,   0B)
+WBC/WBC AUS hat logo.png
+WBC/WBC CAN flag.png
+WBC/WBC CAN gray jersey logo.png
+WBC/WBC VEN red jersey logo.png
+WBC/WBC GB red jersey logo.png
+WBC/WBC CAN red jersey logo.png
+WBC/WBC MEX red jersey logo.png
+WBC/WBC ISR logo.png
+WBC/WBC JPN white jersey logo.png
+WBC/WBC PR hat logo.png
+WBC/WBC VEN blue hat logo.png
+WBC/WBC PAN flag.png
+-- codes used:
+   4 AUS
+   4 BRA
+   4 CAN
+   4 COL
+   5 CUB
+   4 CZE
+   6 DR
+   4 GB
+   6 ISR
+   5 ITA
+   4 JPN
+   4 KOR
+   6 MEX
+   4 NCA
+   4 NED
+   5 PAN
+   4 PR
+   4 TPE
+   4 USA
+   5 VEN
+== lidom-teams
+aguilas-cibaenas
+estrellas-orientales
+gigantes-del-cibao
+leones-del-escogido
+tigres-del-licey
+toros-del-este
+-- example files:
+Asocacion Cibao white ad patch.png
+Asociacion Cibao blue ad patch.png
+Black hat logo.png
+Black jersey logo.png
+Gray jersey logo.png
+Primary logo.png
+== lmb-teams
+acereros-de-monclova
+algodoneros-de-union-laguna
+bravos-de-leon
+caliente-de-durango
+charros-de-jalisco
+conspiradores-de-queretaro
+diablos-rojos-del-mexico
+dorados-de-chihuahua
+el-aguila-de-veracruz
+generales-de-durango
+guerreros-de-oaxaca
+leones-de-yucatan
+mariachis-de-guadalajara
+olmecas-de-tabasco
+pericos-de-puebla
+piratas-de-campeche
+rieleros-de-aguascalientes
+saraperos-de-saltillo
+sultanes-de-monterrey
+tecolotes-de-los-dos-laredos
+tigres-de-quintana-roo
+toros-de-tijuana
+-- example files:
+Hat logo.png
+Home white jersey logo.png
+Primary logo.png
+Road gray jersey logo.png
+== mlb-teams
+arizona-diamondbacks
+athletics
+atlanta-braves
+baltimore-orioles
+boston-red-sox
+chicago-cubs
+chicago-white-sox
+cincinnati-reds
+cleveland-guardians
+cleveland-indians
+colorado-rockies
+detroit-tigers
+florida-marlins
+houston-astros
+kansas-city-royals
+los-angeles-angels
+los-angeles-dodgers
+miami-marlins
+milwaukee-brewers
+minnesota-twins
+new-york-mets
+new-york-yankees
+oakland-athletics
+philadelphia-phillies
+pittsburgh-pirates
+san-diego-padres
+san-francisco-giants
+seattle-mariners
+st-louis-cardinals
+tampa-bay-rays
+texas-rangers
+toronto-blue-jays
+washington-nationals
+-- example files:
+19 firefighters black memorial patch 2013.png
+19 firefighters white memorial patch 2013.png
+1990s throwback jersey logo 2014.png
+1998 throwback batting helmet logo 2018.png
+1999 throwback jersey logo 2018.png
+2001 throwback hat logo 2026.png
+== nba-teams
+atlanta-hawks
+boston-celtics
+brooklyn-nets
+charlotte-bobcats
+charlotte-hornets
+chicago-bulls
+cleveland-cavaliers
+dallas-mavericks
+denver-nuggets
+detroit-pistons
+golden-state-warriors
+houston-rockets
+indiana-pacers
+los-angeles-clippers
+los-angeles-lakers
+memphis-grizzlies
+miami-heat
+milwaukee-bucks
+minnesota-timberwolves
+new-orleans-hornets
+new-orleans-pelicans
+new-york-knicks
+oklahoma-city-thunder
+orlando-magic
+philadelphia-76ers
+phoenix-suns
+portland-trail-blazers
+sacramento-kings
+san-antonio-spurs
+toronto-raptors
+utah-jazz
+washington-wizards
+-- example files:
+Alternate ATL logo 2016-2020.png
+Alternate ATL logo 2021-present.png
+Alternate bird logo 2008-2014.png
+Alternate blue ATL logo 2008-2014.png
+Alternate green and black logo 2016-2020.png
+Alternate green and red logo 2016-2020.png
+== nfl-teams
+arizona-cardinals
+atlanta-falcons
+baltimore-ravens
+buffalo-bills
+carolina-panthers
+chicago-bears
+cincinnati-bengals
+cleveland-browns
+dallas-cowboys
+denver-broncos
+detroit-lions
+green-bay-packers
+houston-texans
+indianapolis-colts
+jacksonville-jaguars
+kansas-city-chiefs
+las-vegas-raiders
+los-angeles-chargers
+los-angeles-rams
+miami-dolphins
+minnesota-vikings
+new-england-patriots
+new-orleans-saints
+new-york-giants
+new-york-jets
+nfl
+oakland-raiders
+philadelphia-eagles
+pittsburgh-steelers
+san-diego-chargers
+san-francisco-49ers
+seattle-seahawks
+st-louis-rams
+tampa-bay-buccaneers
+tennessee-titans
+washington-commanders
+washington-football-team
+washington-redskins
+-- example files:
+NFL ARI rivalries end zones 2025.png
+NFL ARI rivalries helmet logo 2025.png
+NFL ARI rivalries midfield logo 2025.png
+NFL ARI team logo.png
+== triple-a-teams
+albuquerque-isotopes
+buffalo-bisons
+charlotte-knights
+colorado-springs-sky-sox
+columbus-clippers
+durham-bulls
+el-paso-chihuahuas
+fresno-grizzlies
+gwinnett-braves
+gwinnett-stripers
+indianapolis-indians
+iowa-cubs
+jacksonville-jumbo-shrimp
+las-vegas-51s
+las-vegas-aviators
+lehigh-valley-ironpigs
+louisville-bats
+memphis-redbirds
+nashville-sounds
+new-orleans-baby-cakes
+new-orleans-zephyrs
+norfolk-tides
+oklahoma-city-baseball-club
+oklahoma-city-comets
+oklahoma-city-dodgers
+oklahoma-city-redhawks
+omaha-storm-chasers
+pawtucket-red-sox
+reno-aces
+rochester-red-wings
+round-rock-express
+sacramento-river-cats
+salt-lake-bees
+san-antonio-missions
+scranton-wilkes-barre-highlanders
+scranton-wilkes-barre-railriders
+st-paul-saints
+sugar-land-skeeters
+sugar-land-space-cowboys
+syracuse-chiefs
+syracuse-mets
+tacoma-rainiers
+toledo-mud-hens
+tucson-padres
+wichita-wind-surge
+worcester-red-sox
+-- example files:
+Affiliate purple hat logo 2015-present.png
+Affiliate purple jersey logo 2015-present.png
+Alternate logo 2003-present.png
+Black hat logo 2003-present.png
+Black jersey logo 2003-present.png
+Duke City hat logo 2025-present.png
+== wbc-teams
+australia
+brazil
+canada
+chinese-taipei
+colombia
+cuba
+czechia
+dominican-republic
+great-britain
+israel
+italy
+japan
+korea
+mexico
+netherlands
+nicaragua
+panama
+puerto-rico
+usa
+venezuela
+-- example files:
+Green jersey logo.png
+Hat logo.png
+Primary logo.png
+White jersey logo.png

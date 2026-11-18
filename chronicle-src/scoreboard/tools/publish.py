@@ -44,7 +44,7 @@ OUT_DIR        = os.path.join(SITE_DIR, "chronicle")
 # The Chronicle fonts (Ford Antenna, Farnham, Archer) are licensed typefaces.
 # Putting the font files on a public website usually breaks that license, so
 # by default they are NOT copied; the pages fall back to similar free fonts.
-COPY_FONTS = True   # default only — the real switch is the admin checkbox
+COPY_FONTS = False   # default only — the real switch is the admin checkbox
                      # "Include font files", saved in settings.json
 
 

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/site-favicon.png">
 <title>Admin — Scoreboard</title>
 <style>
 body{background:#f5f0e8;font:12px/1.4 -apple-system,'Helvetica Neue',Arial,sans-serif;color:#111;margin:0}
@@ -52,6 +53,8 @@ textarea{min-height:90px;font-family:Menlo,monospace;font-size:11px}
 <div class="row" style="margin-top:6px">
   <div><label><input type="checkbox" name="show_odds" {{ 'checked' if s.show_odds }}> Show odds</label></div>
   <div><label><input type="checkbox" name="show_transactions" {{ 'checked' if s.show_transactions }}> Show transactions</label></div>
+  <div><label><input type="checkbox" name="copy_fonts" {{ 'checked' if s.copy_fonts }}> Include font files in the published site</label>
+    <span class="hint">Ford Antenna, Farnham, Archer. Check your font license before your site goes live.</span></div>
 </div>
 <label>Section order (comma-separated keys)</label>
 <input type="text" name="order" value="{{ s.order|join(', ') }}">

@@ -5,6 +5,7 @@
 {% macro tm(t) -%}
   {%- if t.rank %}No. {{ t.rank }} {% endif -%}
   {%- if t.featured %}<b>{{ t.name }}</b>{% else %}{{ t.name }}{% endif -%}
+  {%- if t.ss %} (ss){% endif -%}
 {%- endmacro %}
 
 {# ── Linescore: both teams in one table so the periods line up ── #}
@@ -23,14 +24,14 @@
 {%- endmacro %}
 
 {# ── Standings ── #}
-{% macro standings(st) %}
-<div class="hd2">Standings</div>
+{% macro standings(st, heading='Standings') %}
+{% if heading %}<div class="hd2">{{ heading }}</div>{% endif %}
 {% for g in st.groups %}
 <div class="blk">
   {% if g.conference %}<div class="conf">{{ g.conference|upper }}</div>{% endif %}
   <table class="st">
     <thead>
-      <tr><th class="div" colspan="{{ st.columns|length + 1 }}">{{ g.name }}</th></tr>
+      {% if g.name %}<tr><th class="div" colspan="{{ st.columns|length + 1 }}">{{ g.name }}</th></tr>{% endif %}
       <tr><th></th>{% for c in st.columns %}<th>{{ c }}</th>{% endfor %}</tr>
     </thead>
     <tbody>
@@ -90,6 +91,18 @@
   <div class="dayhd">{{ d.day }}</div>
   {% for g in d.games %}
     <div class="ln">{{ tm(g.away) }} {{ 'vs.' if g.neutral else 'at' }} {{ tm(g.home) }}, {{ g.time }}</div>
+  {% endfor %}
+</div>
+{% endfor %}
+{% endmacro %}
+
+{# ── Spring training schedule: "Kansas City vs. Giants at Scottsdale, Ariz., 12:05 p.m." ── #}
+{% macro spring_schedule(days) %}
+{% for d in days %}
+<div class="blk-soft">
+  <div class="dayhd">{{ d.day }}</div>
+  {% for g in d.games %}
+    <div class="hang">{{ tm(g.away) }} vs. {{ tm(g.home) }}{% if g.where %} at {{ g.where }}{% endif %}, {{ g.time }}</div>
   {% endfor %}
 </div>
 {% endfor %}

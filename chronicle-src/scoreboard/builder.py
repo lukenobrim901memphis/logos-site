@@ -6,14 +6,14 @@ Page date = the paper's date (today, Pacific). Results are from the day
 before; schedules/odds are for the page date (and the day after).
 """
 
-from datetime import timedelta
+from datetime import date, timedelta
 
 import espn
 from leagues import LEAGUES, BY_KEY
 from parsers import BOX_PARSERS
 from parsers import standings as p_standings
 from parsers import rankings as p_rankings
-from parsers import slate, individual
+from parsers import slate, individual, spring
 from parsers.common import (ascii_text, comp0, sides, status_of, is_featured,
                             day_name)
 
@@ -66,16 +66,74 @@ def fetch_scoreboards(page_date, settings, leagues):
         k, p, extra = lg["key"], lg["path"], lg.get("scoreboard_params")
         if lg["kind"] in ("golf", "racing"):
             jobs[(k, "cur")] = lambda p=p: espn.scoreboard(p, None)
+        elif lg["kind"] == "spring":
+            season_start = date(page_date.year, 2, 10)
+            span = f"{season_start:%Y%m%d}-{results_date:%Y%m%d}"
+            jobs[(k, "y")] = lambda p=p: espn.scoreboard(p, results_date, ttl=espn.TTL_PAST)
+            jobs[(k, "t")] = lambda p=p: espn.scoreboard(p, page_date)
+            jobs[(k, "range")] = lambda p=p, sp=span: espn.scoreboard(
+                p, None, {"dates": sp, "limit": 1000}, ttl=espn.TTL_PAST)
         elif lg["kind"] == "tennis":
             jobs[(k, "y")] = lambda p=p: espn.scoreboard(p, results_date, ttl=espn.TTL_PAST)
         else:
             jobs[(k, "y")] = lambda p=p, e=extra: espn.scoreboard(p, results_date, e, ttl=espn.TTL_PAST)
+            for name, params in lg.get("extra_groups", []):
+                jobs[(k, "y+" + name)] = lambda p=p, e=params: espn.scoreboard(p, results_date, e, ttl=espn.TTL_PAST)
+            if lg.get("nfl_weeks"):            # every game from 9 days back to 9 ahead
+                span = f"{page_date - timedelta(days=9):%Y%m%d}-{page_date + timedelta(days=9):%Y%m%d}"
+                jobs[(k, "weeks")] = lambda p=p, sp=span: espn.scoreboard(p, None, {"dates": sp, "limit": 300})
             if lg.get("weekly"):
                 jobs[(k, "wk")] = lambda p=p, e=extra: espn.scoreboard(p, None, e)
             else:
                 jobs[(k, "t")] = lambda p=p, e=extra: espn.scoreboard(p, page_date, e)
                 jobs[(k, "t2")] = lambda p=p, e=extra: espn.scoreboard(p, page_date + timedelta(days=1), e)
-    return espn.run_parallel(jobs)
+    out = espn.run_parallel(jobs)
+
+    # NFL: read the season calendar, then fetch the weeks around this paper
+    # by week number (seasontype + week), stamping each game with its week
+    week_jobs = {}
+    for lg in leagues:
+        if not lg.get("nfl_weeks"):
+            continue
+        k, p = lg["key"], lg["path"]
+        cal, year = slate.nfl_calendar(out.get((k, "wk")) or {})
+        lo, hi = page_date - timedelta(days=9), page_date + timedelta(days=9)
+        for key, first, last in cal:
+            if key[0] in (2, 3) and first <= hi and last >= lo:
+                params = {"seasontype": key[0], "week": key[1]}
+                if year:
+                    params["dates"] = year
+                week_jobs[(k, key)] = lambda p=p, pr=params: espn.scoreboard(p, None, pr)
+    if week_jobs:
+        fetched = espn.run_parallel(week_jobs)
+        by_league = {}
+        for (k, key), sbw in fetched.items():
+            for ev in (sbw or {}).get("events", []):
+                ev["_wk"] = list(key)
+                by_league.setdefault(k, {})[ev.get("id")] = ev
+        for k, evs in by_league.items():
+            out[(k, "weeks")] = {"events": list(evs.values())}
+
+    # merge extra divisions (college football FCS) into the results-day scoreboard
+    for lg in leagues:
+        if not lg.get("extra_groups"):
+            continue
+        k = lg["key"]
+        main = out.get((k, "y")) or {}
+        events, seen = [], set()
+        for ev in main.get("events", []):
+            ev["_division"] = "FBS"
+            events.append(ev)
+            seen.add(ev.get("id"))
+        for name, _ in lg["extra_groups"]:
+            for ev in (out.get((k, "y+" + name)) or {}).get("events", []):
+                if ev.get("id") not in seen:            # FBS-vs-FCS games appear in both
+                    ev["_division"] = name
+                    events.append(ev)
+                    seen.add(ev.get("id"))
+        if events or main:
+            out[(k, "y")] = {**main, "events": events}
+    return out
 
 
 def build(page_date, settings):
@@ -93,6 +151,9 @@ def build(page_date, settings):
         k = lg["key"]
         if lg["kind"] in ("golf", "racing", "tennis"):
             active.append(lg)
+        elif lg["kind"] == "spring":
+            if lmode(k) == "on" or spring.is_preseason(get(k, "y"), get(k, "t")):
+                active.append(lg)
         elif lmode(k) == "on" or _season_active(get(k, "y"), get(k, "t"),
                                                  get(k, "t2"), get(k, "wk")):
             active.append(lg)
@@ -138,6 +199,13 @@ def build(page_date, settings):
             if sec["tennis"]:
                 sections.append(sec)
             continue
+        if lg["kind"] == "spring":
+            sec["standings"] = spring.standings(get(k, "range"), lg, featured)
+            sec["results"] = spring.results(get(k, "y"), lg, featured)
+            sec["spring_schedule"] = spring.schedule(get(k, "t"), lg, featured, on_date=page_date)
+            if sec["standings"] or sec["results"] or sec["spring_schedule"]:
+                sections.append(sec)
+            continue
 
         st = more.get((k, "standings"))
         sec["standings"] = p_standings.parse(st, lg, featured) if st else None
@@ -150,12 +218,19 @@ def build(page_date, settings):
         if lg.get("college"):
             sec["top25"] = [r for r in res if r.get("ranked")]
             sec["featured_results"] = [r for r in res if r.get("featured") and not r.get("ranked")]
-            sec["other_results"] = ([r for r in res if not r.get("ranked") and not r.get("featured")]
-                                    if settings.get("college_results") == "all" else [])
+            rest = ([r for r in res if not r.get("ranked") and not r.get("featured")]
+                    if lg.get("all_scores") or settings.get("college_results") == "all" else [])
+            by_winner = lambda r: (r.get("w") or {}).get("name", r.get("text", ""))
+            sec["other_results"] = sorted([r for r in rest if r.get("division") != "FCS"], key=by_winner)
+            sec["fcs_results"] = sorted([r for r in rest if r.get("division") == "FCS"], key=by_winner)
         else:
             sec["results"] = res
 
-        if lg.get("weekly"):
+        if lg.get("nfl_weeks") and get(k, "weeks").get("events"):
+            sec["nfl_blocks"], odd_src = slate.nfl_week_view(get(k, "weeks"), lg, featured, page_date)
+            sec["results"], sched = [], []
+            odd_kw = {"on_or_after": page_date}
+        elif lg.get("weekly"):
             sched = slate.schedule(get(k, "wk"), lg, featured, on_or_after=page_date)
             odd_src, odd_kw = get(k, "wk"), {"on_or_after": page_date}
         else:
@@ -200,8 +275,8 @@ def build(page_date, settings):
             if t:
                 txns.append({"label": lg["label"], "rows": t})
 
-        has_content = any(sec.get(x) for x in ("standings", "rankings", "results", "top25",
-                                               "featured_results", "other_results",
+        has_content = any(sec.get(x) for x in ("standings", "rankings", "results", "nfl_blocks", "top25",
+                                               "featured_results", "other_results", "fcs_results",
                                                "schedule", "boxes"))
         if has_content:
             sections.append(sec)

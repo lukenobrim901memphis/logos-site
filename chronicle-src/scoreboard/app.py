@@ -11,7 +11,8 @@ Chronicle Scoreboard — all-sports agate page from the ESPN public API.
 import json
 from datetime import date
 
-from flask import Flask, render_template, request, redirect, url_for, jsonify, Response
+import os
+from flask import Flask, render_template, request, redirect, url_for, jsonify, Response, send_file, abort
 from markupsafe import Markup, escape
 
 import builder
@@ -63,6 +64,18 @@ def agate_text(body):
     return Markup("".join(out))
 
 
+# logos-site/images/navigation/favicon.png, two folders up from this app
+SITE_FAVICON = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..",
+                            "images", "navigation", "favicon.png")
+
+
+@app.route("/site-favicon.png")
+def site_favicon():
+    if not os.path.exists(SITE_FAVICON):
+        abort(404)
+    return send_file(SITE_FAVICON, mimetype="image/png")
+
+
 @app.route("/")
 def index():
     s = settings_mod.load()
@@ -102,6 +115,7 @@ def admin_save():
     s["college_results"] = f.get("college_results", "top25")
     s["show_odds"] = bool(f.get("show_odds"))
     s["show_transactions"] = bool(f.get("show_transactions"))
+    s["copy_fonts"] = bool(f.get("copy_fonts"))
 
     for lg in LEAGUES:
         k = lg["key"]

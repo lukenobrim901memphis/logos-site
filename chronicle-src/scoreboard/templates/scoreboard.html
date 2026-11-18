@@ -4,6 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/site-favicon.png">
 <title>Scoreboard — {{ page.date_str }}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +16,7 @@
 .page{width:{{ s.columns * s.column_width + (s.columns - 1) * gap + 20 }}px;max-width:none}
 </style>
 </head>
-<body>
+<body{% if page.page_date.weekday() == 6 %} class="sunday"{% endif %}>
 <div class="page">
 
   <div class="masthead-top">
@@ -31,8 +32,8 @@
     <div class="mh-banner"><span class="mh-banner-title">Scoreboard</span></div>
     <nav class="datenav" data-date="{{ page.page_date }}" data-today="{{ today }}">
       <a class="dn-btn dn-prev" href="?date={{ page.prev_date }}">‹ Previous day</a>
-      <input class="dn-pick" type="date" value="{{ page.page_date }}" max="{{ today }}" aria-label="Pick a date">
-      <select class="dn-select" aria-label="Past pages" hidden></select>
+      <input class="dn-pick" id="dn-pick" name="date" type="date" value="{{ page.page_date }}" max="{{ today }}" aria-label="Pick a date">
+      <select class="dn-select" id="dn-select" name="page" aria-label="Past pages" hidden></select>
       <a class="dn-btn dn-next" href="?date={{ page.next_date }}"{% if page.page_date >= today %} hidden{% endif %}>Next day ›</a>
       <a class="dn-btn dn-today" href="/"{% if page.page_date == today %} hidden{% endif %}>Today</a>
     </nav>
@@ -61,6 +62,10 @@
       {% if sec.kind == 'golf' %}{{ m.golf(sec.golf) }}
       {% elif sec.kind == 'racing' %}{{ m.racing(sec.racing) }}
       {% elif sec.kind == 'tennis' %}{{ m.tennis(sec.tennis) }}
+      {% elif sec.kind == 'spring' %}
+        {% if sec.standings %}{{ m.standings(sec.standings, '') }}{% endif %}
+        {{ m.results(sec.results_day, sec.results) }}
+        {{ m.spring_schedule(sec.spring_schedule) }}
       {% else %}
 
         {% if sec.rankings %}{{ m.rankings(sec.rankings) }}{% endif %}
@@ -69,7 +74,14 @@
         {% if sec.college %}
           {% if sec.top25 %}<div class="rulehd">TOP 25</div>{{ m.results(sec.results_day, sec.top25) }}{% endif %}
           {% if sec.featured_results %}<div class="rulehd">BAY AREA</div>{{ m.results(sec.results_day, sec.featured_results) }}{% endif %}
-          {% if sec.other_results %}<div class="rulehd">OTHER SCORES</div>{{ m.results(sec.results_day, sec.other_results) }}{% endif %}
+          {% if sec.other_results %}<div class="rulehd">{{ 'OTHER FBS' if sec.fcs_results or sec.key == 'cfb' else 'OTHER SCORES' }}</div>{{ m.results(sec.results_day, sec.other_results) }}{% endif %}
+          {% if sec.fcs_results %}<div class="rulehd">FCS</div>{{ m.results(sec.results_day, sec.fcs_results) }}{% endif %}
+        {% elif sec.nfl_blocks %}
+          {% for b in sec.nfl_blocks %}
+            {% if b.label %}<div class="rulehd">{{ b.label }}</div>{% endif %}
+            {% for d in b.results_by_day %}{{ m.results(d.day, d.rows) }}{% endfor %}
+            {{ m.schedule(b.schedule) }}
+          {% endfor %}
         {% else %}
           {{ m.results(sec.results_day, sec.results) }}
         {% endif %}

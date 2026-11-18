@@ -22,6 +22,7 @@ DEFAULTS = {
     "college_results": "top25",    # top25 | all
     "show_odds": True,
     "show_transactions": True,
+    "copy_fonts": False,           # publish the Ford Antenna/Farnham/Archer font files
     "golf_limit": 30,
     "custom_sections": [],         # [{"title": "CCCAA", "body": "..."}]
 }
@@ -56,9 +57,11 @@ def load():
     s["layout_version"] = 5
     s["order"] = [k for k in s["order"] if k != "mlb"]
     # new leagues added to leagues.py show up at the end of a saved order
-    for lg in LEAGUES:
-        if lg["key"] not in s["order"]:
-            s["order"].append(lg["key"])
+    keys = [lg["key"] for lg in LEAGUES]
+    for i, k in enumerate(keys):              # a newly added league slots in after
+        if k not in s["order"]:               # its neighbor from leagues.py
+            prev = next((p for p in reversed(keys[:i]) if p in s["order"]), None)
+            s["order"].insert(s["order"].index(prev) + 1 if prev else 0, k)
     return s
 
 

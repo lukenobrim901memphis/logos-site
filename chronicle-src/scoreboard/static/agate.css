@@ -20,6 +20,7 @@
   --cond-reg:'Ford Antenna Cond Regular','Roboto Condensed','Arial Narrow',sans-serif;
   --sans:'Ford Antenna','Roboto','Helvetica Neue',Arial,sans-serif;
   --ink:#111; --paper:#f5f0e8; --gray:#8b8b8b; --green:#8caa6a;
+  --sunday-paper:#e6f6e9;
   --dots:". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ";
 
   /* ── FONT SIZES: change these to shrink or grow the page ── */
@@ -40,6 +41,7 @@
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--paper)}
+body.sunday{--paper:var(--sunday-paper)}
 .page{background:var(--paper);color:var(--ink);font-family:var(--cond);font-size:var(--fs-body);
       line-height:1.22;padding:8px 10px;margin:0 auto}
 

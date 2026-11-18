@@ -14,7 +14,8 @@ LEAGUES = [
     # ── Pro team sports ──────────────────────────────────────────────────────
     dict(key="nfl",  label="NFL", path="football/nfl", kind="football",
          standings="nfl", standings_params={"level": 3}, box="all",
-         odds=True, weekly=True, transactions=True),
+         odds=True, weekly=True, transactions=True,
+         nfl_weeks=True),            # last week's scores + next week until the new week starts
     dict(key="nba",  label="NBA", path="basketball/nba", kind="basketball",
          standings="wl", standings_params={"level": 3}, box="all",
          odds=True, transactions=True,
@@ -22,6 +23,8 @@ LEAGUES = [
     dict(key="nhl",  label="NHL", path="hockey/nhl", kind="hockey",
          standings="nhl", standings_params={"level": 3}, box="all",
          odds=True, transactions=True),
+    dict(key="mlbst", label="MLB", sublabel="Spring Training", path="baseball/mlb",
+         kind="spring"),                          # only while MLB is in spring training
     dict(key="wnba", label="WNBA", path="basketball/wnba", kind="basketball",
          standings="wl", box="all", odds=True, transactions=True,
          periods=4, period_min=10, ot_min=5),
@@ -36,6 +39,8 @@ LEAGUES = [
     dict(key="cfb",  label="College Football", path="football/college-football",
          kind="football", box="featured", odds=True, weekly=True, college=True,
          scoreboard_params={"groups": 80, "limit": 300},      # FBS
+         extra_groups=[("FCS", {"groups": 81, "limit": 300})],  # + FCS = all Division I
+         all_scores=True,                                     # every D-I score, Bay Area boxes only
          rankings_weekdays=[0, 1]),                           # Mon, Tue papers
     dict(key="mcbb", label="College Basketball", sublabel="Men",
          path="basketball/mens-college-basketball", kind="basketball",

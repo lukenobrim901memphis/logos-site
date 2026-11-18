@@ -41,7 +41,8 @@ def result_line(ev, league, featured=None):
         suf = f"{suf} inn." if league.get("kind") == "baseball" else suf
     return {"w": w, "ws": ws, "l": l, "ls": ls, "suffix": suf,
             "featured": w["featured"] or l["featured"],
-            "ranked": bool(w["rank"] or l["rank"]), "id": ev.get("id")}
+            "ranked": bool(w["rank"] or l["rank"]), "id": ev.get("id"),
+            "division": ev.get("_division", "")}
 
 
 def results(sb, league, featured=None):
@@ -54,14 +55,14 @@ def results(sb, league, featured=None):
     return out
 
 
-def schedule(sb, league, featured=None, on_or_after=None, only_dates=None):
+def schedule(sb, league, featured=None, on_or_after=None, only_dates=None, by_date_only=False):
     """Group upcoming games by PT day: [{'day': "Monday's Games", 'games': [...]}]"""
     days = {}
     college = bool(league.get("college"))
     for ev in (sb or {}).get("events", []):
         comp = comp0(ev)
         st = status_of(comp if comp.get("status") else ev)
-        if st["completed"] or st["state"] == "post":
+        if not by_date_only and (st["completed"] or st["state"] == "post"):
             continue
         dt = to_pt(ev.get("date") or comp.get("date"))
         if not dt:
@@ -152,3 +153,120 @@ def odds_lines(sb, league, featured=None, on_or_after=None, only_dates=None,
     for o in out:
         del o["_date"], o["_time"]
     return out
+
+
+# ── NFL weeks ────────────────────────────────────────────────────────────────
+# Between weeks: last week's scores + next week's schedule.
+# Once a week's first game is played: that week's scores + its remaining games.
+
+def _week_key(ev):
+    if ev.get("_wk"):
+        return tuple(ev["_wk"])
+    season = ev.get("season") or {}
+    week = ev.get("week") or {}
+    try:
+        return (int(season.get("type", 2)), int(week.get("number", 0)))
+    except (TypeError, ValueError):
+        return None
+
+
+def nfl_calendar(sb):
+    """[(season type, week), first day, last day] from ESPN's NFL calendar,
+    plus the season year."""
+    weeks, year = [], None
+    for lg in (sb or {}).get("leagues", []):
+        year = year or (lg.get("season") or {}).get("year")
+        for sect in lg.get("calendar") or []:
+            if not isinstance(sect, dict):
+                continue
+            try:
+                stype = int(sect.get("value"))
+            except (TypeError, ValueError):
+                continue
+            for e in sect.get("entries") or []:
+                start, end = to_pt(e.get("startDate")), to_pt(e.get("endDate"))
+                try:
+                    num = int(e.get("value"))
+                except (TypeError, ValueError):
+                    continue
+                if start and end:
+                    weeks.append(((stype, num), start.date(), end.date()))
+    return weeks, year
+
+
+_POST_WEEKS = {1: "WILD CARD", 2: "DIVISIONAL PLAYOFFS", 3: "CONFERENCE CHAMPIONSHIPS",
+               4: "PRO BOWL", 5: "SUPER BOWL"}
+
+
+def week_label(key):
+    if not key:
+        return ""
+    stype, num = key
+    if stype == 3:
+        return _POST_WEEKS.get(num, "PLAYOFFS")
+    if stype == 1:
+        return f"PRESEASON WEEK {num}"
+    return f"WEEK {num}"
+
+
+def _scores_by_day(games, league, featured):
+    by_day = {}
+    for dt, ev in games:
+        r = result_line(ev, league, featured)
+        if r:
+            r["_t"] = dt
+            by_day.setdefault(dt.date(), []).append(r)
+    out = []
+    for d in sorted(by_day):
+        rows = sorted(by_day[d], key=lambda r: (not r["featured"], r["_t"]))
+        for r in rows:
+            r.pop("_t", None)
+        out.append({"day": f"{day_name(d)}'s Game{'s' if len(rows) != 1 else ''}", "rows": rows})
+    return out
+
+
+def nfl_week_view(sb, league, featured, page_date):
+    """Monday paper: the current week only — its scores so far + Monday night.
+    Tuesday paper: the week that just ended (all its scores), then next week's
+    full schedule. Wednesday-Sunday: the current week — scores so far +
+    remaining games (on Wednesday that's just the new week's schedule).
+
+    Returns (blocks, upcoming_events). Each block: {"label", "results_by_day",
+    "schedule"}; labels are only set when two weeks are shown.
+    A game counts as played if it was before page_date, so rebuilding an old
+    paper shows that day's view."""
+    games = {}
+    for ev in (sb or {}).get("events", []):
+        key = _week_key(ev)
+        dt = to_pt(ev.get("date") or comp0(ev).get("date"))
+        if key is None or dt is None:
+            continue
+        games.setdefault(key, []).append((dt, ev))
+    if not games:
+        return [], {"events": []}
+
+    played_keys = [k for k, gs in games.items() if any(dt.date() < page_date for dt, _ in gs)]
+    upcoming_keys = sorted(k for k, gs in games.items() if any(dt.date() >= page_date for dt, _ in gs))
+    last = max(played_keys) if played_keys else None
+
+    if page_date.weekday() == 0 and last:               # Monday: this week only
+        weeks = [last]                                  # (scores + Monday night)
+    elif page_date.weekday() == 1 and last:             # Tuesday: the week that just
+        weeks = [last] + [k for k in upcoming_keys if k > last][:1]   # ended + next week
+    else:                                               # Wednesday through Sunday
+        weeks = upcoming_keys[:1] or ([last] if last else [])
+
+    blocks, upcoming = [], []
+    for k in weeks:
+        gs = sorted(games.get(k, []), key=lambda g: g[0])
+        played = [(dt, ev) for dt, ev in gs if dt.date() < page_date]
+        ahead = [ev for dt, ev in gs if dt.date() >= page_date]
+        upcoming += ahead
+        blocks.append({"label": week_label(k),
+                       "results_by_day": _scores_by_day(played, league, featured),
+                       "schedule": schedule({"events": ahead}, league, featured,
+                                            on_or_after=page_date, by_date_only=True)})
+    if len(blocks) < 2:
+        for b in blocks:
+            b["label"] = ""
+    return blocks, {"events": upcoming}

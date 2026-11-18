@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MLB League Logos</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../mlb-style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../navigation/favicon.png">
+</head>
+<body>
+    <header class="sticky-header">
+        <a href="../../mlb.html" class="back-btn">← Back to MLB</a>
+        <h1 class="text-mlb">MLB League Logos</h1>
+    </header>
+
+    <!-- Each group shows only if it has logos. Order here = order on the page. -->
+    <div class="category-header">Anniversaries &amp; Milestones</div>
+    <div id="anniversaries" class="grid"></div>
+
+    <div class="category-header">Postseason</div>
+    <div id="postseason" class="grid"></div>
+
+    <div class="category-header">Special Games &amp; Series</div>
+    <div id="special-games" class="grid"></div>
+
+    <div class="category-header">Holidays</div>
+    <div id="holidays" class="grid"></div>
+
+    <div class="category-header">Days of Recognition</div>
+    <div id="recognition" class="grid"></div>
+
+    <div class="category-header">Patterns &amp; Textures</div>
+    <div id="patterns" class="grid"></div>
+
+    <div class="category-header">Other</div>
+    <div id="other-logos" class="grid"></div>
+
+    <div id="lightbox" class="lightbox" onclick="this.style.display='none'">
+        <span class="close-btn">&times;</span>
+        <img id="lightbox-img" src="" alt="Enlarged logo">
+        <div id="lightbox-caption"></div>
+    </div>
+
+    <script>
+        const path = "../../images/mlb-teams/mlb/";
+        const allFiles = [
+            "100th anniversary logo 1969.png",
+            "150 patch 2019.png",
+            "4th of July blue hat pattern 2017.png",
+            "4th of July blue number pattern 2017.png",
+            "4th of July blue pattern 2015.png",
+            "4th of July Canada hat pattern 2022.png",
+            "4th of July hat blue pattern 2015.png",
+            "4th of July hat blue pattern 2016.png",
+            "4th of July hat Canada pattern 2016.png",
+            "4th of July hat pattern 2022.png",
+            "4th of July hat red pattern 2015.png",
+            "4th of July hat red pattern 2016.png",
+            "4th of July number blue pattern 2016.png",
+            "4th of July number red pattern 2016.png",
+            "4th of July red hat pattern 2017.png",
+            "4th of July red number pattern 2017.png",
+            "4th of July red pattern 2015.png",
+            "AL 100th season logo 2001.png",
+            "Armed Forces American flag 2023.png",
+            "Armed Forces Day patch 2021.png",
+            "Armed Forces hat pattern 2019.png",
+            "Armed Forces hat pattern 2022.png",
+            "Baseball Centennial logo 1939.png",
+            "Black Lives Matter patch 2020.png",
+            "Canadian Memorial Day pattern.png",
+            "Childhood Cancer Awareness patch 2021.png",
+            "Civil Rights Game logo 2013.png",
+            "Civil Rights Game logo 2014.png",
+            "Civil Rights Game logo 2015.png",
+            "Father's Day brim texture 2017.png",
+            "Father's Day hat texture 2017.png",
+            "Father's Day patch 2021.png",
+            "Fort Bragg game patch 2016.png",
+            "Hall of Fame 75th anniversary patch 2014.png",
+            "Independence Day patch 2021.png",
+            "Jackie Robinson 50th anniversary logo 1997.png",
+            "Jackie Robinson 50th anniversary patch 1997.png",
+            "Jackie Robinson Day patch 2018.png",
+            "Little League Classic patch 2017.png",
+            "Little League Classic patch 2018.png",
+            "Little League Classic patch 2019.png",
+            "London Series patch 2019.png",
+            "London Series patch 2023.png",
+            "London Series patch 2024.png",
+            "Lou Gehrig Day patch 2021.png",
+            "Lou Gehrig Day patch 2022-2023.png",
+            "Lou Gehrig Day patch 2026.png",
+            "Lou Gehrig Day patch.png",
+            "Lou Gehrig speech 75th anniversary patch 2014.png",
+            "Memorial Day arm patch 2017.png",
+            "Memorial Day camo 2013.png",
+            "Memorial Day camo 2014.png",
+            "Memorial Day camo 2016.png",
+            "Memorial Day hat pattern 2018.png",
+            "Memorial Day patch 2021.png",
+            "Memorial Day patch 2026.png",
+            "Mexico City Series Banorte ad patch 2023.png",
+            "Mexico City Series patch 2023.png",
+            "Mexico City Series patch 2024.png",
+            "Mexico City Series sleeve patch 2026.png",
+            "Mexico City Series T-Mobile ad patch 2024.png",
+            "Mother's Day hat texture 2017.png",
+            "Mother's Day patch 2021.png",
+            "Negro Leagues 100th year patch 2020.png",
+            "Nippon Express patch.png",
+            "NL Centennial logo 1976.png",
+            "NLDS patch 2015.png",
+            "Play Ball patch 2016.png",
+            "Play Ball patch 2017.png",
+            "Player's Weekend back logo 2017.png",
+            "Player's Weekend patch 2017.png",
+            "Roberto Clemente Day patch 2020-present.png",
+            "Roberto Clemente Day patch 2021.png",
+            "Sandy Hook memorial patch 2013.png",
+            "Speedway Classic patch 2025.png",
+            "Tokyo Series patch 2025.png",
+            "United For Change patch 2020.png",
+            "USA 250 logo 2026.png",
+            "World Series patch 2015.png",
+        ];
+
+        // Which group a logo goes in, checked top to bottom: the first match wins.
+        // (Patterns come first so "Memorial Day camo" isn't filed under Holidays, and so on.)
+        const GROUPS = [
+            ["patterns",      /pattern|texture|camo/],
+            ["postseason",    /world series|nlds|alds|nlcs|alcs|wild card|postseason/],
+            ["special-games", /series|classic|game\b|weekend/],
+            ["anniversaries", /anniversary|centennial|100th|75th|50th|\b150\b|\b250\b/],
+            ["holidays",      /4th of july|fourth of july|independence day|memorial day|armed forces|mother's day|father's day|st\. patrick|canada day/],
+            ["recognition",   /\bday\b|memorial|awareness|lives matter|united for change|cancer/],
+        ];
+
+        // Oldest first; "present" counts as the newest.
+        const lastYear = name => {
+            if (/present/i.test(name)) return 9999;
+            const years = name.match(/\d{4}/g);
+            return years ? parseInt(years[years.length - 1]) : 0;
+        };
+        allFiles.sort((a, b) => lastYear(a) - lastYear(b));
+
+        function openLightbox(imgSrc, caption) {
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox-caption').textContent = caption;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+
+        allFiles.forEach(fileName => {
+            const fullName = fileName.replace('.png', '');
+            const years = fullName.match(/\d{4}(?:-\d{4}|-present)?/g);
+            const yearText = years ? years.join(', ') : '';
+            let label = fullName;
+            (years || []).forEach(y => { label = label.replace(y, ''); });
+            label = label.replace(/\blogo\b/gi, '').replace(/,/g, '').replace(/\s+/g, ' ').trim();
+
+            const safe = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+            const src = path + fileName;
+            const card = `
+            <div class="logo-card" onclick="openLightbox(this.dataset.src, this.dataset.caption)" data-src="${safe(src)}" data-caption="${safe(fullName)}">
+                <div class="logo-image-wrapper">
+                    <img src="${safe(src)}" alt="${safe(fullName)}" loading="lazy">
+                </div>
+                <div class="logo-caption">
+                    ${label ? `<div class="logo-name">${safe(label)}</div>` : ''}
+                    <div class="logo-year">${yearText}</div>
+                </div>
+            </div>`;
+
+            const lower = fileName.toLowerCase();
+            const group = (GROUPS.find(([, test]) => test.test(lower)) || ["other-logos"])[0];
+            document.getElementById(group).insertAdjacentHTML('beforeend', card);
+        });
+
+        // Hide any group that ended up empty.
+        document.querySelectorAll('.grid').forEach(grid => {
+            if (!grid.children.length) {
+                grid.style.display = 'none';
+                const header = grid.previousElementSibling;
+                if (header && header.classList.contains('category-header')) header.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
