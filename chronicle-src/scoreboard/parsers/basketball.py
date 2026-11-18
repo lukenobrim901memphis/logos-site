@@ -42,78 +42,143 @@ def _counted(items):
 
 # ── Technicals, flagrants, ejections (from ESPN play-by-play) ────────────────
 
+_PERIOD_WORDS = {1: "first", 2: "second", 3: "third", 4: "fourth", 5: "fifth",
+                 6: "sixth", 7: "seventh", 8: "eighth"}
+
+
 def _period_label(n, league):
+    """4 -> 'fourth', OT -> 'overtime', 2OT -> 'second overtime';
+    men's college halves -> 'first half', 'second half'."""
     reg = league.get("periods", 4)
     if n <= reg:
-        if reg == 2:
-            return f"{ordinal(n)} half"
-        return ordinal(n)
+        word = _PERIOD_WORDS.get(n, ordinal(n))
+        return f"{word} half" if reg == 2 else word
     k = n - reg
-    return "OT" if k == 1 else f"{k}OT"
+    return "overtime" if k == 1 else f"{_PERIOD_WORDS.get(k, ordinal(k))} overtime"
 
 
 _FOUL_NAME_SPLIT = re.compile(
     r"\s+(?:technical|flagrant|ejected|defensive 3|delay|double technical|hanging|"
     r"away from play|taunt)", re.I)
+_SHOT_NAME_SPLIT = re.compile(r"\s+(?:makes|misses)\b", re.I)
 
 
-def _who(play, book):
-    """Short names of everyone charged in this play."""
-    names = []
-    for p in play.get("participants") or []:
+def _is_free_throw(both):
+    """'Klay Thompson makes technical free throw' is the reward, not the foul."""
+    return "free throw" in both
+
+
+def _charged(play, book, ath_team, name_team):
+    """[(full name, team id or None)] for everyone charged with this foul.
+    team None = not on either roster (a coach)."""
+    out = []
+    parts = play.get("participants") or []
+    for p in parts[:1] if "double" not in ((play.get("type") or {}).get("text") or "").lower() else parts:
         ath = p.get("athlete") or {}
-        if ath.get("id") and str(ath["id"]) in book.by_id:
-            names.append(book.short_id(ath["id"]))
-        elif ath.get("displayName"):
-            names.append(book.short(ath["displayName"]))
-    if names:
-        return names
+        aid = str(ath.get("id") or "")
+        full = book.by_id.get(aid) or ascii_text(ath.get("displayName", ""))
+        if full:
+            out.append((full, ath_team.get(aid) or name_team.get(full)))
+    if out:
+        return out
     text = ascii_text(play.get("text", ""))
     m = re.match(r"(?i)double technical,?\s*(.+)", text)
-    if m:                                     # 'Double technical, Green, Embiid'
-        return [book.short(n.strip()) for n in re.split(r",| and ", m.group(1)) if n.strip()]
+    if m:                                         # 'Double technical, Green, Embiid'
+        return [(n.strip(), name_team.get(n.strip()))
+                for n in re.split(r",| and ", m.group(1)) if n.strip()]
     head = _FOUL_NAME_SPLIT.split(text)[0].strip(" .")
-    if not head:
-        return []
-    if head not in book.people:               # not a player in this game: a coach
-        return ["\x00coach " + book.short(head)]
-    return [book.short(head)]
+    return [(head, name_team.get(head))] if head else []
 
 
-def foul_notes(summary, league, book, teams_by_id):
-    """{'tech': [...], 'flag': [...], 'eject': [...]} as 'Green, 4:12 2nd'."""
-    out = {"tech": [], "flag": [], "eject": []}
+def _team_in_text(text, teams):
+    """'Magic defensive 3-seconds' -> the Magic's team id."""
+    low = text.lower()
+    for tid, t in teams.items():
+        for word in (t.get("name"), t.get("location"), t.get("displayName"), t.get("shortDisplayName")):
+            if word and word.lower() in low:
+                return tid
+    return None
+
+
+def _fouling_team_from_free_throw(plays, i, ath_team, name_team, team_ids, book):
+    """The team that committed a technical is the opponent of whoever shoots
+    the technical free throw right after it (same period and clock)."""
+    per = (plays[i].get("period") or {}).get("number")
+    clock = (plays[i].get("clock") or {}).get("displayValue")
+    for nxt in plays[i + 1:i + 6]:
+        if (nxt.get("period") or {}).get("number") != per or \
+                (nxt.get("clock") or {}).get("displayValue") != clock:
+            break
+        both = (((nxt.get("type") or {}).get("text") or "") + " " + (nxt.get("text") or "")).lower()
+        if not _is_free_throw(both):
+            continue
+        shooter_team = None
+        for p in nxt.get("participants") or []:
+            aid = str((p.get("athlete") or {}).get("id") or "")
+            shooter_team = ath_team.get(aid)
+            break
+        if not shooter_team:
+            name = _SHOT_NAME_SPLIT.split(ascii_text(nxt.get("text", "")))[0].strip()
+            shooter_team = name_team.get(name)
+        if shooter_team:
+            others = [t for t in team_ids if t != shooter_team]
+            return others[0] if others else None
+    return None
+
+
+def foul_notes(summary, league, book, ath_team, name_team, teams):
+    """Per team id: {'tech': [...], 'flag': [...], 'eject': [...]},
+    each entry like 'Sengun, 9:56 1st'."""
+    team_ids = list(teams)
+    out = {tid: {"tech": [], "flag": [], "eject": []} for tid in team_ids}
+    plays = summary.get("plays") or []
     seen = set()
-    for play in summary.get("plays") or []:
+    for i, play in enumerate(plays):
         kind = ((play.get("type") or {}).get("text") or "").lower()
         text = (play.get("text") or "").lower()
         both = kind + " " + text
+        if _is_free_throw(both):
+            continue
+        three_sec = "3-second" in both or "3 second" in both
         if "eject" in both:
             bucket = "eject"
         elif "flagrant" in both:
             bucket = "flag"
-        elif "technical" in both or "3-second" in both or "3 second" in both:
+        elif "technical" in both or three_sec:
             bucket = "tech"
         else:
             continue
         per = (play.get("period") or {}).get("number") or 0
         clock = (play.get("clock") or {}).get("displayValue", "")
         when = f"{clock} {_period_label(per, league)}".strip() if per else clock
-        names = _who(play, book)
-        if bucket == "tech" and ("3-second" in both or "3 second" in both or not names):
-            team = teams_by_id.get(str((play.get("team") or {}).get("id")), "")
-            names = [f"{team} defensive 3 seconds" if "second" in both else f"{team} team"]
+
+        def fallback_team():
+            return (_fouling_team_from_free_throw(plays, i, ath_team, name_team, team_ids, book)
+                    or str((play.get("team") or {}).get("id") or "") or None)
+
+        if three_sec:                             # charged to the team, not a player
+            tid = _team_in_text(play.get("text", ""), teams) or fallback_team()
+            entries = [("defensive 3 seconds", tid)]
+        else:
+            entries = []
+            for full, tid in _charged(play, book, ath_team, name_team):
+                if tid:                            # a player on one of the rosters
+                    entries.append((book.short(full), tid))
+                elif _team_in_text(full, teams):   # 'Warriors delay of game'
+                    entries.append(("team", _team_in_text(full, teams)))
+                else:                              # not on a roster: a coach
+                    entries.append((f"coach {book.short(full)}", fallback_team()))
         if bucket == "flag":
             m = re.search(r"type\s*(\d)", both)
             if m:
-                names = [f"{n} ({m.group(1)})" for n in names]
-        team = teams_by_id.get(str((play.get("team") or {}).get("id")), "")
-        names = [f"{team} {n[1:]}".strip() if n.startswith("\x00") else n for n in names]
-        for n in names:
-            key = (bucket, n, when)
+                entries = [(f"{n} ({m.group(1)})", t) for n, t in entries]
+        for name, tid in entries:
+            if tid not in out:
+                continue
+            key = (bucket, name, when)
             if key not in seen:
                 seen.add(key)
-                out[bucket].append(f"{n}, {when}")
+                out[tid][bucket].append(f"{name}, {when}")
     return out
 
 
@@ -122,10 +187,17 @@ def parse(summary, league, event=None, featured=None):
     box = summary.get("boxscore") or {}
 
     book = NameBook(sep=".")
+    ath_team, name_team = {}, {}
     for tp in box.get("players", []):
+        tid = str((tp.get("team") or {}).get("id"))
         for grp in tp.get("statistics", []):
             for a in grp.get("athletes", []):
-                book.add_athlete(a.get("athlete"))
+                ath = a.get("athlete") or {}
+                book.add_athlete(ath)
+                if ath.get("id"):
+                    ath_team[str(ath["id"])] = tid
+                if ath.get("displayName"):
+                    name_team[ascii_text(ath["displayName"]).strip()] = tid
 
     # team order: away first, like the linescore
     order = {str(head["away"]["team"].get("id")): 0,
@@ -139,7 +211,7 @@ def parse(summary, league, event=None, featured=None):
                         + max(0, n_periods - reg) * league.get("ot_min", 5))
 
     teams = []
-    ejected_flags = []
+    ejected_flags = {}
     for tp in players:
         team = tp.get("team") or {}
         grp = (tp.get("statistics") or [{}])[0]
@@ -177,7 +249,7 @@ def parse(summary, league, event=None, featured=None):
             if to_int(d.get("blk")):
                 blocks.append((name, to_int(d.get("blk"))))
             if ath.get("ejected"):
-                ejected_flags.append(name)
+                ejected_flags.setdefault(str(team.get("id")), []).append(name)
 
         ts = stat_index(team_by_id(summary, team.get("id")).get("statistics"))
         threes.sort(key=lambda x: (-x[1], x[2]))
@@ -203,6 +275,7 @@ def parse(summary, league, event=None, featured=None):
         notes.append(f"<b>Steals:</b> {tot['stl']}.")
 
         teams.append({
+            "id": str(team.get("id")),
             "name": team_city(team, league).upper(),
             "rows": rows,
             "totals": dict(min=team_minutes, fg=f"{tot['fgm']}-{tot['fga']}",
@@ -212,16 +285,22 @@ def parse(summary, league, event=None, featured=None):
             "notes": " ".join(notes),
         })
 
-    tb = {str(head["away"]["team"].get("id")): head["away"]["city"],
-          str(head["home"]["team"].get("id")): head["home"]["city"]}
-    fouls = foul_notes(summary, league, book, tb)
-    for n in ejected_flags:                       # ejected but not in the play-by-play
-        if not any(e.startswith(n + ",") for e in fouls["eject"]):
-            fouls["eject"].append(n)
-    game_notes = []
-    for key, label in (("tech", "Technical fouls"), ("flag", "Flagrant fouls"), ("eject", "Ejections")):
-        if fouls[key]:
-            game_notes.append(f"<b>{label}:</b> " + "; ".join(fouls[key]) + ".")
+    # technicals / flagrants / ejections go in the notes of the team charged
+    team_objs = {str(head["away"]["team"].get("id")): head["away"]["team"],
+                 str(head["home"]["team"].get("id")): head["home"]["team"]}
+    fouls = foul_notes(summary, league, book, ath_team, name_team, team_objs)
+    for t in teams:
+        f = fouls.get(t["id"], {"tech": [], "flag": [], "eject": []})
+        for n in ejected_flags.get(t["id"], []):  # ejected but missing from play-by-play
+            if not any(e.startswith(n + ",") for e in f["eject"]):
+                f["eject"].append(n)
+        extra = []
+        for key, label in (("tech", "Technical fouls"), ("flag", "Flagrant fouls"),
+                           ("eject", "Ejections")):
+            if f[key]:
+                extra.append(f"<b>{label}:</b> " + "; ".join(f[key]) + ".")
+        if extra:
+            t["notes"] += " " + " ".join(extra)
 
-    head.update(kind="basketball", teams=teams, game_notes=" ".join(game_notes))
+    head.update(kind="basketball", teams=teams)
     return head

@@ -4,7 +4,8 @@ publish.py — turn the Scoreboard app and the MLB Chronicle app into plain
 HTML inside your static website (logos-site), plus a hub page linking both.
 
     python3 tools/publish.py                  # build today's pages
-    python3 tools/publish.py --date 2026-11-16
+    python3 tools/publish.py --date 2026-11-16     # rebuild one past day
+    python3 tools/publish.py --date 2026-11-10..2026-11-16   # or a range
     python3 tools/publish.py --push           # also git commit + push logos-site
 
 Result in logos-site:
@@ -65,6 +66,7 @@ def freeze_one(app_dir, url, out_file):
     page = page.replace('<html lang="en">', '<html lang="en" data-static="1">', 1)
     page = page.replace('"/static/', '"static/').replace("'/static/", "'static/")
     page = add_back_button(page)
+    page = add_favicon(page)
     os.makedirs(os.path.dirname(out_file), exist_ok=True)
     with open(out_file, "w", encoding="utf-8") as f:
         f.write(page)
@@ -88,6 +90,15 @@ def add_back_button(page):
     if re.search(r'<div class="page">', page):
         return re.sub(r'(<div class="page">)', r"\1" + BACK_LINK, page, count=1)
     return re.sub(r"(<body[^>]*>)", r"\1" + BACK_LINK, page, count=1)
+
+
+# logos-site/images/navigation/favicon.png, seen from chronicle/<page>/x.html
+FAVICON = '<link rel="icon" type="image/png" href="../../images/navigation/favicon.png">'
+
+
+def add_favicon(page):
+    page = re.sub(r'<link[^>]*rel="(?:shortcut )?icon"[^>]*>\s*', "", page)   # drop any local one
+    return page.replace("</head>", FAVICON + "\n</head>", 1)
 
 
 def copy_static(app_dir, dest):
@@ -230,47 +241,61 @@ def main():
         return
 
     ap = argparse.ArgumentParser()
-    ap.add_argument("--date", help="paper date YYYY-MM-DD (default: today)")
+    ap.add_argument("--date", help="paper date YYYY-MM-DD, or a range YYYY-MM-DD..YYYY-MM-DD "
+                                   "(default: today)")
     ap.add_argument("--skip-mlb", action="store_true")
     ap.add_argument("--skip-scoreboard", action="store_true")
     ap.add_argument("--force-mlb", action="store_true", help="build the MLB page even in the off-season")
     ap.add_argument("--push", action="store_true", help="git commit + push logos-site")
     a = ap.parse_args()
 
-    if a.date:
-        d = date.fromisoformat(a.date)
-    else:                                   # today in Pacific time, even on a UTC server
-        try:
-            from zoneinfo import ZoneInfo
-            d = datetime.now(ZoneInfo("America/Los_Angeles")).date()
-        except Exception:
-            d = date.today()
+    try:                                    # today in Pacific time, even on a UTC server
+        from zoneinfo import ZoneInfo
+        today = datetime.now(ZoneInfo("America/Los_Angeles")).date()
+    except Exception:
+        today = date.today()
+
+    if a.date and ".." in a.date:
+        first, last = (date.fromisoformat(x) for x in a.date.split(".."))
+        dates = [first + timedelta(days=i) for i in range((last - first).days + 1)]
+    elif a.date:
+        dates = [date.fromisoformat(a.date)]
+    else:
+        dates = [today]
+    d = dates[-1]
     ok = True
 
     if not a.skip_scoreboard:
         out = os.path.join(OUT_DIR, "scoreboard")
-        print("Scoreboard ...")
-        if run_freeze(SCOREBOARD_DIR, f"/?date={d.isoformat()}", os.path.join(out, f"{d}.html")):
-            shutil.copy(os.path.join(out, f"{d}.html"), os.path.join(out, "index.html"))
-            copy_static(SCOREBOARD_DIR, os.path.join(out, "static"))
-            write_archive_json(out)
-            print(f"  -> {out}/index.html")
-        else:
-            ok = False
+        for day in dates:
+            print(f"Scoreboard {day} ...")
+            if run_freeze(SCOREBOARD_DIR, f"/?date={day.isoformat()}", os.path.join(out, f"{day}.html")):
+                print(f"  -> {out}/{day}.html")
+            else:
+                ok = False
+        copy_static(SCOREBOARD_DIR, os.path.join(out, "static"))
+        write_archive_json(out)
+        # index.html is always the newest page, so rebuilding an old day never replaces it
+        newest = max(archive_dates(out), default=None)
+        if newest:
+            shutil.copy(os.path.join(out, f"{newest}.html"), os.path.join(out, "index.html"))
+            print(f"  latest page (index.html): {newest}")
 
-    mlb_active, mlb_note = mlb_status(d)
+    mlb_active, mlb_note = mlb_status(today)
     if a.force_mlb:
         mlb_active = True
     if not mlb_active:
         print(f"MLB Chronicle: off-season, not built. {mlb_note}")
-    if not a.skip_mlb and mlb_active:
+    elif not a.skip_mlb and dates != [today]:
+        print("MLB Chronicle: skipped (the MLB app can only build today's page).")
+    elif not a.skip_mlb:
         out = os.path.join(OUT_DIR, "mlb")
         print("MLB Chronicle ...")
         if not os.path.isdir(MLB_DIR):
             print(f"  MLB app not found at {MLB_DIR} — edit MLB_DIR at the top of this file")
             ok = False
-        elif run_freeze(MLB_DIR, "/", os.path.join(out, f"{d}.html")):
-            shutil.copy(os.path.join(out, f"{d}.html"), os.path.join(out, "index.html"))
+        elif run_freeze(MLB_DIR, "/", os.path.join(out, f"{today}.html")):
+            shutil.copy(os.path.join(out, f"{today}.html"), os.path.join(out, "index.html"))
             copy_static(MLB_DIR, os.path.join(out, "static"))
             write_archive_json(out)
             print(f"  -> {out}/index.html")
@@ -281,7 +306,8 @@ def main():
     # agate.html (in the site root) reads this to show the MLB off-season note
     with open(os.path.join(OUT_DIR, "status.json"), "w") as f:
         json.dump({"updated": datetime.now().isoformat(timespec="minutes"),
-                   "page_date": d.isoformat(),
+                   "page_date": max(archive_dates(os.path.join(OUT_DIR, "scoreboard")),
+                                    default=d.isoformat()),
                    "mlb_active": mlb_active, "mlb_note": mlb_note}, f)
     # chronicle/ itself just forwards to the site's Agate page
     with open(os.path.join(OUT_DIR, "index.html"), "w", encoding="utf-8") as f:

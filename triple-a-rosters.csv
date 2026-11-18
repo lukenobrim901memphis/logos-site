@@ -190,6 +190,7 @@
 ,P,Connor Gillispie,R,Lehigh Valley,Active,No
 ,P,Geoff Hartlieb,R,Lehigh Valley,Active,No
 21,OF,Jonathan Hogart,R,Lehigh Valley,Active,No
+,C,Blake Hunt,R,Lehigh Valley,Active,No
 25,P,Chuck King,R,Lehigh Valley,Active,No
 24,C,Paul McIntosh,R,Lehigh Valley,Active,No
 4,INF,Robert Moore,S,Lehigh Valley,Active,No
@@ -234,6 +235,7 @@
 29,INF,Eric Brown Jr.,R,Nashville,Active,No
 45,INF,Blake Burke,L,Nashville,Active,No
 ,P,Will Childers,R,Nashville,Active,No
+,P,Stiven Cruz,R,Nashville,Active,No
 5,INF,Daniel Guilarte,R,Nashville,Active,No
 34,P,Tyson Hardin,R,Nashville,Active,No
 49,P,Edwin Jimenez,R,Nashville,Active,No
@@ -302,7 +304,6 @@
 47,P,John Means,L,Omaha,Active,No
 56,P,Hunter Owen,L,Omaha,Active,No
 36,P,Hunter Patteson,L,Omaha,Active,No
-3,INF,Jack Pineda,L,Omaha,Active,No
 53,P,Ryan Ramsey,L,Omaha,Active,No
 6,OF,Carson Roccaforte,L,Omaha,Active,No
 52,P,Ben Sears,R,Omaha,Active,No
@@ -321,6 +322,7 @@
 57,P,Ashton Izzi,R,Reno,Active,No
 27,P,Bryce Jarvis,R,Reno,Active,No
 18,P,Yu-Min Lin,L,Reno,Active,No
+,OF,Ismael Munguia,L,Reno,Active,No
 24,INF,Manuel Pena,L,Reno,Active,No
 3,INF,Anderdson Rojas,L,Reno,Active,No
 54,P,Landon Sims,R,Reno,Active,No
@@ -336,7 +338,6 @@
 40,P,Isaac Lyon,R,Rochester,Active,No
 25,OF,Sam Petersen,R,Rochester,Active,No
 4,C,Maxwell Romero Jr.,L,Rochester,Active,No
-44,P,Jarlin Susana,R,Rochester,Active,No
 3,OF,Johnathon Thomas,R,Rochester,Active,No
 14,INF,Cayden Wallace,R,Rochester,Active,No
 21,P,Wilian Bormie,R,Round Rock,Active,No
@@ -418,6 +419,7 @@
 1,INF,Tanner Schobel,R,St. Paul,Active,No
 2,INF,Trevor Austin,R,Sugar Land,Active,No
 3,INF,Pascanel Ferreras,R,Sugar Land,Active,No
+,P,Jose Gonzalez,R,Sugar Land,Active,No
 12,C,Garret Guillemette,R,Sugar Land,Active,No
 54,P,Michael Knorr,R,Sugar Land,Active,No
 26,P,Joey Mancini,R,Sugar Land,Active,No
@@ -463,16 +465,18 @@
 9,C,Josue Briceño,L,Toledo,Active,No
 44,P,Yoniel Curet,R,Toledo,Active,No
 ,P,Yilber Díaz,R,Toledo,Active,No
+,P,Sawyer Gipson-Long,R,Toledo,Active,No
 38,P,Andre Granillo,R,Toledo,Active,No
+,P,Bailey Horn,L,Toledo,Active,No
 20,C,Bennett Lee,R,Toledo,Active,No
 58,P,Hayden Minton,R,Toledo,Active,No
 12,C,Carlos Pérez,R,Toledo,Active,No
 ,P,RJ Petit,R,Toledo,Active,No
+,P,Nick Raquet,L,Toledo,Active,No
 32,P,Jackson Wolf,L,Toledo,Active,No
 ,C,Riley Adams,R,Worcester,Active,No
 16,INF,Franklin Arias,R,Worcester,Active,No
 67,C,Nate Baez,R,Worcester,Active,No
-41,P,Angel Bastardo,R,Worcester,Active,No
 ,P,Max Carlson,R,Worcester,Active,No
 ,P,Isaac Coffey,R,Worcester,Active,No
 21,INF,Max Ferguson,L,Worcester,Active,No
@@ -481,6 +485,7 @@
 64,P,John Holobetz,R,Worcester,Active,No
 ,INF,Ahbram Liendo,R,Worcester,Active,No
 49,IF,Tyler McDonough,S,Worcester,Active,No
+,INF,Jack Pineda,L,Worcester,Active,No
 ,INF,Brendan Rodgers,R,Worcester,Active,No
 7,INF,Mikey Romero,L,Worcester,Active,No
 52,P,Michael Sansone,L,Worcester,Active,No
