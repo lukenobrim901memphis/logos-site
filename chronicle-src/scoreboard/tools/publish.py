@@ -44,7 +44,18 @@ OUT_DIR        = os.path.join(SITE_DIR, "chronicle")
 # The Chronicle fonts (Ford Antenna, Farnham, Archer) are licensed typefaces.
 # Putting the font files on a public website usually breaks that license, so
 # by default they are NOT copied; the pages fall back to similar free fonts.
-COPY_FONTS = True
+COPY_FONTS = True   # default only — the real switch is the admin checkbox
+                     # "Include font files", saved in settings.json
+
+
+def copy_fonts_enabled():
+    """True if the admin page says to publish the font files."""
+    path = os.environ.get("AGATE_SETTINGS", os.path.join(SCOREBOARD_DIR, "settings.json"))
+    try:
+        with open(path) as f:
+            return bool(json.load(f).get("copy_fonts", COPY_FONTS))
+    except (OSError, ValueError):
+        return COPY_FONTS
 
 
 # ── Freezing one page (runs in its own process so the two app.py files
@@ -105,7 +116,7 @@ def copy_static(app_dir, dest):
     src = os.path.join(app_dir, "static")
     if not os.path.isdir(src):
         return
-    ignore = None if COPY_FONTS else shutil.ignore_patterns("fonts")
+    ignore = None if copy_fonts_enabled() else shutil.ignore_patterns("fonts")
     if os.path.isdir(dest):
         shutil.rmtree(dest)
     shutil.copytree(src, dest, ignore=ignore)
@@ -118,8 +129,33 @@ def copy_static(app_dir, dest):
                     css = f.read()
                 css = (css.replace("('/static/", "('").replace('("/static/', '("')
                           .replace("(/static/", "("))
+                css = match_font_case(css, root)
                 with open(p, "w", encoding="utf-8") as f:
                     f.write(css)
+
+
+def match_font_case(css, css_dir):
+    """A Mac ignores upper/lower case in file names; GitHub's servers don't.
+    Rewrite each url(...) so it matches the real file name letter for letter."""
+    def fix(m):
+        quote, ref = m.group(1), m.group(2)
+        if ref.startswith(("http:", "https:", "data:", "//")):
+            return m.group(0)
+        folder, name = os.path.split(ref)
+        real_dir = os.path.join(css_dir, folder)
+        if not os.path.isdir(real_dir):
+            return m.group(0)
+        names = os.listdir(real_dir)
+        if name in names:
+            return m.group(0)
+        same = [n for n in names if n.lower() == name.lower()]
+        if same:
+            print(f"  fixed font name case: {name} -> {same[0]}")
+            return f"url({quote}{folder + '/' if folder else ''}{same[0]}{quote})"
+        if copy_fonts_enabled() and folder.endswith("fonts"):
+            print(f"  WARNING: {ref} is in the CSS but not in static/{folder}/")
+        return m.group(0)
+    return re.sub(r"""url\((['"]?)([^'")]+)\1\)""", fix, css)
 
 
 def run_freeze(app_dir, url, out_file):
