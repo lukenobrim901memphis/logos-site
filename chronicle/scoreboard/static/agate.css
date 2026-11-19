@@ -84,7 +84,7 @@ body.sunday{--paper:var(--sunday-paper)}
 .hd2{font-family:var(--sans);font-weight:700;font-size:var(--fs-hd2);margin:4px 0 2px;break-after:avoid}
 .hd3{font-family:var(--sans);font-weight:700;font-size:var(--fs-hd3);margin:5px 0 2px;break-after:avoid}
 .conf,.rulehd{font-family:var(--sans);font-weight:700;font-size:var(--fs-rulehd);text-align:center;letter-spacing:.2px;
-              border-top:1.5px solid var(--ink);border-bottom:.75px solid var(--ink);
+              border-top:1.5px solid var(--ink);border-bottom:1.75px solid var(--ink);
               padding:1px 0;margin:4px 0 1px;break-after:avoid}
 .subhd{font-family:var(--sans);font-weight:700;font-size:var(--fs-subhd);text-align:center;
        padding:.5px 0;margin:3px 0 1px;break-after:avoid}
