@@ -16,6 +16,8 @@
 .agate{column-count:6;column-width:auto}
 .page{width:960px;max-width:none}
 .spread{width:960px}
+.edge-l{left:max(0px,calc(50% - 480px - 26px))}
+.edge-r{right:max(0px,calc(50% - 480px - 26px))}
 .nfl-grid{grid-template-columns:624px 308px}
 .nfl-boxes{column-count:4}
 </style>
@@ -3453,8 +3455,10 @@
     
   </div>
 </div>
+<div class="shade"></div>
 </section>
 </div>
+
 <script>
 /* Fit names: every name starts in full. Only where a table, linescore or odds
    line is too wide for its column, the longest name in it steps down to its
@@ -3506,28 +3510,81 @@ function layoutColumns(ag) {
   fits(hi);
 }
 
-/* Two sheets on Mondays: the NFL page sits to the left of the Scoreboard.
-   The page opens on the Scoreboard (or the NFL page with #nfl in the address);
-   scroll/swipe sideways or use the masthead buttons to switch. */
-function showSheet(id, smooth) {
-  var spread = document.getElementById('spread'), sheet = document.getElementById(id);
-  if (!spread || !sheet) return;
-  spread.scrollTo({ left: sheet.offsetLeft - spread.firstElementChild.offsetLeft,
-                   behavior: smooth ? 'smooth' : 'auto' });
+/* Two pages on Mondays. The NFL page is a leaf hinged on its left edge,
+   lying over the Scoreboard page like the previous page of a newspaper.
+   Turning to it swings the leaf in from the left; turning back swings it
+   away again. Tabs at the page edges, the masthead buttons, a sideways
+   swipe or trackpad scroll, and the arrow keys all turn the page. */
+var flipping = false;
+function onNfl() { var sp = document.getElementById('spread'); return sp && sp.classList.contains('on-nfl'); }
+function flipTo(id, animate) {
+  var spread = document.getElementById('spread'), leaf = document.getElementById('nfl-sheet'),
+      main = document.getElementById('main-sheet');
+  if (!spread || !leaf || flipping) return;
+  var toNfl = id === 'nfl-sheet';
+  history.replaceState(null, '', toNfl ? '#nfl' : location.pathname + location.search);
+  if (toNfl === onNfl()) return;
+  var still = !animate || !leaf.animate ||
+              window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function done() { spread.classList.toggle('on-nfl', toNfl); spread.classList.remove('flipping'); flipping = false; }
+  if (still) { done(); return; }
+  flipping = true;
+  spread.classList.add('flipping');
+  var ms = 850, ease = 'cubic-bezier(.45,.05,.3,1)';
+  var a = leaf.animate([{ transform: 'rotateY(' + (toNfl ? -180 : 0) + 'deg)' },
+                        { transform: 'rotateY(' + (toNfl ? 0 : -180) + 'deg)' }],
+                       { duration: ms, easing: ease, fill: 'forwards' });
+  /* the page underneath darkens as the leaf covers it; the leaf lightens as it lands */
+  main.querySelector('.shade').animate([{ opacity: toNfl ? 0 : .35 }, { opacity: toNfl ? .35 : 0 }],
+                                       { duration: ms, easing: ease });
+  leaf.querySelector('.shade').animate([{ opacity: toNfl ? .45 : 0 }, { opacity: toNfl ? 0 : .45 }],
+                                       { duration: ms, easing: ease });
+  a.onfinish = function () { done(); a.cancel(); };
 }
 document.querySelectorAll('[data-goto]').forEach(function (a) {
-  a.addEventListener('click', function (e) {
-    e.preventDefault();
-    showSheet(a.dataset.goto, true);
-    history.replaceState(null, '', a.dataset.goto === 'nfl-sheet' ? '#nfl' : location.pathname + location.search);
-  });
+  a.addEventListener('click', function (e) { e.preventDefault(); flipTo(a.dataset.goto, true); });
 });
+(function () {
+  if (!document.getElementById('nfl-sheet')) return;
+  /* only when the window can't scroll further that way (a wide page on a
+     phone still pans normally first) */
+  function atLeft()  { return window.scrollX <= 0; }
+  function atRight() { return window.scrollX + window.innerWidth >= document.documentElement.scrollWidth - 1; }
+  function go(dir) {                     /* dir -1: toward the NFL page (left), +1: toward the Scoreboard */
+    if (dir < 0 && !onNfl() && atLeft()) flipTo('nfl-sheet', true);
+    if (dir > 0 && onNfl() && atRight()) flipTo('main-sheet', true);
+  }
+  var x0 = null, y0 = 0;
+  document.addEventListener('touchstart', function (e) { if (e.touches.length === 1) { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; } }, { passive: true });
+  document.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0; x0 = null;
+    if (Math.abs(dx) > 70 && Math.abs(dx) > 1.5 * Math.abs(dy)) go(dx > 0 ? -1 : 1);
+  }, { passive: true });
+  var acc = 0, quiet = 0;
+  window.addEventListener('wheel', function (e) {
+    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+    var now = Date.now();
+    if (now < quiet) return;
+    acc += e.deltaX;
+    if (Math.abs(acc) > 90) { go(acc < 0 ? -1 : 1); acc = 0; quiet = now + 1000; }
+    clearTimeout(window._wh); window._wh = setTimeout(function () { acc = 0; }, 200);
+  }, { passive: true });
+  document.addEventListener('keydown', function (e) {
+    if (e.target.closest && e.target.closest('input,select,textarea')) return;
+    if (e.key === 'ArrowLeft') go(-1);
+    if (e.key === 'ArrowRight') go(1);
+  });
+})();
 
 (function () {
   function layoutAll() { document.querySelectorAll('.agate').forEach(layoutColumns); }
   (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () {
     fitNames(); layoutAll();
-    showSheet(location.hash === '#nfl' ? 'nfl-sheet' : 'main-sheet', false);
+    if (location.hash === '#nfl') flipTo('nfl-sheet', false);
+    window.addEventListener('hashchange', function () {
+      flipTo(location.hash === '#nfl' ? 'nfl-sheet' : 'main-sheet', true);
+    });
   });
   window.addEventListener('resize', function () { clearTimeout(window._agt); window._agt = setTimeout(layoutAll, 150); });
 })();
