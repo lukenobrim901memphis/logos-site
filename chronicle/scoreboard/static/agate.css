@@ -112,7 +112,7 @@ table.gf td.pos{text-align:left;width:14px}
 
 /* ── Odds: FAVORITE ....SPREAD (O/U).... UNDERDOG ── */
 .oddday{font-family:var(--sans);font-weight:700;font-size:var(--fs-oddsday);text-align:center;
-        border-top:1.5px solid var(--ink);border-bottom:.75px solid var(--ink);margin:3px 0 1px;padding:.5px 0}
+        border-top:1.5px solid var(--ink);border-bottom:1.75px solid var(--ink);margin:3px 0 1px;padding:.5px 0}
 .odhdr,.odrow{display:grid;grid-template-columns:1fr auto 1fr;column-gap:2px;align-items:baseline;line-height:1.25}
 .odhdr{font-family:var(--sans);font-weight:700;font-size:var(--fs-oddshead);margin-bottom:1px}
 .odhdr .r{text-align:right}
