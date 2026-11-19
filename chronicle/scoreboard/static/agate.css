@@ -37,6 +37,8 @@
   --fs-oddsday:   8px;     /* MONDAY in the odds */
   --fs-oddshead:  7px;     /* FAVORITE  SPREAD  UNDERDOG */
   --fs-odds:      7px;     /* odds lines: WARRIORS ..14½ (232).. Orlando */
+  --fs-nflconf:   12px;    /* "National Conference" on the Monday NFL page */
+  --fs-nflstand:  7px;     /* the 11-column NFL standings */
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -158,7 +160,27 @@ table.fbt td.nm{overflow:hidden}
 .dl{display:flex;align-items:baseline}
 .dl .fill{margin-left:1px}
 
+/* ── Monday: NFL page to the left of the Scoreboard page ── */
+.spread{margin:0 auto}
+@media screen{
+  .spread:has(> .sheet + .sheet){display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
+    scrollbar-width:thin;overscroll-behavior-x:contain}
+  .spread:has(> .sheet + .sheet) > .sheet{flex:0 0 100%;scroll-snap-align:start}
+}
+.sheetnav{display:flex;font-family:var(--sans);font-size:10px}
+.nfl-grid{display:grid;column-gap:8px;align-items:start}
+.nfl-side{border-left:1px solid var(--ink);padding-left:8px;margin-left:-1px}
+.nfl-conf{font-family:var(--sans);font-weight:700;font-size:var(--fs-nflconf);margin:4px 0 2px}
+.nfl-week{display:grid;grid-template-columns:1fr 1fr;column-gap:8px;border-top:1px solid var(--ink);padding-top:3px}
+/* NFL standings (uses the shared table/th/td rules above) */
+table.nflst{font-size:var(--fs-nflstand);margin-bottom:4px}
+table.nflst td.nm{font-weight:700}
+table.nflst th.nflhd{text-align:center;font-family:var(--sans);font-size:var(--fs-rulehd);
+                     border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+table.nflst tbody tr{border-bottom:.5px solid var(--gray)}
+
 @media print{
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
-  .mh-admin,.datenav{display:none}
+  .mh-admin,.datenav,.sheetnav{display:none}
+  .spread > .sheet + .sheet{break-before:page}
 }
