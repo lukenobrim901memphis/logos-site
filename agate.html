@@ -11,7 +11,7 @@
            inherits bold from the card styles in style.css. */
         .agate-status { font-size: 0.8em; font-weight: normal; margin-top: 4px; opacity: 0.75; }
         .agate-archive { max-width: 1000px; margin: 30px auto 0; padding: 0 20px 40px; font-weight: normal; }
-        .agate-archive-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .agate-archive-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; }
         .agate-archive h2 { font-weight: bold; margin: 0 0 10px; }
         .agate-archive ul { list-style: none; padding: 0; margin: 0; columns: 2; }
         .agate-archive li { padding: 2px 0; font-weight: normal; }
@@ -39,6 +39,16 @@
                 </div>
             </a>
 
+            <a href="chronicle/weather/index.html" class="logo-card" id="weather-card">
+                <div class="logo-image-wrapper">
+                    <img src="images/navigation/weather.png" alt="Weather Page">
+                </div>
+                <div class="logo-caption">
+                    <div class="logo-name">Weather</div>
+                    <div class="agate-status" id="weather-status">Bay Area, California, national</div>
+                </div>
+            </a>
+
             <a href="chronicle/mlb/index.html" class="logo-card" id="mlb-card">
                 <div class="logo-image-wrapper">
                     <img src="images/navigation/baseball.png" alt="Baseball Agate Page">
@@ -56,6 +66,10 @@
                 <div>
                     <h2>Past Scoreboards</h2>
                     <ul id="scoreboard-archive"><li>Loading…</li></ul>
+                </div>
+                <div>
+                    <h2>Past Weather Pages</h2>
+                    <ul id="weather-archive"><li>Loading…</li></ul>
                 </div>
                 <div>
                     <h2>Past Baseball Pages</h2>
@@ -88,11 +102,16 @@ function fillArchive(listId, folder, dates) {
 Promise.all([
     getJSON('chronicle/status.json', {}),
     getJSON('chronicle/scoreboard/archive.json', []),
-    getJSON('chronicle/mlb/archive.json', [])
+    getJSON('chronicle/mlb/archive.json', []),
+    getJSON('chronicle/weather/archive.json', [])
 ]).then(function (res) {
-    var st = res[0], sbDates = res[1], mlbDates = res[2];
+    var st = res[0], sbDates = res[1], mlbDates = res[2], wxDates = res[3];
     fillArchive('scoreboard-archive', 'chronicle/scoreboard', sbDates);
     fillArchive('mlb-archive', 'chronicle/mlb', mlbDates);
+    fillArchive('weather-archive', 'chronicle/weather', wxDates);
+    if (st.weather_date) {
+        document.getElementById('weather-status').textContent = 'Latest: ' + label(st.weather_date);
+    }
 
     if (st.page_date) {
         document.getElementById('scoreboard-status').textContent = 'Latest: ' + label(st.page_date);

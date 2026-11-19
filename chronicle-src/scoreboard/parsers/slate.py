@@ -38,7 +38,7 @@ def result_line(ev, league, featured=None):
         w, ws, l, ls = a, asc, h, hsc
     suf = final_suffix(st["detail"])
     if suf and suf.isdigit():
-        suf = f"{suf} inn." if league.get("kind") == "baseball" else suf
+        suf = f"{suf} inn." if league.get("kind") == "baseball" or league.get("innings") else suf
     return {"w": w, "ws": ws, "l": l, "ls": ls, "suffix": suf,
             "featured": w["featured"] or l["featured"],
             "ranked": bool(w["rank"] or l["rank"]), "id": ev.get("id"),
@@ -270,3 +270,71 @@ def nfl_week_view(sb, league, featured, page_date):
         for b in blocks:
             b["label"] = ""
     return blocks, {"events": upcoming}
+
+
+# ── The Monday NFL page ──────────────────────────────────────────────────────
+
+_AP_MONTH = {1: "Jan.", 2: "Feb.", 3: "March", 4: "April", 5: "May", 6: "June",
+             7: "July", 8: "Aug.", 9: "Sept.", 10: "Oct.", 11: "Nov.", 12: "Dec."}
+
+
+def ap_date(d):
+    """'Thursday, Nov. 26' (AP style)."""
+    return f"{day_name(d)}, {_AP_MONTH[d.month]} {d.day}"
+
+
+def _games_by_week(sb):
+    games = {}
+    for ev in (sb or {}).get("events", []):
+        key = _week_key(ev)
+        dt = to_pt(ev.get("date") or comp0(ev).get("date"))
+        if key is not None and dt is not None:
+            games.setdefault(key, []).append((dt, ev))
+    for k in games:
+        games[k].sort(key=lambda g: g[0])
+    return games
+
+
+def _team_ids(gs):
+    ids = set()
+    for _, ev in gs:
+        for c in comp0(ev).get("competitors", []):
+            ids.add(str((c.get("team") or {}).get("id")))
+    return ids
+
+
+def nfl_monday_view(sb, league, featured, page_date, teams=None):
+    """This week's scores (Thursday, Sunday …), Monday night's game, the teams
+    with byes, and next week's schedule under dated headings."""
+    games = _games_by_week(sb)
+    played_keys = [k for k, gs in games.items() if any(dt.date() < page_date for dt, _ in gs)]
+    if not played_keys:
+        return None
+    week = max(played_keys)
+    this = games[week]
+    later = sorted(k for k in games if k > week)
+    nxt_key = later[0] if later else None
+    nxt = games.get(nxt_key, [])
+
+    def open_teams(gs):
+        if not teams or not gs:
+            return ""
+        playing = _team_ids(gs)
+        return ", ".join(sorted(n for tid, n in teams.items() if tid not in playing))
+
+    next_days = schedule({"events": [ev for _, ev in nxt]}, league, featured,
+                         on_or_after=page_date, by_date_only=True)
+    for d in next_days:
+        d["day"] = ap_date(d["date"])
+    return {
+        "seasontype": week[0],
+        "label": week_label(week),
+        "scores": _scores_by_day([(dt, ev) for dt, ev in this if dt.date() < page_date],
+                                 league, featured),
+        "tonight": schedule({"events": [ev for dt, ev in this if dt.date() >= page_date]},
+                            league, featured, on_or_after=page_date, by_date_only=True),
+        "open": open_teams(this),
+        "next_label": week_label(nxt_key),
+        "next": next_days,
+        "next_open": open_teams(nxt),
+    }

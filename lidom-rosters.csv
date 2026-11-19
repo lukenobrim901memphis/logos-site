@@ -43,6 +43,7 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 71,P,Fernando Vasquez,R,Aguilas Cibaenas,Inactive
 71,P,Wilkin Ramos,R,Aguilas Cibaenas,Inactive
 72,P,Jonathan Hernández,R,Aguilas Cibaenas,Inactive
+77,P,Eury Ramos,R,Aguilas Cibaenas,Inactive
 77,P,Jorge Alcala,R,Aguilas Cibaenas,Inactive
 78,P,Carl Edwards Jr.,R,Aguilas Cibaenas,Inactive
 79,P,Leandro Lopez,R,Aguilas Cibaenas,Inactive
@@ -52,7 +53,6 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 90,P,Luis Reyes,R,Aguilas Cibaenas,Inactive
 98,P,Randy Vásquez,R,Aguilas Cibaenas,Inactive
 ,P,Dane Dunning,R,Aguilas Cibaenas,Inactive
-,P,Eury Ramos,R,Aguilas Cibaenas,Inactive
 ,P,Marino Santy,L,Aguilas Cibaenas,Inactive
 ,P,Nabil Crismatt,R,Aguilas Cibaenas,Inactive
 ,P,Oscar Rayo,L,Aguilas Cibaenas,Inactive
@@ -87,8 +87,9 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 94,P,Eddy Yean,R,Estrellas Orientales,Active
 95,P,Junior Santos,R,Estrellas Orientales,Active
 97,P,Geronimo Franzua,L,Estrellas Orientales,Active
+,P,Deivy Cruz,L,Estrellas Orientales,Active
+,P,Edwin Núñez,R,Estrellas Orientales,Active
 26,C,Edgar Quero,S,Estrellas Orientales,Active
-49,C,Wilin Rosario,R,Estrellas Orientales,Active
 70,C,Leo Bernal,S,Estrellas Orientales,Active
 3,INF,Jorge Mateo,R,Estrellas Orientales,Active
 7,INF,Euribiel Angeles,R,Estrellas Orientales,Active
@@ -96,6 +97,7 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 11,INF,Rodolfo Castro,R,Estrellas Orientales,Active
 22,INF,Robinson Canó,L,Estrellas Orientales,Active
 39,INF,Marco Luciano,R,Estrellas Orientales,Active
+49,INF,Wilin Rosario,R,Estrellas Orientales,Active
 58,INF,Josh Lester,L,Estrellas Orientales,Active
 72,INF,David Villar,R,Estrellas Orientales,Active
 15,OF,Raimel Tapia,L,Estrellas Orientales,Active
@@ -111,13 +113,13 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 37,P,Diego Castillo,R,Estrellas Orientales,Inactive
 46,P,Pedro Strop,R,Estrellas Orientales,Inactive
 51,P,Carlos Belen,R,Estrellas Orientales,Inactive
-57,P,Darlin Saladin,R,Estrellas Orientales,Inactive
 57,P,Richard Guasch,R,Estrellas Orientales,Inactive
 63,P,Oddy Nunez,L,Estrellas Orientales,Inactive
 64,P,Oscar De La Cruz,R,Estrellas Orientales,Inactive
 71,P,Jaime Barria,R,Estrellas Orientales,Inactive
 76,P,Felipe De La Cruz,L,Estrellas Orientales,Inactive
 78,P,Gregory Santos,R,Estrellas Orientales,Inactive
+86,P,Darlin Saladin,R,Estrellas Orientales,Inactive
 89,P,Sammy Peralta,L,Estrellas Orientales,Inactive
 96,P,Trevor Bauer,R,Estrellas Orientales,Inactive
 99,P,Jefry Yan,L,Estrellas Orientales,Inactive
@@ -154,6 +156,7 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 16,C,Frank Rodriguez,R,Gigantes del Cibao,Active
 50,C,Agustín Ramírez,R,Gigantes del Cibao,Active
 5,INF,Eddinson Paulino,L,Gigantes del Cibao,Active
+19,INF,Pablo Reyes,R,Gigantes del Cibao,Active
 28,INF,Yonatan Henriquez,S,Gigantes del Cibao,Active
 29,INF,Pascanel Ferreras,R,Gigantes del Cibao,Active
 33,INF,Deyvison De Los Santos,R,Gigantes del Cibao,Active
@@ -162,10 +165,10 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 8,OF,Roldy Brito,S,Gigantes del Cibao,Active
 9,OF,Carlos Jorge,L,Gigantes del Cibao,Active
 14,OF,Hendry Mendez,L,Gigantes del Cibao,Active
-19,OF,Pablo Reyes,R,Gigantes del Cibao,Active
 24,OF,Carlos Peguero,L,Gigantes del Cibao,Active
 26,OF,Nomar Mazara,L,Gigantes del Cibao,Active
 55,OF,Aristides Aquino,R,Gigantes del Cibao,Active
+,OF,Johan Rojas,R,Gigantes del Cibao,Active
 11,DH,Marcell Ozuna,R,Gigantes del Cibao,Active
 29,P,José Lopez,L,Gigantes del Cibao,Inactive
 30,P,Yerry Rodríguez,R,Gigantes del Cibao,Inactive
@@ -193,9 +196,9 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 90,P,Jared Wetherbee,L,Gigantes del Cibao,Inactive
 91,P,Jose Ledesma,L,Gigantes del Cibao,Inactive
 91,P,Luis Velasquez,R,Gigantes del Cibao,Inactive
+92,P,Quinton Martinez,L,Gigantes del Cibao,Inactive
+95,P,Aidan Anderson,R,Gigantes del Cibao,Inactive
 95,P,Kelvin Cáceres,R,Gigantes del Cibao,Inactive
-,P,Aidan Anderson,R,Gigantes del Cibao,Inactive
-,P,Quinton Martinez,L,Gigantes del Cibao,Inactive
 ,P,Ronel Blanco,R,Gigantes del Cibao,Inactive
 6,C,Geraldi Diaz,L,Gigantes del Cibao,Inactive
 ,C,Engelth Urena,R,Gigantes del Cibao,Inactive
@@ -204,9 +207,9 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 17,INF,Emil Morales,R,Gigantes del Cibao,Inactive
 20,INF,Carlos Franco,L,Gigantes del Cibao,Inactive
 40,INF,Jake Holton,R,Gigantes del Cibao,Inactive
+42,INF,Julio Carreras,R,Gigantes del Cibao,Inactive
 54,INF,Jack Pineda,L,Gigantes del Cibao,Inactive
-,INF,Julio Carreras,R,Gigantes del Cibao,Inactive
-67,OF,Melvin Mercedes,S,Gigantes del Cibao,Inactive
+67,INF,Melvin Mercedes,S,Gigantes del Cibao,Inactive
 81,OF,Gilberto Jimenez,S,Gigantes del Cibao,Inactive
 46,P,Kenny Hernandez,L,Leones del Escogido,Active
 49,P,Robinson Martínez,R,Leones del Escogido,Active
@@ -220,6 +223,7 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 82,P,Reid VanScoter,L,Leones del Escogido,Active
 84,P,Hansel Marcelino,R,Leones del Escogido,Active
 89,P,Patrick Halligan,R,Leones del Escogido,Active
+,P,Jorge Gonzalez,R,Leones del Escogido,Active
 55,C,Michael De La Cruz,S,Leones del Escogido,Active
 87,C,Jason Schiavone,R,Leones del Escogido,Active
 8,INF,Yamaico Navarro,R,Leones del Escogido,Active
@@ -251,13 +255,13 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 71,P,Domingo Germán,R,Leones del Escogido,Inactive
 73,P,Hector Perez,R,Leones del Escogido,Inactive
 74,P,Stephen Nogosek,R,Leones del Escogido,Inactive
+75,P,Brayan Castillo,R,Leones del Escogido,Inactive
 76,P,Jeremy Rhoades,R,Leones del Escogido,Inactive
 77,P,Ivan Armstrong,R,Leones del Escogido,Inactive
 85,P,Trevin Michael,R,Leones del Escogido,Inactive
 86,P,Lael Lockhart,L,Leones del Escogido,Inactive
 88,P,Kelly Austin,R,Leones del Escogido,Inactive
 92,P,Spencer Bauer,R,Leones del Escogido,Inactive
-,P,Brayan Castillo,R,Leones del Escogido,Inactive
 ,P,Conner Greene,R,Leones del Escogido,Inactive
 ,P,Cristofer Gomez,R,Leones del Escogido,Inactive
 ,P,Dinelson Lamet,R,Leones del Escogido,Inactive
@@ -274,9 +278,9 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 37,INF,Erik González,R,Leones del Escogido,Inactive
 64,INF,Andy Ibáñez,R,Leones del Escogido,Inactive
 96,INF,Alejandro Mejia,R,Leones del Escogido,Inactive
+16,OF,Esmerlyn Valdez,R,Leones del Escogido,Inactive
 38,OF,Jimmy Paredes,S,Leones del Escogido,Inactive
 50,OF,Carlos Jimenez,L,Leones del Escogido,Inactive
-,OF,Esmerlyn Valdez,R,Leones del Escogido,Inactive
 40,P,J.C. Mejía,R,Tigres del Licey,Active
 44,P,Michel Otañez,R,Tigres del Licey,Active
 48,P,Koh Nakagawa,R,Tigres del Licey,Active
@@ -321,9 +325,9 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 79,P,Carlos Duran,R,Tigres del Licey,Inactive
 83,P,Oliver Ortega,R,Tigres del Licey,Inactive
 84,P,Ulises Joaquin,R,Tigres del Licey,Inactive
+85,P,Gerald Ogando,R,Tigres del Licey,Inactive
 86,P,Jose E. Hernandez,L,Tigres del Licey,Inactive
 88,P,Miguel Díaz,R,Tigres del Licey,Inactive
-91,P,Gerald Ogando,R,Tigres del Licey,Inactive
 92,P,Alexander Cornielle,R,Tigres del Licey,Inactive
 93,P,Javy Guerra,R,Tigres del Licey,Inactive
 96,P,Elniery García,L,Tigres del Licey,Inactive
@@ -339,8 +343,10 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 13,OF,Kevin Alcántara,R,Tigres del Licey,Inactive
 29,OF,Elier Hernandez,R,Tigres del Licey,Inactive
 ,OF,Luis Barrera,L,Tigres del Licey,Inactive
-18,P,Luis Rodriguez,R,Toros del Este,Active
+18,P,Luis Rodriguez,Unknown,Toros del Este,Active
+26,P,Cam Robinson,R,Toros del Este,Active
 38,P,Janser Lara,R,Toros del Este,Active
+41,P,Misael Tamarez,R,Toros del Este,Active
 42,P,Yohan Ramírez,R,Toros del Este,Active
 44,P,Evan Grills,L,Toros del Este,Active
 46,P,Lucas Sims,R,Toros del Este,Active
@@ -351,6 +357,7 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 71,P,Phillips Valdez,R,Toros del Este,Active
 85,P,Ronaldo Alesandro,R,Toros del Este,Active
 89,P,Reymin Guduan,L,Toros del Este,Active
+,P,Roansy Contreras,R,Toros del Este,Active
 6,C,Onil Perez,R,Toros del Este,Active
 28,C,Pedro Severino,R,Toros del Este,Active
 0,INF,Rafael Lantigua,R,Toros del Este,Active
@@ -369,11 +376,10 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 67,OF,Felix Reyes,R,Toros del Este,Active
 9,P,Carlos Rodriguez,R,Toros del Este,Inactive
 16,P,Hector Yan,L,Toros del Este,Inactive
-26,P,Jhony Brito,R,Toros del Este,Inactive
-30,P,Joe Record,R,Toros del Este,Inactive
+30,P,Jhony Brito,R,Toros del Este,Inactive
 32,P,Gabriel Ponce,R,Toros del Este,Inactive
 32,P,Spencer Turnbull,R,Toros del Este,Inactive
-34,P,Bryce Conley,R,Toros del Este,Inactive
+34,P,Joe Record,R,Toros del Este,Inactive
 39,P,Gerson Moreno,R,Toros del Este,Inactive
 40,P,Miguel Castro,R,Toros del Este,Inactive
 41,P,José Manuel Fernández,L,Toros del Este,Inactive
@@ -394,6 +400,7 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 78,P,Jose Adames,R,Toros del Este,Inactive
 84,P,Emailin Montilla,L,Toros del Este,Inactive
 90,P,Juan Zapata,R,Toros del Este,Inactive
+,P,Bryce Conley,R,Toros del Este,Inactive
 ,P,Justin Courtney,R,Toros del Este,Inactive
 ,P,Rodrigo Benoit,R,Toros del Este,Inactive
 ,P,Sal Romano,R,Toros del Este,Inactive
@@ -401,10 +408,10 @@ Number,Position,First Name Last Name,Batting/Pitching hand,Team Name,Status
 ,C,Carlos Castro,R,Toros del Este,Inactive
 5,INF,Eguy Rosario,R,Toros del Este,Inactive
 9,INF,Maick Collado,S,Toros del Este,Inactive
+24,INF,Jeimer Candelario,S,Toros del Este,Inactive
 33,INF,Francisco Urbaez,R,Toros del Este,Inactive
 37,INF,Rainer Nunez,R,Toros del Este,Inactive
 ,INF,Dawel Lugo,R,Toros del Este,Inactive
-,INF,Jeimer Candelario,S,Toros del Este,Inactive
 2,OF,Manuel Margot,R,Toros del Este,Inactive
 4,OF,Jared Oliva,R,Toros del Este,Inactive
 26,OF,Mike Rosario,L,Toros del Este,Inactive

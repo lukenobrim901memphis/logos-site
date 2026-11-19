@@ -1,0 +1,42 @@
+<script>
+/* Date navigation. On your Mac (Flask) any date works via ?date=.
+   On the published site (data-static="1") only built pages exist, so the
+   buttons and the list come from archive.json, written by publish.py. */
+(function () {
+  var nav = document.querySelector('.datenav');
+  if (!nav) return;
+  var cur = nav.dataset.date;
+  var prev = nav.querySelector('.dn-prev'), next = nav.querySelector('.dn-next'),
+      today = nav.querySelector('.dn-today'), pick = nav.querySelector('.dn-pick'),
+      sel = nav.querySelector('.dn-select');
+  var isStatic = document.documentElement.dataset.static === '1';
+
+  if (!isStatic) {
+    if (pick) pick.addEventListener('change', function () { if (pick.value) location.search = '?date=' + pick.value; });
+    return;
+  }
+  if (pick) pick.hidden = true;
+  today.href = 'index.html';
+  function label(d) {
+    var dt = new Date(d + 'T12:00:00');
+    return dt.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+  }
+  fetch('archive.json', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (dates) {
+    dates.sort();
+    var older = dates.filter(function (d) { return d < cur; });
+    var newer = dates.filter(function (d) { return d > cur; });
+    if (older.length) { prev.href = older[older.length - 1] + '.html'; prev.hidden = false; } else { prev.hidden = true; }
+    if (newer.length) { next.href = newer[0] + '.html'; next.hidden = false; } else { next.hidden = true; }
+    var latest = dates[dates.length - 1];
+    today.hidden = (cur === latest);
+    sel.innerHTML = dates.slice().reverse().map(function (d) {
+      return '<option value="' + d + '"' + (d === cur ? ' selected' : '') + '>' + label(d) + '</option>';
+    }).join('');
+    sel.hidden = false;
+    sel.addEventListener('change', function () { location.href = sel.value + '.html'; });
+  }).catch(function () {
+    prev.href = nav.querySelector('.dn-prev').getAttribute('href').replace('?date=', '') + '.html';
+    next.hidden = true;
+  });
+})();
+</script>

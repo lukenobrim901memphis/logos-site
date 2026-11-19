@@ -1,0 +1,48 @@
+{# ══════════ Monday NFL page: sits to the left of the Scoreboard page ══════════ #}
+{% set nfl = page.nfl_page %}
+<section class="sheet leaf" id="nfl-sheet">
+<div class="leaf-front">
+<div class="page">
+  <div class="masthead-top">
+    <span class="mh-page">{{ s.nfl_page_label }}</span>
+    <span class="mh-divider">|</span>
+    <span class="mh-date-bold">{{ page.date_str }}</span>
+    <span class="mh-divider">|</span>
+    <span class="mh-site">SFCHRONICLE.COM</span>
+    <span class="mh-stars">★★★★★●</span>
+    <a class="mh-admin" href="/admin?date={{ page.page_date }}">admin</a>
+  </div>
+  <div class="mh-row">
+    <div class="mh-banner"><span class="mh-banner-title">NFL {{ nfl.week|upper }}</span></div>
+    <nav class="sheetnav"><a class="dn-btn" href="#scoreboard" data-goto="main-sheet">Scoreboard ›</a></nav>
+  </div>
+
+  <div class="nfl-grid">
+    <div class="agate nfl-boxes" data-min-from="nfl-side">
+      {% for b in nfl.boxes %}{{ m.box(b) }}{% endfor %}
+    </div>
+
+    <aside class="nfl-side" id="nfl-side">
+      {% if nfl.standings %}{{ m.nfl_standings(nfl.standings) }}{% endif %}
+
+      {% if nfl.view %}
+      {% set v = nfl.view %}
+      <div class="nfl-week">
+        <div>
+          {% for d in v.scores %}{{ m.results(d.day, d.rows) }}{% endfor %}
+          {{ m.schedule(v.tonight) }}
+          {% if v.open %}<div class="hang"><b>Open:</b> {{ v.open }}.</div>{% endif %}
+        </div>
+        <div>
+          {{ m.schedule(v.next) }}
+          {% if v.next_open %}<div class="hang"><b>Open:</b> {{ v.next_open }}.</div>{% endif %}
+        </div>
+      </div>
+      {% endif %}
+    </aside>
+  </div>
+</div>
+<div class="shade"></div>
+</div>
+<div class="leaf-back"></div>
+</section>

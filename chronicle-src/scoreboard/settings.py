@@ -10,6 +10,9 @@ SETTINGS_FILE = os.environ.get("AGATE_SETTINGS", "settings.json")
 
 DEFAULTS = {
     "page_label": "B10",
+    "nfl_page_label": "B9",
+    "nfl_monday_page": True,
+    "weather_page_label": "C6",
     "columns": 6,
     "column_width": 120,           # px per column; page width is fixed from this
     "min_height": 0,               # px; 0 = as short as the content allows

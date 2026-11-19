@@ -17,6 +17,9 @@ Result in logos-site:
     chronicle/mlb/index.html               today's MLB page
     chronicle/mlb/2026-11-16.html
     chronicle/mlb/static/                  its CSS + uploaded photos
+    chronicle/weather/index.html           today's weather page
+    chronicle/weather/2026-11-16.html
+    chronicle/weather/img/                 that day's satellite + national map
 
 Nothing here needs a server: the Flask apps run only on your Mac, inside
 this script, and the HTML they produce is saved as files.
@@ -44,7 +47,7 @@ OUT_DIR        = os.path.join(SITE_DIR, "chronicle")
 # The Chronicle fonts (Ford Antenna, Farnham, Archer) are licensed typefaces.
 # Putting the font files on a public website usually breaks that license, so
 # by default they are NOT copied; the pages fall back to similar free fonts.
-COPY_FONTS = False   # default only — the real switch is the admin checkbox
+COPY_FONTS = True   # default only — the real switch is the admin checkbox
                      # "Include font files", saved in settings.json
 
 
@@ -75,7 +78,11 @@ def freeze_one(app_dir, url, out_file):
     page = resp.get_data(as_text=True)
     page = ADMIN_LINK.sub("", page)
     page = page.replace('<html lang="en">', '<html lang="en" data-static="1">', 1)
-    page = page.replace('"/static/', '"static/').replace("'/static/", "'static/")
+    if url.startswith("/weather"):         # shares the Scoreboard's CSS and fonts
+        page = page.replace('"/static/', '"../scoreboard/static/').replace("'/static/", "'../scoreboard/static/")
+        page = page.replace('"/wx-img/', '"img/')
+    else:
+        page = page.replace('"/static/', '"static/').replace("'/static/", "'static/")
     page = add_back_button(page)
     page = add_favicon(page)
     os.makedirs(os.path.dirname(out_file), exist_ok=True)
@@ -98,8 +105,8 @@ BACK_LINK = '<a href="../../agate.html" class="site-back-btn">← Back to Agate<
 
 def add_back_button(page):
     page = page.replace("</head>", BACK_STYLE + "\n</head>", 1)
-    if re.search(r'<div class="page">', page):
-        return re.sub(r'(<div class="page">)', r"\1" + BACK_LINK, page, count=1)
+    if re.search(r'<div class="page[ "]', page):
+        return re.sub(r'(<div class="page(?: [^"]*)?">)', r"\1" + BACK_LINK, page)   # every sheet (Monday NFL page too)
     return re.sub(r"(<body[^>]*>)", r"\1" + BACK_LINK, page, count=1)
 
 
@@ -156,6 +163,15 @@ def match_font_case(css, css_dir):
             print(f"  WARNING: {ref} is in the CSS but not in static/{folder}/")
         return m.group(0)
     return re.sub(r"""url\((['"]?)([^'")]+)\1\)""", fix, css)
+
+
+def copy_weather_pictures(day, dest):
+    """The weather page's satellite picture and national map for that day."""
+    src = os.path.join(SCOREBOARD_DIR, "cache", "weather-img")
+    os.makedirs(dest, exist_ok=True)
+    for fn in os.listdir(src) if os.path.isdir(src) else []:
+        if fn.startswith(day.isoformat()):
+            shutil.copy(os.path.join(src, fn), os.path.join(dest, fn))
 
 
 def run_freeze(app_dir, url, out_file):
@@ -281,6 +297,8 @@ def main():
                                    "(default: today)")
     ap.add_argument("--skip-mlb", action="store_true")
     ap.add_argument("--skip-scoreboard", action="store_true")
+    ap.add_argument("--skip-weather", action="store_true")
+    ap.add_argument("--weather-only", action="store_true", help="just refresh today's weather page")
     ap.add_argument("--force-mlb", action="store_true", help="build the MLB page even in the off-season")
     ap.add_argument("--push", action="store_true", help="git commit + push logos-site")
     a = ap.parse_args()
@@ -301,6 +319,8 @@ def main():
     d = dates[-1]
     ok = True
 
+    if a.weather_only:
+        a.skip_scoreboard = True
     if not a.skip_scoreboard:
         out = os.path.join(OUT_DIR, "scoreboard")
         for day in dates:
@@ -317,6 +337,27 @@ def main():
             shutil.copy(os.path.join(out, f"{newest}.html"), os.path.join(out, "index.html"))
             print(f"  latest page (index.html): {newest}")
 
+    weather_date = None
+    if not a.skip_weather and today in dates:
+        out = os.path.join(OUT_DIR, "weather")
+        print("Weather ...")
+        if not os.path.isdir(os.path.join(OUT_DIR, "scoreboard", "static")):
+            copy_static(SCOREBOARD_DIR, os.path.join(OUT_DIR, "scoreboard", "static"))
+        if run_freeze(SCOREBOARD_DIR, "/weather", os.path.join(out, f"{today}.html")):
+            copy_weather_pictures(today, os.path.join(out, "img"))
+            write_archive_json(out)
+            newest = max(archive_dates(out), default=None)
+            if newest:
+                shutil.copy(os.path.join(out, f"{newest}.html"), os.path.join(out, "index.html"))
+            weather_date = today.isoformat()
+            print(f"  -> {out}/{today}.html")
+        else:
+            ok = False
+    elif not a.skip_weather:
+        print("Weather: only today's page can be built (forecasts are live) — skipped.")
+
+    if a.weather_only:
+        a.skip_mlb = True
     mlb_active, mlb_note = mlb_status(today)
     if a.force_mlb:
         mlb_active = True
@@ -340,8 +381,15 @@ def main():
 
     os.makedirs(OUT_DIR, exist_ok=True)
     # agate.html (in the site root) reads this to show the MLB off-season note
+    prev = {}
+    try:
+        with open(os.path.join(OUT_DIR, "status.json")) as f:
+            prev = json.load(f)
+    except (OSError, ValueError):
+        pass
     with open(os.path.join(OUT_DIR, "status.json"), "w") as f:
         json.dump({"updated": datetime.now().isoformat(timespec="minutes"),
+                   "weather_date": weather_date or prev.get("weather_date"),
                    "page_date": max(archive_dates(os.path.join(OUT_DIR, "scoreboard")),
                                     default=d.isoformat()),
                    "mlb_active": mlb_active, "mlb_note": mlb_note}, f)

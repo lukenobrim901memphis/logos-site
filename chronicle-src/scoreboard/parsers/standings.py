@@ -14,6 +14,8 @@ STYLES = {
     "nhl":    (["W", "L", "OT", "Pts", "GF", "GA"],            "pts"),
     "nfl":    (["W", "L", "T", "Pct", "PF", "PA"],              "pct"),
     "soccer": (["W", "D", "L", "GF", "GA", "Pts"],             "pts"),
+    # the Monday NFL page (full Chronicle columns)
+    "nfl_full": (["W", "L", "T", "Pct", "PF", "PA", "Home", "Away", "NFC", "AFC", "Div"], "pct"),
 }
 
 KEYS = {
@@ -24,6 +26,7 @@ KEYS = {
     "PF": ("pointsfor", "pf"), "PA": ("pointsagainst", "pa"),
     "Home": ("home", "homerecord"), "Away": ("road", "away", "awayrecord"),
     "Div": ("vs. div.", "vsdiv", "divisionrecord", "division", "div"),
+    "Conf": ("vs. conf.", "vsconf", "conferencerecord", "conference", "conf"),
     "L10": ("lasttengames", "l10", "last ten games"), "Strk": ("streak", "strk"),
 }
 
@@ -33,6 +36,17 @@ def _get(idx, col):
         if k in idx and idx[k] not in (None, ""):
             return idx[k]
     return ""
+
+
+def _wlt(rec):
+    """'3-1' or '3-1-0' -> (3, 1, 0)."""
+    parts = [to_int(x) for x in str(rec or "").replace("–", "-").split("-") if x.strip() != ""]
+    parts += [0] * (3 - len(parts))
+    return tuple(parts[:3])
+
+
+def _fmt_wlt(w, l, t):
+    return f"{w}-{l}-{t}"
 
 
 def _walk(node, parents, out):
@@ -45,8 +59,8 @@ def _walk(node, parents, out):
         _walk(ch, parents + ([name] if name else []), out)
 
 
-def parse(data, league, featured=None):
-    style = league.get("standings") or "wl"
+def parse(data, league, featured=None, style=None):
+    style = style or league.get("standings") or "wl"
     cols, sort_by = STYLES.get(style, STYLES["wl"])
     raw_groups = []
     _walk(data or {}, [], raw_groups)
@@ -58,20 +72,33 @@ def parse(data, league, featured=None):
             idx = stat_index(e.get("stats"))
             team = e.get("team") or {}
             w, l, t = (to_int(_get(idx, "W")), to_int(_get(idx, "L")),
-                       to_int(_get(idx, "T")) if style == "nfl" else 0)
+                       to_int(_get(idx, "T")) if style in ("nfl", "nfl_full") else 0)
             gp = w + l + t
             pct = (w + 0.5 * t) / gp if gp else 0.0
-            row = {"name": team_city(team, league),
+            row = {"name": team_city(team, league), "_id": str(team.get("id")),
                    "featured": is_featured(team, featured),
                    "_w": w, "_l": l, "_pct": pct,
                    "_pts": to_float(_get(idx, "Pts"), 0) or 0,
                    "_gp": to_int(_get(idx, "GP")) or gp,
                    "_seed": to_float(idx.get("playoffseed"), 99) or 99}
+            if style == "nfl_full":
+                own = "NFC" if "national" in g["conference"].lower() or \
+                      g["name"].upper().startswith("NFC") else "AFC"
+                raw = _get(idx, "Conf")
+                cw, cl, ct = _wlt(raw)
+                conf_rec = ({own: _fmt_wlt(cw, cl, ct),
+                             ("AFC" if own == "NFC" else "NFC"):
+                                 _fmt_wlt(max(0, w - cw), max(0, l - cl), max(0, t - ct))}
+                            if raw else {"NFC": "", "AFC": ""})
             for c in cols:
                 if c == "Pct":
                     row[c] = "1.000" if pct >= 1 else f".{round(pct * 1000):03d}"
                 elif c in ("W", "L", "T"):
                     row[c] = {"W": w, "L": l, "T": t}[c]
+                elif style == "nfl_full" and c in ("NFC", "AFC"):
+                    row[c] = conf_rec[c]
+                elif style == "nfl_full" and c in ("Home", "Away", "Div"):
+                    row[c] = _fmt_wlt(*_wlt(_get(idx, c)))
                 else:
                     row[c] = _get(idx, c)
             rows.append(row)
@@ -89,8 +116,9 @@ def parse(data, league, featured=None):
 
         conf = g["conference"] if g["conference"] != g["name"] else ""
         groups.append({"conference": conf if conf != last_conf else "",
-                       "name": g["name"], "rows": rows})
+                       "conference_full": conf, "name": g["name"], "rows": rows})
         last_conf = conf
-    return {"columns": cols, "groups": groups,
+    teams = {r["_id"]: r["name"] for grp in groups for r in grp["rows"]}
+    return {"columns": cols, "groups": groups, "teams": teams,
             "note": ("Two points for a win, one point for overtime loss."
                      if style == "nhl" else "")}

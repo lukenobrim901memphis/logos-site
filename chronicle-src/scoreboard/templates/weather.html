@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/site-favicon.png">
+<title>Weather — {{ date_str }}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap">
+<link rel="stylesheet" href="{{ url_for('static', filename='agate.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='weather.css') }}">
+</head>
+<body{% if w.page_date.weekday() == 6 %} class="sunday"{% endif %}>
+{% include "_wx_icons.html" %}
+{% macro wx_table(rows) %}
+<table class="wx-tbl wx-cities">
+  <thead>
+    <tr><th class="nm"></th><th colspan="2">{{ w.yday_name }}</th><th colspan="2">Today</th><th colspan="2">{{ w.tmrw_name }}</th></tr>
+    <tr><th class="nm"></th><th>Hi/Lo</th><th>Pcp</th><th>Hi/Lo</th><th>Sky</th><th>Hi/Lo</th><th>Sky</th></tr>
+  </thead>
+  <tbody>
+  {% for r in rows %}<tr><td class="nm">{{ r.name }}</td><td>{{ r.y }}</td><td class="pc">{{ r.yp }}</td><td>{{ r.t }}</td><td class="sky">{{ r.ts }}</td><td>{{ r.m }}</td><td class="sky">{{ r.ms }}</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% endmacro %}
+<div class="page wx">
+
+  <div class="masthead-top">
+    <span class="mh-page">{{ s.weather_page_label }}</span>
+    <span class="mh-divider">|</span>
+    <span class="mh-date-bold">{{ date_str }}</span>
+    <span class="mh-divider">|</span>
+    <span class="mh-site">SFCHRONICLE.COM</span>
+    <span class="mh-stars">★★★★★●</span>
+    <a class="mh-admin" href="/admin">admin</a>
+  </div>
+  <nav class="datenav wx-nav" data-date="{{ w.page_date }}" data-today="{{ w.page_date }}">
+    <a class="dn-btn dn-prev" href="#" hidden>‹ Previous day</a>
+    <select class="dn-select" id="dn-select" name="page" aria-label="Past pages" hidden></select>
+    <a class="dn-btn dn-next" href="#" hidden>Next day ›</a>
+    <a class="dn-btn dn-today" href="index.html" hidden>Today</a>
+  </nav>
+
+  {# ═════════════ BAY AREA ═════════════ #}
+  <div class="wx-top">
+    <h1 class="wx-title">Bay Area</h1>
+    <div class="wx-strip">
+      {% for d in w.strip %}
+      <div class="wx-day">
+        <svg class="wx-dayicon" viewBox="0 0 64 64"><use href="#wx-{{ d.icon }}"/></svg>
+        <div>
+          <div class="wx-dayname">{{ d.name }}</div>
+          <div class="wx-dayshort">{{ d.short }}</div>
+          <div class="wx-range">{% if d.highs %}Highs: {{ d.highs }}{% endif %}{% if d.lows %}<br>Lows: {{ d.lows }}{% endif %}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="wx-main">
+    <div class="wx-side">
+      {% if w.summary %}<p class="wx-lede">{{ w.summary }}</p>{% endif %}
+      {% if w.outlook %}<p class="wx-p"><b>Outlook:</b> {{ w.outlook }}</p>{% endif %}
+
+      {% set sf = w.sf %}
+      {% if sf %}
+      <h2 class="wx-h2">San Francisco report</h2>
+      <table class="wx-kv">
+        {% if sf.max and sf.min and sf.max.normal is not none %}<tr><td>Normal H/L for the day</td><td>{{ sf.max.normal }}/{{ sf.min.normal }}</td></tr>{% endif %}
+        {% if sf.max and sf.max.obs is not none %}<tr><td>{{ 'Today' if sf.preliminary else w.yday_name }}'s H/L</td><td>{{ sf.max.obs }}/{{ sf.min.obs if sf.min else '' }}</td></tr>{% endif %}
+        {% if sf.max and sf.max.record is not none %}<tr><td>Record high</td><td>{{ sf.max.record }} in {{ sf.max.year }}</td></tr>{% endif %}
+        {% if sf.min and sf.min.record is not none %}<tr><td>Record low</td><td>{{ sf.min.record }} in {{ sf.min.year }}</td></tr>{% endif %}
+        {% if sf.pcp_record is defined and sf.pcp_record is not none %}<tr><td>Record rainfall for the day</td><td>{{ '%.2f'|format(sf.pcp_record) }}&Prime; in {{ sf.pcp_record_year }}</td></tr>{% endif %}
+        {% if sf.pcp is defined and sf.pcp is not none %}<tr><td>Rainfall {{ w.yday_name }}</td><td>{{ sf.pcp if sf.pcp == 'T' else '%.2f'|format(sf.pcp) }}&Prime;</td></tr>{% endif %}
+        {% if sf.month is defined and sf.month is not none %}<tr><td>Rainfall this month</td><td>{{ '%.2f'|format(sf.month) }}&Prime;</td></tr>{% endif %}
+        {% if sf.season is defined and sf.season is not none %}<tr><td>Season to date (since {{ sf.season_from }}. 1)</td><td>{{ '%.2f'|format(sf.season) }}&Prime;</td></tr>{% endif %}
+        {% if sf.season_normal is defined and sf.season_normal is not none %}<tr><td>Normal to date</td><td>{{ '%.2f'|format(sf.season_normal) }}&Prime;</td></tr>{% endif %}
+      </table>
+      <div class="wx-src">S.F. International Airport{% if sf.preliminary %}, preliminary, through 4 p.m.{% endif %}</div>
+      {% endif %}
+
+      {% set tc = w.trend %}
+      {% if tc %}
+      <h3 class="wx-h3">14-day temperature trend</h3>
+      <div class="wx-key"><span class="k-past"></span>History <span class="k-fc"></span>Forecast <span class="k-norm"></span>Normal high/low</div>
+      <svg class="wx-trend" viewBox="0 0 {{ tc.W }} {{ tc.H }}">
+        {% for g in tc.grid %}<line x1="{{ tc.L }}" x2="{{ tc.W }}" y1="{{ g.y }}" y2="{{ g.y }}" class="grid"/><text x="{{ tc.L - 3 }}" y="{{ g.y + 2.5 }}" class="ax" text-anchor="end">{{ g.t }}</text>{% endfor %}
+        {% for b in tc.bars %}<rect x="{{ b.x }}" y="{{ b.y }}" width="{{ b.w }}" height="{{ b.h }}" class="{{ b.cls }}"/>{% endfor %}
+        {% for d in tc.days %}<text x="{{ d.x }}" y="{{ tc.ylab }}" class="ax" text-anchor="middle">{{ d.t }}</text>{% endfor %}
+        {% for y in tc.normal %}<line x1="{{ tc.L }}" x2="{{ tc.W }}" y1="{{ y }}" y2="{{ y }}" class="norm"/>{% endfor %}
+        <line x1="{{ tc.split }}" x2="{{ tc.split }}" y1="{{ tc.split_top }}" y2="{{ tc.split_bot }}" class="split"/>
+      </svg>
+      <div class="wx-trendlbl"><span>Past seven days</span><span>Forecast</span></div>
+      {% endif %}
+
+      {% if w.tides and (w.tides[0].high or w.tides[0].low) %}
+      <h2 class="wx-h2">Tides at Golden Gate</h2>
+      {% set tc = w.tide_chart %}
+      {% if tc %}
+      <svg class="wx-tide" viewBox="0 0 {{ tc.W }} {{ tc.H }}">
+        <polygon points="{{ tc.poly }}" class="water"/>
+        <line x1="{{ tc.L }}" x2="{{ tc.W - 2 }}" y1="{{ tc.base }}" y2="{{ tc.base }}" class="base"/>
+        <line x1="{{ tc.mid }}" x2="{{ tc.mid }}" y1="2" y2="{{ tc.base }}" class="split"/>
+        {% for l in tc.labels %}<text x="{{ l.x }}" y="{{ tc.H - 3 }}" class="ax" text-anchor="middle">{{ l.t }}</text>{% endfor %}
+        <text x="{{ tc.L - 3 }}" y="9" class="ax" text-anchor="end">{{ tc.hi }}&prime;</text>
+        <text x="{{ tc.L - 3 }}" y="{{ tc.base }}" class="ax" text-anchor="end">{{ tc.lo }}&prime;</text>
+      </svg>
+      {% endif %}
+      <table class="wx-tides">
+        <tr><th></th><th>High</th><th>Low</th></tr>
+        {% for t in w.tides %}
+        <tr><td class="nm"><b>{{ t.label }}</b></td><td>{{ t.high|join('<br>')|safe }}</td><td>{{ t.low|join('<br>')|safe }}</td></tr>
+        {% endfor %}
+      </table>
+      {% endif %}
+
+      {% if w.marine %}
+      <h2 class="wx-h2">Marine</h2>
+      {% for mm in w.marine %}<p class="wx-p"><b>{{ mm.label }}:</b> {{ mm.text }}</p>{% endfor %}
+      {% endif %}
+    </div>
+
+    {# ── the map ── #}
+    {% set g = w.map.geo %}
+    <div class="wx-map" style="width:{{ g.width }}px;height:{{ g.height }}px">
+      <svg class="wx-mapsvg" viewBox="0 0 {{ g.width }} {{ g.height }}" width="{{ g.width }}" height="{{ g.height }}">
+        <defs><linearGradient id="wxg-sea" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#bcd8e8"/><stop offset="1" stop-color="#d7e9f2"/></linearGradient></defs>
+        <rect width="100%" height="100%" fill="url(#wxg-sea)"/>
+        <path d="{{ g.land }}" class="land" fill-rule="evenodd"/>
+        <path d="{{ g.borders }}" class="borders"/>
+        {% for c in g.counties %}<text x="{{ c.x }}" y="{{ c.y }}" class="county" text-anchor="middle">{{ c.name }}</text>{% endfor %}
+        {% for i in w.map.icons %}<use href="#wx-{{ i.icon }}" x="{{ i.x }}" y="{{ i.y }}" width="46" height="46"/>{% endfor %}
+        {% for m in w.map.marks %}<circle cx="{{ m.x }}" cy="{{ m.y }}" r="1.9" class="dot"/>{% endfor %}
+      </svg>
+      {% for m in w.map.marks %}
+      <div class="wx-city s-{{ m.side }}" style="left:{{ m.x }}px;top:{{ m.y }}px">
+        <b class="nm">{{ m.name }}</b>{% if m.fc %}<span class="fc">{{ m.fc }}</span>{% endif %}{% if m.yest %}<span class="yd">{{ m.yest }}</span>{% endif %}
+      </div>
+      {% endfor %}
+      {% for o in w.map.off %}
+      <div class="wx-city wx-off"><b class="nm">{{ o.name }} &#8599;</b>{% if o.fc %}<span class="fc">{{ o.fc }}</span>{% endif %}{% if o.yest %}<span class="yd">{{ o.yest }}</span>{% endif %}</div>
+      {% endfor %}
+      {% for b in w.map.boxes %}
+      <div class="wx-sea" style="left:{{ b.x }}px;top:{{ b.y }}px">
+        <svg viewBox="0 0 16 16"><use href="#wx-flag"/></svg>
+        {% if b.wind %}<span>Wind {{ b.wind }}</span>{% endif %}{% if b.seas %}<span>Seas {{ b.seas }}</span>{% endif %}
+      </div>
+      {% endfor %}
+      {% for t in w.map.water %}<div class="wx-wt" style="left:{{ t.x }}px;top:{{ t.y }}px">{{ t.t }}°</div>{% endfor %}
+
+      <div class="wx-legend">
+        <div class="wx-h3">How to read the map</div>
+        <div class="wx-city s-r wx-sample"><b class="nm">City</b><span class="fc">74°/59°</span><span class="yd">73/56 0.00&Prime;</span></div>
+        <div class="lg-notes">
+          <div><b>74°/59°</b> today's forecast high/low</div>
+          <div><b>73/56 0.00&Prime;</b> {{ w.yday_name }}'s high/low and rain, airport weather stations</div>
+          <div><span class="wx-wt wx-static">57°</span> water temperature</div>
+          <div><svg viewBox="0 0 16 16" class="lg-flag"><use href="#wx-flag"/></svg> wind and seas forecast for today</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {# ═════════════ CALIFORNIA · NATIONAL · INTERNATIONAL ═════════════ #}
+  <div class="wx-bottom">
+    <section class="wx-col">
+      <h1 class="wx-title wx-title-sm">California</h1>
+      {% set cg = w.ca.geo %}
+      <div class="wx-camap" style="width:{{ cg.width }}px;height:{{ cg.height }}px">
+        <svg viewBox="0 0 {{ cg.width }} {{ cg.height }}" width="{{ cg.width }}" height="{{ cg.height }}">
+          <path d="{{ cg.land }}" class="land ca"/>
+          {% for m in w.ca.marks %}<circle cx="{{ m.x }}" cy="{{ m.y }}" r="1.6" class="dot"/>{% endfor %}
+        </svg>
+        {% for m in w.ca.marks %}
+        <div class="wx-city wx-ca s-{{ m.side }}" style="left:{{ m.x }}px;top:{{ m.y }}px"><b class="nm">{{ m.name }}</b><span class="fc">{{ m.fc }}</span></div>
+        {% endfor %}
+      </div>
+      <div class="wx-callouts">
+        {% if w.ca.hot %}<div class="wx-callout wx-hot"><span class="cl-hd">{{ w.yday_name }}</span><b>{{ w.ca.hot[0] }}°</b> {{ w.ca.hot[1] }}</div>{% endif %}
+        {% if w.ca.cold %}<div class="wx-callout wx-cold"><span class="cl-hd">{{ w.yday_name }}</span><b>{{ w.ca.cold[0] }}°</b> {{ w.ca.cold[1] }}</div>{% endif %}
+      </div>
+      <div class="wx-note">* Today's highs/lows</div>
+      {{ wx_table(w.ca.rows) }}
+      <div class="wx-note">California and national locations show {{ w.yday_name }}'s high and low temperatures and precipitation (airport stations).</div>
+    </section>
+
+    <section class="wx-col">
+      <h1 class="wx-title wx-title-sm">National</h1>
+      {% if w.us.text %}<p class="wx-p">{{ w.us.text }}</p>{% endif %}
+      {{ wx_table(w.us.rows) }}
+      <div class="wx-note wx-codes">CL = clear &nbsp; CY = cloudy &nbsp; PC = partly cloudy &nbsp; RN = rain &nbsp; SH = showers &nbsp; SN = snow &nbsp; TS = t-storms &nbsp; IC = ice &nbsp; FG = fog &nbsp; DZ = drizzle &nbsp; WN = wind</div>
+    </section>
+
+    <section class="wx-col wx-center">
+      {% if w.img.satellite %}
+      <div class="wx-sat">
+        <img src="{{ url_for('wx_img', name=w.img.satellite) }}" alt="GOES-West satellite picture">
+        <div class="wx-satcap"><b>Pacific view:</b> GOES-West satellite picture of California and the eastern Pacific.</div>
+      </div>
+      {% endif %}
+      {% if w.img.national %}
+      <div class="wx-natmap">
+        <img src="{{ url_for('wx_img', name=w.img.national) }}" alt="National forecast map">
+        <div class="wx-callouts">
+          {% if w.us.hot %}<div class="wx-callout wx-hot"><span class="cl-hd">{{ w.yday_name }}</span><b>{{ w.us.hot[0] }}°</b> {{ w.us.hot[1] }}</div>{% endif %}
+          {% if w.us.cold %}<div class="wx-callout wx-cold"><span class="cl-hd">{{ w.yday_name }}</span><b>{{ w.us.cold[0] }}°</b> {{ w.us.cold[1] }}</div>{% endif %}
+          <div class="wx-note">High and low among the cities listed. Map: today's forecast, NOAA Weather Prediction Center.</div>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if w.rain %}
+      <h2 class="wx-h2">Rainfall</h2>
+      <div class="wx-note">Precipitation in inches through 4 p.m. {{ w.yday_name }}. Season: since {{ w.rain_from }}. 1.</div>
+      <table class="wx-tbl wx-rain">
+        <tr><th class="nm"></th><th>24<br>hours</th><th>Season<br>to date</th><th>Last year<br>to date</th><th>Normal<br>to date</th></tr>
+        {% for r in w.rain %}<tr><td class="nm">{{ r.name }}</td><td>{{ r.day }}</td><td>{{ r.season }}</td><td>{{ r.last }}</td><td>{{ r.normal }}</td></tr>{% endfor %}
+      </table>
+      {% endif %}
+    </section>
+
+    <section class="wx-col">
+      <h1 class="wx-title wx-title-sm">International</h1>
+      <div class="wx-note">{{ w.yday_name }}'s high/low temperatures and sky conditions.</div>
+      <div class="wx-intl">
+        {% for g in w.intl %}
+        <div class="wx-intlgrp">
+          <div class="wx-grp">{{ g.name|upper }}</div>
+          <table class="wx-tbl">{% for r in g.rows %}<tr><td class="nm">{{ r.name }}</td><td>{{ r.hi }}/{{ r.lo }}</td><td class="sky">{{ r.sky }}</td></tr>{% endfor %}</table>
+        </div>
+        {% endfor %}
+      </div>
+
+      {% if w.almanac %}{% set a = w.almanac %}
+      <h1 class="wx-title wx-title-sm wx-alm">Almanac <span class="wx-almdate">{{ w.page_date.strftime('%b. %-d, %Y') }}</span></h1>
+      <table class="wx-tbl wx-sun">
+        <tr><th class="nm"></th>{% for r in a.rows %}<th colspan="2">{{ r.label }}</th>{% endfor %}</tr>
+        <tr><th class="nm"></th>{% for r in a.rows %}<th>Rises</th><th>Sets</th>{% endfor %}</tr>
+        <tr><td class="nm"><b>Sun</b></td>{% for r in a.rows %}<td>{{ r.sun[0] }}</td><td>{{ r.sun[1] }}</td>{% endfor %}</tr>
+        <tr><td class="nm"><b>Moon</b></td>{% for r in a.rows %}<td>{{ r.moon[0] }}</td><td>{{ r.moon[1] }}</td>{% endfor %}</tr>
+      </table>
+      <div class="wx-phases">
+        {% for p in a.phases %}
+        <div class="wx-phase">
+          <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.5" class="moon {{ p.kind }}"/>
+            {% if p.kind == 'first' %}<path d="M10 1.5a8.5 8.5 0 0 1 0 17z" class="lit"/>{% elif p.kind == 'last' %}<path d="M10 1.5a8.5 8.5 0 0 0 0 17z" class="lit"/>{% endif %}</svg>
+          <span>{{ p.name }}</span><span>{{ p.date }}</span>
+        </div>
+        {% endfor %}
+      </div>
+      {% if a.planets %}<p class="wx-p"><b>In the night sky:</b> {{ a.planets|join('. ') }}.</p>{% endif %}
+      {% endif %}
+    </section>
+  </div>
+  <div class="wx-credit">Forecasts and data: National Weather Service and NOAA (weather.gov, tidesandcurrents.noaa.gov, NDBC, Weather Prediction Center, GOES-West). International: Open-Meteo. Sun and moon times computed for San Francisco.</div>
+</div>
+{% include "_datenav_js.html" %}
+</body>
+</html>

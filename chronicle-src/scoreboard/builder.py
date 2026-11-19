@@ -6,7 +6,7 @@ Page date = the paper's date (today, Pacific). Results are from the day
 before; schedules/odds are for the page date (and the day after).
 """
 
-from datetime import date, timedelta
+from datetime import datetime, date, timedelta
 
 import espn
 from leagues import LEAGUES, BY_KEY
@@ -39,16 +39,35 @@ def wants_box(ev, lg, settings, featured, use_override=True):
     return False
 
 
-def _season_active(*sbs):
+def _iso_date(v):
+    try:
+        return datetime.fromisoformat(str(v).replace("Z", "+00:00")).date()
+    except (TypeError, ValueError):
+        return None
+
+
+def _season_active(results_date, *sbs):
+    """In season = ESPN has games on/around the paper's dates, or the season
+    ESPN reports (regular season or playoffs) hasn't reached its end date yet.
+    ESPN keeps reporting a finished season (e.g. the WNBA in November), so the
+    season type alone isn't enough."""
     for sb in sbs:
-        if not sb:
-            continue
-        if sb.get("events"):
+        if sb and sb.get("events"):
             return True
-        for lgd in sb.get("leagues", []):
-            t = ((lgd.get("season") or {}).get("type") or {}).get("type")
-            if t in (2, 3, "2", "3"):
+    for sb in sbs:
+        for lgd in (sb or {}).get("leagues", []):
+            season = lgd.get("season") or {}
+            t = (season.get("type") or {}).get("type")
+            end = _iso_date((season.get("type") or {}).get("endDate") or season.get("endDate"))
+            if t in (2, 3, "2", "3") and end and end >= results_date:
                 return True
+    return False
+
+
+def _postseason(sb):
+    for lgd in (sb or {}).get("leagues", []):
+        if str(((lgd.get("season") or {}).get("type") or {}).get("type")) == "3":
+            return True
     return False
 
 
@@ -154,7 +173,7 @@ def build(page_date, settings):
         elif lg["kind"] == "spring":
             if lmode(k) == "on" or spring.is_preseason(get(k, "y"), get(k, "t")):
                 active.append(lg)
-        elif lmode(k) == "on" or _season_active(get(k, "y"), get(k, "t"),
+        elif lmode(k) == "on" or _season_active(results_date, get(k, "y"), get(k, "t"),
                                                  get(k, "t2"), get(k, "wk")):
             active.append(lg)
 
@@ -177,6 +196,7 @@ def build(page_date, settings):
 
     # ── Assemble sections ────────────────────────────────────────────────
     sections, odds, txns = [], [], []
+    nfl_page = None
     for lg in active:
         k = lg["key"]
         sec = {"key": k, "label": lg["label"], "sublabel": lg.get("sublabel", ""),
@@ -219,7 +239,8 @@ def build(page_date, settings):
             sec["top25"] = [r for r in res if r.get("ranked")]
             sec["featured_results"] = [r for r in res if r.get("featured") and not r.get("ranked")]
             rest = ([r for r in res if not r.get("ranked") and not r.get("featured")]
-                    if lg.get("all_scores") or settings.get("college_results") == "all" else [])
+                    if lg.get("all_scores") or settings.get("college_results") == "all"
+                    or (lg.get("all_in_postseason") and _postseason(get(k, "y"))) else [])
             by_winner = lambda r: (r.get("w") or {}).get("name", r.get("text", ""))
             sec["other_results"] = sorted([r for r in rest if r.get("division") != "FCS"], key=by_winner)
             sec["fcs_results"] = sorted([r for r in rest if r.get("division") == "FCS"], key=by_winner)
@@ -270,6 +291,22 @@ def build(page_date, settings):
         boxes.sort(key=lambda b: not (b["away"]["featured"] or b["home"]["featured"]))
         sec["boxes"] = boxes
 
+        # Monday during the NFL regular season: the whole NFL section (scores,
+        # schedule, standings, box scores) moves to its own NFL page beside the
+        # Scoreboard page. In the playoffs Monday stays on the Scoreboard page.
+        if k == "nfl" and page_date.weekday() == 0 and settings.get("nfl_monday_page", True):
+            full = p_standings.parse(st, lg, featured, style="nfl_full") if st else None
+            if full and not full["groups"]:
+                full = None
+            view = slate.nfl_monday_view(get(k, "weeks"), lg, featured, page_date,
+                                         full["teams"] if full else {})
+            if view and view["seasontype"] == 2:
+                nfl_page = {"week": view["label"], "standings": full,
+                            "view": view, "boxes": sec["boxes"]}
+                for x in ("standings", "results", "nfl_blocks", "schedule"):
+                    sec[x] = None
+                sec["boxes"] = []
+
         if (more.get((k, "txn"))):
             t = individual.transactions(more[(k, "txn")], lg, results_date)
             if t:
@@ -288,6 +325,7 @@ def build(page_date, settings):
         "results_date": results_date,
         "date_str": page_date.strftime("%A, %B %-d, %Y"),
         "sections": sections,
+        "nfl_page": nfl_page,
         "odds": odds,
         "transactions": txns,
         "custom": [c for c in settings.get("custom_sections", []) if c.get("title") or c.get("body")],

@@ -6,6 +6,7 @@ Chronicle Scoreboard — all-sports agate page from the ESPN public API.
     /?date=2026-11-16              -> any paper date (results = day before)
     /admin                         -> sections, box-score picks, local results
     /api/page?date=...             -> the assembled page data as JSON (debugging)
+    /weather                       -> today's weather page (weather.gov + NOAA)
 """
 
 import json
@@ -116,6 +117,9 @@ def admin_save():
     s["show_odds"] = bool(f.get("show_odds"))
     s["show_transactions"] = bool(f.get("show_transactions"))
     s["copy_fonts"] = bool(f.get("copy_fonts"))
+    s["nfl_page_label"] = f.get("nfl_page_label", s.get("nfl_page_label", "B9")).strip()
+    s["nfl_monday_page"] = bool(f.get("nfl_monday_page"))
+    s["weather_page_label"] = f.get("weather_page_label", s.get("weather_page_label", "C6")).strip()
 
     for lg in LEAGUES:
         k = lg["key"]
@@ -145,6 +149,31 @@ def admin_save():
 
     settings_mod.save(s)
     return redirect(url_for("admin", date=f.get("page_date", "")))
+
+
+# ── Weather page ─────────────────────────────────────────────────────────────
+# Forecasts are live, so only today's page can be built; past days live on in
+# the published archive. (With AGATE_FIXTURES set, ?date= works for testing.)
+
+@app.route("/weather")
+def weather():
+    from weather import build as wx
+    import os as _os
+    d = today_pt()
+    if _os.environ.get("AGATE_FIXTURES") and request.args.get("date"):
+        d = page_date_from_request()
+    w = wx.build(d)
+    return render_template("weather.html", w=w, s=settings_mod.load(),
+                           date_str=f"{d.strftime('%A')}, {d.strftime('%B')} {d.day}, {d.year}")
+
+
+@app.route("/wx-img/<path:name>")
+def wx_img(name):
+    from weather import build as wx
+    p = os.path.join(wx.IMG_DIR, os.path.basename(name))
+    if not os.path.exists(p):
+        abort(404)
+    return send_file(os.path.abspath(p))
 
 
 @app.route("/admin/reset_overrides", methods=["POST"])

@@ -32,7 +32,7 @@
   <table class="st">
     <thead>
       {% if g.name %}<tr><th class="div" colspan="{{ st.columns|length + 1 }}">{{ g.name }}</th></tr>{% endif %}
-      <tr><th></th>{% for c in st.columns %}<th>{{ c }}</th>{% endfor %}</tr>
+      <tr><th class="nm"></th>{% for c in st.columns %}<th>{{ c }}</th>{% endfor %}</tr>
     </thead>
     <tbody>
     {% for r in g.rows %}
@@ -46,6 +46,28 @@
 </div>
 {% endfor %}
 {% if st.note %}<div class="note"><b>Note:</b> {{ st.note }}</div>{% endif %}
+{% endmacro %}
+
+{# ── NFL standings, Monday NFL page (full Chronicle columns) ── #}
+{% macro nfl_standings(st) %}
+{% set ns = namespace(conf='') %}
+{% for g in st.groups %}
+  {% if g.conference_full != ns.conf %}{% set ns.conf = g.conference_full %}
+  <div class="nfl-conf">{{ 'National Conference' if 'National' in g.conference_full
+      else ('American Conference' if 'American' in g.conference_full else g.conference_full) }}</div>
+  {% endif %}
+  <table class="nflst blk">
+    <thead>
+      <tr><th class="nflhd" colspan="{{ st.columns|length + 1 }}">{{ g.name|replace('NFC ', '')|replace('AFC ', '')|upper }}</th></tr>
+      <tr><th class="nm"></th>{% for c in st.columns %}<th>{{ c }}</th>{% endfor %}</tr>
+    </thead>
+    <tbody>
+    {% for r in g.rows %}
+      <tr><td class="nm">{{ r.name|upper|fit }}</td>{% for c in st.columns %}<td>{{ r[c] }}</td>{% endfor %}</tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endfor %}
 {% endmacro %}
 
 {# ── Rankings ── #}

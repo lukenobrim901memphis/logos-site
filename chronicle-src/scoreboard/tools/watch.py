@@ -6,6 +6,8 @@ watch.py — keeps the published Chronicle pages up to date on its own.
     MLB app folders (CSS, templates, /admin settings, MLB recaps, photos …).
   • Republishes every night at 12:05 a.m. Pacific (or as soon as the Mac
     wakes up, if it was asleep at midnight).
+  • Refreshes the weather page at 6:15 a.m. Pacific with the morning's
+    forecasts (CHRONICLE_WEATHER_AT to change it).
   • Adds the site favicon to any HTML page in logos-site that doesn't
     have one yet (new pages included), with the right path for its folder.
 
@@ -46,6 +48,8 @@ IGNORE_FILES = {"cache.json"}
 EXTENSIONS = {".py", ".html", ".css", ".js", ".json", ".png", ".jpg", ".jpeg",
               ".gif", ".webp", ".svg", ".otf", ".ttf", ".woff", ".woff2"}
 STAMP = os.path.join(SCOREBOARD_DIR, "cache", ".last_nightly")
+WEATHER_AT = tuple(int(x) for x in os.environ.get("CHRONICLE_WEATHER_AT", "6:15").split(":"))
+WEATHER_STAMP = os.path.join(SCOREBOARD_DIR, "cache", ".last_weather")
 
 
 # ── Favicon on every logos-site page ─────────────────────────────────────────
@@ -126,9 +130,9 @@ def changed_files(before, after):
     return sorted(p for p in paths if before.get(p) != after.get(p))
 
 
-def publish_now(reason):
+def publish_now(reason, extra=()):
     log(f"Publishing ({reason}) …")
-    cmd = [sys.executable, os.path.join(HERE, "publish.py")] + (["--push"] if PUSH else [])
+    cmd = [sys.executable, os.path.join(HERE, "publish.py")] + list(extra) + (["--push"] if PUSH else [])
     r = subprocess.run(cmd, cwd=SCOREBOARD_DIR)
     log("Done." if r.returncode == 0 else f"Publish finished with errors (code {r.returncode}).")
 
@@ -137,23 +141,23 @@ def now_pt():
     return datetime.now(PT) if PT else datetime.now()
 
 
-def last_nightly():
+def last_nightly(stamp=STAMP):
     try:
-        with open(STAMP) as f:
+        with open(stamp) as f:
             return f.read().strip()
     except OSError:
         return ""
 
 
-def mark_nightly(day):
-    os.makedirs(os.path.dirname(STAMP), exist_ok=True)
-    with open(STAMP, "w") as f:
+def mark_nightly(day, stamp=STAMP):
+    os.makedirs(os.path.dirname(stamp), exist_ok=True)
+    with open(stamp, "w") as f:
         f.write(day)
 
 
-def nightly_due():
+def nightly_due(at=NIGHTLY_AT, stamp=STAMP):
     n = now_pt()
-    return (n.hour, n.minute) >= NIGHTLY_AT and last_nightly() != n.date().isoformat()
+    return (n.hour, n.minute) >= at and last_nightly(stamp) != n.date().isoformat()
 
 
 def main():
@@ -163,6 +167,8 @@ def main():
     publish_now("starting up")
     if (now_pt().hour, now_pt().minute) >= NIGHTLY_AT:
         mark_nightly(now_pt().date().isoformat())
+    if (now_pt().hour, now_pt().minute) >= WEATHER_AT:
+        mark_nightly(now_pt().date().isoformat(), WEATHER_STAMP)
 
     pages = site_pages()
     ensure_favicons(list(pages))
@@ -193,6 +199,10 @@ def main():
         if nightly_due():
             publish_now("nightly")
             mark_nightly(now_pt().date().isoformat())
+            snap = snapshot()
+        if nightly_due(WEATHER_AT, WEATHER_STAMP):
+            publish_now("morning weather", ["--weather-only"])
+            mark_nightly(now_pt().date().isoformat(), WEATHER_STAMP)
             snap = snapshot()
 
 

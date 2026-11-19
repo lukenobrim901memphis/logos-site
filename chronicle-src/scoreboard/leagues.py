@@ -10,6 +10,10 @@ weekly      football: "today's games" = rest of ESPN's current week
 college     results split into Top 25 / featured / other
 """
 
+_COLLEGE_SCORES = dict(kind="results", box="none", odds=False, college=True,
+                       all_in_postseason=True,
+                       scoreboard_params={"limit": 300})
+
 LEAGUES = [
     # ── Pro team sports ──────────────────────────────────────────────────────
     dict(key="nfl",  label="NFL", path="football/nfl", kind="football",
@@ -54,6 +58,29 @@ LEAGUES = [
          scoreboard_params={"groups": 50, "limit": 500},
          rankings_weekdays=[1, 2],
          periods=4, period_min=10, ot_min=5),
+
+    # Other college sports: scores only (Top 25 + Bay Area; every score once
+    # the NCAA tournament starts). Each shows up only while it's in season.
+    dict(key="cvb",  label="College Volleyball", sublabel="Women",
+         path="volleyball/womens-college-volleyball", **_COLLEGE_SCORES),
+    dict(key="mcsoc", label="College Soccer", sublabel="Men",
+         path="soccer/usa.ncaa.m.1", **_COLLEGE_SCORES),
+    dict(key="wcsoc", label="College Soccer", sublabel="Women",
+         path="soccer/usa.ncaa.w.1", **_COLLEGE_SCORES),
+    dict(key="mchk", label="College Hockey", sublabel="Men",
+         path="hockey/mens-college-hockey", **_COLLEGE_SCORES),
+    dict(key="wchk", label="College Hockey", sublabel="Women",
+         path="hockey/womens-college-hockey", **_COLLEGE_SCORES),
+    dict(key="mcvb", label="College Volleyball", sublabel="Men",
+         path="volleyball/mens-college-volleyball", **_COLLEGE_SCORES),
+    dict(key="cbase", label="College Baseball", path="baseball/college-baseball",
+         innings=True, **_COLLEGE_SCORES),
+    dict(key="csoft", label="College Softball", path="softball/college-softball",
+         innings=True, **_COLLEGE_SCORES),
+    dict(key="mclax", label="College Lacrosse", sublabel="Men",
+         path="lacrosse/mens-college-lacrosse", **_COLLEGE_SCORES),
+    dict(key="wclax", label="College Lacrosse", sublabel="Women",
+         path="lacrosse/womens-college-lacrosse", **_COLLEGE_SCORES),
 
     # ── Individual sports ────────────────────────────────────────────────────
     dict(key="pga",    label="Golf", sublabel="PGA Tour", path="golf/pga", kind="golf"),

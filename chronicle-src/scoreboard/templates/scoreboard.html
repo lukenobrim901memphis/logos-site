@@ -11,12 +11,22 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap">
 <link rel="stylesheet" href="{{ url_for('static', filename='agate.css') }}">
 {% set gap = 8 %}
+{% set page_w = s.columns * s.column_width + (s.columns - 1) * gap + 20 %}
+{% set side_cols = 2 %}
 <style>
 .agate{column-count:{{ s.columns }};column-width:auto}
-.page{width:{{ s.columns * s.column_width + (s.columns - 1) * gap + 20 }}px;max-width:none}
+.page{width:{{ page_w }}px;max-width:none}
+.spread{width:{{ page_w }}px}
+.edge-l{left:max(0px,calc(50% - {{ (page_w / 2)|int }}px - 26px))}
+.edge-r{right:max(0px,calc(50% - {{ (page_w / 2)|int }}px - 26px))}
+.nfl-grid{grid-template-columns:{{ (s.columns - side_cols) * s.column_width + (s.columns - side_cols - 1) * gap }}px {{ side_cols * s.column_width + (side_cols - 1) * gap }}px}
+.nfl-boxes{column-count:{{ s.columns - side_cols }}}
 </style>
 </head>
 <body{% if page.page_date.weekday() == 6 %} class="sunday"{% endif %}>
+<div class="spread{% if page.nfl_page %} has-nfl{% endif %}" id="spread">
+{% if page.nfl_page %}{% include "_nfl_page.html" %}{% endif %}
+<section class="sheet" id="main-sheet">
 <div class="page">
 
   <div class="masthead-top">
@@ -31,6 +41,7 @@
   <div class="mh-row">
     <div class="mh-banner"><span class="mh-banner-title">Scoreboard</span></div>
     <nav class="datenav" data-date="{{ page.page_date }}" data-today="{{ today }}">
+      {% if page.nfl_page %}<a class="dn-btn dn-nfl" href="#nfl" data-goto="nfl-sheet">‹ NFL {{ page.nfl_page.week|title }}</a>{% endif %}
       <a class="dn-btn dn-prev" href="?date={{ page.prev_date }}">‹ Previous day</a>
       <input class="dn-pick" id="dn-pick" name="date" type="date" value="{{ page.page_date }}" max="{{ today }}" aria-label="Pick a date">
       <select class="dn-select" id="dn-select" name="page" aria-label="Past pages" hidden></select>
@@ -103,6 +114,13 @@
     {% endif %}
   </div>
 </div>
+<div class="shade"></div>
+</section>
+</div>
+{% if page.nfl_page %}
+<a class="edge-tab edge-l" href="#nfl" data-goto="nfl-sheet" title="Turn to the NFL page">‹ NFL {{ page.nfl_page.week|title }}</a>
+<a class="edge-tab edge-r" href="#scoreboard" data-goto="main-sheet" title="Turn to the Scoreboard page">Scoreboard ›</a>
+{% endif %}
 <script>
 /* Fit names: every name starts in full. Only where a table, linescore or odds
    line is too wide for its column, the longest name in it steps down to its
@@ -134,70 +152,105 @@ function fitNames() {
 
 /* Even columns: fill columns top-to-bottom at a fixed height, using the
    shortest height at which everything fits in the set number of columns.
-   Every column (and its rule) then runs the full height of the page. */
-(function () {
-  var ag = document.querySelector('.agate');
-  if (!ag) return;
+   Every column (and its rule) then runs the full height of the page.
+   On the NFL page the box-score columns are at least as tall as the sidebar. */
+function layoutColumns(ag) {
   var minH = parseInt(ag.dataset.minHeight || '0', 10);
+  var from = ag.dataset.minFrom && document.getElementById(ag.dataset.minFrom);
+  if (from) minH = Math.max(minH, from.offsetHeight);
   function fits(h) {
     ag.style.height = h + 'px';
     return ag.scrollWidth <= ag.clientWidth + 1;
   }
-  function layout() {
-    ag.style.columnFill = 'balance'; ag.style.height = '';
-    var lo = Math.max(minH, Math.floor(ag.offsetHeight * 0.9));
-    ag.style.columnFill = 'auto';
-    var hi = Math.max(lo, ag.offsetHeight) + 50;
-    while (!fits(hi)) hi = Math.ceil(hi * 1.15);
-    if (fits(lo)) { hi = lo; }
-    else { while (hi - lo > 4) { var mid = (lo + hi) >> 1; if (fits(mid)) hi = mid; else lo = mid; } }
-    fits(hi);
-  }
-  (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () { fitNames(); layout(); });
-  window.addEventListener('resize', function () { clearTimeout(window._agt); window._agt = setTimeout(layout, 150); });
-})();
-</script>
-<script>
-/* Date navigation. On your Mac (Flask) any date works via ?date=.
-   On the published site (data-static="1") only built pages exist, so the
-   buttons and the list come from archive.json, written by publish.py. */
-(function () {
-  var nav = document.querySelector('.datenav');
-  if (!nav) return;
-  var cur = nav.dataset.date;
-  var prev = nav.querySelector('.dn-prev'), next = nav.querySelector('.dn-next'),
-      today = nav.querySelector('.dn-today'), pick = nav.querySelector('.dn-pick'),
-      sel = nav.querySelector('.dn-select');
-  var isStatic = document.documentElement.dataset.static === '1';
+  ag.style.columnFill = 'balance'; ag.style.height = '';
+  var lo = Math.max(minH, Math.floor(ag.offsetHeight * 0.9));
+  ag.style.columnFill = 'auto';
+  var hi = Math.max(lo, ag.offsetHeight) + 50;
+  while (!fits(hi)) hi = Math.ceil(hi * 1.15);
+  if (fits(lo)) { hi = lo; }
+  else { while (hi - lo > 4) { var mid = (lo + hi) >> 1; if (fits(mid)) hi = mid; else lo = mid; } }
+  fits(hi);
+}
 
-  if (!isStatic) {
-    pick.addEventListener('change', function () { if (pick.value) location.search = '?date=' + pick.value; });
-    return;
+/* Two pages on Mondays. The NFL page is a leaf hinged on its left edge,
+   lying over the Scoreboard page like the previous page of a newspaper.
+   Turning to it swings the leaf in from the left; turning back swings it
+   away again. Tabs at the page edges, the masthead buttons, a sideways
+   swipe or trackpad scroll, and the arrow keys all turn the page. */
+var flipping = false;
+function onNfl() { var sp = document.getElementById('spread'); return sp && sp.classList.contains('on-nfl'); }
+function flipTo(id, animate) {
+  var spread = document.getElementById('spread'), leaf = document.getElementById('nfl-sheet'),
+      main = document.getElementById('main-sheet');
+  if (!spread || !leaf || flipping) return;
+  var toNfl = id === 'nfl-sheet';
+  history.replaceState(null, '', toNfl ? '#nfl' : location.pathname + location.search);
+  if (toNfl === onNfl()) return;
+  var still = !animate || !leaf.animate ||
+              window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function done() { spread.classList.toggle('on-nfl', toNfl); spread.classList.remove('flipping'); flipping = false; }
+  if (still) { done(); return; }
+  flipping = true;
+  spread.classList.add('flipping');
+  var ms = 850, ease = 'cubic-bezier(.45,.05,.3,1)';
+  var a = leaf.animate([{ transform: 'rotateY(' + (toNfl ? -180 : 0) + 'deg)' },
+                        { transform: 'rotateY(' + (toNfl ? 0 : -180) + 'deg)' }],
+                       { duration: ms, easing: ease, fill: 'forwards' });
+  /* the page underneath darkens as the leaf covers it; the leaf lightens as it lands */
+  main.querySelector('.shade').animate([{ opacity: toNfl ? 0 : .35 }, { opacity: toNfl ? .35 : 0 }],
+                                       { duration: ms, easing: ease });
+  leaf.querySelector('.shade').animate([{ opacity: toNfl ? .45 : 0 }, { opacity: toNfl ? 0 : .45 }],
+                                       { duration: ms, easing: ease });
+  a.onfinish = function () { done(); a.cancel(); };
+}
+document.querySelectorAll('[data-goto]').forEach(function (a) {
+  a.addEventListener('click', function (e) { e.preventDefault(); flipTo(a.dataset.goto, true); });
+});
+(function () {
+  if (!document.getElementById('nfl-sheet')) return;
+  /* only when the window can't scroll further that way (a wide page on a
+     phone still pans normally first) */
+  function atLeft()  { return window.scrollX <= 0; }
+  function atRight() { return window.scrollX + window.innerWidth >= document.documentElement.scrollWidth - 1; }
+  function go(dir) {                     /* dir -1: toward the NFL page (left), +1: toward the Scoreboard */
+    if (dir < 0 && !onNfl() && atLeft()) flipTo('nfl-sheet', true);
+    if (dir > 0 && onNfl() && atRight()) flipTo('main-sheet', true);
   }
-  pick.hidden = true;
-  today.href = 'index.html';
-  function label(d) {
-    var dt = new Date(d + 'T12:00:00');
-    return dt.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
-  }
-  fetch('archive.json', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (dates) {
-    dates.sort();
-    var older = dates.filter(function (d) { return d < cur; });
-    var newer = dates.filter(function (d) { return d > cur; });
-    if (older.length) { prev.href = older[older.length - 1] + '.html'; } else { prev.hidden = true; }
-    if (newer.length) { next.href = newer[0] + '.html'; next.hidden = false; } else { next.hidden = true; }
-    var latest = dates[dates.length - 1];
-    today.hidden = (cur === latest);
-    sel.innerHTML = dates.slice().reverse().map(function (d) {
-      return '<option value="' + d + '"' + (d === cur ? ' selected' : '') + '>' + label(d) + '</option>';
-    }).join('');
-    sel.hidden = false;
-    sel.addEventListener('change', function () { location.href = sel.value + '.html'; });
-  }).catch(function () {
-    prev.href = nav.querySelector('.dn-prev').getAttribute('href').replace('?date=', '') + '.html';
-    next.hidden = true;
+  var x0 = null, y0 = 0;
+  document.addEventListener('touchstart', function (e) { if (e.touches.length === 1) { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; } }, { passive: true });
+  document.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0; x0 = null;
+    if (Math.abs(dx) > 70 && Math.abs(dx) > 1.5 * Math.abs(dy)) go(dx > 0 ? -1 : 1);
+  }, { passive: true });
+  var acc = 0, quiet = 0;
+  window.addEventListener('wheel', function (e) {
+    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+    var now = Date.now();
+    if (now < quiet) return;
+    acc += e.deltaX;
+    if (Math.abs(acc) > 90) { go(acc < 0 ? -1 : 1); acc = 0; quiet = now + 1000; }
+    clearTimeout(window._wh); window._wh = setTimeout(function () { acc = 0; }, 200);
+  }, { passive: true });
+  document.addEventListener('keydown', function (e) {
+    if (e.target.closest && e.target.closest('input,select,textarea')) return;
+    if (e.key === 'ArrowLeft') go(-1);
+    if (e.key === 'ArrowRight') go(1);
   });
 })();
+
+(function () {
+  function layoutAll() { document.querySelectorAll('.agate').forEach(layoutColumns); }
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () {
+    fitNames(); layoutAll();
+    if (location.hash === '#nfl') flipTo('nfl-sheet', false);
+    window.addEventListener('hashchange', function () {
+      flipTo(location.hash === '#nfl' ? 'nfl-sheet' : 'main-sheet', true);
+    });
+  });
+  window.addEventListener('resize', function () { clearTimeout(window._agt); window._agt = setTimeout(layoutAll, 150); });
+})();
 </script>
+{% include "_datenav_js.html" %}
 </body>
 </html>
