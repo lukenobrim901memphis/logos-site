@@ -3576,10 +3576,10 @@ document.querySelectorAll('[data-goto]').forEach(function (a) {
   var isStatic = document.documentElement.dataset.static === '1';
 
   if (!isStatic) {
-    pick.addEventListener('change', function () { if (pick.value) location.search = '?date=' + pick.value; });
+    if (pick) pick.addEventListener('change', function () { if (pick.value) location.search = '?date=' + pick.value; });
     return;
   }
-  pick.hidden = true;
+  if (pick) pick.hidden = true;
   today.href = 'index.html';
   function label(d) {
     var dt = new Date(d + 'T12:00:00');
@@ -3589,7 +3589,7 @@ document.querySelectorAll('[data-goto]').forEach(function (a) {
     dates.sort();
     var older = dates.filter(function (d) { return d < cur; });
     var newer = dates.filter(function (d) { return d > cur; });
-    if (older.length) { prev.href = older[older.length - 1] + '.html'; } else { prev.hidden = true; }
+    if (older.length) { prev.href = older[older.length - 1] + '.html'; prev.hidden = false; } else { prev.hidden = true; }
     if (newer.length) { next.href = newer[0] + '.html'; next.hidden = false; } else { next.hidden = true; }
     var latest = dates[dates.length - 1];
     today.hidden = (cur === latest);
