@@ -139,7 +139,7 @@ table.lsx td.lsx-dash{padding:0 1px 0 2px}
 
 /* team names (DALLAS) and football heads (SCORING …): heavy rule above, thin below */
 .teamhd{font-family:var(--sans);font-weight:700;font-size:var(--fs-boxhead);text-align:center;
-        letter-spacing:.2px;border-top:1.75px solid var(--ink);border-bottom:.75px solid var(--ink);
+        letter-spacing:.2px;border-top:1.75px solid var(--ink);border-bottom:1.75px solid var(--ink);
         padding:1px 0 .5px;margin:5px 0 2px}
 
 /* basketball */
