@@ -1,0 +1,145 @@
+/* ═══════════════════════════════════════════════
+   Chronicle Weather page — weather.css
+   Loaded after agate.css (fonts, colors, masthead, date buttons, tables).
+   Only weather-page classes (wx-…) live here; nothing overrides agate.css.
+   ═══════════════════════════════════════════════ */
+
+:root{
+  --wx-display:'Farnham Display',Georgia,serif;
+  --wx-sans:'Ford Antenna','Roboto','Helvetica Neue',Arial,sans-serif;
+  --wx-land:#efe7d2; --wx-coast:#7d8a92; --wx-red:#c8402f; --wx-blue:#3b7dc4;
+  --wx-water:#2f86c9;
+
+  /* ── FONT SIZES ── */
+  --wx-fs-title:   30px;    /* BAY AREA */
+  --wx-fs-title2:  20px;    /* CALIFORNIA, NATIONAL … */
+  --wx-fs-day:     14px;    /* Today, Friday … in the strip */
+  --wx-fs-text:    8.5px;   /* paragraphs, strip text */
+  --wx-fs-h2:      12px;    /* San Francisco report, Tides, Marine */
+  --wx-fs-city:    7.5px;   /* map city names */
+  --wx-fs-cityfc:  8.5px;   /* map forecast 62°/45° */
+  --wx-fs-cityyd:  7px;     /* map yesterday 51/48 0.39″ */
+  --wx-fs-table:   7px;     /* city tables */
+  --wx-fs-small:   6.5px;   /* notes, chart labels */
+}
+
+.page.wx{width:940px;max-width:none}
+.wx-top,.wx-main,.wx-bottom,.wx-credit{font-family:var(--wx-sans);font-size:var(--wx-fs-text)}
+.wx-nav{margin:-2px 0 6px;justify-content:flex-end}
+
+/* ── Titles and text ── */
+.wx-title{font-family:var(--wx-display);font-weight:400;font-size:var(--wx-fs-title);line-height:1;
+          text-transform:uppercase;letter-spacing:.5px;margin:2px 0 6px}
+.wx-title-sm{font-size:var(--wx-fs-title2);border-top:2px solid var(--ink);padding-top:5px;margin:0 0 5px}
+.wx-h2{font-family:var(--wx-sans);font-weight:700;font-size:var(--wx-fs-h2);margin:10px 0 3px}
+.wx-h3{font-family:var(--wx-sans);font-weight:700;font-size:var(--wx-fs-text);margin:8px 0 2px}
+.wx-lede{font-size:9px;line-height:1.3;margin:0 0 6px}
+.wx-p{line-height:1.3;margin:0 0 5px}
+.wx-note{font-size:var(--wx-fs-small);line-height:1.3;color:#333;margin:3px 0}
+.wx-src{font-size:var(--wx-fs-small);color:#555;margin-top:1px}
+.wx-credit{font-size:var(--wx-fs-small);color:#555;border-top:.75px solid var(--ink);margin-top:8px;padding-top:3px}
+
+/* ── Top: title + five-day strip ── */
+.wx-top{display:grid;grid-template-columns:240px 1fr;column-gap:12px;align-items:start;
+        border-top:2px solid var(--ink);padding-top:6px}
+.wx-strip{display:grid;grid-template-columns:repeat(5,1fr);column-gap:8px}
+.wx-day{display:grid;grid-template-columns:38px 1fr;column-gap:4px;align-items:start}
+.wx-dayicon{width:38px;height:38px}
+.wx-dayname{font-family:var(--wx-display);font-size:var(--wx-fs-day);line-height:1.05}
+.wx-dayshort{line-height:1.2;margin:1px 0 3px}
+.wx-range{line-height:1.25}
+
+/* ── Main: left column + map ── */
+.wx-main{display:grid;grid-template-columns:240px 1fr;column-gap:12px;align-items:start;margin-top:4px}
+.wx-side{border-right:.75px solid var(--ink);padding-right:10px}
+table.wx-kv{font-size:var(--fs-body)}
+table.wx-kv td:first-child{text-align:left}
+.wx-key{display:flex;align-items:center;gap:3px;font-size:var(--wx-fs-small);margin-bottom:2px}
+.wx-key span{display:inline-block;width:8px;height:6px;margin-left:4px}
+.wx-key .k-past{background:var(--wx-red)}
+.wx-key .k-fc{background:var(--wx-blue)}
+.wx-key .k-norm{height:0;border-top:1.2px dashed #222}
+.wx-trend,.wx-tide{display:block;width:100%;height:auto}
+.wx-trend .grid{stroke:#bbb;stroke-width:.5}
+.wx-trend .past{fill:var(--wx-red)}
+.wx-trend .fc{fill:var(--wx-blue)}
+.wx-trend .norm{stroke:#222;stroke-width:.9;stroke-dasharray:3 2}
+.wx-trend .split,.wx-tide .split{stroke:#777;stroke-width:.6;stroke-dasharray:2 2}
+.wx-trend .ax,.wx-tide .ax{font-family:var(--wx-sans);font-size:6px;fill:#333}
+.wx-trendlbl{display:flex;justify-content:space-around;font-size:var(--wx-fs-small);font-weight:700;margin-top:-1px}
+.wx-tide .water{fill:#7fb6de;stroke:#2f6fa8;stroke-width:.7}
+.wx-tide .base{stroke:#333;stroke-width:.6}
+table.wx-tides{font-size:var(--fs-body);margin-top:3px}
+table.wx-tides td{vertical-align:top;line-height:1.3}
+table.wx-tides td.nm{text-align:left}
+
+/* ── The map ── */
+.wx-map{position:relative;overflow:hidden;border:.75px solid var(--ink)}
+.wx-mapsvg{position:absolute;inset:0}
+.wx-mapsvg .land{fill:var(--wx-land);stroke:var(--wx-coast);stroke-width:.7}
+.wx-mapsvg .borders{fill:none;stroke:#a59f8f;stroke-width:.6;stroke-dasharray:2.5 2}
+.wx-mapsvg .county{font-family:var(--wx-sans);font-size:7px;letter-spacing:.6px;fill:#8d8574}
+.wx-mapsvg .dot,.wx-camap .dot{fill:var(--ink)}
+.wx-city{position:absolute;display:flex;flex-direction:column;line-height:1.08;white-space:nowrap;pointer-events:none}
+.wx-city .nm{font-family:var(--wx-sans);font-weight:700;font-size:var(--wx-fs-city)}
+.wx-city .fc{font-family:var(--wx-sans);font-weight:700;font-size:var(--wx-fs-cityfc)}
+.wx-city .yd{font-family:var(--cond);font-size:var(--wx-fs-cityyd)}
+.wx-city.s-r{transform:translate(4px,-4px)}
+.wx-city.s-l{transform:translate(calc(-100% - 4px),-4px);align-items:flex-end}
+.wx-city.s-a{transform:translate(-50%,calc(-100% - 3px));align-items:center}
+.wx-city.s-b{transform:translate(-50%,3px);align-items:center}
+.wx-off{right:6px;top:5px;align-items:flex-end}
+.wx-sea{position:absolute;display:flex;flex-direction:column;background:rgba(255,255,255,.85);border:.6px solid #5c7c90;
+        padding:2px 4px 2px 15px;font-size:var(--wx-fs-small);font-weight:700;line-height:1.2;white-space:nowrap}
+.wx-sea svg{position:absolute;left:2px;top:2px;width:11px;height:11px}
+.wx-wt{position:absolute;background:var(--wx-water);color:#fff;font-weight:700;font-size:7.5px;
+       padding:1px 3px;border-radius:2px;transform:translate(-50%,-50%)}
+.wx-wt.wx-static{position:static;display:inline-block;transform:none}
+.wx-legend{position:absolute;left:8px;bottom:8px;width:170px;background:rgba(255,255,255,.88);
+           border:.6px solid #5c7c90;padding:4px 6px}
+.wx-sample{position:relative;transform:none;margin:2px 0 3px}
+.lg-notes{font-size:var(--wx-fs-small);line-height:1.35}
+.lg-flag{width:9px;height:9px;vertical-align:-1px}
+
+/* ── Bottom: California · National · center pictures · International ── */
+.wx-bottom{display:grid;grid-template-columns:200px 200px 1fr 200px;column-gap:10px;margin-top:10px;
+           border-top:2px solid var(--ink);padding-top:2px}
+.wx-col{min-width:0}
+.wx-col + .wx-col{border-left:.75px solid var(--ink);padding-left:9px}
+.wx-camap{position:relative;margin:4px auto 2px}
+.wx-camap .land.ca{fill:var(--wx-land);stroke:var(--wx-coast);stroke-width:.8}
+.wx-ca .nm{font-size:6.5px}
+.wx-ca .fc{font-size:7px}
+.wx-callout{font-family:var(--wx-sans);font-size:var(--wx-fs-small);line-height:1.1}
+.wx-callout b{display:block;font-size:20px;line-height:1}
+.wx-callout .cl-hd{display:inline-block;color:#fff;font-weight:700;font-size:6px;text-transform:uppercase;padding:0 2px}
+.wx-hot .cl-hd{background:var(--wx-red)}
+.wx-cold .cl-hd{background:var(--wx-blue)}
+.wx-hot b{color:var(--wx-red)}
+.wx-cold b{color:var(--wx-blue)}
+table.wx-tbl{font-size:var(--wx-fs-table);line-height:1.18}
+table.wx-tbl th{font-family:var(--wx-sans);font-size:6px;vertical-align:bottom}
+table.wx-tbl th.nm,table.wx-tbl td.nm{text-align:left;overflow:hidden;max-width:0;width:100%}
+table.wx-tbl td.sky,table.wx-tbl td.pc{padding-left:2px;text-align:left}
+table.wx-cities tbody tr:nth-child(5n){border-bottom:.5px solid #999}
+.wx-codes{border-top:.75px solid var(--ink);padding-top:2px}
+.wx-center img{display:block;width:100%;height:auto}
+.wx-sat{display:grid;grid-template-columns:1fr 120px;column-gap:6px;align-items:start;margin-top:4px}
+.wx-satcap{line-height:1.3}
+.wx-natmap{position:relative;margin-top:6px}
+.wx-callouts{display:flex;gap:10px;align-items:flex-start;margin-top:3px}
+table.wx-rain th{font-size:6px}
+.wx-intl{columns:2;column-gap:6px}
+.wx-intlgrp{break-inside:avoid;margin-bottom:3px}
+.wx-grp{font-family:var(--wx-sans);font-weight:700;font-size:6.5px;border-bottom:.6px solid var(--ink);margin:2px 0 1px}
+.wx-alm{display:flex;justify-content:space-between;align-items:baseline;margin-top:8px}
+.wx-almdate{font-family:var(--wx-sans);font-size:8px}
+table.wx-sun td,table.wx-sun th{font-size:6.5px}
+.wx-phases{display:grid;grid-template-columns:repeat(4,1fr);text-align:center;margin:4px 0;font-size:var(--wx-fs-small)}
+.wx-phase{display:flex;flex-direction:column;align-items:center}
+.wx-phase svg{width:20px;height:20px}
+.wx-phase .moon{fill:#2b2b2b;stroke:#2b2b2b;stroke-width:.8}
+.wx-phase .moon.full{fill:#f6f2e4}
+.wx-phase .lit{fill:#f6f2e4}
+
+@media print{ .wx-nav{display:none} }
