@@ -10,9 +10,14 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap">
 <link rel="stylesheet" href="static/agate.css">
 
+
+
 <style>
 .agate{column-count:6;column-width:auto}
 .page{width:960px;max-width:none}
+.spread{width:960px}
+.nfl-grid{grid-template-columns:624px 308px}
+.nfl-boxes{column-count:4}
 </style>
 <style>
 .site-back-btn{display:inline-block;text-decoration:none;font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;
@@ -25,6 +30,9 @@
 <link rel="icon" type="image/png" href="../../images/navigation/favicon.png">
 </head>
 <body>
+<div class="spread" id="spread">
+
+<section class="sheet" id="main-sheet">
 <div class="page"><a href="../../agate.html" class="site-back-btn">← Back to Agate</a>
 
   <div class="masthead-top">
@@ -39,6 +47,7 @@
   <div class="mh-row">
     <div class="mh-banner"><span class="mh-banner-title">Scoreboard</span></div>
     <nav class="datenav" data-date="2026-11-18" data-today="2026-11-18">
+      
       <a class="dn-btn dn-prev" href="?date=2026-11-17">‹ Previous day</a>
       <input class="dn-pick" id="dn-pick" name="date" type="date" value="2026-11-18" max="2026-11-18" aria-label="Pick a date">
       <select class="dn-select" id="dn-select" name="page" aria-label="Past pages" hidden></select>
@@ -383,7 +392,7 @@
   <table class="st">
     <thead>
       <tr><th class="div" colspan="7">AFC East</th></tr>
-      <tr><th></th><th>W</th><th>L</th><th>T</th><th>Pct</th><th>PF</th><th>PA</th></tr>
+      <tr><th class="nm"></th><th>W</th><th>L</th><th>T</th><th>Pct</th><th>PF</th><th>PA</th></tr>
     </thead>
     <tbody>
     
@@ -416,7 +425,7 @@
   <table class="st">
     <thead>
       <tr><th class="div" colspan="7">AFC North</th></tr>
-      <tr><th></th><th>W</th><th>L</th><th>T</th><th>Pct</th><th>PF</th><th>PA</th></tr>
+      <tr><th class="nm"></th><th>W</th><th>L</th><th>T</th><th>Pct</th><th>PF</th><th>PA</th></tr>
     </thead>
     <tbody>
     
@@ -449,7 +458,7 @@
   <table class="st">
     <thead>
       <tr><th class="div" colspan="7">AFC South</th></tr>
-      <tr><th></th><th>W</th><th>L</th><th>T</th><th>Pct</th><th>PF</th><th>PA</th></tr>
+      <tr><th class="nm"></th><th>W</th><th>L</th><th>T</th><th>Pct</th><th>PF</th><th>PA</th></tr>
     </thead>
     <tbody>
     
@@ -482,7 +491,7 @@
   <table class="st">
     <thead>
       <tr><th class="div" colspan="7">AFC West</th></tr>
-      <tr><th></th><th>W</th><th>L</th><th>T</th><th>Pct</th><th>PF</th><th>PA</th></tr>
+      <tr><th class="nm"></th><th>W</th><th>L</th><th>T</th><th>Pct</th><th>PF</th><th>PA</th></tr>
     </thead>
     <tbody>
     
@@ -515,7 +524,7 @@
   <table class="st">
     <thead>
       <tr><th class="div" colspan="7">NFC East</th></tr>
-      <tr><th></th><th>W</th><th>L</th><th>T</th><th>Pct</th><th>PF</th><th>PA</th></tr>
+      <tr><th class="nm"></th><th>W</th><th>L</th><th>T</th><th>Pct</th><th>PF</th><th>PA</th></tr>
     </thead>
     <tbody>
     
@@ -548,7 +557,7 @@
   <table class="st">
     <thead>
       <tr><th class="div" colspan="7">NFC North</th></tr>
-      <tr><th></th><th>W</th><th>L</th><th>T</th><th>Pct</th><th>PF</th><th>PA</th></tr>
+      <tr><th class="nm"></th><th>W</th><th>L</th><th>T</th><th>Pct</th><th>PF</th><th>PA</th></tr>
     </thead>
     <tbody>
     
@@ -581,7 +590,7 @@
   <table class="st">
     <thead>
       <tr><th class="div" colspan="7">NFC South</th></tr>
-      <tr><th></th><th>W</th><th>L</th><th>T</th><th>Pct</th><th>PF</th><th>PA</th></tr>
+      <tr><th class="nm"></th><th>W</th><th>L</th><th>T</th><th>Pct</th><th>PF</th><th>PA</th></tr>
     </thead>
     <tbody>
     
@@ -614,7 +623,7 @@
   <table class="st">
     <thead>
       <tr><th class="div" colspan="7">NFC West</th></tr>
-      <tr><th></th><th>W</th><th>L</th><th>T</th><th>Pct</th><th>PF</th><th>PA</th></tr>
+      <tr><th class="nm"></th><th>W</th><th>L</th><th>T</th><th>Pct</th><th>PF</th><th>PA</th></tr>
     </thead>
     <tbody>
     
@@ -720,7 +729,7 @@
   <table class="st">
     <thead>
       <tr><th class="div" colspan="5">Atlantic</th></tr>
-      <tr><th></th><th>W</th><th>L</th><th>Pct</th><th>GB</th></tr>
+      <tr><th class="nm"></th><th>W</th><th>L</th><th>Pct</th><th>GB</th></tr>
     </thead>
     <tbody>
     
@@ -758,7 +767,7 @@
   <table class="st">
     <thead>
       <tr><th class="div" colspan="5">Central</th></tr>
-      <tr><th></th><th>W</th><th>L</th><th>Pct</th><th>GB</th></tr>
+      <tr><th class="nm"></th><th>W</th><th>L</th><th>Pct</th><th>GB</th></tr>
     </thead>
     <tbody>
     
@@ -796,7 +805,7 @@
   <table class="st">
     <thead>
       <tr><th class="div" colspan="5">Southeast</th></tr>
-      <tr><th></th><th>W</th><th>L</th><th>Pct</th><th>GB</th></tr>
+      <tr><th class="nm"></th><th>W</th><th>L</th><th>Pct</th><th>GB</th></tr>
     </thead>
     <tbody>
     
@@ -834,7 +843,7 @@
   <table class="st">
     <thead>
       <tr><th class="div" colspan="5">Northwest</th></tr>
-      <tr><th></th><th>W</th><th>L</th><th>Pct</th><th>GB</th></tr>
+      <tr><th class="nm"></th><th>W</th><th>L</th><th>Pct</th><th>GB</th></tr>
     </thead>
     <tbody>
     
@@ -872,7 +881,7 @@
   <table class="st">
     <thead>
       <tr><th class="div" colspan="5">Pacific</th></tr>
-      <tr><th></th><th>W</th><th>L</th><th>Pct</th><th>GB</th></tr>
+      <tr><th class="nm"></th><th>W</th><th>L</th><th>Pct</th><th>GB</th></tr>
     </thead>
     <tbody>
     
@@ -910,7 +919,7 @@
   <table class="st">
     <thead>
       <tr><th class="div" colspan="5">Southwest</th></tr>
-      <tr><th></th><th>W</th><th>L</th><th>Pct</th><th>GB</th></tr>
+      <tr><th class="nm"></th><th>W</th><th>L</th><th>Pct</th><th>GB</th></tr>
     </thead>
     <tbody>
     
@@ -1569,7 +1578,7 @@
   <table class="st">
     <thead>
       <tr><th class="div" colspan="7">Atlantic Division</th></tr>
-      <tr><th></th><th>W</th><th>L</th><th>OT</th><th>Pts</th><th>GF</th><th>GA</th></tr>
+      <tr><th class="nm"></th><th>W</th><th>L</th><th>OT</th><th>Pts</th><th>GF</th><th>GA</th></tr>
     </thead>
     <tbody>
     
@@ -1622,7 +1631,7 @@
   <table class="st">
     <thead>
       <tr><th class="div" colspan="7">Metropolitan Division</th></tr>
-      <tr><th></th><th>W</th><th>L</th><th>OT</th><th>Pts</th><th>GF</th><th>GA</th></tr>
+      <tr><th class="nm"></th><th>W</th><th>L</th><th>OT</th><th>Pts</th><th>GF</th><th>GA</th></tr>
     </thead>
     <tbody>
     
@@ -1675,7 +1684,7 @@
   <table class="st">
     <thead>
       <tr><th class="div" colspan="7">Central Division</th></tr>
-      <tr><th></th><th>W</th><th>L</th><th>OT</th><th>Pts</th><th>GF</th><th>GA</th></tr>
+      <tr><th class="nm"></th><th>W</th><th>L</th><th>OT</th><th>Pts</th><th>GF</th><th>GA</th></tr>
     </thead>
     <tbody>
     
@@ -1728,7 +1737,7 @@
   <table class="st">
     <thead>
       <tr><th class="div" colspan="7">Pacific Division</th></tr>
-      <tr><th></th><th>W</th><th>L</th><th>OT</th><th>Pts</th><th>GF</th><th>GA</th></tr>
+      <tr><th class="nm"></th><th>W</th><th>L</th><th>OT</th><th>Pts</th><th>GF</th><th>GA</th></tr>
     </thead>
     <tbody>
     
@@ -2193,7 +2202,7 @@
   <table class="st">
     <thead>
       <tr><th class="div" colspan="5">Eastern Conference</th></tr>
-      <tr><th></th><th>W</th><th>L</th><th>Pct</th><th>GB</th></tr>
+      <tr><th class="nm"></th><th>W</th><th>L</th><th>Pct</th><th>GB</th></tr>
     </thead>
     <tbody>
     
@@ -2241,7 +2250,7 @@
   <table class="st">
     <thead>
       <tr><th class="div" colspan="5">Western Conference</th></tr>
-      <tr><th></th><th>W</th><th>L</th><th>Pct</th><th>GB</th></tr>
+      <tr><th class="nm"></th><th>W</th><th>L</th><th>Pct</th><th>GB</th></tr>
     </thead>
     <tbody>
     
@@ -2322,7 +2331,7 @@
   <table class="st">
     <thead>
       <tr><th class="div" colspan="7">Eastern Conference</th></tr>
-      <tr><th></th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>Pts</th></tr>
+      <tr><th class="nm"></th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>Pts</th></tr>
     </thead>
     <tbody>
     
@@ -2410,7 +2419,7 @@
   <table class="st">
     <thead>
       <tr><th class="div" colspan="7">Western Conference</th></tr>
-      <tr><th></th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>Pts</th></tr>
+      <tr><th class="nm"></th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>Pts</th></tr>
     </thead>
     <tbody>
     
@@ -3396,6 +3405,8 @@
     
   </div>
 </div>
+</section>
+</div>
 <script>
 /* Fit names: every name starts in full. Only where a table, linescore or odds
    line is too wide for its column, the longest name in it steps down to its
@@ -3427,27 +3438,50 @@ function fitNames() {
 
 /* Even columns: fill columns top-to-bottom at a fixed height, using the
    shortest height at which everything fits in the set number of columns.
-   Every column (and its rule) then runs the full height of the page. */
-(function () {
-  var ag = document.querySelector('.agate');
-  if (!ag) return;
+   Every column (and its rule) then runs the full height of the page.
+   On the NFL page the box-score columns are at least as tall as the sidebar. */
+function layoutColumns(ag) {
   var minH = parseInt(ag.dataset.minHeight || '0', 10);
+  var from = ag.dataset.minFrom && document.getElementById(ag.dataset.minFrom);
+  if (from) minH = Math.max(minH, from.offsetHeight);
   function fits(h) {
     ag.style.height = h + 'px';
     return ag.scrollWidth <= ag.clientWidth + 1;
   }
-  function layout() {
-    ag.style.columnFill = 'balance'; ag.style.height = '';
-    var lo = Math.max(minH, Math.floor(ag.offsetHeight * 0.9));
-    ag.style.columnFill = 'auto';
-    var hi = Math.max(lo, ag.offsetHeight) + 50;
-    while (!fits(hi)) hi = Math.ceil(hi * 1.15);
-    if (fits(lo)) { hi = lo; }
-    else { while (hi - lo > 4) { var mid = (lo + hi) >> 1; if (fits(mid)) hi = mid; else lo = mid; } }
-    fits(hi);
-  }
-  (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () { fitNames(); layout(); });
-  window.addEventListener('resize', function () { clearTimeout(window._agt); window._agt = setTimeout(layout, 150); });
+  ag.style.columnFill = 'balance'; ag.style.height = '';
+  var lo = Math.max(minH, Math.floor(ag.offsetHeight * 0.9));
+  ag.style.columnFill = 'auto';
+  var hi = Math.max(lo, ag.offsetHeight) + 50;
+  while (!fits(hi)) hi = Math.ceil(hi * 1.15);
+  if (fits(lo)) { hi = lo; }
+  else { while (hi - lo > 4) { var mid = (lo + hi) >> 1; if (fits(mid)) hi = mid; else lo = mid; } }
+  fits(hi);
+}
+
+/* Two sheets on Mondays: the NFL page sits to the left of the Scoreboard.
+   The page opens on the Scoreboard (or the NFL page with #nfl in the address);
+   scroll/swipe sideways or use the masthead buttons to switch. */
+function showSheet(id, smooth) {
+  var spread = document.getElementById('spread'), sheet = document.getElementById(id);
+  if (!spread || !sheet) return;
+  spread.scrollTo({ left: sheet.offsetLeft - spread.firstElementChild.offsetLeft,
+                   behavior: smooth ? 'smooth' : 'auto' });
+}
+document.querySelectorAll('[data-goto]').forEach(function (a) {
+  a.addEventListener('click', function (e) {
+    e.preventDefault();
+    showSheet(a.dataset.goto, true);
+    history.replaceState(null, '', a.dataset.goto === 'nfl-sheet' ? '#nfl' : location.pathname + location.search);
+  });
+});
+
+(function () {
+  function layoutAll() { document.querySelectorAll('.agate').forEach(layoutColumns); }
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () {
+    fitNames(); layoutAll();
+    showSheet(location.hash === '#nfl' ? 'nfl-sheet' : 'main-sheet', false);
+  });
+  window.addEventListener('resize', function () { clearTimeout(window._agt); window._agt = setTimeout(layoutAll, 150); });
 })();
 </script>
 <script>
