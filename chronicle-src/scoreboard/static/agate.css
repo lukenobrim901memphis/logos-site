@@ -84,7 +84,7 @@ body.sunday{--paper:var(--sunday-paper)}
 .hd2{font-family:var(--sans);font-weight:700;font-size:var(--fs-hd2);margin:4px 0 2px;break-after:avoid}
 .hd3{font-family:var(--sans);font-weight:700;font-size:var(--fs-hd3);margin:5px 0 2px;break-after:avoid}
 .conf,.rulehd{font-family:var(--sans);font-weight:700;font-size:var(--fs-rulehd);text-align:center;letter-spacing:.2px;
-              border-top:1.5px solid var(--ink);border-bottom:.75px solid var(--ink);
+              border-top:1.5px solid var(--ink);border-bottom:1.75px solid var(--ink);
               padding:1px 0;margin:4px 0 1px;break-after:avoid}
 .subhd{font-family:var(--sans);font-weight:700;font-size:var(--fs-subhd);text-align:center;
        padding:.5px 0;margin:3px 0 1px;break-after:avoid}
@@ -112,7 +112,7 @@ table.gf td.pos{text-align:left;width:14px}
 
 /* ── Odds: FAVORITE ....SPREAD (O/U).... UNDERDOG ── */
 .oddday{font-family:var(--sans);font-weight:700;font-size:var(--fs-oddsday);text-align:center;
-        border-top:1.5px solid var(--ink);border-bottom:.75px solid var(--ink);margin:3px 0 1px;padding:.5px 0}
+        border-top:1.5px solid var(--ink);border-bottom:1.75px solid var(--ink);margin:3px 0 1px;padding:.5px 0}
 .odhdr,.odrow{display:grid;grid-template-columns:1fr auto 1fr;column-gap:2px;align-items:baseline;line-height:1.25}
 .odhdr{font-family:var(--sans);font-weight:700;font-size:var(--fs-oddshead);margin-bottom:1px}
 .odhdr .r{text-align:right}
@@ -139,7 +139,7 @@ table.lsx td.lsx-dash{padding:0 1px 0 2px}
 
 /* team names (DALLAS) and football heads (SCORING …): heavy rule above, thin below */
 .teamhd{font-family:var(--sans);font-weight:700;font-size:var(--fs-boxhead);text-align:center;
-        letter-spacing:.2px;border-top:1.75px solid var(--ink);border-bottom:.75px solid var(--ink);
+        letter-spacing:.2px;border-top:1.75px solid var(--ink);border-bottom:1.75px solid var(--ink);
         padding:1px 0 .5px;margin:5px 0 2px}
 
 /* basketball */

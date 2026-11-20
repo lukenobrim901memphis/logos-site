@@ -95,9 +95,11 @@
 ,P,Herick Hernandez,L,Gwinnett,Active,No
 13,OF,Kevin Kilpatrick Jr.,R,Gwinnett,Active,No
 24,INF,David McCabe,S,Gwinnett,Active,No
+,P,Darlin Pinales,R,Gwinnett,Active,No
 12,C,Chuckie Robinson,R,Gwinnett,Active,No
 64,P,Brett Sears,R,Gwinnett,Active,No
 66,P,Luis Vargas,R,Gwinnett,Active,No
+,INF,Luke Williams,R,Gwinnett,Active,No
 32,C,Adam Zebrowski,R,Gwinnett,Active,No
 31,C,Derek Berg,R,Indianapolis,Active,No
 2,INF,Jesus Castillo,R,Indianapolis,Active,No
@@ -236,8 +238,10 @@
 28,C,Ethan Anderson,S,Norfolk,Active,No
 4,C,Silas Ardoin,R,Norfolk,Active,No
 ,INF,José Barrero,R,Norfolk,Active,No
+,P,Carter Baumler,R,Norfolk,Active,No
 29,P,Trace Bright,R,Norfolk,Active,No
 31,INF,Brandon Butterworth,R,Norfolk,Active,No
+,P,Alex Carrillo,R,Norfolk,Active,No
 ,P,Connor Cooke,R,Norfolk,Active,No
 43,P,Jake Dykhoff,R,Norfolk,Active,No
 5,INF,Payton Eeles,L,Norfolk,Active,No
@@ -250,6 +254,7 @@
 47,P,Gerald Ogando,R,Norfolk,Active,No
 ,P,Elvis Peguero,R,Norfolk,Active,No
 17,INF,Fernando Peguero,S,Norfolk,Active,No
+,OF,Junior Perez,R,Norfolk,Active,No
 26,P,Alex Pham,R,Norfolk,Active,No
 ,P,Jackson Rees,R,Norfolk,Active,No
 51,P,Jayvien Sandridge,L,Norfolk,Active,No
@@ -338,6 +343,7 @@
 ,P,Blake Holub,R,Sacramento,Active,No
 ,P,Seth Lonsway,L,Sacramento,Active,No
 49,P,Logan Martin,R,Sacramento,Active,No
+,P,Erick Mejia,R,Sacramento,Active,No
 51,P,Darien Smith,R,Sacramento,Active,No
 38,P,Dale Stanavich,L,Sacramento,Active,No
 ,C,Adrián Sugastey,R,Sacramento,Active,No
@@ -361,6 +367,7 @@
 33,P,Jared Southard,R,Salt Lake,Active,No
 44,P,Najer Victor,R,Salt Lake,Active,No
 ,P,Will Brian,L,Scranton/Wilkes-Barre,Active,No
+,OF,Allan Castro,S,Scranton/Wilkes-Barre,Active,No
 38,P,Carson Coleman,R,Scranton/Wilkes-Barre,Active,No
 21,C,Edinson Duran,R,Scranton/Wilkes-Barre,Active,No
 ,P,Luis Garcia,R,Scranton/Wilkes-Barre,Active,No
@@ -440,10 +447,12 @@
 58,P,Hayden Minton,R,Toledo,Active,No
 12,C,Carlos Pérez,R,Toledo,Active,No
 ,P,RJ Petit,R,Toledo,Active,No
+,P,Anderson Pilar,R,Toledo,Active,No
 ,P,Nick Raquet,L,Toledo,Active,No
 32,P,Jackson Wolf,L,Toledo,Active,No
 ,C,Riley Adams,R,Worcester,Active,No
 16,INF,Franklin Arias,R,Worcester,Active,No
+,P,Michael Arias,R,Worcester,Active,No
 67,C,Nate Baez,R,Worcester,Active,No
 ,P,Max Carlson,R,Worcester,Active,No
 ,P,Isaac Coffey,R,Worcester,Active,No
