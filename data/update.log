@@ -6851,3 +6851,12 @@ Saved 14034 billions (18313 games checked) to /Users/luke/logos-site/data/billio
 2026-11-18: failed — https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates=20261118: fetch failed
 2026-11-19: failed — https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates=20261119: fetch failed
 Saved 14051 billions (18330 games checked) to /Users/luke/logos-site/data/billions.json
+  BILLION: Baba Miller (LAC) LAC@SA
+  BILLION: Jalen Pickett (LAC) LAC@SA
+  BILLION: Cam Christie (LAC) LAC@SA
+2026-11-19: 4 games, 3 new billions
+  BILLION: Keon Ellis (BKN) ORL@BKN
+  BILLION: Jay Huff (IND) IND@CLE
+  BILLION: Koa Peat (PHX) PHX@UTAH
+2026-11-20: 9 games, 3 new billions
+Saved 14057 billions (18343 games checked) to /Users/luke/logos-site/data/billions.json

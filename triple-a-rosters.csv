@@ -12,6 +12,7 @@
 25,INF,Nic Kent,R,Albuquerque,Active,No
 6,INF,Roc Riggio,L,Albuquerque,Active,No
 61,P,Evan Shawver,L,Albuquerque,Active,No
+,P,TJ Shook,R,Albuquerque,Active,No
 ,INF,Chad Stevens,R,Albuquerque,Active,No
 ,P,Javen Coleman,L,Buffalo,Active,No
 ,P,Nic Enright,R,Buffalo,Active,No
@@ -66,6 +67,7 @@
 33,C,Tatem Levins,L,Durham,Active,No
 9,INF,Tre' Morgan,L,Durham,Active,No
 19,P,Evan Reifert,R,Durham,Active,No
+,P,Julio Robaina,L,Durham,Active,No
 ,P,Levi Stoudt,R,Durham,Active,No
 ,P,Austin Vernon,R,Durham,Active,No
 28,P,Kodi Whitley,R,Durham,Active,No
@@ -79,6 +81,7 @@
 9,P,Abraham Parra,R,El Paso,Active,No
 14,INF,Nick Pratto,L,El Paso,Active,No
 ,P,Roel Ramírez,R,El Paso,Active,No
+,OF,Kala'i Rosario,R,El Paso,Active,No
 55,P,Ethan Routzahn,R,El Paso,Active,No
 ,OF,Cal Stevenson,L,El Paso,Active,No
 ,INF,Luis Suisbel,S,El Paso,Active,No
@@ -139,6 +142,7 @@
 19,C,Garret Forrester,R,Jacksonville,Active,No
 17,OF,Brendan Jones,L,Jacksonville,Active,No
 39,P,Holt Jones,R,Jacksonville,Active,No
+,P,Adam Leverett,R,Jacksonville,Active,No
 20,INF,Jonathon Long,R,Jacksonville,Active,No
 ,P,Dylan MacLean,L,Jacksonville,Active,No
 25,P,Karson Milbrandt,R,Jacksonville,Active,No
@@ -162,6 +166,7 @@
 54,P,Jake Garland,R,Las Vegas,Active,No
 7,INF,Colby Halter,L,Las Vegas,Active,No
 58,P,Jared Johnson,R,Las Vegas,Active,No
+,P,Hayden Juenger,R,Las Vegas,Active,No
 ,P,Wei-En Lin,L,Las Vegas,Active,No
 ,P,Luke Little,L,Las Vegas,Active,No
 46,P,Ryan Magdic,L,Las Vegas,Active,No
@@ -190,6 +195,8 @@
 ,C,Brian Navarreto,R,Lehigh Valley,Active,No
 48,P,Mitch Neunborn,R,Lehigh Valley,Active,No
 ,INF,Bryan Ramos,R,Lehigh Valley,Active,No
+,P,Jerming Rosario,R,Lehigh Valley,Active,No
+,P,Josh Simpson,L,Lehigh Valley,Active,No
 ,P,Andrew Walling,L,Lehigh Valley,Active,No
 37,P,Kevin Abel,R,Louisville,Active,No
 21,P,Jose Acuna,R,Louisville,Active,No
@@ -312,6 +319,7 @@
 33,OF,A.J. Vukovich,R,Reno,Active,No
 21,OF,Trent Youngblood,L,Reno,Active,No
 53,P,Jack Cebert,R,Rochester,Active,No
+,P,Omar Cruz,L,Rochester,Active,No
 1,OF,Phillip Glasser,L,Rochester,Active,No
 38,P,Joe Glassey,R,Rochester,Active,No
 21,P,Ben Grable,R,Rochester,Active,No
@@ -319,6 +327,7 @@
 22,INF,Cortland Lawson,R,Rochester,Active,No
 7,INF,Trey Lipscomb,R,Rochester,Active,No
 40,P,Isaac Lyon,R,Rochester,Active,No
+,INF,Carlos Mendoza,L,Rochester,Active,No
 25,OF,Sam Petersen,R,Rochester,Active,No
 4,C,Maxwell Romero Jr.,L,Rochester,Active,No
 3,OF,Johnathon Thomas,R,Rochester,Active,No
@@ -326,7 +335,9 @@
 21,P,Wilian Bormie,R,Round Rock,Active,No
 5,C,Julian Brock,R,Round Rock,Active,No
 ,P,Declan Cronin,R,Round Rock,Active,No
+,P,Dylan File,R,Round Rock,Active,No
 24,INF,Theo Hardy,S,Round Rock,Active,No
+,C,Cooper Johnson,R,Round Rock,Active,No
 19,P,Janser Lara,R,Round Rock,Active,No
 14,P,Ryan Lobus,R,Round Rock,Active,No
 12,P,Dalton Pence,L,Round Rock,Active,No
@@ -404,6 +415,7 @@
 12,C,Garret Guillemette,R,Sugar Land,Active,No
 54,P,Michael Knorr,R,Sugar Land,Active,No
 ,OF,Joey Loperfido,L,Sugar Land,Active,No
+,P,Bryan Magdaleno,L,Sugar Land,Active,No
 26,P,Joey Mancini,R,Sugar Land,Active,No
 39,P,Bryce Mayer,R,Sugar Land,Active,No
 31,P,Trey McLoughlin,R,Sugar Land,Active,No
@@ -418,6 +430,8 @@
 64,P,Ofreidy Gómez,R,Syracuse,Active,No
 65,P,Dan Hammer,R,Syracuse,Active,No
 99,P,Gary Gill Hill,R,Syracuse,Active,No
+,P,Justin King,L,Syracuse,Active,No
+,P,Joel Kuhnel,R,Syracuse,Active,No
 27,P,Ryan Lambert,R,Syracuse,Active,No
 26,INF,Nick Lorusso,R,Syracuse,Active,No
 45,P,Tyler McLoughlin,R,Syracuse,Active,No
