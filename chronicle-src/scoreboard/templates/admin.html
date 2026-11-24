@@ -63,7 +63,7 @@ textarea{min-height:90px;font-family:Menlo,monospace;font-size:11px}
 <input type="text" name="order" value="{{ s.order|join(', ') }}">
 
 <h2>Leagues</h2>
-<p class="hint">Auto = shown when ESPN says the league is in season. Box scores: "featured" = only games with a team from the list below.</p>
+<p class="hint">Auto = shown when ESPN says the league is in season, and not before "Next season starts" (leave it blank once a season is under way). Box scores: "featured" = only games with a team from the list below.</p>
 <div class="grid">
 {% for lg in leagues %}
   {% set ls = s.leagues.get(lg.key, {}) %}
@@ -74,6 +74,10 @@ textarea{min-height:90px;font-family:Menlo,monospace;font-size:11px}
         <select name="mode_{{ lg.key }}">
           {% for v in ['auto', 'on', 'off'] %}<option value="{{ v }}" {{ 'selected' if ls.get('mode', 'auto') == v }}>{{ v }}</option>{% endfor %}
         </select></div>
+      {% if lg.kind not in ['golf', 'racing', 'tennis'] %}
+      <div><label>Next season starts</label>
+        <input type="date" name="starts_{{ lg.key }}" value="{{ ls.get('starts') or lg.get('next_season', '') }}"></div>
+      {% endif %}
       {% if lg.kind in ['basketball', 'hockey', 'football', 'baseball', 'soccer'] %}
       <div><label>Box scores</label>
         <select name="box_{{ lg.key }}">

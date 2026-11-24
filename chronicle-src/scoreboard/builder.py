@@ -6,7 +6,7 @@ Page date = the paper's date (today, Pacific). Results are from the day
 before; schedules/odds are for the page date (and the day after).
 """
 
-from datetime import datetime, date, timedelta
+from datetime import datetime, timedelta, date
 
 import espn
 from leagues import LEAGUES, BY_KEY
@@ -46,15 +46,42 @@ def _iso_date(v):
         return None
 
 
+def _calendar_dates(lgd):
+    """Game days (or week ranges) from ESPN's league calendar, as date pairs."""
+    out = []
+    for c in lgd.get("calendar") or []:
+        if isinstance(c, str):
+            d = _iso_date(c)
+            if d:
+                out.append((d, d))
+        elif isinstance(c, dict):
+            for e in c.get("entries") or [c]:
+                st, en = _iso_date(e.get("startDate")), _iso_date(e.get("endDate"))
+                if st and en:
+                    out.append((st, en))
+    return out
+
+
 def _season_active(results_date, *sbs):
-    """In season = ESPN has games on/around the paper's dates, or the season
-    ESPN reports (regular season or playoffs) hasn't reached its end date yet.
-    ESPN keeps reporting a finished season (e.g. the WNBA in November), so the
-    season type alone isn't enough."""
+    """In season = ESPN has games on/around the paper's dates, or its league
+    calendar has game days within the last 3 / next 10 days. ESPN keeps
+    reporting a finished season (the WNBA, the NWSL), and soccer seasons
+    "end" Dec. 31, so the season type and end date alone aren't enough."""
     for sb in sbs:
         if sb and sb.get("events"):
             return True
+    lo, hi = results_date - timedelta(days=3), results_date + timedelta(days=11)
+    saw_calendar = False
     for sb in sbs:
+        for lgd in (sb or {}).get("leagues", []):
+            cal = _calendar_dates(lgd)
+            if cal:
+                saw_calendar = True
+                if any(st <= hi and en >= lo for st, en in cal):
+                    return True
+    if saw_calendar:
+        return False
+    for sb in sbs:                     # no calendar from ESPN: fall back to the season dates
         for lgd in (sb or {}).get("leagues", []):
             season = lgd.get("season") or {}
             t = (season.get("type") or {}).get("type")
@@ -159,7 +186,16 @@ def build(page_date, settings):
     results_date = page_date - timedelta(days=1)
     featured = featured_set(settings)
     lmode = lambda k: settings["leagues"].get(k, {}).get("mode", "auto")
-    leagues = [BY_KEY[k] for k in settings["order"] if k in BY_KEY and lmode(k) != "off"]
+    def waiting(k):
+        """In auto mode, a league stays off until its next season's opening day
+        (the date on the admin page, or next_season in leagues.py)."""
+        start = settings["leagues"].get(k, {}).get("starts") or BY_KEY[k].get("next_season")
+        try:
+            return lmode(k) == "auto" and bool(start) and page_date < date.fromisoformat(start)
+        except ValueError:
+            return False
+    leagues = [BY_KEY[k] for k in settings["order"]
+               if k in BY_KEY and lmode(k) != "off" and not waiting(k)]
 
     sb = fetch_scoreboards(page_date, settings, leagues)
     get = lambda k, w: sb.get((k, w)) or {}

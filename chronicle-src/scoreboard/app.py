@@ -126,6 +126,7 @@ def admin_save():
         s["leagues"].setdefault(k, {})
         s["leagues"][k]["mode"] = f.get(f"mode_{k}", "auto")
         s["leagues"][k]["box"] = f.get(f"box_{k}", "")
+        s["leagues"][k]["starts"] = f.get(f"starts_{k}", "").strip()
     order = [x.strip() for x in f.get("order", "").split(",") if x.strip()]
     if order:
         s["order"] = order + [lg["key"] for lg in LEAGUES if lg["key"] not in order]
