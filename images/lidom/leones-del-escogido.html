@@ -32,20 +32,16 @@
     <script>
         const path = "../../images/lidom-teams/leones-del-escogido/";
         const allFiles = [
-"Black jersey logo.png",
-"Dolo Neuromey ad patch.png",
-"Ferquido ad patch.png",
-"Induveca ad patch.png",
-"Induveca back ad patch.png",
-"Induveca red back ad patch.png",
-"Primary logo.png",
-"Red alt jersey logo.png",
-"Red hat logo.png",
-"Red jersey logo.png",
-"Road gray jersey logo.png",
-"White alt jersey logo.png",
-"White jersey logo.png",
-"Wilson ad patch.png",];
+"Alt white jersey logo 2025.png",
+"Black jersey logo 2025.png",
+"Black jersey logo 2026.png",
+"Red hat logo 1955-present.png",
+"Red jersey logo 2025.png",
+"Red jersey logo 2026.png",
+"Road gray jersey logo 2025.png",
+"White jersey logo 2009-2024.png",
+"White jersey logo 2026.png",
+];
 
 allFiles.sort((a, b) => {
     const getLastYear = (fileName) => {
@@ -99,10 +95,10 @@ allFiles.forEach(fileName => {
     if (lowerName.includes("primary logo")) {
         document.getElementById('primary-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("jersey")) {
+    else if ((lowerName.includes("jersey") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('jersey-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("hat")) {
+    else if ((lowerName.includes("hat") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('hat-logos').innerHTML += cardHtml;
     } 
     else if (lowerName.includes("ad patch")) {

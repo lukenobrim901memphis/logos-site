@@ -32,18 +32,15 @@
     <script>
         const path = "../../images/lidom-teams/gigantes-del-cibao/";
         const allFiles = [
-"Aero Ambulancia ad patch.png",
-"Batting helmet logo.png",
-"Black jersey logo.png",
-"Brown hat logo.png",
-"Brown jersey logo.png",
-"Presidente ad patch.png",
-"Primary logo.png",
-"Red alt hat logo.png",
-"Red hat logo.png",
-"Red jersey logo.png",
-"Seguros Crecer ad patch.png",
-"White jersey logo.png",];
+"Alt red hat logo 2021-present.png",
+"Batting helmet logo 2019-present.png",
+"Black jersey logo 2024-present.png",
+"Brown hat logo 2024-present.png",
+"Brown jersey logo 2024-present.png",
+"Red hat logo 2021-present.png",
+"White jersey logo 2024-present.png",
+"White panel hat logo 2026.png",
+];
 
 allFiles.sort((a, b) => {
     const getLastYear = (fileName) => {
@@ -97,10 +94,10 @@ allFiles.forEach(fileName => {
     if (lowerName.includes("primary logo")) {
         document.getElementById('primary-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("jersey")) {
+    else if ((lowerName.includes("jersey") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('jersey-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("hat")) {
+    else if ((lowerName.includes("hat") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('hat-logos').innerHTML += cardHtml;
     } 
     else if (lowerName.includes("ad patch")) {

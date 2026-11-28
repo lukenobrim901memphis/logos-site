@@ -23,6 +23,7 @@
 45,INF,Nick Goodwin,R,Buffalo,Active,No
 37,P,Devereaux Harrison,R,Buffalo,Active,No
 7,INF,Jay Harry,L,Buffalo,Active,No
+,P,Yeuris Jimenez,R,Buffalo,Active,No
 4,INF,Josh Kasevich,R,Buffalo,Active,No
 ,OF,Rudy Martin Jr.,L,Buffalo,Active,No
 24,INF,Josh Rivera,R,Buffalo,Active,No
@@ -31,6 +32,7 @@
 50,P,Yondrei Rojas,R,Buffalo,Active,No
 31,P,Gage Stanifer,R,Buffalo,Active,No
 21,P,Josh Stephan,R,Buffalo,Active,No
+,OF,Rhylan Thomas,L,Buffalo,Active,No
 32,P,Josh Winckowski,R,Buffalo,Active,No
 46,P,Nick Altermatt,R,Charlotte,Active,No
 4,OF,Dru Baker,R,Charlotte,Active,No
@@ -60,6 +62,7 @@
 10,INF,Tyresse Turner,S,Columbus,Active,No
 35,INF,Ralphy Velazquez,L,Columbus,Active,No
 22,P,Ryan Webb,L,Columbus,Active,No
+,C,Andy Yerzy,L,Columbus,Active,No
 ,P,Brian Van Belle,R,Durham,Active,No
 ,C,Caden Bodine,S,Durham,Active,No
 35,OF,Homer Bush Jr.,R,Durham,Active,No
@@ -84,6 +87,7 @@
 ,OF,Kai Murphy,L,El Paso,Active,No
 9,P,Abraham Parra,R,El Paso,Active,No
 14,INF,Nick Pratto,L,El Paso,Active,No
+,C,Nelson Quiroz,L,El Paso,Active,No
 ,P,Roel Ramírez,R,El Paso,Active,No
 ,OF,Kala'i Rosario,R,El Paso,Active,No
 55,P,Ethan Routzahn,R,El Paso,Active,No
@@ -100,10 +104,12 @@
 11,INF,Jordan Groshans,R,Gwinnett,Active,No
 71,P,Drue Hackenberg,R,Gwinnett,Active,No
 2,C,Maverick Handley,R,Gwinnett,Active,No
+,OF,Michael Helman,R,Gwinnett,Active,No
 ,P,Elieser Hernández,R,Gwinnett,Active,No
 ,P,Herick Hernandez,L,Gwinnett,Active,No
 13,OF,Kevin Kilpatrick Jr.,R,Gwinnett,Active,No
 24,INF,David McCabe,S,Gwinnett,Active,No
+,P,Parker Mushinski,L,Gwinnett,Active,No
 ,P,Darlin Pinales,R,Gwinnett,Active,No
 12,C,Chuckie Robinson,R,Gwinnett,Active,No
 64,P,Brett Sears,R,Gwinnett,Active,No
@@ -190,11 +196,14 @@
 10,INF,Keaton Anthony,R,Lehigh Valley,Active,No
 69,OF,Wuilfredo Antunez,L,Lehigh Valley,Active,No
 3,IF,Nick Biddison,R,Lehigh Valley,Active,No
+,P,Moisés Chace,R,Lehigh Valley,Active,No
 41,P,Ryan Cusick,R,Lehigh Valley,Active,No
 38,C,Jordan Dissin,R,Lehigh Valley,Active,No
 47,P,Tristan Garnett,L,Lehigh Valley,Active,No
 ,P,Connor Gillispie,R,Lehigh Valley,Active,No
+,INF,Brett Harris,R,Lehigh Valley,Active,No
 ,P,Geoff Hartlieb,R,Lehigh Valley,Active,No
+,P,Andrew Hoffmann,R,Lehigh Valley,Active,No
 21,OF,Jonathan Hogart,R,Lehigh Valley,Active,No
 ,C,Blake Hunt,R,Lehigh Valley,Active,No
 25,P,Chuck King,R,Lehigh Valley,Active,No
@@ -211,6 +220,7 @@
 37,P,Kevin Abel,R,Louisville,Active,No
 21,P,Jose Acuna,R,Louisville,Active,No
 22,OF,Jay Allen II,R,Louisville,Active,No
+,INF,Leo Balcazar,R,Louisville,Active,No
 ,P,Sam Benschoter,R,Louisville,Active,No
 40,P,Kent Emanuel,L,Louisville,Active,No
 31,P,Brandon Leibrandt,L,Louisville,Active,No
@@ -288,6 +298,7 @@
 4,OF,Zach Ehrhard,R,Oklahoma City,Active,No
 ,INF,Tyler Fitzgerald,R,Oklahoma City,Active,No
 ,INF,Alex Freeland,S,Oklahoma City,Active,Yes
+,P,Tink Hence,R,Oklahoma City,Active,No
 33,P,Antonio Knowles,R,Oklahoma City,Active,No
 56,P,Garrett McDaniels,L,Oklahoma City,Active,No
 12,P,Griff McGarry,R,Oklahoma City,Active,No
@@ -297,6 +308,7 @@
 45,P,Christian Romero,R,Oklahoma City,Active,No
 13,OF,Mike Sirota,R,Oklahoma City,Active,No
 3,OF,James Tibbs III,L,Oklahoma City,Active,No
+,INF,Eric Wagaman,R,Oklahoma City,Active,No
 35,INF,Colton Becker,R,Omaha,Active,No
 16,INF,Jacob Berry,S,Omaha,Active,No
 ,P,Mason Black,R,Omaha,Active,No
@@ -333,6 +345,7 @@
 53,P,Jack Cebert,R,Rochester,Active,No
 ,P,Marc Church,R,Rochester,Active,No
 ,P,Omar Cruz,L,Rochester,Active,No
+,P,Luis Curvelo,R,Rochester,Active,No
 ,P,Hagen Danner,R,Rochester,Active,No
 1,OF,Phillip Glasser,L,Rochester,Active,No
 38,P,Joe Glassey,R,Rochester,Active,No
@@ -366,8 +379,10 @@
 10,OF,Aaron Zavala,L,Round Rock,Active,No
 ,P,Spencer Bauer,R,Sacramento,Active,No
 58,P,Will Bednar,R,Sacramento,Active,No
+,OF,Victor Bericoto,R,Sacramento,Active,No
 ,P,John Michael Bertrand,L,Sacramento,Active,No
 40,P,Eric Cerantola,R,Sacramento,Active,No
+,OF,Kenedy Corona,R,Sacramento,Active,No
 ,P,Reggie Crawford,L,Sacramento,Active,No
 ,P,Jason Foley,R,Sacramento,Active,No
 2,INF,Thomas Gavello,L,Sacramento,Active,No
@@ -377,6 +392,7 @@
 ,P,Seth Lonsway,L,Sacramento,Active,No
 49,P,Logan Martin,R,Sacramento,Active,No
 ,P,Erick Mejia,R,Sacramento,Active,No
+,P,Erik Rivera,L,Sacramento,Active,No
 51,P,Darien Smith,R,Sacramento,Active,No
 38,P,Dale Stanavich,L,Sacramento,Active,No
 ,C,Adrián Sugastey,R,Sacramento,Active,No
@@ -421,6 +437,7 @@
 ,P,Jose Espada,R,St. Paul,Active,No
 33,P,Ryan Gallagher,R,St. Paul,Active,No
 24,P,Ruddy Gomez,R,St. Paul,Active,No
+,P,Ryan Harvey,R,St. Paul,Active,No
 58,P,Alejandro Hidalgo,R,St. Paul,Active,No
 25,INF,Cody Morissette,L,St. Paul,Active,No
 64,P,Paulshawn Pasqualotto,R,St. Paul,Active,No
@@ -439,7 +456,9 @@
 31,P,Trey McLoughlin,R,Sugar Land,Active,No
 37,P,Brandon McPherson,R,Sugar Land,Active,No
 11,P,Alex Santos II,R,Sugar Land,Active,No
+,P,Matt Sauer,R,Sugar Land,Active,No
 24,C,Jason Schiavone,R,Sugar Land,Active,No
+,P,Joander Suarez,R,Sugar Land,Active,No
 21,P,Nic Swanson,R,Sugar Land,Active,No
 11,INF,Billy Amick,R,Syracuse,Active,No
 20,INF,Ryan Clifford,L,Syracuse,Active,No
@@ -457,6 +476,7 @@
 ,INF,Kyren Paris,R,Syracuse,Active,No
 50,INF,Émilien Pitre,L,Syracuse,Active,No
 30,P,Jonathan Santucci,L,Syracuse,Active,No
+,C,Hayden Senger,R,Syracuse,Active,No
 46,P,Ben Simon,R,Syracuse,Active,No
 70,OF,D'Andre Smith,R,Syracuse,Active,No
 49,P,Garrett Stratton,R,Syracuse,Active,No
@@ -471,6 +491,7 @@
 4,OF,Victor Labrada,L,Tacoma,Active,No
 ,P,Johnathan Lavallee,R,Tacoma,Active,No
 ,OF,Spencer Packard,L,Tacoma,Active,No
+,INF,Liover Peguero,R,Tacoma,Active,No
 36,C,Nick Raposo,R,Tacoma,Active,No
 33,P,Seth Shuman,R,Tacoma,Active,No
 10,P,Reid VanScoter,L,Tacoma,Active,No
@@ -481,11 +502,13 @@
 38,P,Andre Granillo,R,Toledo,Active,No
 ,P,Bailey Horn,L,Toledo,Active,No
 20,C,Bennett Lee,R,Toledo,Active,No
+,P,Jake Miller,L,Toledo,Active,No
 58,P,Hayden Minton,R,Toledo,Active,No
 12,C,Carlos Pérez,R,Toledo,Active,No
 ,P,RJ Petit,R,Toledo,Active,No
 ,P,Anderson Pilar,R,Toledo,Active,No
 ,P,Nick Raquet,L,Toledo,Active,No
+,INF,Trey Sweeney,L,Toledo,Active,No
 32,P,Jackson Wolf,L,Toledo,Active,No
 ,C,Riley Adams,R,Worcester,Active,No
 16,INF,Franklin Arias,R,Worcester,Active,No

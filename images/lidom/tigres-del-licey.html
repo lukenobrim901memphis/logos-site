@@ -32,26 +32,15 @@
     <script>
         const path = "../../images/lidom-teams/tigres-del-licey/";
         const allFiles = [
-"Asociacion Cibao blue ad patch.png",
-"Asociacion Cibao white ad patch.png",
-"Black jersey logo.png",
-"Blue alt hat logo.png",
-"Blue hat logo.png",
-"Blue jersey logo.png",
-"Coca Cola red ad patch.png",
-"Coca Cola white ad patch.png",
-"GBC Farmacias ad patch.png",
-"Gray jersey logo.png",
-"Kola Real black ad patch.png",
-"Kola Real blue ad patch.png",
-"Kola Real light blue ad patch.png",
-"Kola Real white ad patch.png",
-"Light blue jersey logo.png",
-"Munné white ad patch.png",
-"Primary logo.png",
-"Retro jersey logo.png",
-"White jersey logo.png",
-"Yunen ad patch.png",];
+"Alt hat logo 2011-present.png",
+"Black jersey logo 2025.png",
+"Blue hat logo 2011-present.png",
+"Blue jersey logo 2025.png",
+"Gray jersey logo 2025.png",
+"Light blue jersey logo 2025.png",
+"Retro jersey logo 2024-2025.png",
+"White jersey logo 2025.png",
+];
 
 allFiles.sort((a, b) => {
     const getLastYear = (fileName) => {
@@ -105,10 +94,10 @@ allFiles.forEach(fileName => {
     if (lowerName.includes("primary logo")) {
         document.getElementById('primary-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("jersey")) {
+    else if ((lowerName.includes("jersey") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('jersey-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("hat")) {
+    else if ((lowerName.includes("hat") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('hat-logos').innerHTML += cardHtml;
     } 
     else if (lowerName.includes("ad patch")) {

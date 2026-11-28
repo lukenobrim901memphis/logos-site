@@ -32,19 +32,16 @@
     <script>
         const path = "../../images/lidom-teams/aguilas-cibaenas/";
         const allFiles = [
-"Asocacion Cibao white ad patch.png",
-"Asociacion Cibao blue ad patch.png",
-"Black hat logo.png",
-"Black jersey logo.png",
-"Gray jersey logo.png",
-"Primary logo.png",
-"Super Gato ad patch.png",
-"Texaco ad patch.png",
-"White Aguilucho jersey logo.png",
-"White alt jersey logo.png",
-"White jersey logo.png",
-"White panel hat logo.png",
-"Yellow jersey logo.png",];
+"Aguilucho black jersey logo 2026.png",
+"Aguilucho white jersey logo 2025-present.png",
+"Black hat logo 1937-present.png",
+"Black jersey logo 2023-2024.png",
+"Black jersey logo 2025-present.png",
+"White alt jersey logo 2021-2024.png",
+"White jersey logo 2021-2024.png",
+"White panel hat logo 2009-present.png",
+"Yellow jersey logo 2024.png",
+];
 
 allFiles.sort((a, b) => {
     const getLastYear = (fileName) => {
@@ -98,10 +95,10 @@ allFiles.forEach(fileName => {
     if (lowerName.includes("primary logo")) {
         document.getElementById('primary-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("jersey")) {
+    else if ((lowerName.includes("jersey") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('jersey-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("hat")) {
+    else if ((lowerName.includes("hat") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('hat-logos').innerHTML += cardHtml;
     } 
     else if (lowerName.includes("ad patch")) {

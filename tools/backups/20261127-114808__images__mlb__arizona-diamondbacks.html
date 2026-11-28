@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arizona Diamondbacks Logo History</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../mlb-style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../navigation/favicon.png">
+</head>
+<body>
+    <header class="sticky-header">
+    <a href="../../mlb.html" class="back-btn">← Back to MLB</a>
+    <h1 class="text-diamondbacks"> Arizona Diamondbacks</h1>
+</header>
+
+    <div class="category-header">Primary Logos</div>
+    <div id="primary-logos" class="grid"></div>
+
+    <div class="category-header">Alternate Logos</div>
+    <div id="alternate-logos" class="grid"></div>
+
+    <div class="category-header">Hat Logos</div>
+    <div id="hat-logos" class="grid"></div>
+
+    <div class="category-header">Jersey Logos</div>
+    <div id="jersey-logos" class="grid"></div>
+
+    <div class="category-header">Patches</div>
+    <div id="patches" class="grid"></div>
+
+    <div class="category-header">Throwback</div>
+    <div id="throwback" class="grid"></div>
+
+    <div class="category-header">Negro League</div>
+    <div id="negro-league" class="grid"></div>
+
+    <div class="category-header">Holiday</div>
+    <div id="holiday" class="grid"></div>
+
+    <div class="category-header">Spring Training</div>
+    <div id="spring-training" class="grid"></div>
+
+    <div class="category-header">Batting Practice</div>
+    <div id="batting-practice" class="grid"></div>
+
+    <div class="category-header">Other</div>
+    <div id="other-logos" class="grid"></div>
+    
+    <script>
+        const path = "../../images/mlb-teams/arizona-diamondbacks/";
+// HOLIDAY_GROUPS v1: the Holiday section is grouped by holiday, then by the year worn
+const HOLIDAY_LIST = [["Chinese New Year", "chinese new year"], ["Lunar New Year", "lunar new year"], ["Mardi Gras", "mardi gras"], ["St. Patrick's Day", "st\\.? ?patrick'?s?(?: day)?"], ["Mother's Day", "mother'?s?(?: day)?"], ["Armed Forces", "armed forces(?: day| weekend)?"], ["Memorial Day", "memorial day"], ["Father's Day", "father'?s?(?: day)?"], ["4th of July", "(?:4th of )?july|independence day"], ["Noche Latina", "noche latina"], ["Military", "military(?: appreciation)?"], ["Christmas", "christmas"]];
+const holidayFiles = [];
+function queueHoliday(fileName) { holidayFiles.push(fileName); }
+document.addEventListener('DOMContentLoaded', () => {
+    const section = document.getElementById('holiday');
+    if (!section || !holidayFiles.length) return;
+    section.classList.remove('grid');
+    const groups = new Map();          // holiday index -> Map(years worn -> [cards])
+    for (const fileName of holidayFiles) {
+        const base = fileName.replace(/\.png$/i, '');
+        const end = base.match(/\s(\d{4}(?:-(?:\d{4}|present))?(?:,\s*\d{4}(?:-(?:\d{4}|present))?)*)\s*$/i);
+        const namePart = end ? base.slice(0, end.index) : base;
+        const worn = end ? end[1] : '';
+        let idx = HOLIDAY_LIST.findIndex(h => new RegExp(h[1], 'i').test(namePart));
+        let label = namePart;
+        if (idx >= 0) label = label.replace(new RegExp(HOLIDAY_LIST[idx][1], 'i'), '');
+        else idx = HOLIDAY_LIST.length;
+        label = label.replace(/logo\d*/gi, '').replace(/\s+/g, ' ').trim();
+        label = label ? label[0].toUpperCase() + label.slice(1) : '';
+        const card = `
+        <div class="logo-card" onclick="openLightbox('${path}${fileName}')">
+            <div class="logo-image-wrapper">
+                <img src="${path}${fileName}" alt="${base}" loading="lazy">
+            </div>
+            <div class="logo-caption">
+                <div class="logo-name">${label}</div>
+            </div>
+        </div>`;
+        if (!groups.has(idx)) groups.set(idx, new Map());
+        const rows = groups.get(idx);
+        if (!rows.has(worn)) rows.set(worn, []);
+        rows.get(worn).push(card);
+    }
+    const byYear = (a, b) => (a === '') - (b === '') || parseInt(a) - parseInt(b) || a.localeCompare(b);
+    section.innerHTML = [...groups.keys()].sort((a, b) => a - b).map(i =>
+        `\n    <h3 class="identity-header">${i < HOLIDAY_LIST.length ? HOLIDAY_LIST[i][0] : 'Other'}</h3>` +
+        [...groups.get(i).keys()].sort(byYear).map(w => `
+    <div class="year-row-label">${w}</div>
+    <div class="grid">${groups.get(i).get(w).join('')}</div>`).join('')
+    ).join('');
+});
+// THROWBACK_GROUPS v2: grouped by the year of the design, then by the year worn
+const throwbackFiles = [];
+function queueThrowback(fileName) { throwbackFiles.push(fileName); }
+document.addEventListener('DOMContentLoaded', () => {
+    const section = document.getElementById('throwback');
+    if (!section || !throwbackFiles.length) return;
+    section.classList.remove('grid');
+    const groups = new Map();          // design year -> Map(years worn -> [cards])
+    for (const fileName of throwbackFiles) {
+        const base = fileName.replace(/\.png$/i, '');
+        const end = base.match(/\s(\d{4}(?:-(?:\d{4}|present))?(?:,\s*\d{4}(?:-(?:\d{4}|present))?)*)\s*$/i);
+        const namePart = end ? base.slice(0, end.index) : base;
+        const worn = end ? end[1] : '';
+        const design = namePart.match(/\b(\d{4}s?)\b/);
+        const key = design ? design[1] : '';
+        let label = namePart.replace(design ? design[1] : '', '').replace(/throwback/gi, '')
+            .replace(/logo\d*/gi, '').replace(/\s+/g, ' ').trim();
+        label = label ? label[0].toUpperCase() + label.slice(1) : '';
+        const card = `
+        <div class="logo-card" onclick="openLightbox('${path}${fileName}')">
+            <div class="logo-image-wrapper">
+                <img src="${path}${fileName}" alt="${base}" loading="lazy">
+            </div>
+            <div class="logo-caption">
+                <div class="logo-name">${label}</div>
+            </div>
+        </div>`;
+        if (!groups.has(key)) groups.set(key, new Map());
+        const rows = groups.get(key);
+        if (!rows.has(worn)) rows.set(worn, []);
+        rows.get(worn).push(card);
+    }
+    const byYear = (a, b) => (a === '') - (b === '') || parseInt(a) - parseInt(b) || a.localeCompare(b);
+    section.innerHTML = [...groups.keys()].sort(byYear).map(k =>
+        `\n    <h3 class="identity-header">${k ? k + ' throwback' : 'Other throwbacks'}</h3>` +
+        [...groups.get(k).keys()].sort(byYear).map(w => `
+    <div class="year-row-label">${w}</div>
+    <div class="grid">${groups.get(k).get(w).join('')}</div>`).join('')
+    ).join('');
+});
+// Years shown = only the years at the end of the file name; the rest is the name
+const YEARS_AT_END = /\s(\d{4}(?:-(?:\d{4}|present))?(?:,\s*\d{4}(?:-(?:\d{4}|present))?)*)\s*$/i;
+function splitYears(fileName) {
+    const base = fileName.replace(/\.png$/i, '');
+    const m = base.match(YEARS_AT_END);
+    return m ? { name: base.slice(0, m.index), years: m[1] } : { name: base, years: '' };
+}
+function labelFrom(name) {
+    return name.replace(/logo\d*/gi, '').replace(/alternate/gi, '').replace(/,/g, '')
+               .replace(/\s+/g, ' ').replace(/^-+|-+$/g, '').trim();
+}
+        const allFiles = [
+"19 firefighters black memorial patch 2013.png",
+"19 firefighters white memorial patch 2013.png",
+"1990s throwback jersey logo 2014.png",
+"1998 throwback batting helmet logo 2018.png",
+"1999 throwback jersey logo 2018.png",
+"2001 throwback hat logo 2026.png",
+"20th anniversary patch 2018.png",
+"4th of July hat logo 2013.png",
+"4th of July hat logo 2014.png",
+"4th of July hat logo 2015.png",
+"4th of July hat logo 2016.png",
+"4th of July hat logo 2017.png",
+"4th of July hat logo 2018.png",
+"4th of July hat logo 2019.png",
+"4th of July hat logo 2021.png",
+"4th of July hat logo 2022.png",
+"4th of July hat logo 2023.png",
+"4th of July hat logo 2024.png",
+"4th of July hat logo 2025.png",
+"4th of July hat logo 2026.png",
+"4th of July home jersey logo 2017-2018.png",
+"4th of July jersey logo 2015.png",
+"4th of July jersey logo 2016.png",
+"4th of July road jersey logo 2017.png",
+"4th of July sleeve patch 2016.png",
+"4th of July sleeve patch 2017.png",
+"All Star Game patch 2011.png",
+"Alternate black snake logo 2007-2015.png",
+"Alternate red snake logo 2007-2015.png",
+"Alternate snake logo 2016-2023.png",
+"Armed Forces hat logo 2019.png",
+"Armed Forces hat logo 2021.png",
+"Armed Forces hat logo 2022.png",
+"Armed Forces hat logo 2023.png",
+"Armed Forces hat logo 2024.png",
+"Armed Forces hat logo 2025.png",
+"Armed Forces hat logo 2026.png",
+"Batting practice hat logo 2025.png",
+"Black sleeve patch 2015.png",
+"Black snake logo 2008-2015.png",
+"Black to red gradient 2016-2019.png",
+"Black to red hat gradient 2016-2017.png",
+"City Connect batting helmet logo 2024.png",
+"City Connect hat logo 2021-2024.png",
+"City Connect hat logo 2025-present.png",
+"City Connect jersey logo 2021-2024.png",
+"City Connect jersey logo 2025-present.png",
+"City Connect pant pattern 2025-present.png",
+"City Connect pattern 2025-present.png",
+"City Connect sleeve patch 2021-2022.png",
+"City Connect sleeve patch 2025-present.png",
+"City Connect sleeve pattern 2025-present.png",
+"City Connect sleeve texture 2025-present.png",
+"Dark gray to gray gradient 2016-2019.png",
+"Father's Day hat logo 2016.png",
+"Father's Day hat logo 2017.png",
+"Father's Day hat logo 2018.png",
+"Father's Day hat logo 2019.png",
+"Father's Day hat logo 2021.png",
+"Father's Day hat logo 2022.png",
+"Father's Day hat logo 2023.png",
+"Father's Day hat logo 2024.png",
+"Father's Day jersey logo 2016.png",
+"Father's Day jersey logo 2017.png",
+"Father's Day sleeve patch 2016.png",
+"Father's Day sleeve patch 2017.png",
+"Gray to white gradient 2016-2019.png",
+"Hispanic Heritage 20th anniversary patch 2018.png",
+"Hispanic Heritage jersey logo 2009-2015.png",
+"Hispanic Heritage jersey logo 2016.png",
+"Hispanic Heritage jersey logo 2017-2019.png",
+"Home black Arizona jersey logo 2013.png",
+"Home cream jersey logo 2024-present.png",
+"Home white jersey logo 2007-2015.png",
+"Home white sand accents jersey logo 2016-2022.png",
+"Home white teal accents jersey logo 2016-2023.png",
+"Italian Heritage jersey logo 2012.png",
+"Jackie Robinson Day patch 2021.png",
+"Joe Garagiola JOE memorial patch 2016.png",
+"Kayla Mueller KAYLA memorial patch 2016.png",
+"KC Feds Negro League jersey logo 2014.png",
+"Kevin Towers KT memorial patch 2018.png",
+"Memorial Day hat logo 2012.png",
+"Memorial Day hat logo 2013.png",
+"Memorial Day hat logo 2014-2015.png",
+"Memorial Day hat logo 2016.png",
+"Memorial Day hat logo 2017.png",
+"Memorial Day hat logo 2018.png",
+"Memorial Day home black jersey logo 2014-2015.png",
+"Memorial Day home jersey logo 2018.png",
+"Memorial Day home white jersey logo 2013.png",
+"Memorial Day jersey logo 2016.png",
+"Memorial Day road jersey logo 2017.png",
+"Memorial Day road red jersey logo 2015.png",
+"Memorial Day sleeve patch 2016.png",
+"Memorial Day sleeve patch 2017.png",
+"Memorial Day sleeve patch 2018.png",
+"Mother's Day hat logo 2016.png",
+"Mother's Day hat logo 2017.png",
+"Mother's Day hat logo 2018.png",
+"Mother's Day hat logo 2019.png",
+"Mother's Day hat logo 2021.png",
+"Mother's Day hat logo 2022.png",
+"Mother's Day hat logo 2023.png",
+"Mother's Day hat logo 2024.png",
+"Mother's Day jersey logo 2016.png",
+"Mother's Day jersey logo 2017.png",
+"Mother's Day sleeve patch 2016.png",
+"Players Weekend batting helmet logo 2019.png",
+"Players Weekend hat logo 2017.png",
+"Players Weekend hat logo 2018.png",
+"Players Weekend hat logo 2019.png",
+"Players Weekend jersey logo 2017.png",
+"Players Weekend jersey logo 2019.png",
+"Randy Johnson number retirement patch 2015.png",
+"Red alt hat logo 2024-present.png",
+"Red hat logo 2007-2017.png",
+"Red jersey logo 2007-2015.png",
+"Red jersey logo 2016-2019.png",
+"Red jersey logo 2020-2023.png",
+"Red jersey logo 2024-present.png",
+"Red to black gradient 2016-2019.png",
+"Red to black hat gradient 2016-2019.png",
+"Red to white gradient 2016-2019.png",
+"Road gray jersey logo 2007-2013.png",
+"Road gray jersey logo 2014-2015.png",
+"Road gray jersey logo 2020-2023.png",
+"Road gray jersey logo 2024-present.png",
+"Road gray teal accents jersey logo 2016-2019.png",
+"Road red hat logo 2024-present.png",
+"Roland Hemond RH patch 2022.png",
+"Sand hat logo 2020-2023.png",
+"Snake hat logo 2007-2017.png",
+"Spring Training hat logo 2021.png",
+"Spring Training hat logo 2022.png",
+"Spring Training hat logo 2025.png",
+"Spring Training hat logo 2026.png",
+"St. Patrick's Day hat logo 2016.png",
+"St. Patrick's Day hat logo 2025.png",
+"St. Patrick's Day hat logo 2026.png",
+"St. Patrick's Day jersey logo 2016.png",
+"St. Patrick's Day sleeve patch 2016.png",
+"Teal hat logo 2017-2022.png",
+"Throwback hat logo 2011-2023.png",
+"Throwback jersey logo 2011, 2015-2016, 2018-2023.png",
+"Throwback sleeve patch 2011-2023.png",
+"Throwback weekend hat logo 2025.png",
+"Throwback weekend hat logo 2026.png",
+"World Series 25th anniversary logo 2026.png",
+];
+
+allFiles.sort((a, b) => {
+    const getLastYear = (fileName) => {
+        const lower = fileName.toLowerCase();
+        
+        if (lower.includes("present")) return 9999;
+
+        const years = fileName.match(/\d{4}/g);
+        if (years && years.length > 0) {
+            return parseInt(years[years.length - 1]);
+        }
+        
+        return 0;
+    };
+
+    return getLastYear(a) - getLastYear(b);
+});     
+function openLightbox(imgSrc) {
+    document.getElementById('lightbox-img').src = imgSrc;
+    document.getElementById('lightbox').style.display = 'flex';
+}
+
+allFiles.forEach(fileName => {
+           let fullName = fileName.replace('logo ', '').replace('.png', '');
+           const datePattern = /\d{4}(?:-\d{4}|-present)?/g; 
+    const matches = fullName.match(datePattern);
+    const yearText = matches ? matches.join(', ') : "";
+    let nameWithoutYear = fullName;
+    if (matches) {
+        matches.forEach(m => {
+            nameWithoutYear = nameWithoutYear .replace(m, '')
+            .replace(/alternate/gi, '')
+                                     .replace(/logo\d*/gi, '')
+                                     .replace(/,/g, '')
+                                     .trim();
+        });
+    }
+    nameWithoutYear = nameWithoutYear.replace(/^-+|-+$/g, '').trim();
+    const shown = splitYears(fileName);
+    const shownYears = shown.years || yearText;
+    const shownName = labelFrom(shown.name);
+    const cardHtml = `
+    <div class="logo-card" onclick="openLightbox('${path}${fileName}')">
+        <div class="logo-image-wrapper">
+            <img src="${path}${fileName}" alt="${fullName}" loading="lazy">
+        </div>
+        <div class="logo-caption">
+            ${nameWithoutYear ? `<div class="logo-name">${shownName}</div>` : ''}
+            <div class="logo-year">${shownYears}</div>
+        </div>
+    </div>`;
+    const lowerName = fileName.toLowerCase();
+
+    if (lowerName.includes("mother") || 
+        lowerName.includes("father") || 
+        lowerName.includes("july") || 
+        lowerName.includes("memorial day") ||
+        lowerName.includes("armed forces") || 
+        lowerName.includes("st. patrick")) {
+        queueHoliday(fileName);
+    }
+    else if (lowerName.includes("spring training")) {
+        document.getElementById('spring-training').innerHTML += cardHtml;
+    } 
+    else if ((lowerName.includes("throwback") && !lowerName.includes("throwback weekend"))) {
+        queueThrowback(fileName);
+    }
+    else if (lowerName.includes("negro league")) {
+        document.getElementById('negro-league').innerHTML += cardHtml;
+    }
+    else if (lowerName.includes("primary logo")) {
+        document.getElementById('primary-logos').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("alternate")) {
+        document.getElementById('alternate-logos').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("batting practice")) {
+        document.getElementById('batting-practice').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("jersey")) {
+        document.getElementById('jersey-logos').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("hat")) {
+        document.getElementById('hat-logos').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("patch")) {
+        document.getElementById('patches').innerHTML += cardHtml;
+    } 
+    else {
+        document.getElementById('other-logos').innerHTML += cardHtml;
+    }
+});
+    </script>
+  
+  <div id="lightbox" class="lightbox" onclick="this.style.display='none'">
+    <span class="close-btn">&times;</span>
+    <img id="lightbox-img" src="" alt="Enlarged Logo">
+    <div id="lightbox-caption"></div>
+</div>
+
+</body>
+</html>

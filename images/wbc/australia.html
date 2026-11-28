@@ -29,10 +29,11 @@
     <script>
         const path = "../../images/wbc-teams/australia/";
         const allFiles = [
-"Green jersey logo.png",
-"Hat logo.png",
-"Primary logo.png",
-"White jersey logo.png",];
+"Flag 2006-present.png",
+"Green jersey logo 2013-present.png",
+"Hat logo 2006-present.png",
+"White jersey logo 2009-present.png",
+];
 
 allFiles.sort((a, b) => {
     const getLastYear = (fileName) => {
@@ -86,10 +87,10 @@ allFiles.forEach(fileName => {
     if (lowerName.includes("primary logo")) {
         document.getElementById('primary-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("jersey")) {
+    else if ((lowerName.includes("jersey") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('jersey-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("hat")) {
+    else if ((lowerName.includes("hat") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('hat-logos').innerHTML += cardHtml;
     } 
     else {

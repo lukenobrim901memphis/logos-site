@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orlando Magic Logo History</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../nba-style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../navigation/favicon.png">
+</head>
+<body>
+    <header class="sticky-header">
+    <a href="../../nba.html" class="back-btn">← Back to NBA</a>
+    <h1 class="text-magic"> Orlando Magic</h1>
+</header>
+
+    <div class="category-header">Primary Logos</div>
+    <div id="primary-logos" class="grid"></div>
+
+    <div class="category-header">Alternate Logos</div>
+    <div id="alternate-logos" class="grid"></div>
+
+    <div class="category-header">Jersey Logos</div>
+    <div id="jersey-logos" class="grid"></div>
+
+    <div class="category-header">City Edition</div>
+    <div id="city-edition" class="grid"></div>
+
+    <div class="category-header">Holiday</div>
+    <div id="holiday" class="grid"></div>
+
+    <div class="category-header">Court Logos</div>
+    <div id="court-logos" class="grid"></div>
+
+    <div class="category-header">Other</div>
+    <div id="other-logos" class="grid"></div>
+
+    <script>
+        const path = "../../images/nba-teams/orlando-magic/";
+        const allFiles = [
+"Alternate logo 2026-present.png",
+"Baseline logo 2011-2013.png",
+"Black jersey logo 2020-2025.png",
+"Black jersey logo 2025.png",
+"Blue jersey logo 2025.png",
+"City Edition jersey logo 2025.png",
+"City Edition jersey logo 2026.png",
+"Primary logo 2011-2025.png",
+"Primary logo 2026-present.png",
+"Statement jersey logo 2020-2025.png",
+"Team logo 2025.png",
+"White jersey logo 2009-2025.png",
+"White jersey logo 2025.png",
+];
+
+allFiles.sort((a, b) => {
+    const getLastYear = (fileName) => {
+        const lower = fileName.toLowerCase();
+
+        if (lower.includes("present")) return 9999;
+
+        const years = fileName.match(/\d{4}/g);
+        if (years && years.length > 0) {
+            return parseInt(years[years.length - 1]);
+        }
+
+        return 0;
+    };
+
+    return getLastYear(a) - getLastYear(b);
+});
+function openLightbox(imgSrc) {
+    document.getElementById('lightbox-img').src = imgSrc;
+    document.getElementById('lightbox').style.display = 'flex';
+}
+
+allFiles.forEach(fileName => {
+    const fullName = fileName.replace('.png', '');
+    const datePattern = /\d{4}(?:-\d{4}|-present)?/g;
+    const matches = fullName.match(datePattern);
+    const yearText = matches ? matches.join(', ') : "";
+
+    const cardHtml = `
+    <div class="logo-card" onclick="openLightbox('${path}${fileName}')">
+        <div class="logo-image-wrapper">
+            <img src="${path}${fileName}" alt="${fullName}" loading="lazy">
+        </div>
+        <div class="logo-caption">
+            <div class="logo-year">${yearText}</div>
+        </div>
+    </div>`;
+    const lowerName = fileName.toLowerCase();
+
+    if (lowerName.includes("mardi gras") ||
+        lowerName.includes("noche latina") ||
+        lowerName.includes("chinese new year") ||
+        lowerName.includes("military") ||
+        lowerName.includes("christmas") ||
+        lowerName.includes("st. patrick")) {
+        document.getElementById('holiday').innerHTML += cardHtml;
+    }
+    else if (lowerName.includes("city edition")) {
+        document.getElementById('city-edition').innerHTML += cardHtml;
+    }
+    else if (lowerName.includes("primary logo")) {
+        document.getElementById('primary-logos').innerHTML += cardHtml;
+    }
+    else if (lowerName.includes("alternate")) {
+        document.getElementById('alternate-logos').innerHTML += cardHtml;
+    }
+    else if (lowerName.includes("jersey")) {
+        document.getElementById('jersey-logos').innerHTML += cardHtml;
+    }
+    else if (lowerName.includes("midcourt") ||
+        lowerName.includes("baseline") ||
+        lowerName.includes("court")) {
+        document.getElementById('court-logos').innerHTML += cardHtml;
+    }
+    else {
+        document.getElementById('other-logos').innerHTML += cardHtml;
+    }
+});
+    </script>
+
+  <div id="lightbox" class="lightbox" onclick="this.style.display='none'">
+    <span class="close-btn">&times;</span>
+    <img id="lightbox-img" src="" alt="Enlarged Logo">
+    <div id="lightbox-caption"></div>
+</div>
+
+</body>
+</html>

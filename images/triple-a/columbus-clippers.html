@@ -29,6 +29,9 @@
     <div class="category-header">Patches</div>
     <div id="patches" class="grid"></div>
 
+    <div class="category-header">Throwback</div>
+    <div id="throwback" class="grid"></div>
+
     <div class="category-header">Theme Night Logos</div>
     <div id="theme-night"></div>
     
@@ -43,29 +46,78 @@
     
     <script>
         const path = "../../images/triple-a-teams/columbus-clippers/";
+// THROWBACK_GROUPS v2: grouped by the year of the design, then by the year worn
+const throwbackFiles = [];
+function queueThrowback(fileName) { throwbackFiles.push(fileName); }
+document.addEventListener('DOMContentLoaded', () => {
+    const section = document.getElementById('throwback');
+    if (!section || !throwbackFiles.length) return;
+    section.classList.remove('grid');
+    const groups = new Map();          // design year -> Map(years worn -> [cards])
+    for (const fileName of throwbackFiles) {
+        const base = fileName.replace(/\.png$/i, '');
+        const end = base.match(/\s(\d{4}(?:-(?:\d{4}|present))?(?:,\s*\d{4}(?:-(?:\d{4}|present))?)*)\s*$/i);
+        const namePart = end ? base.slice(0, end.index) : base;
+        const worn = end ? end[1] : '';
+        const design = namePart.match(/\b(\d{4}s?)\b/);
+        const key = design ? design[1] : '';
+        let label = namePart.replace(design ? design[1] : '', '').replace(/throwback/gi, '')
+            .replace(/logo\d*/gi, '').replace(/\s+/g, ' ').trim();
+        label = label ? label[0].toUpperCase() + label.slice(1) : '';
+        const card = `
+        <div class="logo-card" onclick="openLightbox('${path}${fileName}')">
+            <div class="logo-image-wrapper">
+                <img src="${path}${fileName}" alt="${base}" loading="lazy">
+            </div>
+            <div class="logo-caption">
+                <div class="logo-name">${label}</div>
+            </div>
+        </div>`;
+        if (!groups.has(key)) groups.set(key, new Map());
+        const rows = groups.get(key);
+        if (!rows.has(worn)) rows.set(worn, []);
+        rows.get(worn).push(card);
+    }
+    const byYear = (a, b) => (a === '') - (b === '') || parseInt(a) - parseInt(b) || a.localeCompare(b);
+    section.innerHTML = [...groups.keys()].sort(byYear).map(k =>
+        `\n    <h3 class="identity-header">${k ? k + ' throwback' : 'Other throwbacks'}</h3>` +
+        [...groups.get(k).keys()].sort(byYear).map(w => `
+    <div class="year-row-label">${w}</div>
+    <div class="grid">${groups.get(k).get(w).join('')}</div>`).join('')
+    ).join('');
+});
+// Years shown = only the years at the end of the file name; the rest is the name
+const YEARS_AT_END = /\s(\d{4}(?:-(?:\d{4}|present))?(?:,\s*\d{4}(?:-(?:\d{4}|present))?)*)\s*$/i;
+function splitYears(fileName) {
+    const base = fileName.replace(/\.png$/i, '');
+    const m = base.match(YEARS_AT_END);
+    return m ? { name: base.slice(0, m.index), years: m[1] } : { name: base, years: '' };
+}
+function labelFrom(name) {
+    return name.replace(/logo\d*/gi, '').replace(/alternate/gi, '').replace(/,/g, '')
+               .replace(/\s+/g, ' ').replace(/^-+|-+$/g, '').trim();
+}
         const allFiles = [
 "Alternate logo 2009-present.png",
 "Batting helmet logo 2009-present.png",
 "Black hat logo 2023-present.png",
 "Black jersey logo 2022-present.png",
-"Blue hat logo 2009-present.png",
-"Home white jersey logo 2009-present.png",
+"Blue hat logo 2023-present.png",
+"Blue jersey logo 2023-present.png",
+"Blue sleeve patch 2023-present.png",
+"Navy hat logo 2009-present.png",
 "Ohio State Night theme night hat logo 2026.png",
 "Ohio State Night theme night jersey logo 2026.png",
 "Ohio State Night theme night patch 2026.png",
-"Powder hat logo 2026-present.png",
-"Powder jersey logo 2026-present.png",
+"Powder blue hat logo 2026-present.png",
+"Powder blue jersey logo 2026-present.png",
 "Powder sleeve patch 2026-present.png",
-"Primary logo 2009-present.png",
-"Red jersey logo 2024-2025.png",
+"Red jersey logo 2025.png",
 "Road gray jersey logo 2009-present.png",
-"Throwback blue hat logo 2023-present.png",
-"Throwback blue jersey logo 2023-present.png",
-"Throwback blue sleeve patch 2023-present.png",
-"Veleros de Columbus copa hat logo 2019-2025.png",
 "Veleros de Columbus copa hat logo 2026-present.png",
-"Veleros de Columbus copa jersey logo 2019-2025.png",
-"Veleros de Columbus copa jersey logo 2026-present.png",
+"Veleros de Columbus copa jersey logo 2019-present.png",
+"Veleros de Columbus hat logo 2026-present.png",
+"White jersey logo 2009-present.png",
 ];
 
 allFiles.sort((a, b) => {
@@ -78,7 +130,7 @@ allFiles.sort((a, b) => {
         else if (lower.includes("copa")) identity = lower.split("copa")[0].trim();
 
         // Year Extraction (Start Year)
-        const yearMatch = file.match(/\d{4}/);
+        const yearMatch = (splitYears(file).years || file).match(/\d{4}/);
         const startYear = yearMatch ? parseInt(yearMatch[0]) : 0;
         
         // Active/Present Priority (Forces 'present' to the bottom of the group)
@@ -113,7 +165,7 @@ allFiles.forEach(fileName => {
     const lowerName = fileName.toLowerCase();
     const datePattern = /\d{4}(?:-\d{4}|-present)?/g;
     const yearMatch = fileName.match(datePattern);
-    const yearText = yearMatch ? yearMatch[0] : "";
+    const yearText = splitYears(fileName).years || (yearMatch ? yearMatch[0] : "");
 
     let identity = "";
     if (lowerName.includes("theme night")) identity = fileName.split(/theme night/i)[0].trim();
@@ -173,11 +225,12 @@ allFiles.forEach(fileName => {
     } else {
         // Use the STANDARD card here so the years appear underneath the name
         let targetGrid;
+        if ((lowerName.includes("throwback") && !lowerName.includes("throwback weekend"))) { queueThrowback(fileName); return; }
         if (lowerName.includes("primary logo")) targetGrid = 'primary-logos';
         else if (lowerName.includes("alternate")) targetGrid = 'alternate-logos';
         else if (lowerName.includes("batting practice")) targetGrid = 'batting-practice';
-        else if (lowerName.includes("hat")) targetGrid = 'hat-logos';
-        else if (lowerName.includes("jersey")) targetGrid = 'jersey-logos';
+        else if ((lowerName.includes("hat") && !/pattern|texture|gradient/.test(lowerName))) targetGrid = 'hat-logos';
+        else if ((lowerName.includes("jersey") && !/pattern|texture|gradient/.test(lowerName))) targetGrid = 'jersey-logos';
         else if (lowerName.includes("patch")) targetGrid = 'patches';
         else targetGrid = 'other-logos';
         

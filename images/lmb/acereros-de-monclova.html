@@ -32,10 +32,10 @@
     <script>
         const path = "../../images/lmb-teams/acereros-de-monclova/";
         const allFiles = [
-"Primary logo.png",
-"Home white jersey logo.png",
-"Hat logo.png",
-"Road gray jersey logo.png",];
+"Hat logo 1974-present.png",
+"Home white jersey logo 2023.png",
+"Road gray jersey logo 2022.png",
+];
 
 allFiles.sort((a, b) => {
     const getLastYear = (fileName) => {
@@ -92,10 +92,10 @@ allFiles.forEach(fileName => {
     else if (lowerName.includes("alternate")) {
         document.getElementById('alternate-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("jersey")) {
+    else if ((lowerName.includes("jersey") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('jersey-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("hat")) {
+    else if ((lowerName.includes("hat") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('hat-logos').innerHTML += cardHtml;
     } 
     else {

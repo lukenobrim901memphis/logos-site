@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MLB League Logos</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../mlb-style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../navigation/favicon.png">
+</head>
+<body>
+    <header class="sticky-header">
+        <a href="../../mlb.html" class="back-btn">← Back to MLB</a>
+        <h1 class="text-mlb">MLB League Logos</h1>
+    </header>
+
+    <!-- Each group shows only if it has logos. Order here = order on the page. -->
+    <div class="category-header">Anniversaries &amp; Milestones</div>
+    <div id="anniversaries" class="grid"></div>
+
+    <div class="category-header">Postseason</div>
+    <div id="postseason" class="grid"></div>
+
+    <div class="category-header">Special Games &amp; Series</div>
+    <div id="special-games" class="grid"></div>
+
+    <div class="category-header">Holidays</div>
+    <div id="holidays" class="grid"></div>
+
+    <div class="category-header">Days of Recognition</div>
+    <div id="recognition" class="grid"></div>
+
+    <div class="category-header">Patterns &amp; Textures</div>
+    <div id="patterns" class="grid"></div>
+
+    <div class="category-header">Other</div>
+    <div id="other-logos" class="grid"></div>
+
+    <div id="lightbox" class="lightbox" onclick="this.style.display='none'">
+        <span class="close-btn">&times;</span>
+        <img id="lightbox-img" src="" alt="Enlarged logo">
+        <div id="lightbox-caption"></div>
+    </div>
+
+    <script>
+        const path = "../../images/mlb-teams/mlb/";
+        const allFiles = [
+];
+
+        // Which group a logo goes in, checked top to bottom: the first match wins.
+        // (Patterns come first so "Memorial Day camo" isn't filed under Holidays, and so on.)
+        const GROUPS = [
+            ["patterns",      /pattern|texture|camo/],
+            ["postseason",    /world series|nlds|alds|nlcs|alcs|wild card|postseason/],
+            ["special-games", /series|classic|game\b|weekend/],
+            ["anniversaries", /anniversary|centennial|100th|75th|50th|\b150\b|\b250\b/],
+            ["holidays",      /4th of july|fourth of july|independence day|memorial day|armed forces|mother's day|father's day|st\. patrick|canada day/],
+            ["recognition",   /\bday\b|memorial|awareness|lives matter|united for change|cancer/],
+        ];
+
+        // Oldest first; "present" counts as the newest.
+        const lastYear = name => {
+            if (/present/i.test(name)) return 9999;
+            const years = name.match(/\d{4}/g);
+            return years ? parseInt(years[years.length - 1]) : 0;
+        };
+        allFiles.sort((a, b) => lastYear(a) - lastYear(b));
+
+        function openLightbox(imgSrc, caption) {
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox-caption').textContent = caption;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+
+        allFiles.forEach(fileName => {
+            const fullName = fileName.replace('.png', '');
+            const years = fullName.match(/\d{4}(?:-\d{4}|-present)?/g);
+            const yearText = years ? years.join(', ') : '';
+            let label = fullName;
+            (years || []).forEach(y => { label = label.replace(y, ''); });
+            label = label.replace(/\blogo\b/gi, '').replace(/,/g, '').replace(/\s+/g, ' ').trim();
+
+            const safe = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+            const src = path + fileName;
+            const card = `
+            <div class="logo-card" onclick="openLightbox(this.dataset.src, this.dataset.caption)" data-src="${safe(src)}" data-caption="${safe(fullName)}">
+                <div class="logo-image-wrapper">
+                    <img src="${safe(src)}" alt="${safe(fullName)}" loading="lazy">
+                </div>
+                <div class="logo-caption">
+                    ${label ? `<div class="logo-name">${safe(label)}</div>` : ''}
+                    <div class="logo-year">${yearText}</div>
+                </div>
+            </div>`;
+
+            const lower = fileName.toLowerCase();
+            const group = (GROUPS.find(([, test]) => test.test(lower)) || ["other-logos"])[0];
+            document.getElementById(group).insertAdjacentHTML('beforeend', card);
+        });
+
+        // Hide any group that ended up empty.
+        document.querySelectorAll('.grid').forEach(grid => {
+            if (!grid.children.length) {
+                grid.style.display = 'none';
+                const header = grid.previousElementSibling;
+                if (header && header.classList.contains('category-header')) header.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

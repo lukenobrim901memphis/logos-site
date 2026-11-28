@@ -26,6 +26,9 @@
     <div class="category-header">City Edition</div>
     <div id="city-edition" class="grid"></div>
 
+    <div class="category-header">Classic Edition</div>
+    <div id="classic-edition" class="grid"></div>
+
     <div class="category-header">Holiday</div>
     <div id="holiday" class="grid"></div>
 
@@ -37,15 +40,74 @@
 
     <script>
         const path = "../../images/nba-teams/boston-celtics/";
+// HOLIDAY_GROUPS v1: the Holiday section is grouped by holiday, then by the year worn
+const HOLIDAY_LIST = [["Chinese New Year", "chinese new year"], ["Lunar New Year", "lunar new year"], ["Mardi Gras", "mardi gras"], ["St. Patrick's Day", "st\\.? ?patrick'?s?(?: day)?"], ["Mother's Day", "mother'?s?(?: day)?"], ["Armed Forces", "armed forces(?: day| weekend)?"], ["Memorial Day", "memorial day"], ["Father's Day", "father'?s?(?: day)?"], ["4th of July", "(?:4th of )?july|independence day"], ["Noche Latina", "noche latina"], ["Military", "military(?: appreciation)?"], ["Christmas", "christmas"]];
+const holidayFiles = [];
+function queueHoliday(fileName) { holidayFiles.push(fileName); }
+document.addEventListener('DOMContentLoaded', () => {
+    const section = document.getElementById('holiday');
+    if (!section || !holidayFiles.length) return;
+    section.classList.remove('grid');
+    const groups = new Map();          // holiday index -> Map(years worn -> [cards])
+    for (const fileName of holidayFiles) {
+        const base = fileName.replace(/\.png$/i, '');
+        const end = base.match(/\s(\d{4}(?:-(?:\d{4}|present))?(?:,\s*\d{4}(?:-(?:\d{4}|present))?)*)\s*$/i);
+        const namePart = end ? base.slice(0, end.index) : base;
+        const worn = end ? end[1] : '';
+        let idx = HOLIDAY_LIST.findIndex(h => new RegExp(h[1], 'i').test(namePart));
+        let label = namePart;
+        if (idx >= 0) label = label.replace(new RegExp(HOLIDAY_LIST[idx][1], 'i'), '');
+        else idx = HOLIDAY_LIST.length;
+        label = label.replace(/logo\d*/gi, '').replace(/\s+/g, ' ').trim();
+        label = label ? label[0].toUpperCase() + label.slice(1) : '';
+        const card = `
+        <div class="logo-card" onclick="openLightbox('${path}${fileName}')">
+            <div class="logo-image-wrapper">
+                <img src="${path}${fileName}" alt="${base}" loading="lazy">
+            </div>
+            <div class="logo-caption">
+                <div class="logo-name">${label}</div>
+            </div>
+        </div>`;
+        if (!groups.has(idx)) groups.set(idx, new Map());
+        const rows = groups.get(idx);
+        if (!rows.has(worn)) rows.set(worn, []);
+        rows.get(worn).push(card);
+    }
+    const byYear = (a, b) => (a === '') - (b === '') || parseInt(a) - parseInt(b) || a.localeCompare(b);
+    section.innerHTML = [...groups.keys()].sort((a, b) => a - b).map(i =>
+        `\n    <h3 class="identity-header">${i < HOLIDAY_LIST.length ? HOLIDAY_LIST[i][0] : 'Other'}</h3>` +
+        [...groups.get(i).keys()].sort(byYear).map(w => `
+    <div class="year-row-label">${w}</div>
+    <div class="grid">${groups.get(i).get(w).join('')}</div>`).join('')
+    ).join('');
+});
+// Years shown = only the years at the end of the file name; the rest is the name
+const YEARS_AT_END = /\s(\d{4}(?:-(?:\d{4}|present))?(?:,\s*\d{4}(?:-(?:\d{4}|present))?)*)\s*$/i;
+function splitYears(fileName) {
+    const base = fileName.replace(/\.png$/i, '');
+    const m = base.match(YEARS_AT_END);
+    return m ? { name: base.slice(0, m.index), years: m[1] } : { name: base, years: '' };
+}
+function labelFrom(name) {
+    return name.replace(/logo\d*/gi, '').replace(/alternate/gi, '').replace(/,/g, '')
+               .replace(/\s+/g, ' ').replace(/^-+|-+$/g, '').trim();
+}
         const allFiles = [
+"Alternate green logo 1999-present.png",
 "Alternate logo 1999-present.png",
+"Alternate white logo 1999-present.png",
 "City Edition jersey logo 2020.png",
 "City Edition jersey logo 2023.png",
 "City Edition jersey logo 2025.png",
 "City Edition jersey logo 2026.png",
+"Gray jersey logo 2014-2017.png",
+"Green alt jersey logo 2006-2017.png",
+"Green jersey logo 1969-2014.png",
 "Green jersey logo 2015-present.png",
 "Primary logo 1997-present.png",
-"Statement jersey logo 2021-present.png",
+"St. Patrick's Day jersey logo 2014-2017.png",
+"Statement jersey logo 2018-present.png",
 "White jersey logo 1969-present.png",
 ];
 
@@ -75,14 +137,22 @@ allFiles.forEach(fileName => {
     const datePattern = /\d{4}(?:-\d{4}|-present)?/g;
     const matches = fullName.match(datePattern);
     const yearText = matches ? matches.join(', ') : "";
+    let nameWithoutYear = fullName.replace(/logo\d*/gi, '');
+    (matches || []).forEach(m => { nameWithoutYear = nameWithoutYear.replace(m, ''); });
+    nameWithoutYear = nameWithoutYear.replace(/alternate/gi, '').replace(/,/g, '')
+        .replace(/\s+/g, ' ').replace(/^-+|-+$/g, '').trim();
 
+    const shown = splitYears(fileName);
+    const shownYears = shown.years || yearText;
+    const shownName = labelFrom(shown.name);
     const cardHtml = `
     <div class="logo-card" onclick="openLightbox('${path}${fileName}')">
         <div class="logo-image-wrapper">
             <img src="${path}${fileName}" alt="${fullName}" loading="lazy">
         </div>
         <div class="logo-caption">
-            <div class="logo-year">${yearText}</div>
+            ${nameWithoutYear ? `<div class="logo-name">${shownName}</div>` : ''}
+            <div class="logo-year">${shownYears}</div>
         </div>
     </div>`;
     const lowerName = fileName.toLowerCase();
@@ -93,10 +163,13 @@ allFiles.forEach(fileName => {
         lowerName.includes("military") ||
         lowerName.includes("christmas") ||
         lowerName.includes("st. patrick")) {
-        document.getElementById('holiday').innerHTML += cardHtml;
+        queueHoliday(fileName);
     }
     else if (lowerName.includes("city edition")) {
         document.getElementById('city-edition').innerHTML += cardHtml;
+    }
+    else if (lowerName.includes("classic")) {
+        document.getElementById('classic-edition').innerHTML += cardHtml;
     }
     else if (lowerName.includes("primary logo")) {
         document.getElementById('primary-logos').innerHTML += cardHtml;
@@ -104,7 +177,7 @@ allFiles.forEach(fileName => {
     else if (lowerName.includes("alternate")) {
         document.getElementById('alternate-logos').innerHTML += cardHtml;
     }
-    else if (lowerName.includes("jersey")) {
+    else if ((lowerName.includes("jersey") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('jersey-logos').innerHTML += cardHtml;
     }
     else if (lowerName.includes("midcourt") ||

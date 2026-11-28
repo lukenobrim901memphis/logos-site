@@ -1,0 +1,230 @@
+# Logo team list for build-logos.mjs
+#
+# Each line:  LEAGUE  CODE  site-folder  [years]
+#   LEAGUE  the first word of the iCloud file name (MLB, NBA, NFL, MiLB, LIDOM, LMB, WBC)
+#   CODE    the second word (DET, AZU, ...)
+#   folder  the team's folder inside images/<league>-teams/
+#   years   optional, for teams that changed names. The script uses the LAST year in the
+#           file name ("present" counts as now):  -2021  means up to 2021,  2022-  means 2022 on,
+#           2015-2022  means those years. A file with no year goes to the line with an open end.
+#   CODE * catches every file in that league whose code isn't listed (used for league-wide NFL logos).
+#
+# Lines marked  # CHECK  are my best guesses. Fix anything that's wrong; lines starting with # are ignored.
+
+# ---------------- MLB -> images/mlb-teams ----------------
+MLB ARI arizona-diamondbacks
+MLB ATH athletics
+MLB OAK oakland-athletics
+MLB ATL atlanta-braves
+MLB BAL baltimore-orioles
+MLB BOS boston-red-sox
+MLB CHC chicago-cubs
+MLB CHW chicago-white-sox
+MLB CIN cincinnati-reds
+MLB CLE cleveland-indians -2021
+MLB CLE cleveland-guardians 2022-
+MLB COL colorado-rockies
+MLB DET detroit-tigers
+MLB FLA florida-marlins
+MLB MIA miami-marlins
+MLB HOU houston-astros
+MLB KCR kansas-city-royals
+MLB LAA los-angeles-angels
+MLB LAD los-angeles-dodgers
+MLB MIL milwaukee-brewers
+MLB MIN minnesota-twins
+MLB NYM new-york-mets
+MLB NYY new-york-yankees
+MLB PHI philadelphia-phillies
+MLB PIT pittsburgh-pirates
+MLB SDP san-diego-padres
+MLB SEA seattle-mariners
+MLB SFG san-francisco-giants
+MLB STL st-louis-cardinals
+MLB TBR tampa-bay-rays
+MLB TEX texas-rangers
+MLB TOR toronto-blue-jays
+MLB WSN washington-nationals
+
+MLB * mlb
+MLB KCA -
+MLB BRK -
+MLB SEP -
+MLB WSS -
+
+# ---------------- NBA -> images/nba-teams ----------------
+NBA ATL atlanta-hawks
+NBA BOS boston-celtics
+NBA BRK brooklyn-nets
+NBA CHA charlotte-bobcats
+NBA CHO charlotte-hornets
+NBA CHI chicago-bulls
+NBA CLE cleveland-cavaliers
+NBA DAL dallas-mavericks
+NBA DEN denver-nuggets
+NBA DET detroit-pistons
+NBA GSW golden-state-warriors
+NBA HOU houston-rockets
+NBA IND indiana-pacers
+NBA LAC los-angeles-clippers
+NBA LAL los-angeles-lakers
+NBA MEM memphis-grizzlies
+NBA MIA miami-heat
+NBA MIL milwaukee-bucks
+NBA MIN minnesota-timberwolves
+NBA NOH new-orleans-hornets
+NBA NOP new-orleans-pelicans
+NBA NYK new-york-knicks
+NBA OKC oklahoma-city-thunder
+NBA ORL orlando-magic
+NBA PHI philadelphia-76ers
+NBA PHX phoenix-suns
+NBA POR portland-trail-blazers
+NBA SAC sacramento-kings
+NBA SAS san-antonio-spurs
+NBA TOR toronto-raptors
+NBA UTA utah-jazz
+NBA WAS washington-wizards
+
+# ---------------- NFL -> images/nfl-teams ----------------
+NFL ARI arizona-cardinals
+NFL ATL atlanta-falcons
+NFL BAL baltimore-ravens
+NFL BUF buffalo-bills
+NFL CAR carolina-panthers
+NFL CHI chicago-bears
+NFL CIN cincinnati-bengals
+NFL CLE cleveland-browns
+NFL DAL dallas-cowboys
+NFL DEN denver-broncos
+NFL DET detroit-lions
+NFL GB green-bay-packers
+NFL HOU houston-texans
+NFL IND indianapolis-colts
+NFL JAX jacksonville-jaguars
+NFL KC kansas-city-chiefs
+NFL LV las-vegas-raiders
+NFL OAK oakland-raiders
+NFL LAC los-angeles-chargers
+NFL SD san-diego-chargers
+NFL LAR los-angeles-rams
+NFL STL st-louis-rams
+NFL MIA miami-dolphins
+NFL MIN minnesota-vikings
+NFL NE new-england-patriots
+NFL NO new-orleans-saints
+NFL NYG new-york-giants
+NFL NYJ new-york-jets
+NFL PHI philadelphia-eagles
+NFL PIT pittsburgh-steelers
+NFL SEA seattle-seahawks
+NFL SF san-francisco-49ers
+NFL TB tampa-bay-buccaneers
+NFL TEN tennessee-titans
+NFL WAS washington-redskins -2019
+NFL WAS washington-football-team 2020-2021
+NFL WAS washington-commanders 2022-
+# League-wide NFL logos (Play 60, Super Bowl, Pink October, Kickoff, 100th, ...)
+NFL * nfl
+
+# ---------------- MiLB -> images/triple-a-teams ----------------
+MiLB ABQ albuquerque-isotopes
+MiLB BFL buffalo-bisons
+MiLB CHR charlotte-knights
+MiLB CLB columbus-clippers
+MiLB CSP colorado-springs-sky-sox
+MiLB DHB durham-bulls
+MiLB ELP el-paso-chihuahuas
+MiLB FRE fresno-grizzlies
+MiLB GWI gwinnett-braves -2017
+MiLB GWI gwinnett-stripers 2018-
+MiLB INA indianapolis-indians
+MiLB IWA iowa-cubs
+MiLB JCK jacksonville-jumbo-shrimp
+MiLB LHV lehigh-valley-ironpigs
+MiLB LOU louisville-bats
+MiLB LVG las-vegas-51s -2018
+MiLB LVG las-vegas-aviators 2019-
+MiLB MEM memphis-redbirds
+MiLB NFK norfolk-tides
+MiLB NOR new-orleans-zephyrs -2016
+MiLB NOR new-orleans-baby-cakes 2017-2019
+MiLB NVL nashville-sounds
+MiLB OKC oklahoma-city-redhawks -2014
+MiLB OKC oklahoma-city-dodgers 2015-2023
+MiLB OKC oklahoma-city-baseball-club 2024
+MiLB OKC oklahoma-city-comets 2025-
+MiLB OMA omaha-storm-chasers
+MiLB PAW pawtucket-red-sox
+MiLB REN reno-aces
+MiLB ROC rochester-red-wings
+MiLB RRK round-rock-express
+MiLB SAC sacramento-river-cats
+MiLB SAN san-antonio-missions
+MiLB SKT sugar-land-skeeters -2021
+MiLB SKT sugar-land-space-cowboys 2022-
+MiLB SLK salt-lake-bees
+MiLB STP st-paul-saints
+MiLB SWB scranton-wilkes-barre-railriders -2026
+MiLB SWB scranton-wilkes-barre-highlanders 2027-
+MiLB SYR syracuse-chiefs -2018
+MiLB SYR syracuse-mets 2019-
+MiLB TAC tacoma-rainiers
+MiLB TOL toledo-mud-hens
+MiLB TUC tucson-padres
+MiLB WCH wichita-wind-surge
+MiLB WOR worcester-red-sox
+
+# ---------------- LIDOM -> images/lidom-teams ----------------
+LIDOM AGU aguilas-cibaenas
+LIDOM AZU toros-del-este
+LIDOM ESC leones-del-escogido
+LIDOM ESS estrellas-orientales
+LIDOM GIG gigantes-del-cibao
+LIDOM LCY tigres-del-licey
+
+# ---------------- LMB -> images/lmb-teams ----------------
+LMB ASU rieleros-de-aguascalientes
+LMB CHI dorados-de-chihuahua
+LMB CMP piratas-de-campeche
+LMB DLA tecolotes-de-los-dos-laredos
+LMB DUR generales-de-durango -2023
+LMB DUR caliente-de-durango 2024-
+LMB GUA mariachis-de-guadalajara
+LMB JAL charros-de-jalisco
+LMB LEO bravos-de-leon
+LMB MCD diablos-rojos-del-mexico
+LMB MON acereros-de-monclova
+LMB MTY sultanes-de-monterrey
+LMB OAX guerreros-de-oaxaca
+LMB PUE pericos-de-puebla
+LMB QUE conspiradores-de-queretaro
+LMB QRO tigres-de-quintana-roo
+LMB SLT saraperos-de-saltillo
+LMB TIJ toros-de-tijuana
+LMB TRR algodoneros-de-union-laguna
+LMB VER el-aguila-de-veracruz
+LMB VIL olmecas-de-tabasco
+LMB YUC leones-de-yucatan
+
+# ---------------- WBC -> images/wbc-teams ----------------
+WBC AUS australia
+WBC BRA brazil
+WBC CAN canada
+WBC COL colombia
+WBC CUB cuba
+WBC CZE czechia
+WBC DR dominican-republic
+WBC GB great-britain
+WBC ISR israel
+WBC ITA italy
+WBC JPN japan
+WBC KOR korea
+WBC MEX mexico
+WBC NCA nicaragua
+WBC NED netherlands
+WBC PAN panama
+WBC PR puerto-rico
+WBC TPE chinese-taipei
+WBC USA usa
+WBC VEN venezuela

@@ -32,10 +32,9 @@
     <script>
         const path = "../../images/lmb-teams/tecolotes-de-los-dos-laredos/";
         const allFiles = [
-"Cream hat logo.png",
-"Home cream jersey logo.png",
-"Primary logo.png",
-"Road black jersey logo.png",];
+"Cream hat logo 2022-present.png",
+"Home cream jersey logo 2022-present.png",
+];
 
 allFiles.sort((a, b) => {
     const getLastYear = (fileName) => {
@@ -92,10 +91,10 @@ allFiles.forEach(fileName => {
     else if (lowerName.includes("alternate")) {
         document.getElementById('alternate-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("jersey")) {
+    else if ((lowerName.includes("jersey") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('jersey-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("hat")) {
+    else if ((lowerName.includes("hat") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('hat-logos').innerHTML += cardHtml;
     } 
     else {

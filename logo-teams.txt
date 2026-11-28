@@ -46,11 +46,7 @@ MLB TEX texas-rangers
 MLB TOR toronto-blue-jays
 MLB WSN washington-nationals
 
-MLB * mlb
-MLB KCA -
-MLB BRK -
-MLB SEP -
-MLB WSS -
+MLB * -
 
 # ---------------- NBA -> images/nba-teams ----------------
 NBA ATL atlanta-hawks
@@ -125,7 +121,7 @@ NFL WAS washington-redskins -2019
 NFL WAS washington-football-team 2020-2021
 NFL WAS washington-commanders 2022-
 # League-wide NFL logos (Play 60, Super Bowl, Pink October, Kickoff, 100th, ...)
-NFL * nfl
+NFL * -
 
 # ---------------- MiLB -> images/triple-a-teams ----------------
 MiLB ABQ albuquerque-isotopes
@@ -174,6 +170,9 @@ MiLB TOL toledo-mud-hens
 MiLB TUC tucson-padres
 MiLB WCH wichita-wind-surge
 MiLB WOR worcester-red-sox
+
+# League-wide MiLB logos
+MiLB Copa -
 
 # ---------------- LIDOM -> images/lidom-teams ----------------
 LIDOM AGU aguilas-cibaenas

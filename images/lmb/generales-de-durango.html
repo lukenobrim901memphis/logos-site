@@ -32,10 +32,12 @@
     <script>
         const path = "../../images/lmb-teams/generales-de-durango/";
         const allFiles = [
-"Alternate logo.png",
-"Green jersey logo.png",
-"Hat logo.png",
-"Primary logo.png",];
+"Alternate logo 2017-2023.png",
+"Green jersey logo 2017-2023.png",
+"Hat logo 2017-2023.png",
+"Primary logo 2017-2023.png",
+"White jersey logo 2017-2023.png",
+];
 
 allFiles.sort((a, b) => {
     const getLastYear = (fileName) => {
@@ -92,10 +94,10 @@ allFiles.forEach(fileName => {
     else if (lowerName.includes("alternate")) {
         document.getElementById('alternate-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("jersey")) {
+    else if ((lowerName.includes("jersey") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('jersey-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("hat")) {
+    else if ((lowerName.includes("hat") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('hat-logos').innerHTML += cardHtml;
     } 
     else {

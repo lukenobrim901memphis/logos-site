@@ -32,28 +32,16 @@
     <script>
         const path = "../../images/lidom-teams/estrellas-orientales/";
         const allFiles = [
-"115th season logo.png",
-"Aceite El Gallo green ad patch.png",
-"Aceite El Gallo white ad patch.png",
-"Banreservas ad patch.png",
-"Banreservas white ad patch.png",
-"Batting helmet logo.png",
-"Black alt jersey logo.png",
-"Black hat logo.png",
-"Black jersey logo.png",
-"Gato Motorcycles ad patch.png",
-"Green hat logo.png",
-"Green jersey back pattern 2024.png",
-"Green jersey front pattern 2024.png",
+"115th season logo 2025.png",
+"Alt black jersey logo 2025-present.png",
+"Batting helmet logo 2020-present.png",
+"Black hat logo 2024-present.png",
+"Black jersey logo 2025-present.png",
+"Green hat logo 2018-present.png",
 "Green jersey logo 2024.png",
 "Green jersey logo 2025.png",
-"Green left sleeve pattern 2024.png",
-"Green right sleeve pattern 2024.png",
-"Mamey Pharma ad patch.png",
-"Mamey Pharma back ad patch.png",
-"Primary logo.png",
-"Saca Grip ad patch.png",
-"White jersey logo.png",];
+"White jersey logo 2025.png",
+];
 
 allFiles.sort((a, b) => {
     const getLastYear = (fileName) => {
@@ -107,10 +95,10 @@ allFiles.forEach(fileName => {
     if (lowerName.includes("primary logo")) {
         document.getElementById('primary-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("jersey")) {
+    else if ((lowerName.includes("jersey") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('jersey-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("hat")) {
+    else if ((lowerName.includes("hat") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('hat-logos').innerHTML += cardHtml;
     } 
     else if (lowerName.includes("ad patch")) {

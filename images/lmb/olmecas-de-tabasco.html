@@ -32,11 +32,10 @@
     <script>
         const path = "../../images/lmb-teams/olmecas-de-tabasco/";
         const allFiles = [
-"Home black hat logo.png",
-"Home white jersey logo.png",
-"Primary logo.png",
-"Road green hat logo.png",
-"Road green jersey logo.png",
+"Black hat logo 2005-2024.png",
+"Green hat logo 2005-2024.png",
+"Home white jersey logo 2022-2023.png",
+"Road green jersey logo 2022-2023.png",
 ];
 
 allFiles.sort((a, b) => {
@@ -94,10 +93,10 @@ allFiles.forEach(fileName => {
     else if (lowerName.includes("alternate")) {
         document.getElementById('alternate-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("jersey")) {
+    else if ((lowerName.includes("jersey") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('jersey-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("hat")) {
+    else if ((lowerName.includes("hat") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('hat-logos').innerHTML += cardHtml;
     } 
     else {

@@ -32,11 +32,11 @@
     <script>
         const path = "../../images/lmb-teams/pericos-de-puebla/";
         const allFiles = [
-"Home hat logo.png",
-"Home white jersey logo.png",
-"Primary logo.png",
-"Road gray jersey logo.png",
-"Road hat logo.png",];
+"Home hat logo 2010-present.png",
+"Home white jersey logo 2022-2023.png",
+"Road gray jersey logo 2022-2023.png",
+"Road hat logo 2010-present.png",
+];
 
 allFiles.sort((a, b) => {
     const getLastYear = (fileName) => {
@@ -93,10 +93,10 @@ allFiles.forEach(fileName => {
     else if (lowerName.includes("alternate")) {
         document.getElementById('alternate-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("jersey")) {
+    else if ((lowerName.includes("jersey") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('jersey-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("hat")) {
+    else if ((lowerName.includes("hat") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('hat-logos').innerHTML += cardHtml;
     } 
     else {

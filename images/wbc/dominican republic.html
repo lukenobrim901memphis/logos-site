@@ -29,11 +29,13 @@
     <script>
         const path = "../../images/wbc-teams/dominican-republic/";
         const allFiles = [
-"Blue hat logo.png",
-"Primary logo.png",
-"Red hat logo.png",
-"Red jersey logo.png",
-"White jersey logo.png",];
+"Blue hat logo 2006-present.png",
+"Flag 2006-present.png",
+"Primary logo 2006-present.png",
+"Red hat logo 2006-present.png",
+"Red jersey logo 2023-present.png",
+"White jersey logo 2023-present.png",
+];
 
 allFiles.sort((a, b) => {
     const getLastYear = (fileName) => {
@@ -87,10 +89,10 @@ allFiles.forEach(fileName => {
     if (lowerName.includes("primary logo")) {
         document.getElementById('primary-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("jersey")) {
+    else if ((lowerName.includes("jersey") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('jersey-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("hat")) {
+    else if ((lowerName.includes("hat") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('hat-logos').innerHTML += cardHtml;
     } 
     else {

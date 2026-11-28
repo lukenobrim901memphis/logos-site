@@ -29,11 +29,11 @@
     <script>
         const path = "../../images/wbc-teams/panama/";
         const allFiles = [
-"Batting helmet logo.png",
-"Hat logo.png",
-"Primary logo.png",
-"Red jersey logo.png",
-"White jersey logo.png",
+"Batting helmet logo 2023-present.png",
+"Flag 2006-present.png",
+"Hat logo 2023-present.png",
+"Red jersey logo 2023-present.png",
+"White jersey logo 2023-present.png",
 ];
 
 allFiles.sort((a, b) => {
@@ -88,10 +88,10 @@ allFiles.forEach(fileName => {
     if (lowerName.includes("primary logo")) {
         document.getElementById('primary-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("jersey")) {
+    else if ((lowerName.includes("jersey") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('jersey-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("hat")) {
+    else if ((lowerName.includes("hat") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('hat-logos').innerHTML += cardHtml;
     } 
     else {

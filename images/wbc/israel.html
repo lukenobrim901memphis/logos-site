@@ -29,11 +29,12 @@
     <script>
         const path = "../../images/wbc-teams/israel/";
         const allFiles = [
-"Black jersey logo.png",
-"Blue jersey logo.png",
-"Hat logo.png",
-"Primary logo.png",
-"White jersey logo.png",
+"Black jersey logo 2017-2023.png",
+"Blue jersey logo 2023-present.png",
+"Flag 2017-present.png",
+"Hat logo 2017-present.png",
+"Primary logo 2017-present.png",
+"White jersey logo 2023-present.png",
 ];
 
 allFiles.sort((a, b) => {
@@ -88,10 +89,10 @@ allFiles.forEach(fileName => {
     if (lowerName.includes("primary logo")) {
         document.getElementById('primary-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("jersey")) {
+    else if ((lowerName.includes("jersey") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('jersey-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("hat")) {
+    else if ((lowerName.includes("hat") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('hat-logos').innerHTML += cardHtml;
     } 
     else {

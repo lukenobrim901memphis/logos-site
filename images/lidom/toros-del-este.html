@@ -32,13 +32,12 @@
     <script>
         const path = "../../images/lidom-teams/toros-del-este/";
         const allFiles = [
-"Black jersey logo.png",
-"Central Romana ad patch.png",
-"Gray jersey logo.png",
-"Orange hat logo.png",
-"Orange jersey logo.png",
-"Primary logo.png",
-"White jersey logo.png",];
+"Black jersey logo 2019-present.png",
+"Gray jersey logo 2025-present.png",
+"Orange hat logo 2019-present.png",
+"Orange jersey logo 2024.png",
+"White jersey logo 2019-present.png",
+];
 
 allFiles.sort((a, b) => {
     const getLastYear = (fileName) => {
@@ -92,10 +91,10 @@ allFiles.forEach(fileName => {
     if (lowerName.includes("primary logo")) {
         document.getElementById('primary-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("jersey")) {
+    else if ((lowerName.includes("jersey") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('jersey-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("hat")) {
+    else if ((lowerName.includes("hat") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('hat-logos').innerHTML += cardHtml;
     } 
     else if (lowerName.includes("ad patch")) {

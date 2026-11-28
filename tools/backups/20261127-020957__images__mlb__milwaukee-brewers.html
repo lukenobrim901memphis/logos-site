@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Milwaukee Brewers Logo History</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../mlb-style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../navigation/favicon.png">
+</head>
+<body>
+    <header class="sticky-header">
+    <a href="../../mlb.html" class="back-btn">← Back to MLB</a>
+    <h1 class="text-brewers">Milwaukee Brewers</h1>
+</header>
+
+    <div class="category-header">Primary Logos</div>
+    <div id="primary-logos" class="grid"></div>
+
+    <div class="category-header">Alternate Logos</div>
+    <div id="alternate-logos" class="grid"></div>
+
+    <div class="category-header">Hat Logos</div>
+    <div id="hat-logos" class="grid"></div>
+
+    <div class="category-header">Jersey Logos</div>
+    <div id="jersey-logos" class="grid"></div>
+
+    <div class="category-header">Patches</div>
+    <div id="patches" class="grid"></div>
+
+    <div class="category-header">Holiday</div>
+    <div id="holiday" class="grid"></div>
+
+    <div class="category-header">Spring Training</div>
+    <div id="spring-training" class="grid"></div>
+
+    <div class="category-header">Batting Practice</div>
+    <div id="batting-practice" class="grid"></div>
+
+    <div class="category-header">Other</div>
+    <div id="other-logos" class="grid"></div>
+    
+    <script>
+        const path = "../../images/mlb-teams/milwaukee-brewers/";
+        const allFiles = [
+"1913 throwback jersey logo 2013.png",
+"1923 Bears Negro League batting helmet logo 2012.png",
+"1923 Bears Negro League batting helmet logo 2015.png",
+"1923 Bears Negro League hat logo 2012.png",
+"1923 Bears Negro League hat logo 2013.png",
+"1923 Bears Negro League jersey logo 2012.png",
+"1923 Negro League Bears jersey logo 2018.png",
+"1930s throwback hat logo 2014.png",
+"1930s throwback jersey logo 2014.png",
+"1948 throwback hat logo 2013.png",
+"1948 throwback jersey logo 2013.png",
+"1976 throwback jersey logo 2016.png",
+"1980s throwback jersey logo 2018.png",
+"1982 throwback jersey logo 2017.png",
+"1990s throwback jersey logo 2016.png",
+"4th of July batting helmet logo 2016.png",
+"4th of July hat logo 2013.png",
+"4th of July hat logo 2014.png",
+"4th of July hat logo 2015.png",
+"4th of July hat logo 2016.png",
+"4th of July hat logo 2017.png",
+"4th of July hat logo 2018.png",
+"4th of July hat logo 2019.png",
+"4th of July hat logo 2021.png",
+"4th of July hat logo 2022.png",
+"4th of July hat logo 2023.png",
+"4th of July hat logo 2024.png",
+"4th of July hat logo 2025.png",
+"4th of July hat logo 2026.png",
+"4th of July home jersey logo 2017-2018.png",
+"4th of July jersey logo 2015.png",
+"4th of July jersey logo 2016.png",
+"4th of July sleeve patch 2016.png",
+"4th of July sleeve patch 2017.png",
+"50th anniversary patch 2020.png",
+"Alt hat logo 2019.png",
+"Alt logo 2015.png",
+"Alt state logo 2015.png",
+"Alternate Barrelman logo 2020-present.png",
+"Alternate logo 2016-2019.png",
+"Alternate state logo 2016-2019.png",
+"Alternate state logo 2020-present.png",
+"Alternate swinging Barrelman logo 2020-present.png",
+"Armed Forces hat logo 2019.png",
+"Armed Forces hat logo 2021.png",
+"Armed Forces hat logo 2022.png",
+"Armed Forces hat logo 2023.png",
+"Armed Forces hat logo 2024.png",
+"Armed Forces hat logo 2025.png",
+"Armed Forces hat logo 2026.png",
+"Batting practice hat logo 2025.png",
+"Blue Northwestern Mutual ad patch 2023.png",
+"Bob Uecker memorial patch 2025.png",
+"Bruce Seid BRUCE memorial patch 2014.png",
+"City Connect hat logo 2022-2025.png",
+"City Connect hat logo 2026-present.png",
+"City Connect jersey logo 2022-2025.png",
+"City Connect jersey logo 2026-present.png",
+"City Connect sleeve patch 2022.png",
+"City Connect sleeve patch 2026-present.png",
+"Dave Nelson memorial patch 2018.png",
+"Father's Day batting helmet logo 2018.png",
+"Father's Day hat logo 2016.png",
+"Father's Day hat logo 2017.png",
+"Father's Day hat logo 2018.png",
+"Father's Day hat logo 2019.png",
+"Father's Day hat logo 2021.png",
+"Father's Day hat logo 2022.png",
+"Father's Day hat logo 2023.png",
+"Father's Day hat logo 2024.png",
+"Father's Day jersey logo 2016.png",
+"Father's Day jersey logo 2017.png",
+"Father's Day sleeve patch 2016.png",
+"Father's Day sleeve patch 2017.png",
+"Gary VandenBerg GV memorial patch 2011.png",
+"Hank Aaron 44 memorial patch 2021.png",
+"Hat logo 2015.png",
+"Hat logo 2016.png",
+"Hat logo 2019.png",
+"Hat logo 2020-present.png",
+"Hat logo white 2016.png",
+"Hispanic Heritage gold jersey logo 2011-2017.png",
+"Hispanic Heritage white jersey logo 2018-2019.png",
+"Home cream jersey logo 2020-present.png",
+"Home white Cerveceros jersey logo 2016-2019.png",
+"Home white jersey logo 2015.png",
+"Home white jersey logo 2019.png",
+"Home white jersey logo 2020-present.png",
+"Italian Heritage hat logo 2012.png",
+"Italian Heritage jersey logo 2012.png",
+"Jackie Robinson Day patch 2021.png",
+"Memorial Day batting helmet logo 2017.png",
+"Memorial Day batting helmet logo 2018.png",
+"Memorial Day hat logo 2012.png",
+"Memorial Day hat logo 2014.png",
+"Memorial Day hat logo 2016.png",
+"Memorial Day hat logo 2017.png",
+"Memorial Day hat logo 2018.png",
+"Memorial Day home jersey logo 2018.png",
+"Memorial Day home navy jersey logo 2015.png",
+"Memorial Day home white jersey logo 2013-2014.png",
+"Memorial Day jersey logo 2016.png",
+"Memorial Day jersey logo 2017.png",
+"Memorial Day sleeve patch 2016.png",
+"Memorial Day sleeve patch 2017.png",
+"Memorial Day sleeve patch 2018.png",
+"Molson Coors MC memorial patch 2020.png",
+"Mother's Day batting helmet logo 2018.png",
+"Mother's Day batting helmet logo 2019.png",
+"Mother's Day hat logo 2016.png",
+"Mother's Day hat logo 2017.png",
+"Mother's Day hat logo 2018.png",
+"Mother's Day hat logo 2019.png",
+"Mother's Day hat logo 2021.png",
+"Mother's Day hat logo 2022.png",
+"Mother's Day hat logo 2023.png",
+"Mother's Day hat logo 2024.png",
+"Mother's Day jersey logo 2016.png",
+"Mother's Day jersey logo 2017.png",
+"Mother's Day sleeve patch 2016.png",
+"Navy Brewers 2019.png",
+"Navy Brewers jersey logo 2015.png",
+"Navy Milwaukee 2019.png",
+"Northwestern Mutual cream jersey ad patch 2024-present.png",
+"Northwestern Mutual navy jersey ad patch 2023-present.png",
+"Players Weekend hat logo 2017.png",
+"Players Weekend hat logo 2018.png",
+"Players Weekend hat logo 2019.png",
+"Players Weekend jersey logo 2017.png",
+"Players Weekend jersey logo 2018.png",
+"Players Weekend jersey logo 2019.png",
+"Polish Heritage hat logo 2013.png",
+"Polish Heritage jersey logo 2013.png",
+"Road gray jersey logo 2015.png",
+"Road gray jersey logo 2019.png",
+"Road gray jersey logo 2020-2025.png",
+"Road navy jersey logo 2020-present.png",
+"Road navy Milwaukee jersey logo 2015.png",
+"Spring Training hat logo 2021.png",
+"Spring Training hat logo 2022.png",
+"Spring Training hat logo 2025.png",
+"Spring Training jersey logo 2015.png",
+"St. Patrick's Day hat logo 2014.png",
+"St. Patrick's Day hat logo 2018.png",
+"St. Patrick's Day hat logo 2025.png",
+"St. Patrick's Day hat logo 2026.png",
+"St. Patrick's Day jersey logo 2014.png",
+"St. Patrick's Day jersey logo 2018.png",
+"Throwback batting practice jersey logo 2014.png",
+"Throwback hat logo 2019.png",
+"Throwback jersey logo 2017.png",
+"Throwback jersey logo 2019.png",
+"Throwback weekend hat logo 2025.png",
+"Throwback weekend hat logo 2026.png",
+"White Northwestern Mutual ad patch 2023.png",
+"Youniform hat logo 2013.png",
+"Youniform jersey logo 2013.png",
+];
+
+allFiles.sort((a, b) => {
+    const getLastYear = (fileName) => {
+        const lower = fileName.toLowerCase();
+        
+        if (lower.includes("present")) return 9999;
+
+        const years = fileName.match(/\d{4}/g);
+        if (years && years.length > 0) {
+            return parseInt(years[years.length - 1]);
+        }
+        
+        return 0;
+    };
+
+    return getLastYear(a) - getLastYear(b);
+});     
+function openLightbox(imgSrc) {
+    document.getElementById('lightbox-img').src = imgSrc;
+    document.getElementById('lightbox').style.display = 'flex';
+}
+
+allFiles.forEach(fileName => {
+           let fullName = fileName.replace('logo ', '').replace('.png', '');
+           const datePattern = /\d{4}(?:-\d{4}|-present)?/g; 
+    const matches = fullName.match(datePattern);
+    const yearText = matches ? matches.join(', ') : "";
+    let nameWithoutYear = fullName;
+    if (matches) {
+        matches.forEach(m => {
+            nameWithoutYear = nameWithoutYear .replace(m, '')
+            .replace(/alternate/gi, '')
+                                     .replace(/logo\d*/gi, '')
+                                     .replace(/,/g, '')
+                                     .trim();
+        });
+    }
+    nameWithoutYear = nameWithoutYear.replace(/^-+|-+$/g, '').trim();
+    const cardHtml = `
+    <div class="logo-card" onclick="openLightbox('${path}${fileName}')">
+        <div class="logo-image-wrapper">
+            <img src="${path}${fileName}" alt="${fullName}" loading="lazy">
+        </div>
+        <div class="logo-caption">
+            ${nameWithoutYear ? `<div class="logo-name">${nameWithoutYear}</div>` : ''}
+            <div class="logo-year">${yearText}</div>
+        </div>
+    </div>`;
+    const lowerName = fileName.toLowerCase();
+
+    if (lowerName.includes("mother") || 
+        lowerName.includes("father") || 
+        lowerName.includes("july") || 
+        lowerName.includes("memorial day") ||
+        lowerName.includes("armed forces") || 
+        lowerName.includes("st. patrick")) {
+        document.getElementById('holiday').innerHTML += cardHtml;
+    }
+    else if (lowerName.includes("spring training")) {
+        document.getElementById('spring-training').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("primary logo")) {
+        document.getElementById('primary-logos').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("alternate")) {
+        document.getElementById('alternate-logos').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("batting practice")) {
+        document.getElementById('batting-practice').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("jersey")) {
+        document.getElementById('jersey-logos').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("hat")) {
+        document.getElementById('hat-logos').innerHTML += cardHtml;
+    } 
+    else if (lowerName.includes("patch")) {
+        document.getElementById('patches').innerHTML += cardHtml;
+    } 
+    else {
+        document.getElementById('other-logos').innerHTML += cardHtml;
+    }
+});
+    </script>
+  
+  <div id="lightbox" class="lightbox" onclick="this.style.display='none'">
+    <span class="close-btn">&times;</span>
+    <img id="lightbox-img" src="" alt="Enlarged Logo">
+    <div id="lightbox-caption"></div>
+</div>
+
+</body>
+</html>

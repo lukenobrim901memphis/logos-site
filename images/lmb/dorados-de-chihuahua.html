@@ -32,7 +32,7 @@
     <script>
         const path = "../../images/lmb-teams/dorados-de-chihuahua/";
         const allFiles = [
-"Primary logo.png",
+"Primary logo 2024-present.png",
 ];
 
 allFiles.sort((a, b) => {
@@ -90,10 +90,10 @@ allFiles.forEach(fileName => {
     else if (lowerName.includes("alternate")) {
         document.getElementById('alternate-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("jersey")) {
+    else if ((lowerName.includes("jersey") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('jersey-logos').innerHTML += cardHtml;
     } 
-    else if (lowerName.includes("hat")) {
+    else if ((lowerName.includes("hat") && !/pattern|texture|gradient/.test(lowerName))) {
         document.getElementById('hat-logos').innerHTML += cardHtml;
     } 
     else {
